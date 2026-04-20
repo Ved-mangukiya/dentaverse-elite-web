@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dentaverse Elite | Premium VR Dental Care</title>
+    <style>
+        /* ==========================================================================
+   DENTAVERSE ELITE - UNIVERSAL THEME
+   ========================================================================== */
+
+        :root {
+            --ivory: #FCFCFA;
+            --ivory-dark: #F5F4F0;
+            --gold-primary: #C5A059;
+            --gold-hover: #D4AF37;
+            --text-dark: #1A1A1A;
+            --text-muted: #5A5A5A;
+            --pastel-mint: #EBF3F0;
+            --white: #FFFFFF;
+            --shadow-subtle: 0 10px 40px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-premium: var(--shadow-subtle);
+            --primary: var(--gold-primary);
+            --primary-dark: var(--gold-hover);
+            --text: var(--text-dark);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            opacity: 0;
+        }
+
+        body.fade-in {
+            animation: pageFadeIn 0.45s forwards;
+        }
+
+        body.fade-out {
+            animation: pageFadeOut 0.28s forwards;
+        }
+
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pageFadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "Optima", "Georgia", serif;
+            font-weight: 500;
+            color: var(--text-dark);
+            letter-spacing: 0.02em;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: clamp(14px, 2.1vw, 17px);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+        }
+
+        .page-main {
+            padding-top: 88px;
+            padding-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .page-main {
+                padding-top: 104px;
+                padding-bottom: 56px;
+            }
+        }
+
+        /* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            min-width: 48px;
+            padding: 0.85rem 1.6rem;
+            border-radius: 999px;
+            font-size: clamp(14px, 1.6vw, 15px);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-gold,
+        .btn-primary {
+            background-color: var(--gold-primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.28);
+        }
+
+        .btn-gold:hover,
+        .btn-primary:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-dark);
+            color: var(--white);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* ==========================================================================
+   HEADER & NAV
+   ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(252, 252, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 74px;
+        }
+
+        .logo {
+            font-family: "Optima", serif;
+            font-size: clamp(20px, 2.2vw, 24px);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .logo-accent {
+            color: var(--gold-primary);
+        }
+
+        .logo-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: #fff url("logo.png") center/cover no-repeat;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        #nav-menu ul {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        #nav-menu a {
+            font-size: clamp(14px, 1.6vw, 14px);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        #nav-menu a:hover,
+        #nav-menu a.active {
+            color: var(--gold-primary);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 860px) {
+            .hamburger {
+                display: flex;
+            }
+
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 74px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+            }
+
+            #nav-menu.active {
+                display: block;
+            }
+
+            #nav-menu ul {
+                flex-direction: column;
+                padding: 1.2rem 1.1rem 1.3rem;
+                gap: 0.5rem;
+            }
+
+            #nav-menu a {
+                display: block;
+                padding: 0.75rem 0.25rem;
+            }
+        }
+
+        /* ==========================================================================
+   COMMON PAGE BLOCKS
+   ========================================================================== */
+        .section-title {
+            text-align: center;
+            font-size: clamp(30px, 4vw, 44px);
+            margin-bottom: 0.7rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: clamp(14px, 2vw, 18px);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-inline: auto;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        /* ==========================================================================
+   FOOTER
+   ========================================================================== */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 3.5rem 0 1.6rem;
+            margin-top: 3rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-about p,
+        .footer-links a,
+        .footer-contact p {
+            color: #A0A0A0;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 0.9rem;
+            font-size: clamp(18px, 2vw, 20px);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.55rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #A0A0A0;
+            font-size: clamp(14px, 1.5vw, 14px);
+        }
+
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ==========================================================================
+   LOADER (PREMIUM DENTAL TECH AESTHETIC)
+   ========================================================================== */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: rgba(252, 252, 250, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
+        }
+
+        .loader-panel {
+            width: min(400px, 85vw);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            background: transparent;
+            text-align: center;
+            position: relative;
+        }
+
+        .loader-scan {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05), transparent);
+            animation: scanPulse 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scanPulse {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .loader-grid {
+            display: none;
+        }
+
+        /* keep grid hidden for clean look */
+
+        .loader-inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .loader-mark {
+            background: var(--white);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+            margin-bottom: 0.5rem;
+            animation: loaderFloat 3s ease-in-out infinite;
+        }
+
+        .loader-mark svg {
+            stroke: var(--gold-primary);
+            width: 32px;
+            height: 32px;
+        }
+
+        @keyframes loaderFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .loader-title {
+            font-family: "Optima", "Georgia", serif;
+            font-size: clamp(24px, 3vw, 28px);
+            color: var(--text-dark);
+            line-height: 1;
+        }
+
+        .loader-sub {
+            font-size: 14px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .loader-progress {
+            width: 80%;
+            height: 3px;
+            border-radius: 10px;
+            background: rgba(197, 160, 89, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-progress>span {
+            display: block;
+            position: absolute;
+            left: -100%;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            animation: progressLoad 1.5s ease-in-out infinite;
+        }
+
+        @keyframes progressLoad {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .loader-status {
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+            animation: pulseText 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseText {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ==========================================================================
+   LEGACY UTILS (for compatibility)
+   ========================================================================== */
+        .text-gradient {
+            color: var(--gold-primary);
+        }
+
+        .page-header p {
+            max-width: 760px;
+            margin-inline: auto;
+        }
+
+        /* Disable custom cursor for stability */
+        .cursor-dot,
+        .cursor-ring {
+            display: none !important;
+        }
+
+        .bottom-nav {
+            display: none !important;
+        }
+    </style>
+    <style>
+        /* 
+   Dentaverse Elite - Animations
+   Clean, hardware-accelerated animations 
+*/
+
+        /* Page Transitions */
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pageFadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* 3D Floating VR Headset */
+        @keyframes vrFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotateY(0deg) rotateX(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotateY(10deg) rotateX(5deg);
+            }
+
+            66% {
+                transform: translateY(-10px) rotateY(-10deg) rotateX(-5deg);
+            }
+        }
+
+        /* Gradient Background Shift */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-bg {
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        /* Staggered Reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 3D Card Flip
+   Mobile base: OFF (prevents overlap + weird touch behavior)
+   Enable on larger screens only.
+*/
+        .flip-card {
+            perspective: none;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: none;
+            transform-style: flat;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: none;
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: relative;
+            width: 100%;
+            height: auto;
+            backface-visibility: visible;
+            border-radius: 20px;
+        }
+
+        .flip-card-back {
+            display: none;
+        }
+
+        @media (min-width: 768px) and (pointer: fine) {
+            .flip-card {
+                perspective: 1000px;
+            }
+
+            .flip-card-inner {
+                transition: transform 0.8s;
+                transform-style: preserve-3d;
+            }
+
+            .flip-card-front,
+            .flip-card-back {
+                position: absolute;
+                height: 100%;
+                backface-visibility: hidden;
+            }
+
+            .flip-card-back {
+                display: block;
+                transform: rotateY(180deg);
+            }
+
+            .flip-card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        /* Glowing Pulse */
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 180, 216, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 180, 216, 0);
+            }
+        }
+
+        .pulse {
+            animation: pulseGlow 2s infinite;
+        }
+
+        /* Typing Animation */
+        .typing {
+            /* Mobile base: no typing animation (prevents cut/offscreen) */
+            overflow: visible;
+            white-space: normal;
+            border-right: 0;
+            animation: none;
+        }
+
+        @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+            .typing {
+                overflow: hidden;
+                white-space: nowrap;
+                border-right: 3px solid var(--primary);
+                animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+                will-change: width;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--primary)
+            }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: #eee;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: var(--gradient);
+            transition: width 1.5s ease-out;
+        }
+
+        /* Ambient Ambient Light */
+        .ambient-light {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+            animation: ambientFlow 20s linear infinite;
+        }
+
+        /* Image Reveal Wipe */
+        .reveal-wipe {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal-wipe::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transform: translateX(-101%);
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 2;
+        }
+
+        .reveal-wipe.active::after {
+            transform: translateX(101%);
+        }
+
+        .reveal-wipe img {
+            opacity: 0;
+            transition: opacity 0.1s 0.5s;
+        }
+
+        .reveal-wipe.active img {
+            opacity: 1;
+        }
+    </style>
+    <style>
+        /* ==========================================================================
+           PREMIUM VARIABLES & RESET
+           ========================================================================== */
+        :root {
+            --ivory: #FCFCFA;
+            --ivory-dark: #F5F4F0;
+            --gold-primary: #C5A059;
+            --gold-hover: #D4AF37;
+            --text-dark: #1A1A1A;
+            --text-muted: #5A5A5A;
+            --pastel-mint: #EBF3F0;
+            --white: #FFFFFF;
+            --shadow-subtle: 0 10px 40px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "Optima", "Georgia", serif;
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==========================================================================
+           REUSABLE COMPONENTS
+           ========================================================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-gold {
+            background-color: var(--gold-primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-dark);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        /* ==========================================================================
+           NAVIGATION
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(252, 252, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: "Optima", serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-accent {
+            color: var(--gold-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--text-dark);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding: 12rem 0 8rem;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--pastel-mint) 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero h1 span {
+            color: var(--gold-primary);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* ==========================================================================
+           STATS SECTION
+           ========================================================================== */
+        .stats-wrapper {
+            background-color: var(--white);
+            padding: 4rem 0;
+            border-top: 1px solid var(--ivory-dark);
+            border-bottom: 1px solid var(--ivory-dark);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================================================
+           FEATURES (THE ELITE EDGE)
+           ========================================================================== */
+        .features {
+            padding: 8rem 0;
+            background-color: var(--ivory);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--ivory-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--gold-primary);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .feature-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           HOW IT WORKS
+           ========================================================================== */
+        .how-it-works {
+            padding: 8rem 0;
+            background-color: var(--white);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .step-number {
+            font-family: "Optima", serif;
+            font-size: 2rem;
+            color: var(--gold-primary);
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .step-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+        }
+
+        /* NEW IMAGE STYLING */
+        .feature-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+        }
+
+        .feature-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ==========================================================================
+           CTA & FOOTER
+           ========================================================================== */
+        .cta-section {
+            padding: 8rem 0;
+            text-align: center;
+            background: var(--pastel-mint);
+        }
+
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-about p {
+            color: #A0A0A0;
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #A0A0A0;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-contact p {
+            color: #A0A0A0;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #A0A0A0;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE MOBILE DESIGN
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .feature-image {
+                height: 400px;
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 8rem 0 5rem;
+            }
+
+            .feature-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body class="fade-in use-custom-cursor">
+
+    <!-- Global Loader -->
+    <div id="loader">
+        <div class="loader-panel" role="status" aria-live="polite" aria-label="Loading">
+            <div class="loader-scan" aria-hidden="true"></div>
+            <div class="loader-grid" aria-hidden="true"></div>
+            <div class="loader-inner">
+                <div class="loader-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path
+                            d="M7.2 13.4c-1.1-1.1-1.7-2.6-1.7-4.1V7.6c0-1.1.9-2 2-2h9c1.1 0 2 .9 2 2v1.7c0 1.5-.6 3-1.7 4.1l-1.1 1.1c-.5.5-1.2.8-2 .8H10.3c-.7 0-1.4-.3-2-.8l-1.1-1.1Z"
+                            stroke="rgba(20,18,15,0.75)" stroke-width="1.6" stroke-linejoin="round" />
+                        <path d="M8.2 7.2h7.6" stroke="rgba(20,18,15,0.55)" stroke-width="1.6" stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="loader-title">Dentaverse</div>
+                <div class="loader-sub">Elite</div>
+                <div class="loader-progress" aria-hidden="true"><span></span></div>
+                <div class="loader-status" id="loader-status">Preparing your experience…</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Website Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="logo-accent">
+                    <path d="M12 2C8.5 2 5 4.5 5 9c0 4.5 3.5 7.5 5 13 1.5-5.5 5-8.5 5-13 0-4.5-3.5-7-7-7z" />
+                </svg>
+                Dentaverse <span class="logo-accent">Elite</span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="active">Home</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; color: white;">Book
+                    Experience</a>
+            </nav>
+            <button class="mobile-menu-btn" id="menuBtn">
+                <svg viewBox="0 0 24 24">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <section id="home" class="hero reveal">
+        <div class="container">
+            <h1>Transform Dental Anxiety <br>into <span>Calm Confidence</span></h1>
+            <p>"Relax Your Mind, Fear Left Behind." Experience the most advanced VR distraction therapy. We make every
+                clinical appointment feel like a peaceful getaway.</p>
+            <div class="hero-buttons">
+                <!-- Links mapped correctly to pages -->
+                <a href="contact.html" class="btn btn-gold">Find a Clinic Near You</a>
+                <a href="how-it-works.html" class="btn btn-outline">Discover Our Tech</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-wrapper reveal" style="transition-delay: 0.1s;">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>1500+</h3>
+                <p>Successful Sessions</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>Anxiety Reduction</p>
+            </div>
+            <div class="stat-item">
+                <h3>120+</h3>
+                <p>Partner Clinics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section uses #features id purely for styling anchor if needed, but nav links go to real pages -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title reveal">The Elite Edge</h2>
+            <p class="section-subtitle reveal">Cutting-edge immersive technology meets empathetic patient care.</p>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h4>Total Relaxation</h4>
+                    <p>Completely block out clinical sights, bright lights, and the intimidating sounds of dental tools.
+                    </p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.1s;">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="10" rx="2" ry="2"></rect>
+                            <path d="M16 17v2a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2"></path>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h4>Personalized Care</h4>
+                    <p>Curated content tailored to the patient's age and interests, from animated adventures to serene
+                        nature walks.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <h4>Active Distraction</h4>
+                    <p>Engaging, dynamic therapeutic content that keeps the mind comfortably focused away from the
+                        procedure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container steps-grid">
+            <div class="steps-content reveal">
+                <h2 class="section-title" style="text-align: left;">How Dentaverse Elite Works</h2>
+                <p class="section-subtitle" style="text-align: left; margin-left: 0;">A seamless, stress-free process
+                    designed for patient comfort from start to finish.</p>
+
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h4>Choose Experience</h4>
+                        <p>The patient selects a relaxing VR environment such as a beach, forest, or interactive nature
+                            scene.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h4>Wear VR Headset</h4>
+                        <p>The patient is fitted with our lightweight, hygienic VR headset before the dental procedure
+                            begins.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h4>Immersive Relaxation</h4>
+                        <p>Calming visuals and soothing sounds instantly help distract the patient and lower heart rate.
+                        </p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h4>Comfortable Treatment</h4>
+                        <p>Dentists perform their work smoothly while the patient enjoys a stress-free, engaging digital
+                            experience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-placeholder reveal" style="transition-delay: 0.1s; background: none;">
+                <!-- Replaced placeholder text with 1.png matching their CSS -->
+                <img src="1.jfif" alt="Patient Smiling in VR" class="feature-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section reveal">
+        <div class="container">
+            <h2>Ready to Experience the Future of Dentistry?</h2>
+            <p style="margin: 1.5rem 0 2.5rem; color: var(--text-muted);">Join thousands of patients who have conquered
+                their fear with Dentaverse Elite.</p>
+            <a href="contact.html" class="btn btn-gold">Contact Us Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="color: white;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2C8.5 2 5 4.5 5 9c0 4.5 3.5 7.5 5 13 1.5-5.5 5-8.5 5-13 0-4.5-3.5-7-7-7z" />
+                        </svg>
+                        Dentaverse <span class="logo-accent">Elite</span>
+                    </a>
+                    <p>Redefining dental care through the power of immersive technology. Making every visit a calm,
+                        cooperative, and positive experience.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="how-it-works.html">Our Process</a></li>
+                        <li><a href="products.html">Technology</a></li>
+                        <li><a href="about.html">About Company</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Connect</h4>
+                    <p>United Kingdom</p>
+                    <p>elitesupport@dentaverse.uk</p>
+                    <p>+44 7887772083</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dentaverse Elite. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Cursor & Loader Scripts matching other pages to prevent lag feeling/loading abruptly -->
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <script>
+        /* 
+           Dentaverse Elite - Navigation Logic
+           Handles page transitions and menu
+        */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Initial Page Load Fade In
+            document.body.classList.add('fade-in');
+
+            // 2. Navigation Interceptor for Transitions
+            const navLinks = document.querySelectorAll('a[href]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+
+                    // Ignore external and anchor links
+                    if (href.startsWith('http') || href.startsWith('#')) return;
+
+                    e.preventDefault();
+
+                    // Fade out
+                    document.body.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                });
+            });
+
+            // 3. Hamburger Menu
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav-menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                    hamburger.classList.toggle('is-active');
+                });
+            }
+
+            // 4. Loader removal
+            const loader = document.getElementById('loader');
+            if (loader) {
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                }, 1500);
+            }
+        });
+
+    </script>
+    <script>
+        /*
+          Dentaverse Elite - Loader status text (optional)
+        */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const el = document.getElementById('loader-status');
+            if (!el) return;
+
+            const statuses = [
+                'Preparing your experience…',
+                'Loading calming scenes…',
+                'Optimising for mobile…',
+                'Finalising interface…'
+            ];
+
+            let i = 0;
+            const tick = () => {
+                i = (i + 1) % statuses.length;
+                el.textContent = statuses[i];
+            };
+
+            const t = setInterval(tick, 500);
+
+            // Stop when loader is hidden
+            const loader = document.getElementById('loader');
+            if (!loader) return;
+            const obs = new MutationObserver(() => {
+                const s = getComputedStyle(loader);
+                if (s.visibility === 'hidden' || s.opacity === '0') {
+                    clearInterval(t);
+                    obs.disconnect();
+                }
+            });
+            obs.observe(loader, { attributes: true, attributeFilter: ['style', 'class'] });
+        });
+
+
+    </script>
+    <script>
+        /* 
+           Dentaverse Elite - Scroll & Viewport Animations
+        */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Intersection Observer for Reveals
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 2. Animated Counters
+            const counters = document.querySelectorAll('.counter');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        animateValue(entry.target, 0, target, 2000);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+
+            function animateValue(obj, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    obj.innerHTML = Math.floor(progress * (end - start) + start);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            // 3. Progress Bars
+            const progressBars = document.querySelectorAll('.progress-bar');
+            const barObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.getAttribute('data-width');
+                        entry.target.style.width = width + '%';
+                        barObserver.unobserve(entry.target);
+                    }
+                });
+            });
+
+            progressBars.forEach(bar => barObserver.observe(bar));
+        });
+
+    </script>
+    <script>
+        /* 
+          Dentaverse Elite - Premium Cursor
+          Desktop only (CSS gates via @media(pointer:fine))
+        */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const dot = document.getElementById('cursor-dot');
+            const ring = document.getElementById('cursor-ring');
+            if (!dot || !ring) return;
+
+            const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+            if (!isFinePointer) return;
+
+            let mx = window.innerWidth / 2;
+            let my = window.innerHeight / 2;
+            let rx = mx;
+            let ry = my;
+            let visible = true;
+
+            const setVisible = (isVisible) => {
+                visible = isVisible;
+                const v = isVisible ? '1' : '0';
+                dot.style.opacity = v;
+                ring.style.opacity = v;
+            };
+
+            const onMove = (e) => {
+                mx = e.clientX;
+                my = e.clientY;
+                dot.style.left = `${mx}px`;
+                dot.style.top = `${my}px`;
+                if (!visible) setVisible(true);
+            };
+
+            document.addEventListener('mousemove', onMove, { passive: true });
+            window.addEventListener('mouseleave', () => setVisible(false), { passive: true });
+            window.addEventListener('mouseenter', () => setVisible(true), { passive: true });
+
+            const animate = () => {
+                rx += (mx - rx) * 0.14;
+                ry += (my - ry) * 0.14;
+                ring.style.left = `${rx}px`;
+                ring.style.top = `${ry}px`;
+                requestAnimationFrame(animate);
+            };
+            animate();
+
+            const setHover = (isHover) => {
+                dot.classList.toggle('is-hover', isHover);
+                ring.classList.toggle('is-hover', isHover);
+            };
+
+            document.addEventListener('pointerover', (e) => {
+                const el = e.target;
+                if (!(el instanceof Element)) return;
+                if (el.closest('a, button, input, textarea, select, [role="button"]')) setHover(true);
+            }, { passive: true });
+
+            document.addEventListener('pointerout', (e) => {
+                const el = e.relatedTarget;
+                if (el instanceof Element && el.closest('a, button, input, textarea, select, [role="button"]')) return;
+                setHover(false);
+            }, { passive: true });
+        });
+
+
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menuBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            if (menuBtn && navLinks) {
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<svg width="900" height="540" viewBox="0 0 900 540" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract London map placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDFA"/>
+      <stop offset="1" stop-color="#F7F1E6"/>
+    </linearGradient>
+    <filter id="soft" x="-40" y="-40" width="980" height="620" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="540" rx="34" fill="url(#bg)"/>
+  <g filter="url(#soft)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M130 120c90 60 130 120 210 120s160-70 250-30 120 140 200 190" stroke="#0EA5A8" stroke-opacity="0.12" stroke-width="18"/>
+    <path d="M120 250c80-40 150-20 220 40s140 80 250 40 160-20 220 30" stroke="#0B6E75" stroke-opacity="0.10" stroke-width="14"/>
+    <path d="M180 410c90-70 180-60 260 10s160 90 260 30" stroke="#14120F" stroke-opacity="0.07" stroke-width="12"/>
+
+    <path d="M260 140l26 46-42 22" stroke="rgba(20,18,15,0.10)" stroke-width="6"/>
+    <path d="M620 160l-30 52 52 26" stroke="rgba(20,18,15,0.10)" stroke-width="6"/>
+    <path d="M420 330l32 56-56 28" stroke="rgba(20,18,15,0.10)" stroke-width="6"/>
+  </g>
+
+  <!-- Pin -->
+  <g transform="translate(0 0)">
+    <path d="M455 260c0-31 25-56 56-56s56 25 56 56c0 44-56 110-56 110s-56-66-56-110Z" fill="#0EA5A8" fill-opacity="0.88"/>
+    <circle cx="511" cy="260" r="18" fill="rgba(255,255,255,0.85)"/>
+  </g>
+</svg>
+
