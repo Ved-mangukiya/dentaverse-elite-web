@@ -13,9 +13,9 @@
     --ivory:           #FDFCF9;
     --ivory-dark:      #F2EFE8;
     --ivory-deeper:    #E8E2D6;
-    --gold:            #C5A059;
-    --gold-light:      #D4AF37;
-    --gold-glow:       rgba(197, 160, 89, 0.30);
+    --gold:            #028090;
+    --gold-light:      #00A896;
+    --gold-glow:       rgba(2, 128, 144, 0.30);
     --dark:            #0F0E0C;
     --dark-2:          #1A1916;
     --dark-3:          #252320;
@@ -26,14 +26,14 @@
     --glass-light:     rgba(253, 252, 249, 0.75);
     --glass-dark:      rgba(15, 14, 12, 0.65);
     --glass-border:    rgba(255, 255, 255, 0.6);
-    --glass-border-gold: rgba(197, 160, 89, 0.20);
+    --glass-border-gold: rgba(2, 128, 144, 0.20);
     /* Shadows */
     --shadow-xs:       0 1px 4px  rgba(0, 0, 0, 0.05);
     --shadow-sm:       0 2px 12px rgba(0, 0, 0, 0.06);
     --shadow-md:       0 8px 32px rgba(0, 0, 0, 0.10);
     --shadow-lg:       0 24px 64px rgba(0, 0, 0, 0.13);
     --shadow-xl:       0 40px 80px rgba(0, 0, 0, 0.16);
-    --shadow-gold:     0 6px 28px rgba(197, 160, 89, 0.28);
+    --shadow-gold:     0 6px 28px rgba(2, 128, 144, 0.28);
     /* Spacing & shape */
     --nav-h:           64px;
     --radius-sm:       10px;
