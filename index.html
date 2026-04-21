@@ -1017,33 +1017,55 @@
         }
 
         /* ==========================================================================
-           STATS SECTION
+           PHILOSOPHY SECTION
            ========================================================================== */
-        .stats-wrapper {
+        .philosophy-wrapper {
             background-color: var(--white);
-            padding: 4rem 0;
+            padding: 5rem 0;
             border-top: 1px solid var(--ivory-dark);
             border-bottom: 1px solid var(--ivory-dark);
         }
 
-        .stats-grid {
+        .philosophy-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            text-align: center;
+            gap: 3rem;
         }
 
-        .stat-item h3 {
-            font-size: 3rem;
+        .philosophy-item {
+            padding: 2.5rem;
+            border-left: 3px solid var(--gold-primary);
+            background: linear-gradient(to right, rgba(206,177,109,0.05) 0%, transparent 100%);
+            transition: var(--transition);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .philosophy-item:hover {
+            background: linear-gradient(to right, rgba(206,177,109,0.1) 0%, transparent 100%);
+            transform: translateX(10px);
+        }
+
+        .philosophy-label {
+            display: block;
+            font-size: 0.9rem;
             color: var(--gold-primary);
-            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        .stat-item p {
+        .philosophy-item h3 {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-family: "Optima", serif;
+        }
+
+        .philosophy-item p {
             font-size: 1rem;
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            line-height: 1.6;
         }
 
         /* ==========================================================================
@@ -1269,9 +1291,9 @@
                 flex-direction: column;
             }
 
-            .stats-grid {
+            .philosophy-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2rem;
             }
 
             .features-grid {
@@ -1359,19 +1381,22 @@
         </div>
     </section>
 
-    <section class="stats-wrapper reveal" style="transition-delay: 0.1s;">
-        <div class="container stats-grid">
-            <div class="stat-item">
-                <h3>1500+</h3>
-                <p>Successful Sessions</p>
+    <section class="philosophy-wrapper reveal" style="transition-delay: 0.1s;">
+        <div class="container philosophy-grid">
+            <div class="philosophy-item">
+                <span class="philosophy-label">01 / Empathy</span>
+                <h3>Patient-First Design</h3>
+                <p>Every digital environment is meticulously crafted to prioritize psychological comfort and emotional wellbeing above all else.</p>
             </div>
-            <div class="stat-item">
-                <h3>98%</h3>
-                <p>Anxiety Reduction</p>
+            <div class="philosophy-item">
+                <span class="philosophy-label">02 / Innovation</span>
+                <h3>Clinical Grade VR</h3>
+                <p>Utilising state-of-the-art headsets paired with bespoke therapeutic content mapping seamlessly to procedure timelines.</p>
             </div>
-            <div class="stat-item">
-                <h3>120+</h3>
-                <p>Partner Clinics</p>
+            <div class="philosophy-item">
+                <span class="philosophy-label">03 / Tranquility</span>
+                <h3>Absolute Serenity</h3>
+                <p>Transforming the clinical environment into a sanctuary of peace, making dental anxiety a relic of the past.</p>
             </div>
         </div>
     </section>
