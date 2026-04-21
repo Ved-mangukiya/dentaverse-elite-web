@@ -6,498 +6,6 @@
     <title>About Us | Dentaverse Elite</title>
     <meta name="description" content="Learn about Dentaverse Elite — our mission, vision, and the team bringing VR dental care to life.">
     <link rel="stylesheet" href="theme.css">
-/* ==========================================================================
-   DENTAVERSE ELITE - UNIVERSAL THEME
-   ========================================================================== */
-
-:root {
-    --ivory: #FCFCFA;
-    --ivory-dark: #F5F4F0;
-    --gold-primary: #C5A059;
-    --gold-hover: #D4AF37;
-    --text-dark: #1A1A1A;
-    --text-muted: #5A5A5A;
-    --pastel-mint: #EBF3F0;
-    --white: #FFFFFF;
-    --shadow-subtle: 0 10px 40px rgba(0, 0, 0, 0.04);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --shadow-premium: var(--shadow-subtle);
-    --primary: var(--gold-primary);
-    --primary-dark: var(--gold-hover);
-    --text: var(--text-dark);
-}
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--ivory);
-    color: var(--text-dark);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    opacity: 0;
-}
-
-body.fade-in { animation: pageFadeIn 0.45s forwards; }
-body.fade-out { animation: pageFadeOut 0.28s forwards; }
-
-@keyframes pageFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes pageFadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-h1, h2, h3, h4 {
-    font-family: "Optima", "Georgia", serif;
-    font-weight: 500;
-    color: var(--text-dark);
-    letter-spacing: 0.02em;
-}
-
-p {
-    color: var(--text-muted);
-    font-size: clamp(14px, 2.1vw, 17px);
-}
-
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(16px, 4vw, 32px);
-}
-
-.page-main {
-    padding-top: 88px;
-    padding-bottom: 40px;
-}
-
-@media (min-width: 768px) {
-    .page-main { padding-top: 104px; padding-bottom: 56px; }
-}
-
-/* ==========================================================================
-   BUTTONS
-   ========================================================================== */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    min-width: 48px;
-    padding: 0.85rem 1.6rem;
-    border-radius: 999px;
-    font-size: clamp(14px, 1.6vw, 15px);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-gold,
-.btn-primary {
-    background-color: var(--gold-primary);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.28);
-}
-
-.btn-gold:hover,
-.btn-primary:hover {
-    background-color: var(--gold-hover);
-    transform: translateY(-1px);
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: var(--text-dark);
-    border: 1px solid var(--text-dark);
-}
-
-.btn-outline:hover {
-    background-color: var(--text-dark);
-    color: var(--white);
-}
-
-.btn-block { width: 100%; }
-
-/* ==========================================================================
-   HEADER & NAV
-   ========================================================================== */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(252, 252, 250, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 74px;
-}
-
-.logo {
-    font-family: "Optima", serif;
-    font-size: clamp(20px, 2.2vw, 24px);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo img {
-    width: 34px;
-    height: 34px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.logo-accent { color: var(--gold-primary); }
-
-.logo-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: #fff url("logo.png") center/cover no-repeat;
-    border: 1px solid rgba(0,0,0,0.06);
-}
-
-#nav-menu ul {
-    display: flex;
-    gap: 1.8rem;
-}
-
-#nav-menu a {
-    font-size: clamp(14px, 1.6vw, 14px);
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-#nav-menu a:hover,
-#nav-menu a.active {
-    color: var(--gold-primary);
-}
-
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.hamburger span {
-    width: 22px;
-    height: 2px;
-    background: var(--text-dark);
-    border-radius: 2px;
-}
-
-@media (max-width: 860px) {
-    .hamburger { display: flex; }
-
-    #nav-menu {
-        display: none;
-        position: absolute;
-        top: 74px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        border-bottom: 1px solid rgba(0,0,0,0.06);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.04);
-    }
-
-    #nav-menu.active { display: block; }
-
-    #nav-menu ul {
-        flex-direction: column;
-        padding: 1.2rem 1.1rem 1.3rem;
-        gap: 0.5rem;
-    }
-
-    #nav-menu a {
-        display: block;
-        padding: 0.75rem 0.25rem;
-    }
-}
-
-/* ==========================================================================
-   COMMON PAGE BLOCKS
-   ========================================================================== */
-.section-title {
-    text-align: center;
-    font-size: clamp(30px, 4vw, 44px);
-    margin-bottom: 0.7rem;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: clamp(14px, 2vw, 18px);
-    margin-bottom: 2.5rem;
-    max-width: 700px;
-    margin-inline: auto;
-}
-
-.card {
-    background: var(--white);
-    border-radius: 14px;
-    box-shadow: var(--shadow-subtle);
-    border: 1px solid rgba(0,0,0,0.03);
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-footer {
-    background-color: var(--text-dark);
-    color: var(--white);
-    padding: 3.5rem 0 1.6rem;
-    margin-top: 3rem;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-.footer-about p,
-.footer-links a,
-.footer-contact p {
-    color: #A0A0A0;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-    color: var(--white);
-    margin-bottom: 0.9rem;
-    font-size: clamp(18px, 2vw, 20px);
-}
-
-.footer-links li { margin-bottom: 0.55rem; }
-.footer-links a:hover { color: var(--gold-primary); }
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: #A0A0A0;
-    font-size: clamp(14px, 1.5vw, 14px);
-}
-
-@media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; }
-}
-
-/* ==========================================================================
-   LOADER (PREMIUM DENTAL TECH AESTHETIC)
-   ========================================================================== */
-#loader {
-    position: fixed;
-    inset: 0;
-    background: rgba(252, 252, 250, 0.98);
-    backdrop-filter: blur(20px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
-}
-
-.loader-panel {
-    width: min(400px, 85vw);
-    padding: 3rem 2rem;
-    border-radius: 20px;
-    background: transparent;
-    text-align: center;
-    position: relative;
-}
-
-.loader-scan {
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05), transparent);
-    animation: scanPulse 3s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes scanPulse {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-}
-
-.loader-grid { display: none; } /* keep grid hidden for clean look */
-
-.loader-inner {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.loader-mark {
-    background: var(--white);
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
-    margin-bottom: 0.5rem;
-    animation: loaderFloat 3s ease-in-out infinite;
-}
-
-.loader-mark svg {
-    stroke: var(--gold-primary);
-    width: 32px; height: 32px;
-}
-
-@keyframes loaderFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.loader-title {
-    font-family: "Optima", "Georgia", serif;
-    font-size: clamp(24px, 3vw, 28px);
-    color: var(--text-dark);
-    line-height: 1;
-}
-
-.loader-sub {
-    font-size: 14px;
-    color: var(--gold-primary);
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-}
-
-.loader-progress {
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: rgba(197, 160, 89, 0.2);
-    overflow: hidden;
-    position: relative;
-}
-
-.loader-progress > span {
-    display: block;
-    position: absolute;
-    left: -100%;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-    animation: progressLoad 1.5s ease-in-out infinite;
-}
-
-@keyframes progressLoad {
-    0% { left: -100%; }
-    100% { left: 100%; }
-}
-
-.loader-status {
-    font-size: 13px;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
-    margin-top: 1rem;
-    animation: pulseText 2s ease-in-out infinite;
-}
-
-@keyframes pulseText {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-}
-
-/* ==========================================================================
-   LEGACY UTILS (for compatibility)
-   ========================================================================== */
-.text-gradient { color: var(--gold-primary); }
-.page-header p { max-width: 760px; margin-inline: auto; }
-
-/* Disable custom cursor for stability */
-.cursor-dot,
-.cursor-ring {
-    display: none !important;
-}
-
-.bottom-nav { display: none !important; }
-
-</style>
-    <style>
-/* 
-   Dentaverse Elite - Animations
-   Clean, hardware-accelerated animations 
-*/
-
-/* Page Transitions */
-@keyframes pageFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes pageFadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-/* 3D Floating VR Headset */
-@keyframes vrFloat {
-    0%, 100% { 
-        transform: translateY(0px) rotateY(0deg) rotateX(0deg); 
-    }
-    33% {
-        transform: translateY(-20px) rotateY(10deg) rotateX(5deg);
-    }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>About Us | Dentaverse Elite</title>
-    <meta name="description" content="Learn about Dentaverse Elite — our mission, vision, and the team bringing VR dental care to life.">
-    <link rel="stylesheet" href="theme.css">
     <style>
         /* ── CRITICAL: force body visible immediately ── */
         html, body { opacity: 1 !important; visibility: visible !important; }
@@ -759,472 +267,105 @@ footer {
 
                 <div class="team-header reveal">
                     <h2>Who We Are</h2>
-                        <h4>Quality</h4>
-                        <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);">Reliable, safe, and high-performance systems—built for clinical environments.</p>
-                    </div>
-                    <div class="value-item reveal" style="transition-delay: 0.1s;">
-                        <div class="value-icon" aria-hidden="true">◎</div>
-                        <h4>Patient Comfort</h4>
-                        <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);">Prioritising emotional well-being—calm visuals, soothing audio, and a gentle experience.</p>
-                    </div>
-                    <div class="value-item reveal" style="transition-delay: 0.2s;">
-                        <div class="value-icon" aria-hidden="true">↗</div>
-                        <h4>Innovation</h4>
-                        <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);">Continuously developing advanced VR healthcare solutions and improving content quality.</p>
-                    </div>
-                    <div class="value-item reveal" style="transition-delay: 0.3s;">
-                        <div class="value-icon" aria-hidden="true">◎</div>
-                        <h4>Accessibility</h4>
-                        <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);">Making VR technology available to clinics of all sizes with scalable options.</p>
-                    </div>
-                    <div class="value-item reveal" style="transition-delay: 0.36s;">
-                        <div class="value-icon" aria-hidden="true">◆</div>
-                        <h4>Professional Support</h4>
-                        <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);">Supporting dentists with effective tools, training, and ongoing updates.</p>
+                    <p>We combine dentistry, patient psychology, and premium VR engineering to make dental visits calmer—for children, anxious patients, and anyone with dental phobia.</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member reveal">
+                        <div class="tm-avatar">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="tm-role">Founder & CEO</div>
+                        <div class="tm-name">Jayshri Harini Dharanikumar</div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <section style="padding: 100px 0;">
-            <div class="container">
-                <div class="section-header text-center reveal" style="margin-bottom: 40px;">
-                    <h2>Products & Services</h2>
-                    <p style="max-width: 760px; margin: 14px auto 0; color: var(--text-muted);">
-                        Dentaverse combines a purpose-built VR headset with a curated content library—education, entertainment, and relaxation—designed specifically for dental environments.
-                    </p>
-                </div>
+    </main>
 
-                <div class="values-grid" style="margin-top: 34px;">
-                    <div class="value-item reveal">
-                        <div class="value-icon" aria-hidden="true">◆</div>
-                        <h4>VR Headset Solution</h4>
-                        <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);">
-                            Lightweight, comfortable, adjustable for all ages, hygienic for clinical settings, and designed to be used during procedures without interference.
-                        </p>
-                    </div>
-                    <div class="value-item reveal" style="transition-delay: 0.08s;">
-                        <div class="value-icon" aria-hidden="true">◎</div>
-                        <h4>Customized VR Content Library</h4>
-                        <p style="font-size: 0.95rem; margin-top: 10px; color: var(--text-muted);">
-                            Educational videos, cartoons & entertainment, relaxation environments (beaches/forests/waterfalls), and music therapy—tailored to different patient needs.
-                        </p>
-                    </div>
+    <!-- UNIVERSAL FOOTER -->
+    <footer class="dv-footer">
+        <div class="container">
+            <div class="dv-footer-grid">
+                <div class="dv-footer-about">
+                    <div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse <em>Elite</em></div>
+                    <p>Redefining dental care through immersive VR technology. Every visit becomes calm and cooperative.</p>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Explore</h5>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="products.html">Products</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="about.html">About Us</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Connect</h5>
+                    <a href="contact.html">Book Experience</a>
+                    <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
+                    <a href="tel:+447887772083">+44 7887 772083</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Legal</h5>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
                 </div>
             </div>
-        </section>
-
-        <section style="padding: 100px 0; background: var(--bg-light);">
-            <div class="container">
-                <div class="section-header text-center reveal" style="margin-bottom: 40px;">
-                    <h2>Target Market & Value Proposition</h2>
-                    <p style="max-width: 760px; margin: 14px auto 0; color: var(--text-muted);">
-                        Dentaverse supports patients, dentists, and students with an immersive approach to comfort, cooperation, and learning.
-                    </p>
-                </div>
-
-                <div class="mission-vision" style="margin-top: 34px;">
-                    <div class="mission-vision-card reveal">
-                        <h3>Target Market</h3>
-                        <ul style="margin-top: 16px; padding-left: 18px; color: var(--text-muted); line-height: 1.8;">
-                            <li>Private and public dental clinics</li>
-                            <li>Pediatric dentistry centres</li>
-                            <li>Cosmetic and specialist practices</li>
-                            <li>Patients experiencing dental anxiety or fear</li>
-                            <li>Dental students and training institutions</li>
-                        </ul>
-                    </div>
-                    <div class="mission-vision-card reveal" style="transition-delay: 0.1s;">
-                        <h3>Value Proposition</h3>
-                        <ul style="margin-top: 16px; padding-left: 18px; color: var(--text-muted); line-height: 1.8;">
-                            <li><strong>For patients:</strong> reduces fear/anxiety, improves comfort, creates a calm experience</li>
-                            <li><strong>For dentists:</strong> improves cooperation, reduces interruptions, enhances satisfaction</li>
-                            <li><strong>For students:</strong> supports immersive learning and safer skill development</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="padding: 100px 0;">
-            <div class="container">
-                <div class="section-header text-center reveal" style="margin-bottom: 40px;">
-                    <h2>Business Model & Competitive Advantage</h2>
-                    <p style="max-width: 760px; margin: 14px auto 0; color: var(--text-muted);">
-                        A scalable model that keeps clinics supported long-term—hardware, content updates, and customization.
-                    </p>
-                </div>
-
-                <div class="mission-vision" style="margin-top: 34px;">
-                    <div class="mission-vision-card reveal">
-                        <h3>Business Model</h3>
-                        <ul style="margin-top: 16px; padding-left: 18px; color: var(--text-muted); line-height: 1.8;">
-                            <li><strong>Hardware sales:</strong> VR headsets for clinics</li>
-                            <li><strong>Subscription services:</strong> monthly/yearly content updates</li>
-                            <li><strong>Customization packages:</strong> content tailored to clinic needs and demographics</li>
-                        </ul>
-                    </div>
-                    <div class="mission-vision-card reveal" style="transition-delay: 0.1s;">
-                        <h3>Competitive Advantage</h3>
-                        <ul style="margin-top: 16px; padding-left: 18px; color: var(--text-muted); line-height: 1.8;">
-                            <li>Specialized focus on dental healthcare applications</li>
-                            <li>Education, entertainment, and therapy in one platform</li>
-                            <li>High-quality, patient-friendly VR design</li>
-                            <li>Affordable and scalable for clinics of all sizes</li>
-                            <li>Regular updates and continuous innovation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="roadmap-section" style="padding: 100px 0;">
-            <div class="container">
-                <h2 class="text-center reveal" style="margin-bottom: 30px;">Future Goals</h2>
-                <p class="text-center reveal" style="max-width: 760px; margin: 0 auto 60px; color: var(--text-muted);">
-                    Expanding into hospitals and wider healthcare sectors, building AI-powered personalised VR experiences, partnering globally, and continuously improving hardware and content.
-                </p>
-                <div class="roadmap">
-                    <div class="roadmap-item reveal">
-                        <h4 class="text-primary">Expansion</h4>
-                        <h3>Hospitals & Wider Healthcare</h3>
-                        <p>Extend Dentaverse beyond dental clinics into hospitals and broader healthcare settings where anxiety reduction improves outcomes.</p>
-                    </div>
-                    <div class="roadmap-item reveal" style="transition-delay: 0.1s;">
-                        <h4 class="text-primary">Personalisation</h4>
-                        <h3>AI-Powered Experiences</h3>
-                        <p>Develop AI-driven recommendations and personalised VR journeys tailored to patient needs and demographics.</p>
-                    </div>
-                    <div class="roadmap-item reveal" style="transition-delay: 0.2s;">
-                        <h4 class="text-primary">Partnerships</h4>
-                        <h3>Global Collaboration</h3>
-                        <p>Partner with dental and healthcare organisations worldwide to scale access and accelerate innovation.</p>
-                    </div>
-                    <div class="roadmap-item reveal" style="transition-delay: 0.3s;">
-                        <h4 class="text-primary">Quality</h4>
-                        <h3>Continuous Improvement</h3>
-                        <p>Ongoing enhancements to content variety, clinical hygiene workflows, and headset hardware performance.</p>
-                    </div>
-                </div>
-                <div class="reveal" style="margin-top: 44px; text-align: center;">
-                    <div style="display:inline-block; padding: 12px 18px; border-radius: 999px; background: rgba(14,165,168,0.10); border: 1px solid rgba(14,165,168,0.20); color: rgba(20,18,15,0.78); font-weight: 750;">
-                        “Relax Your Mind, Fear Left Behind.”
-                    </div>
-                </div>
-            </div>
-        </section>
-</main>
-
-<footer class="dv-footer">
-    <div class="container">
-        <div class="dv-footer-grid">
-            <div class="dv-footer-about">
-                <div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse <em>Elite</em></div>
-                <p>Redefining dental care through the power of immersive VR technology. Making every visit calm, cooperative, and positive.</p>
-            </div>
-            <div class="dv-footer-col">
-                <h5>Explore</h5>
-                <a href="how-it-works.html">How It Works</a>
-                <a href="products.html">Products</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html">About Us</a>
-                <a href="blog.html">Blog</a>
-            </div>
-            <div class="dv-footer-col">
-                <h5>Connect</h5>
-                <a href="contact.html">Book Experience</a>
-                <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
-                <a href="tel:+447887772083">+44 7887 772083</a>
-            </div>
-            <div class="dv-footer-col">
-                <h5>Legal</h5>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
+            <div class="dv-footer-divider"></div>
+            <div class="dv-footer-bottom">
+                <span>&copy; 2026 Dentaverse Elite. All Rights Reserved.</span>
+                <span>Crafted with care in the UK</span>
             </div>
         </div>
-        <div class="dv-footer-divider"></div>
-        <div class="dv-footer-bottom">
-            <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
-            <span>Crafted with care in the UK</span>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('ready');
-    setTimeout(() => document.getElementById('loader')?.classList.add('hidden'), 1400);
-    document.querySelectorAll('a[href]').forEach(link => {
-        link.addEventListener('click', e => {
-            const href = link.getAttribute('href');
-            if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-            e.preventDefault(); document.body.classList.add('fade-out');
-            setTimeout(() => window.location.href = href, 280);
-        });
-    });
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); }});
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
-    const hbg = document.getElementById('dvHamburger'), mob = document.getElementById('dvMobileMenu');
-    if(hbg && mob){ hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
-    window.addEventListener('scroll', () => {
-        document.getElementById('dvHeader')?.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-});
-</script>
-
-    <!-- Mobile Bottom Nav -->
-    <nav class="bottom-nav" aria-label="Primary">
-        <a href="index.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5 12 4l8 6.5V20a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 20v-9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.2 21.5v-6.2c0-.8.6-1.4 1.4-1.4h2.8c.8 0 1.4.6 1.4 1.4v6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Home
-        </a>
-        <a href="how-it-works.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M7 4.5h10M7 8.5h10M7 12.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M6.5 3.5h11A2.5 2.5 0 0 1 20 6v12a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 18V6a2.5 2.5 0 0 1 2.5-2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Process
-        </a>
-        <a href="products.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M7 8.5h10c1.1 0 2 .9 2 2v5.2c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2v-5.2c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5V7.3c0-1 .8-1.8 1.8-1.8h2.4c1 0 1.8.8 1.8 1.8v1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Products
-        </a>
-        <a class="active" href="about.html" aria-current="page">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 12.2a4 4 0 1 0-0.01 0Z" stroke="currentColor" stroke-width="1.6"/><path d="M4.6 20c1.6-3.2 4.2-4.8 7.4-4.8s5.8 1.6 7.4 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            About
-        </a>
-        <a href="contact.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 7.2 12 12l7.5-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 6h12.6A1.7 1.7 0 0 1 20 7.7v8.6A1.7 1.7 0 0 1 18.3 18H5.7A1.7 1.7 0 0 1 4 16.3V7.7A1.7 1.7 0 0 1 5.7 6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Contact
-        </a>
-    </nav>
-
-    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
-
+    <!-- SCRIPTS -->
     <script>
-/* 
-   Dentaverse Elite - Navigation Logic
-   Handles page transitions and menu
-*/
+        (function () {
+            // Hide Loader
+            function hideLoader() {
+                var l = document.getElementById('loader');
+                if (l) { l.style.opacity = '0'; l.style.visibility = 'hidden'; l.style.pointerEvents = 'none'; }
+            }
+            setTimeout(hideLoader, 1300);
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initial Page Load Fade In
-    document.body.classList.add('fade-in');
-
-    // 2. Navigation Interceptor for Transitions
-    const navLinks = document.querySelectorAll('a[href]');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
+            // Universal Nav
+            var hbg = document.getElementById('dvHamburger');
+            var mob = document.getElementById('dvMobileMenu');
+            var hdr = document.getElementById('dvHeader');
             
-            // Ignore external and anchor links
-            if (href.startsWith('http') || href.startsWith('#')) return;
-
-            e.preventDefault();
-            
-            // Fade out
-            document.body.classList.add('fade-out');
-            
-            setTimeout(() => {
-                window.location.href = href;
-            }, 300);
-        });
-    });
-
-    // 3. Hamburger Menu
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav-menu');
-    
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('is-active');
-        });
-    }
-
-    // 4. Loader removal
-    const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            loader.style.visibility = 'hidden';
-        }, 1500);
-    }
-});
-
-</script>
-    <script>
-/*
-  Dentaverse Elite - Loader status text (optional)
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('loader-status');
-  if (!el) return;
-
-  const statuses = [
-    'Preparing your experience…',
-    'Loading calming scenes…',
-    'Optimising for mobile…',
-    'Finalising interface…'
-  ];
-
-  let i = 0;
-  const tick = () => {
-    i = (i + 1) % statuses.length;
-    el.textContent = statuses[i];
-  };
-
-  const t = setInterval(tick, 500);
-
-  // Stop when loader is hidden
-  const loader = document.getElementById('loader');
-  if (!loader) return;
-  const obs = new MutationObserver(() => {
-    const s = getComputedStyle(loader);
-    if (s.visibility === 'hidden' || s.opacity === '0') {
-      clearInterval(t);
-      obs.disconnect();
-    }
-  });
-  obs.observe(loader, { attributes: true, attributeFilter: ['style', 'class'] });
-});
-
-
-</script>
-    <script>
-/* 
-   Dentaverse Elite - Scroll & Viewport Animations
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Intersection Observer for Reveals
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
+            if (hbg && mob) {
+                hbg.addEventListener('click', function () {
+                    hbg.classList.toggle('open');
+                    mob.classList.toggle('open');
+                });
             }
-        });
-    }, {
-        threshold: 0.15
-    });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+            window.addEventListener('scroll', function () {
+                if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40);
+            }, { passive: true });
 
-    // 2. Animated Counters
-    const counters = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute('data-target'));
-                animateValue(entry.target, 0, target, 2000);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    });
+            // Smooth reveal
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); }});
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    counters.forEach(counter => counterObserver.observe(counter));
+            // Prevent blink on navigation
+            document.querySelectorAll('a[href]').forEach(link => {
+                link.addEventListener('click', e => {
+                    const href = link.getAttribute('href');
+                    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => window.location.href = href, 280);
+                });
+            });
 
-    function animateValue(obj, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    // 3. Progress Bars
-    const progressBars = document.querySelectorAll('.progress-bar');
-    const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.getAttribute('data-width');
-                entry.target.style.width = width + '%';
-                barObserver.unobserve(entry.target);
-            }
-        });
-    });
-
-    progressBars.forEach(bar => barObserver.observe(bar));
-});
-
-</script>
-    <script>
-/* 
-  Dentaverse Elite - Premium Cursor
-  Desktop only (CSS gates via @media(pointer:fine))
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  const dot = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (!dot || !ring) return;
-
-  const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
-  if (!isFinePointer) return;
-
-  let mx = window.innerWidth / 2;
-  let my = window.innerHeight / 2;
-  let rx = mx;
-  let ry = my;
-  let visible = true;
-
-  const setVisible = (isVisible) => {
-    visible = isVisible;
-    const v = isVisible ? '1' : '0';
-    dot.style.opacity = v;
-    ring.style.opacity = v;
-  };
-
-  const onMove = (e) => {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.left = `${mx}px`;
-    dot.style.top = `${my}px`;
-    if (!visible) setVisible(true);
-  };
-
-  document.addEventListener('mousemove', onMove, { passive: true });
-  window.addEventListener('mouseleave', () => setVisible(false), { passive: true });
-  window.addEventListener('mouseenter', () => setVisible(true), { passive: true });
-
-  const animate = () => {
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    ring.style.left = `${rx}px`;
-    ring.style.top = `${ry}px`;
-    requestAnimationFrame(animate);
-  };
-  animate();
-
-  const setHover = (isHover) => {
-    dot.classList.toggle('is-hover', isHover);
-    ring.classList.toggle('is-hover', isHover);
-  };
-
-  document.addEventListener('pointerover', (e) => {
-    const el = e.target;
-    if (!(el instanceof Element)) return;
-    if (el.closest('a, button, input, textarea, select, [role="button"]')) setHover(true);
-  }, { passive: true });
-
-  document.addEventListener('pointerout', (e) => {
-    const el = e.relatedTarget;
-    if (el instanceof Element && el.closest('a, button, input, textarea, select, [role="button"]')) return;
-    setHover(false);
-  }, { passive: true });
-});
-
-
-</script>
+        })();
+    </script>
 </body>
 </html>
