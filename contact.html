@@ -156,6 +156,7 @@
                 <a href="blog.html">Blog</a>
             </nav>
             <div class="dv-nav-right">
+
                 <a href="contact.html" class="dv-btn-book active">Book Experience</a>
                 <button class="dv-hamburger" id="dvHamburger" aria-label="Menu">
                     <span></span><span></span><span></span>
@@ -317,11 +318,12 @@
         </div>
     </footer>
 
-    <div class="privacy-bar" id="privacyBar">
-        <div class="privacy-text">We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</div>
-        <div class="privacy-btns">
-            <button class="privacy-btn btn-deny" id="privacyDeny">Deny</button>
-            <button class="privacy-btn btn-accept" id="privacyAccept">Accept All</button>
+    <!-- COOKIE CONSENT -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</div>
+        <div class="cookie-btns">
+            <button class="cookie-btn cb-deny" id="cookieDeny">Deny</button>
+            <button class="cookie-btn cb-accept" id="cookieAccept">Accept All</button>
         </div>
     </div>
 
@@ -330,19 +332,23 @@
 
     <script>
         (function () {
-            if (!localStorage.getItem('privacyAccepted')) {
-                setTimeout(() => {
-                    const pb = document.getElementById('privacyBar');
-                    if(pb) pb.classList.add('show');
-                }, 3000);
+            /* ---- Cookie Consent ---- */
+            const box = document.getElementById('cookieConsent');
+            if (!localStorage.getItem('cookieConsent') && box) {
+                setTimeout(() => box.classList.add('show'), 2000);
             }
-            document.getElementById('privacyAccept').onclick = function() {
-                localStorage.setItem('privacyAccepted', 'true');
-                document.getElementById('privacyBar').classList.remove('show');
-            };
-            document.getElementById('privacyDeny').onclick = function() {
-                document.getElementById('privacyBar').classList.remove('show');
-            };
+            
+            function hideConsent() {
+                if (box) {
+                    box.classList.add('fade-out');
+                    setTimeout(() => box.style.display = 'none', 500);
+                }
+            }
+
+            const acceptBtn = document.getElementById('cookieAccept');
+            const denyBtn = document.getElementById('cookieDeny');
+            if (acceptBtn) acceptBtn.onclick = () => { localStorage.setItem('cookieConsent', 'accepted'); hideConsent(); };
+            if (denyBtn) denyBtn.onclick = () => { localStorage.setItem('cookieConsent', 'denied'); hideConsent(); };
 
             // Loader
             setTimeout(function() { 
@@ -388,6 +394,7 @@
                 function validate() {
                     var name = document.getElementById('inp-name').value.trim();
                     var email = document.getElementById('inp-email').value.trim();
+                    var subject = document.getElementById('inp-subject').value.trim();
                     var msg = document.getElementById('inp-msg').value.trim();
                     var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     
@@ -395,6 +402,10 @@
                     document.getElementById('w-email').classList.toggle('err', !re.test(email));
                     document.getElementById('w-msg').classList.toggle('err', !msg);
                     
+                    if (!subject) {
+                        document.getElementById('inp-subject').value = 'Website Enquiry';
+                    }
+
                     return name && re.test(email) && msg;
                 }
 
@@ -410,7 +421,17 @@
                     function trySend() {
                         if (typeof emailjs !== 'undefined') {
                             emailjs.init({ publicKey: EJ_KEY });
-                            emailjs.sendForm(EJ_SERVICE, EJ_TEMPLATE, form)
+                            var safeSubject = document.getElementById('inp-subject').value.trim() || 'Website Enquiry';
+                            var formData = {
+                                from_name: document.getElementById('inp-name').value.trim(),
+                                reply_to: document.getElementById('inp-email').value.trim(),
+                                subject: safeSubject,
+                                user_subject: safeSubject,
+                                message: document.getElementById('inp-msg').value.trim(),
+                                full_message: 'Subject: ' + safeSubject + '\n\n' + document.getElementById('inp-msg').value.trim()
+                            };
+
+                            emailjs.send(EJ_SERVICE, EJ_TEMPLATE, formData)
                                 .then(function () {
                                     btn.disabled = false; lbl.textContent = 'Send Message'; spin.style.display = 'none';
                                     form.reset();

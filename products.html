@@ -74,6 +74,7 @@
                 <a href="blog.html">Blog</a>
             </nav>
             <div class="dv-nav-right">
+
                 <a href="contact.html" class="dv-btn-book">Book Experience</a>
                 <button class="dv-hamburger" id="dvHamburger" aria-label="Menu">
                     <span></span><span></span><span></span>
@@ -194,6 +195,15 @@
         </section>
     </main>
 
+    <!-- COOKIE CONSENT -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</div>
+        <div class="cookie-btns">
+            <button class="cookie-btn cb-deny" id="cookieDeny">Deny</button>
+            <button class="cookie-btn cb-accept" id="cookieAccept">Accept All</button>
+        </div>
+    </div>
+
     <!-- UNIVERSAL FOOTER -->
     <footer class="dv-footer">
         <div class="container">
@@ -233,6 +243,23 @@
 
     <script>
         (function () {
+            /* ---- Cookie Consent ---- */
+            const box = document.getElementById('cookieConsent');
+            if (!localStorage.getItem('cookieConsent') && box) {
+                setTimeout(() => box.classList.add('show'), 2000);
+            }
+            
+            function hideConsent() {
+                if (box) {
+                    box.classList.add('fade-out');
+                    setTimeout(() => box.style.display = 'none', 500);
+                }
+            }
+
+            const acceptBtn = document.getElementById('cookieAccept');
+            const denyBtn = document.getElementById('cookieDeny');
+            if (acceptBtn) acceptBtn.onclick = () => { localStorage.setItem('cookieConsent', 'accepted'); hideConsent(); };
+            if (denyBtn) denyBtn.onclick = () => { localStorage.setItem('cookieConsent', 'denied'); hideConsent(); };
             var hbg = document.getElementById('dvHamburger');
             var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');

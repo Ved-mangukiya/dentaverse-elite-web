@@ -308,6 +308,7 @@
                 <a href="blog.html" class="active">Blog</a>
             </nav>
             <div class="dv-nav-right">
+
                 <a href="contact.html" class="dv-btn-book">Book Experience</a>
                 <button class="dv-hamburger" id="dvHamburger" aria-label="Menu">
                     <span></span><span></span><span></span>
@@ -473,22 +474,36 @@
         </div>
     </footer>
 
+    <!-- COOKIE CONSENT -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</div>
+        <div class="cookie-btns">
+            <button class="cookie-btn cb-deny" id="cookieDeny">Deny</button>
+            <button class="cookie-btn cb-accept" id="cookieAccept">Accept All</button>
+        </div>
+    </div>
+
     <!-- SCRIPTS -->
     <script>
         (function () {
-            if (!localStorage.getItem('privacyAccepted')) {
-                setTimeout(() => {
-                    const pb = document.getElementById('privacyBar');
-                    if (pb) pb.classList.add('show');
-                }, 3000);
+            /* ---- Cookie Consent ---- */
+            const box = document.getElementById('cookieConsent');
+            if (!localStorage.getItem('cookieConsent') && box) {
+                setTimeout(() => box.classList.add('show'), 2000);
             }
-            document.getElementById('privacyAccept').onclick = function () {
-                localStorage.setItem('privacyAccepted', 'true');
-                document.getElementById('privacyBar').classList.remove('show');
-            };
-            document.getElementById('privacyDeny').onclick = function () {
-                document.getElementById('privacyBar').classList.remove('show');
-            };
+            
+            function hideConsent() {
+                if (box) {
+                    box.classList.add('fade-out');
+                    setTimeout(() => box.style.display = 'none', 500);
+                }
+            }
+
+            const acceptBtn = document.getElementById('cookieAccept');
+            const denyBtn = document.getElementById('cookieDeny');
+            if (acceptBtn) acceptBtn.onclick = () => { localStorage.setItem('cookieConsent', 'accepted'); hideConsent(); };
+            if (denyBtn) denyBtn.onclick = () => { localStorage.setItem('cookieConsent', 'denied'); hideConsent(); };
+
 
             document.body.classList.add('ready');
             setTimeout(function () {
