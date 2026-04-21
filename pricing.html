@@ -307,6 +307,7 @@
     </div>
 
     <!-- UNIVERSAL HEADER -->
+    <!-- ======================= HEADER ======================= -->
     <header class="dv-header" id="dvHeader">
         <div class="container dv-nav">
             <a href="index.html" class="dv-logo">
@@ -314,7 +315,7 @@
                 Dentaverse <em>Elite</em>
             </a>
             <nav class="dv-nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html" >Home</a>
                 <a href="how-it-works.html">How It Works</a>
                 <a href="products.html">Products</a>
                 <a href="pricing.html" class="active">Pricing</a>
@@ -323,13 +324,12 @@
             </nav>
             <div class="dv-nav-right">
                 <a href="contact.html" class="dv-btn-book">Book Experience</a>
-                <button class="dv-hamburger" id="dvHamburger" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
+                <button class="dv-hamburger" id="dvHamburger"
+                    aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
         </div>
         <div class="dv-mobile-menu" id="dvMobileMenu">
-            <a href="index.html">Home</a>
+            <a href="index.html" >Home</a>
             <a href="how-it-works.html">How It Works</a>
             <a href="products.html">Products</a>
             <a href="pricing.html" class="active">Pricing</a>
@@ -435,37 +435,39 @@
     </main>
 
     <!-- UNIVERSAL FOOTER -->
-    <footer class="dv-footer">
+    <!-- ======================= FOOTER ======================= -->
+    <footer>
         <div class="container">
-            <div class="dv-footer-grid">
-                <div class="dv-footer-about">
-                    <div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse <em>Elite</em></div>
-                    <p>Redefining dental care through immersive VR technology. Every visit becomes calm and cooperative.</p>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
+                        <img src="logo.png" alt="Dentaverse Elite"
+                            style="width:34px;height:34px;border-radius:8px;object-fit:cover;">
+                        Dentaverse <span>Elite</span>
+                    </div>
+                    <p>Redefining dental care through the power of immersive VR technology. Making every visit a calm,
+                        cooperative, and positive experience.</p>
                 </div>
-                <div class="dv-footer-col">
+                <div class="footer-col">
                     <h5>Explore</h5>
                     <a href="how-it-works.html">How It Works</a>
                     <a href="products.html">Products</a>
-                    <a href="pricing.html">Pricing</a>
+                    <a href="pricing.html" class="active">Pricing</a>
                     <a href="about.html">About Us</a>
                     <a href="blog.html">Blog</a>
+                    <a href="#faq">FAQ</a>
                 </div>
-                <div class="dv-footer-col">
+                <div class="footer-col">
                     <h5>Connect</h5>
-                    <a href="contact.html">Book Experience</a>
+                    <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
                     <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
                     <a href="tel:+447887772083">+44 7887 772083</a>
-                </div>
-                <div class="dv-footer-col">
-                    <h5>Legal</h5>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
+                    <a>United Kingdom</a>
                 </div>
             </div>
-            <div class="dv-footer-divider"></div>
-            <div class="dv-footer-bottom">
-                <span>&copy; 2026 Dentaverse Elite. All Rights Reserved.</span>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
                 <span>Crafted with care in the UK</span>
             </div>
         </div>
