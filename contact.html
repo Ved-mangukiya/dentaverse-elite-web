@@ -51,7 +51,7 @@
         }
 
         .contact-hero h1 .gold {
-            color: #C5A059;
+            color: var(--color-primary-teal);
             font-style: italic;
         }
 
@@ -81,10 +81,10 @@
         /* ── Form card ── */
         .form-card {
             background: rgba(255, 253, 250, 0.96);
-            border: 1.5px solid rgba(197, 160, 89, 0.16);
+            border: 1.5px solid rgba(0, 174, 239, 0.16);
             border-radius: 24px;
             padding: clamp(24px, 5vw, 52px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(197, 160, 89, 0.08);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(0, 174, 239, 0.08);
         }
 
         .form-heading {
@@ -142,8 +142,8 @@
 
         .f input:focus,
         .f textarea:focus {
-            border-color: #C5A059;
-            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.13);
+            border-color: var(--color-primary-teal);
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.13);
         }
 
         .f.err input,
@@ -171,7 +171,7 @@
         .btn-send {
             width: 100%;
             padding: 15px 24px;
-            background: linear-gradient(135deg, #C5A059, #D4AF6A);
+            background: linear-gradient(135deg, var(--color-primary-teal), #D4AF6A);
             color: #fff;
             border: none;
             border-radius: 14px;
@@ -184,13 +184,13 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 8px 28px rgba(197, 160, 89, 0.32);
+            box-shadow: 0 8px 28px rgba(0, 174, 239, 0.32);
             transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
         }
 
         .btn-send:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 14px 36px rgba(197, 160, 89, 0.44);
+            box-shadow: 0 14px 36px rgba(0, 174, 239, 0.44);
         }
 
         .btn-send:disabled {
@@ -223,8 +223,8 @@
             width: 46px;
             height: 46px;
             min-width: 46px;
-            background: rgba(197, 160, 89, 0.09);
-            border: 1px solid rgba(197, 160, 89, 0.18);
+            background: rgba(0, 174, 239, 0.09);
+            border: 1px solid rgba(0, 174, 239, 0.18);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -234,7 +234,7 @@
         .i-icon svg {
             width: 20px;
             height: 20px;
-            stroke: #C5A059;
+            stroke: var(--color-primary-teal);
             fill: none;
             stroke-width: 1.7;
             stroke-linecap: round;
@@ -246,7 +246,7 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #C5A059;
+            color: var(--color-primary-teal);
             margin-bottom: 3px;
         }
 
@@ -262,7 +262,7 @@
             height: 200px;
             background: linear-gradient(135deg, #F5F1EA, #EDE6D9);
             border-radius: 20px;
-            border: 1.5px solid rgba(197, 160, 89, 0.12);
+            border: 1.5px solid rgba(0, 174, 239, 0.12);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -273,10 +273,10 @@
         .mp-dot {
             width: 14px;
             height: 14px;
-            background: #C5A059;
+            background: var(--color-primary-teal);
             border: 3px solid #fff;
             border-radius: 50%;
-            box-shadow: 0 4px 14px rgba(197, 160, 89, 0.5);
+            box-shadow: 0 4px 14px rgba(0, 174, 239, 0.5);
         }
 
         .mp-lbl {
@@ -313,8 +313,8 @@
         }
 
         #toast.ok {
-            background: linear-gradient(135deg, #C5A059, #D4AF37);
-            box-shadow: 0 8px 32px rgba(197, 160, 89, 0.4);
+            background: linear-gradient(135deg, var(--color-primary-teal), var(--color-accent-cyan));
+            box-shadow: 0 8px 32px rgba(0, 174, 239, 0.4);
         }
 
         #toast.er {
@@ -352,13 +352,12 @@
             <nav class="dv-nav-links">
                 <a href="index.html" >Home</a>
                 <a href="how-it-works.html">How It Works</a>
-                <a href="products.html">Products</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html">About</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="about.html">About Us</a>
                 <a href="blog.html">Blog</a>
             </nav>
             <div class="dv-nav-right">
-                <a href="contact.html" class="dv-btn-book">Book Experience</a>
+                <a href="contact.html" class="active" class="dv-btn-book">Book Experience</a>
                 <button class="dv-hamburger" id="dvHamburger"
                     aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
@@ -366,11 +365,10 @@
         <div class="dv-mobile-menu" id="dvMobileMenu">
             <a href="index.html" >Home</a>
             <a href="how-it-works.html">How It Works</a>
-            <a href="products.html">Products</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="about.html">About Us</a>
             <a href="blog.html">Blog</a>
-            <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
+            <a href="contact.html" class="active" class="dv-mobile-cta">Book Experience</a>
         </div>
     </header>
 
@@ -444,7 +442,7 @@
                             </div>
                             <div>
                                 <div class="i-lbl">Location</div>
-                                <div class="i-val">Dentaverse HQ, United Kingdom</div>
+                                <div class="i-val">Dentaverse HQ, Relax Your Mind, Fear Left Behind.</div>
                             </div>
                         </div>
 
@@ -520,24 +518,23 @@
                 <div class="footer-col">
                     <h5>Explore</h5>
                     <a href="how-it-works.html">How It Works</a>
-                    <a href="products.html">Products</a>
-                    <a href="pricing.html">Pricing</a>
+                    <a href="solutions.html">Solutions</a>
                     <a href="about.html">About Us</a>
                     <a href="blog.html">Blog</a>
                     <a href="#faq">FAQ</a>
                 </div>
                 <div class="footer-col">
                     <h5>Connect</h5>
-                    <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
+                    <a href="contact.html" class="active">Book Experience</a>
                     <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
                     <a href="tel:+447887772083">+44 7887 772083</a>
-                    <a>United Kingdom</a>
+                    <a>Relax Your Mind, Fear Left Behind</a>
                 </div>
             </div>
             <div class="footer-divider"></div>
             <div class="footer-bottom">
                 <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
-                <span>Crafted with care in the UK</span>
+                <span>Relax Your Mind, Fear Left Behind.</span>
             </div>
         </div>
     </footer>

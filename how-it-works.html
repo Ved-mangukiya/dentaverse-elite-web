@@ -14,27 +14,23 @@
            DENTAVERSE ELITE — SHARED TOKENS
            ========================================================= */
         :root {
-            --ivory:        #FDFCF9;
-            --ivory-dark:   #F2EFE8;
-            --ivory-deeper: #E8E2D6;
-            --gold:         #C5A059;
-            --gold-light:   #D4AF37;
-            --gold-dim:     rgba(197,160,89,0.18);
-            --dark:         #0F0E0C;
-            --dark-2:       #1A1916;
-            --text:         #1A1916;
-            --muted:        #6B6762;
-            --white:        #FFFFFF;
-            --glass:        rgba(253,252,249,0.82);
-            --glass-border: rgba(197,160,89,0.18);
-            --shadow-sm:    0 2px 12px rgba(0,0,0,0.05);
-            --shadow-md:    0 8px 32px rgba(0,0,0,0.09);
-            --shadow-lg:    0 24px 64px rgba(0,0,0,0.12);
-            --shadow-gold:  0 6px 28px rgba(197,160,89,0.22);
-            --ease:         cubic-bezier(0.16, 1, 0.3, 1);
-            --radius:       16px;
-            --radius-lg:    24px;
-            --radius-pill:  999px;
+            --color-primary-blue: #0A3D91;
+            --color-primary-teal: #00AEEF;
+            --color-accent-cyan: #00E5FF;
+            --color-bg-light: #F4F9FF;
+            --color-bg-pure: #FFFFFF;
+            --color-surface-glass: rgba(255, 255, 255, 0.85);
+            --color-text-dark: #051A3B;
+            --color-text-body: #4A5B73;
+            --gradient-primary: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-teal));
+            --shadow-glass: 0 8px 32px 0 rgba(10, 61, 145, 0.1);
+            
+            /* Spacing & shape */
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-pill: 999px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out: cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -79,12 +75,12 @@
         .loader-icon {
             width:72px; height:72px; border-radius:50%;
             overflow:hidden; margin:0 auto 1.2rem;
-            box-shadow: 0 0 0 0 rgba(197,160,89,0.35);
+            box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.35);
             animation: loaderPulse 2s ease-in-out infinite;
         }
         .loader-icon img { width:100%; height:100%; object-fit:cover; }
         @keyframes loaderPulse {
-            0%,100%{ box-shadow:0 0 0 0 rgba(197,160,89,0.35); transform:scale(1); }
+            0%,100%{ box-shadow:0 0 0 0 rgba(0, 174, 239, 0.35); transform:scale(1); }
             50%    { box-shadow:0 0 0 16px transparent; transform:scale(1.06); }
         }
         .loader-brand { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text); }
@@ -108,13 +104,9 @@
         }
         header .header-inner { display:flex; align-items:center; justify-content:space-between; width:100%; }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem; font-weight: 600;
-            color: var(--text); display:flex; align-items:center; gap:10px;
-        }
-        .logo-accent { color:var(--gold); font-style:italic; }
-        .logo-icon { width:38px; height:38px; border-radius:10px; overflow:hidden; box-shadow:var(--shadow-gold); flex-shrink:0; }
+        
+        
+        
         .logo-icon img { width:100%; height:100%; object-fit:cover; }
 
         /* Hamburger */
@@ -157,7 +149,7 @@
             content:'';
             position:absolute; inset:0;
             background: 
-                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(197,160,89,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 174, 239, 0.07) 0%, transparent 70%),
                 url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A059' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             pointer-events:none;
         }
@@ -294,7 +286,7 @@
             border:3px solid var(--gold);
             display:flex; align-items:center; justify-content:center;
             flex-shrink:0;
-            box-shadow:var(--shadow-gold), inset 0 0 0 4px rgba(197,160,89,0.08);
+            box-shadow:var(--shadow-gold), inset 0 0 0 4px rgba(0, 174, 239, 0.08);
             position:relative;
             z-index:2;
         }
@@ -308,7 +300,7 @@
         .tl-connector {
             flex:1;
             width:2px;
-            background:linear-gradient(to bottom, rgba(197,160,89,0.2), transparent);
+            background:linear-gradient(to bottom, rgba(0, 174, 239, 0.2), transparent);
         }
 
         /* The vintage card */
@@ -335,8 +327,8 @@
         }
         .tl-card:hover {
             transform:translateY(-6px);
-            box-shadow:var(--shadow-md), 0 0 0 1px rgba(197,160,89,0.15);
-            border-color:rgba(197,160,89,0.25);
+            box-shadow:var(--shadow-md), 0 0 0 1px rgba(0, 174, 239, 0.15);
+            border-color:rgba(0, 174, 239, 0.25);
         }
 
         .tl-chapter-tag {
@@ -418,7 +410,7 @@
             content:'';
             position:absolute; top:-50%; left:50%; transform:translateX(-50%);
             width:900px; height:900px;
-            background:radial-gradient(circle, rgba(197,160,89,0.10) 0%, transparent 65%);
+            background:radial-gradient(circle, rgba(0, 174, 239, 0.10) 0%, transparent 65%);
             pointer-events:none;
         }
         .experience-callout h2 {
@@ -436,8 +428,8 @@
             position:relative; z-index:2;
         }
         .callout-stat {
-            background:rgba(197,160,89,0.09);
-            border:1px solid rgba(197,160,89,0.2);
+            background:rgba(0, 174, 239, 0.09);
+            border:1px solid rgba(0, 174, 239, 0.2);
             border-radius:var(--radius);
             padding:1.5rem 1rem;
         }
@@ -455,11 +447,11 @@
             padding:0.9rem 2rem; border-radius:var(--radius-pill);
             font-size:0.9rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
             background:var(--gold); color:white;
-            box-shadow:0 6px 28px rgba(197,160,89,0.35);
+            box-shadow:0 6px 28px rgba(0, 174, 239, 0.35);
             transition:all 0.28s; border:none; cursor:pointer;
             position:relative; z-index:2;
         }
-        .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 12px 40px rgba(197,160,89,0.45); }
+        .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 12px 40px rgba(0, 174, 239, 0.45); }
 
         /* =========================================================
            SCIENCE SECTION
@@ -479,12 +471,12 @@
             border-radius:var(--radius); border:1px solid var(--ivory-deeper);
             transition:all 0.3s;
         }
-        .fact-item:hover { border-color:rgba(197,160,89,0.25); background:linear-gradient(105deg,rgba(197,160,89,0.04),transparent); }
+        .fact-item:hover { border-color:rgba(0, 174, 239, 0.25); background:linear-gradient(105deg,rgba(0, 174, 239, 0.04),transparent); }
         .fact-icon {
             width:40px; height:40px; border-radius:10px;
             background:linear-gradient(135deg,var(--gold),var(--gold-light));
             display:flex; align-items:center; justify-content:center;
-            flex-shrink:0; box-shadow:0 4px 12px rgba(197,160,89,0.25);
+            flex-shrink:0; box-shadow:0 4px 12px rgba(0, 174, 239, 0.25);
         }
         .fact-icon svg { width:20px; height:20px; stroke:white; fill:none; }
         .fact-body h4 { font-size:0.95rem; font-weight:600; margin-bottom:0.3rem; }
@@ -538,9 +530,8 @@
             <nav class="dv-nav-links">
                 <a href="index.html" >Home</a>
                 <a href="how-it-works.html" class="active">How It Works</a>
-                <a href="products.html">Products</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html">About</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="about.html">About Us</a>
                 <a href="blog.html">Blog</a>
             </nav>
             <div class="dv-nav-right">
@@ -551,10 +542,9 @@
         </div>
         <div class="dv-mobile-menu" id="dvMobileMenu">
             <a href="index.html" >Home</a>
-            <a href="how-it-works.html" class="active">How It Works</a>
-            <a href="products.html">Products</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="about.html">About Us</a>
             <a href="blog.html">Blog</a>
             <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
         </div>
@@ -832,7 +822,7 @@
             </div>
         </div>
 
-        <a href="contact.html" class="btn-gold">Book a free demonstration</a>
+        <a href="contact.html" class="btn-primary">Book a free demonstration</a>
     </div>
 </section>
 
@@ -905,25 +895,24 @@
                 </div>
                 <div class="footer-col">
                     <h5>Explore</h5>
-                    <a href="how-it-works.html" class="active">How It Works</a>
-                    <a href="products.html">Products</a>
-                    <a href="pricing.html">Pricing</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="solutions.html">Solutions</a>
                     <a href="about.html">About Us</a>
                     <a href="blog.html">Blog</a>
                     <a href="#faq">FAQ</a>
                 </div>
                 <div class="footer-col">
                     <h5>Connect</h5>
-                    <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
+                    <a href="contact.html">Book Experience</a>
                     <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
                     <a href="tel:+447887772083">+44 7887 772083</a>
-                    <a>United Kingdom</a>
+                    <a>Relax Your Mind, Fear Left Behind</a>
                 </div>
             </div>
             <div class="footer-divider"></div>
             <div class="footer-bottom">
                 <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
-                <span>Crafted with care in the UK</span>
+                <span>Relax Your Mind, Fear Left Behind.</span>
             </div>
         </div>
     </footer>

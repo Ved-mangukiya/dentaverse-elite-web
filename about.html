@@ -20,7 +20,7 @@
             padding: calc(var(--nav-h, 75px) + 6rem) 0 5rem;
             text-align: center;
             background: linear-gradient(135deg, #FDFCF9 0%, #EDF5F0 100%);
-            border-bottom: 1px solid rgba(197,160,89,0.1);
+            border-bottom: 1px solid rgba(0, 174, 239, 0.1);
         }
 
         .about-eyebrow {
@@ -29,7 +29,7 @@
             font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #C5A059;
+            color: var(--color-primary-teal);
             margin-bottom: 1rem;
         }
 
@@ -43,7 +43,7 @@
 
         .about-hero h1 em {
             font-style: italic;
-            color: #C5A059;
+            color: var(--color-primary-teal);
         }
 
         .about-hero p.lead {
@@ -81,26 +81,26 @@
         }
         .mv-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 36px rgba(197,160,89,0.08);
-            border-color: rgba(197,160,89,0.2);
+            box-shadow: 0 12px 36px rgba(0, 174, 239, 0.08);
+            border-color: rgba(0, 174, 239, 0.2);
         }
         .mv-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 6px;
-            background: linear-gradient(90deg, #C5A059, #D4AF6A);
+            background: linear-gradient(90deg, var(--color-primary-teal), #D4AF6A);
             border-radius: 24px 24px 0 0;
         }
 
         .mv-icon {
             width: 48px; height: 48px;
-            background: rgba(197,160,89,0.1);
+            background: rgba(0, 174, 239, 0.1);
             border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 1.5rem;
         }
-        .mv-icon svg { width: 24px; height: 24px; stroke: #C5A059; stroke-width: 1.8; fill: none; }
+        .mv-icon svg { width: 24px; height: 24px; stroke: var(--color-primary-teal); stroke-width: 1.8; fill: none; }
 
         .mv-card h3 {
             font-family: 'Playfair Display', serif;
@@ -154,16 +154,16 @@
             transition: all 0.3s;
         }
         .team-member:hover {
-            border-color: #C5A059;
-            box-shadow: 0 10px 30px rgba(197,160,89,0.1);
+            border-color: var(--color-primary-teal);
+            box-shadow: 0 10px 30px rgba(0, 174, 239, 0.1);
         }
         .tm-avatar {
             width: 80px; height: 80px;
-            background: rgba(197,160,89,0.08);
+            background: rgba(0, 174, 239, 0.08);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 1.5rem;
-            color: #C5A059;
+            color: var(--color-primary-teal);
         }
         .tm-avatar svg { width: 36px; height: 36px; stroke: currentColor; stroke-width: 1.5; fill: none; }
         .tm-role {
@@ -171,7 +171,7 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #C5A059;
+            color: var(--color-primary-teal);
             margin-bottom: 0.5rem;
         }
         .tm-name {
@@ -207,9 +207,8 @@
             <nav class="dv-nav-links">
                 <a href="index.html" >Home</a>
                 <a href="how-it-works.html">How It Works</a>
-                <a href="products.html">Products</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html" class="active">About</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="about.html" class="active">About Us</a>
                 <a href="blog.html">Blog</a>
             </nav>
             <div class="dv-nav-right">
@@ -221,9 +220,8 @@
         <div class="dv-mobile-menu" id="dvMobileMenu">
             <a href="index.html" >Home</a>
             <a href="how-it-works.html">How It Works</a>
-            <a href="products.html">Products</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="about.html" class="active">About</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="about.html">About Us</a>
             <a href="blog.html">Blog</a>
             <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
         </div>
@@ -235,7 +233,7 @@
             <div class="container">
                 <span class="about-eyebrow">Our Story</span>
                 <h1>Healthcare Tech Built for <em>Calm</em></h1>
-                <p class="lead">Dentaverse integrates Virtual Reality (VR) into dental care to address one of the most common patient barriers: fear and anxiety during treatment. Our immersive experiences transport patients into calming environments—helping clinics deliver smoother, more comfortable appointments.</p>
+                <p class="lead">Dentaverse is an innovative healthcare technology company that integrates Virtual Reality (VR) into dental care environments.</p>
             </div>
         </section>
 
@@ -247,8 +245,7 @@
                         <div class="mv-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                         </div>
-                        <h3>Our Mission</h3>
-                        <p>To design and deliver advanced VR headsets specifically for dental clinics, featuring customized therapeutic content—educational videos, cartoons, calming music, and immersive environments—to reduce patients’ fear and anxiety, support dentists, and improve cooperation and satisfaction.</p>
+                        <h3>Our Mission</h3><p>Many patients experience stress when visiting dental clinics, especially children and individuals with dental phobias. Dentaverse solves this problem by offering immersive VR headsets that transport patients into calming and engaging virtual environments during procedures.</p>
                     </div>
 
                     <div class="mv-card reveal" style="transition-delay: 0.15s;">
@@ -305,7 +302,7 @@
         <section class="about-hero" style="background: none; border-bottom: none; padding-bottom: 2rem;">
             <div class="container reveal">
                 <span class="about-eyebrow">Our Philosophy</span>
-                <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-style: italic; color: #C5A059;">"Relax Your Mind, Fear Left Behind."</h1>
+                <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-style: italic; color: var(--color-primary-teal);">"Relax Your Mind, Fear Left Behind."</h1>
             </div>
         </section>
 
@@ -314,24 +311,24 @@
                 <div class="mv-grid" style="gap: 2rem;">
                     
                     <div class="mv-card reveal" style="background: transparent; border: none; box-shadow: none; padding: 2rem;">
-                        <h3 style="color: white; border-bottom: 2px solid rgba(197,160,89,0.3); padding-bottom: 15px; margin-bottom: 20px;">Core Values</h3>
+                        <h3 style="color: white; border-bottom: 2px solid rgba(0, 174, 239, 0.3); padding-bottom: 15px; margin-bottom: 20px;">Core Values</h3>
                         <ul style="color: rgba(255,255,255,0.7); display:flex; flex-direction: column; gap: 15px; list-style: none;">
-                            <li><strong style="color: #C5A059;">• Innovation:</strong> Continuously developing advanced VR healthcare solutions</li>
-                            <li><strong style="color: #C5A059;">• Patient Comfort:</strong> Prioritizing emotional well-being and relaxation</li>
-                            <li><strong style="color: #C5A059;">• Quality:</strong> Delivering reliable, safe, and high-performance systems</li>
-                            <li><strong style="color: #C5A059;">• Accessibility:</strong> Making VR technology available to all dental clinics</li>
-                            <li><strong style="color: #C5A059;">• Professional Support:</strong> Supporting dentists with effective digital tools</li>
+                            <li><strong style="color: var(--color-primary-teal);">• Innovation:</strong> Continuously developing advanced VR healthcare solutions</li>
+                            <li><strong style="color: var(--color-primary-teal);">• Patient Comfort:</strong> Prioritizing emotional well-being and relaxation</li>
+                            <li><strong style="color: var(--color-primary-teal);">• Quality:</strong> Delivering reliable, safe, and high-performance systems</li>
+                            <li><strong style="color: var(--color-primary-teal);">• Accessibility:</strong> Making VR technology available to all dental clinics</li>
+                            <li><strong style="color: var(--color-primary-teal);">• Professional Support:</strong> Supporting dentists with effective digital tools</li>
                         </ul>
                     </div>
 
                     <div class="mv-card reveal" style="transition-delay: 0.15s; background: transparent; border: none; box-shadow: none; padding: 2rem;">
-                        <h3 style="color: white; border-bottom: 2px solid rgba(197,160,89,0.3); padding-bottom: 15px; margin-bottom: 20px;">Future Goals</h3>
+                        <h3 style="color: white; border-bottom: 2px solid rgba(0, 174, 239, 0.3); padding-bottom: 15px; margin-bottom: 20px;">Future Goals</h3>
                         <p style="color: rgba(255,255,255,0.7); margin-bottom: 15px;">Dentaverse aims to expand and evolve by:</p>
                         <ul style="color: rgba(255,255,255,0.7); display:flex; flex-direction: column; gap: 15px; list-style: none;">
-                            <li><strong style="color: #C5A059;">•</strong> Expanding into hospitals and wider healthcare sectors</li>
-                            <li><strong style="color: #C5A059;">•</strong> Developing AI-powered personalized VR experiences</li>
-                            <li><strong style="color: #C5A059;">•</strong> Partnering with global dental and healthcare organizations</li>
-                            <li><strong style="color: #C5A059;">•</strong> Continuously improving VR content and hardware technology</li>
+                            <li><strong style="color: var(--color-primary-teal);">•</strong> Expanding into hospitals and wider healthcare sectors</li>
+                            <li><strong style="color: var(--color-primary-teal);">•</strong> Developing AI-powered personalized VR experiences</li>
+                            <li><strong style="color: var(--color-primary-teal);">•</strong> Partnering with global dental and healthcare organizations</li>
+                            <li><strong style="color: var(--color-primary-teal);">•</strong> Continuously improving VR content and hardware technology</li>
                         </ul>
                     </div>
 
@@ -358,24 +355,23 @@
                 <div class="footer-col">
                     <h5>Explore</h5>
                     <a href="how-it-works.html">How It Works</a>
-                    <a href="products.html">Products</a>
-                    <a href="pricing.html">Pricing</a>
+                    <a href="solutions.html">Solutions</a>
                     <a href="about.html">About Us</a>
                     <a href="blog.html">Blog</a>
                     <a href="#faq">FAQ</a>
                 </div>
                 <div class="footer-col">
                     <h5>Connect</h5>
-                    <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
+                    <a href="contact.html">Book Experience</a>
                     <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
                     <a href="tel:+447887772083">+44 7887 772083</a>
-                    <a>United Kingdom</a>
+                    <a>Relax Your Mind, Fear Left Behind</a>
                 </div>
             </div>
             <div class="footer-divider"></div>
             <div class="footer-bottom">
                 <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
-                <span>Crafted with care in the UK</span>
+                <span>Relax Your Mind, Fear Left Behind.</span>
             </div>
         </div>
     </footer>

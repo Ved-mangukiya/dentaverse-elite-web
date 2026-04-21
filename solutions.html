@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions | Dentaverse Elite - Premium VR Healthcare</title>
+    <meta name="description" content="Discover Dentaverse Elite's comprehensive VR healthcare solutions. Hardware, software, and clinical integration for dental clinics.">
+    <link rel="stylesheet" href="theme.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0A3D91',
+                        'primary-teal': '#00AEEF',
+                        'text-body': '#4A5B73',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#F4F9FF]">
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="dv-loader">
+            <div class="dv-loader-icon"><img src="logo.png" alt="Dentaverse Elite"></div>
+            <div class="dv-loader-brand">Dentaverse <em>Elite</em></div>
+            <div class="dv-loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- ======================= HEADER ======================= -->
+    <header class="dv-header" id="dvHeader">
+        <div class="container dv-nav">
+            <a href="index.html" class="dv-logo">
+                <div class="dv-logo-img"><img src="logo.png" alt="Dentaverse Elite"></div>
+                Dentaverse <em>Elite</em>
+            </a>
+            <nav class="dv-nav-links">
+                <a href="index.html">Home</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="solutions.html" class="active">Solutions</a>
+                <a href="about.html">About Us</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="dv-nav-right">
+                <a href="contact.html" class="dv-btn-book">Book Experience</a>
+                <button class="dv-hamburger" id="dvHamburger"
+                    aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="dv-mobile-menu" id="dvMobileMenu">
+            <a href="index.html">Home</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="solutions.html" class="active">Solutions</a>
+            <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
+        </div>
+    </header>
+
+    <main class="pt-[64px]">
+        <section id="solutions-hero" class="bg-gradient-to-b from-blue-50 to-white py-20">
+          <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold text-primary-blue">Comprehensive VR Healthcare Solutions</h1>
+            <p class="text-xl text-text-body mt-4">Hardware, Software, and Clinical Integration in one seamless package.</p>
+          </div>
+        </section>
+
+        <section id="hardware" class="py-16">
+          <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-primary-blue">The VR Headset Solution</h2>
+            <p class="text-center mt-4">Dentaverse offers specially designed VR headsets tailored for dental environments. These headsets are:</p>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+              <li class="glass-card p-6 border-l-4 border-primary-teal">Lightweight, comfortable, and adjustable for all age groups [cite: 25]</li>
+              <li class="glass-card p-6 border-l-4 border-primary-teal">Designed for use during dental procedures without interference [cite: 26]</li>
+              <li class="glass-card p-6 border-l-4 border-primary-teal">Easy for dental staff to operate and maintain [cite: 27]</li>
+              <li class="glass-card p-6 border-l-4 border-primary-teal">Hygienic and suitable for clinical environments [cite: 27]</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="software" class="py-16 bg-blue-50">
+          <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-primary-blue">Customized VR Content Library</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+              <div class="card bg-white p-6 rounded-lg shadow-glass">
+                <h3 class="text-xl font-bold text-primary-teal mb-2">Educational Videos</h3>
+                <p class="text-sm">Explain dental procedures simply and visually to reduce fear of the unknown [cite: 30]</p>
+              </div>
+              <div class="card bg-white p-6 rounded-lg shadow-glass">
+                <h3 class="text-xl font-bold text-primary-teal mb-2">Cartoons & Entertainment</h3>
+                <p class="text-sm">Engaging content for children and anxious patients to distract and relax them [cite: 30]</p>
+              </div>
+              <div class="card bg-white p-6 rounded-lg shadow-glass">
+                <h3 class="text-xl font-bold text-primary-teal mb-2">Relaxation Environments</h3>
+                <p class="text-sm">Virtual beaches, forests, waterfalls, and nature scenes to promote calmness [cite: 30]</p>
+              </div>
+              <div class="card bg-white p-6 rounded-lg shadow-glass">
+                <h3 class="text-xl font-bold text-primary-teal mb-2">Music Therapy</h3>
+                <p class="text-sm">Soft, calming audio designed to reduce stress and improve emotional comfort [cite: 31]</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" class="py-20">
+          <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center text-primary-blue">Scalable Business Models</h2>
+            <p class="text-center mt-4">Dentaverse operates through a scalable and sustainable business model: [cite: 60]</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+              <div class="pricing-card border border-gray-200 rounded-2xl p-8 hover:shadow-glass transition duration-300 bg-white">
+                <h3 class="text-2xl font-bold text-primary-blue">Hardware Sales</h3>
+                <p class="mt-4 text-text-body">Selling VR headsets directly to dental clinics [cite: 61]</p>
+                <button class="w-full mt-8 py-3 rounded-lg bg-primary-blue text-white font-bold">Request Quote</button>
+              </div>
+              
+              <div class="pricing-card border-2 border-primary-teal rounded-2xl p-8 shadow-glass relative transform scale-105 bg-white">
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary-teal text-white px-4 py-1 rounded-full text-sm font-bold">Most Popular</div>
+                <h3 class="text-2xl font-bold text-primary-blue">Subscription Services</h3>
+                <p class="mt-4 text-text-body">Monthly or yearly updates for new VR content [cite: 62]</p>
+                <button class="w-full mt-8 py-1.5 rounded-lg bg-gradient-primary text-white font-bold h-12 flex items-center justify-center">View Plans</button>
+              </div>
+              
+              <div class="pricing-card border border-gray-200 rounded-2xl p-8 hover:shadow-glass transition duration-300 bg-white">
+                <h3 class="text-2xl font-bold text-primary-blue">Customization Packages</h3>
+                <p class="mt-4 text-text-body">Tailoring VR experiences based on clinic needs and patient demographics [cite: 63, 64]</p>
+                <button class="w-full mt-8 py-3 rounded-lg border-2 border-primary-blue text-primary-blue font-bold">Contact Sales</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="target-market" class="py-16 bg-primary-blue text-white">
+          <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8 text-white">Who We Serve</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div class="p-4 border border-white/20 rounded-lg">Private & public dental clinics [cite: 36]</div>
+              <div class="p-4 border border-white/20 rounded-lg">Pediatric dentistry centers [cite: 37]</div>
+              <div class="p-4 border border-white/20 rounded-lg">Cosmetic & specialist practices [cite: 38]</div>
+              <div class="p-4 border border-white/20 rounded-lg">Patients with dental anxiety [cite: 39]</div>
+              <div class="p-4 border border-white/20 rounded-lg">Dental students & training institutions [cite: 40]</div>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="dv-footer">
+        <div class="container">
+            <div class="dv-footer-grid">
+                <div class="dv-footer-about">
+                    <div class="dv-footer-logo">
+                        <img src="logo.png" alt="Dentaverse Elite">
+                        Dentaverse <em>Elite</em>
+                    </div>
+                    <p>Relax Your Mind, Fear Left Behind.</p>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="solutions.html">Solutions</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Support</h5>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="index.html#faq">FAQ</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Social</h5>
+                    <div class="dv-footer-social">
+                        <a href="#">Fb</a>
+                        <a href="#">Tw</a>
+                        <a href="#">Li</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dv-footer-divider"></div>
+            <div class="dv-footer-bottom">
+                <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
+                <span>Relax Your Mind, Fear Left Behind.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll reveal
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal, .card, .pricing-card, .glass-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "none";
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            reveals.forEach(r => {
+                r.style.opacity = "0";
+                r.style.transform = "translateY(20px)";
+                r.style.transition = "all 0.6s ease-out";
+                observer.observe(r);
+            });
+
+            // Loader
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+                document.body.style.opacity = '1';
+            }, 600);
+
+            // Hamburger
+            const ham = document.getElementById('dvHamburger');
+            const menu = document.getElementById('dvMobileMenu');
+            ham.addEventListener('click', () => {
+                ham.classList.toggle('open');
+                menu.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
