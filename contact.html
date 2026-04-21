@@ -7,109 +7,267 @@
     <meta name="description" content="Book a demo, reach out to us, or find a Dentaverse Elite clinic near you.">
     <link rel="stylesheet" href="theme.css">
     <style>
-        .contact-layout {
+        /* Override body opacity so page actually shows */
+        body { opacity: 1 !important; }
+
+        /* Page layout */
+        .contact-wrap {
+            min-height: 100vh;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            background: var(--ivory, #FDFCF9);
+        }
+
+        .contact-hero {
+            text-align: center;
+            padding: 48px 0 32px;
+        }
+
+        .contact-hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            color: #1A1916;
+            margin-bottom: 12px;
+        }
+
+        .contact-hero h1 span { color: #C5A059; }
+
+        .contact-hero p {
+            color: #6B6762;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Two-column layout */
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 28px;
-            margin-top: 60px;
+            gap: 32px;
+            margin-top: 48px;
         }
 
-        .contact-form-card {
-            background: rgba(255, 253, 250, 0.72);
-            border: 1px solid rgba(20, 18, 15, 0.10);
-            padding: clamp(20px, 4vw, 48px);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        @media (min-width: 900px) {
+            .contact-grid { grid-template-columns: 1.2fr 0.8fr; gap: 60px; }
         }
 
-        @media (min-width: 960px) {
-            .contact-layout { grid-template-columns: 1.2fr 0.8fr; gap: 70px; }
+        /* Form card */
+        .form-card {
+            background: rgba(255, 253, 250, 0.9);
+            border: 1.5px solid rgba(197, 160, 89, 0.15);
+            border-radius: 24px;
+            padding: clamp(24px, 5vw, 52px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.07), 0 4px 16px rgba(197,160,89,0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
-        .contact-info-list { display: flex; flex-direction: column; gap: 36px; }
-
-        .contact-info-item { display: flex; gap: 18px; align-items: flex-start; }
-
-        .info-icon {
-            width: 48px; height: 48px; min-width: 48px;
-            background: rgba(197, 160, 89, 0.10);
-            color: var(--gold, #C5A059);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
+        .form-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1A1916;
+            margin-bottom: 6px;
         }
 
-        .info-icon svg { width: 22px; height: 22px; stroke: var(--gold, #C5A059); }
-
-        .info-text h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: #14120F; }
-        .info-text p { font-size: 0.9rem; color: #6B6560; margin: 0; }
-
-        .map-container {
-            height: 260px; background: #f0ede8; border-radius: 20px;
-            margin-top: 36px; position: relative; overflow: hidden;
-            display: flex; justify-content: center; align-items: center;
+        .form-subtitle {
+            color: #6B6762;
+            font-size: 0.88rem;
+            margin-bottom: 28px;
         }
 
-        /* ── Form fields ── */
+        /* Form fields */
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .form-group { position: relative; margin-bottom: 2rem; }
-
-        .form-group label {
-            position: absolute; top: 15px; left: 16px;
-            font-size: 0.88rem; color: #9B8F84;
-            pointer-events: none; transition: all 0.22s ease;
+        .field {
+            position: relative;
+            margin-bottom: 24px;
         }
 
-        .form-group.focused label,
-        .form-group input:not(:placeholder-shown) ~ label,
-        .form-group textarea:not(:placeholder-shown) ~ label {
-            top: -20px; left: 2px; font-size: 0.75rem;
-            color: var(--gold, #C5A059); font-weight: 700;
+        .field label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8A7D6E;
+            margin-bottom: 6px;
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%; padding: 14px 16px;
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 13px 16px;
             border: 1.5px solid #E4DDD4;
-            border-radius: 12px; font-family: inherit;
-            font-size: 0.95rem; background: rgba(255,255,255,0.8);
-            transition: border-color 0.22s, box-shadow 0.22s; outline: none;
-            color: #14120F;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: #1A1916;
+            background: rgba(255,255,255,0.85);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--gold, #C5A059);
-            box-shadow: 0 0 0 3px rgba(197,160,89,0.14);
+        .field input:focus,
+        .field textarea:focus {
+            border-color: #C5A059;
+            box-shadow: 0 0 0 3px rgba(197,160,89,0.12);
         }
 
-        .form-group.has-error input,
-        .form-group.has-error textarea { border-color: #ef4444; }
+        .field.error input,
+        .field.error textarea { border-color: #ef4444; }
 
-        .field-error { font-size: 0.78rem; color: #ef4444; margin-top: 4px; display: block; }
-
-        .btn-submit {
-            width: 100%; padding: 15px 24px;
-            background: linear-gradient(135deg, #C5A059, #D4AF6A);
-            color: white; border: none; border-radius: 14px;
-            font-size: 1rem; font-weight: 700; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 8px 24px rgba(197,160,89,0.35);
+        .field-err {
+            font-size: 0.75rem;
+            color: #ef4444;
+            margin-top: 4px;
+            display: none;
         }
 
-        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(197,160,89,0.45); }
-        .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+        .field.error .field-err { display: block; }
 
-        #btn-spinner { animation: spin 0.8s linear infinite; display: none; }
+        .field textarea { resize: vertical; min-height: 120px; }
 
-        /* ── Notice banner ── */
-        #ej-notice {
-            display: none; padding: 12px 16px; border-radius: 12px;
-            font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; line-height: 1.5;
-            background: rgba(197,160,89,0.10); border: 1px solid rgba(197,160,89,0.25); color: #8a6d1e;
+        /* Submit button */
+        .btn-send {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #C5A059 0%, #D4AF6A 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 28px rgba(197,160,89,0.35);
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
         }
+
+        .btn-send:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(197,160,89,0.45);
+        }
+
+        .btn-send:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+        #spinner { animation: spin 0.75s linear infinite; display: none; flex-shrink: 0; }
+
+        /* Info side */
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 46px; height: 46px; min-width: 46px;
+            background: rgba(197,160,89,0.10);
+            border: 1px solid rgba(197,160,89,0.18);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon svg {
+            width: 20px; height: 20px;
+            stroke: #C5A059; fill: none; stroke-width: 1.7;
+        }
+
+        .info-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #C5A059;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            color: #1A1916;
+            font-weight: 500;
+        }
+
+        /* Map placeholder */
+        .map-box {
+            margin-top: 32px;
+            height: 220px;
+            background: linear-gradient(135deg, #F5F1EA 0%, #EDE6D9 100%);
+            border-radius: 20px;
+            border: 1.5px solid rgba(197,160,89,0.12);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(197,160,89,0.08), transparent);
+        }
+
+        .map-pin {
+            width: 16px; height: 16px;
+            background: #C5A059;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(197,160,89,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1A1916;
+            background: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: -120px; left: 50%;
+            transform: translateX(-50%);
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-weight: 700; font-size: 0.92rem;
+            display: flex; align-items: center; gap: 10px;
+            z-index: 99999; white-space: nowrap; color: white;
+            transition: bottom 0.5s cubic-bezier(0.34,1.56,0.64,1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        #toast.show { bottom: 36px; }
+        #toast.success { background: linear-gradient(135deg, #C5A059, #D4AF37); }
+        #toast.error   { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+        /* Reveal animation */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+        .reveal.active { opacity: 1; transform: none; }
     </style>
 </head>
 <body>
@@ -156,47 +314,53 @@
     </div>
 </header>
 
-<main class="page-main">
+<!-- MAIN CONTENT -->
+<div class="contact-wrap">
     <div class="container">
 
-        <section class="page-header text-center reveal" style="padding: 40px 0 20px;">
-            <h1>Get in <span class="text-gradient">Touch</span></h1>
-            <p style="max-width:640px;margin:0 auto;color:#6B6560;">Ready to upgrade your clinic or book a demo? We'd love to hear from you.</p>
-        </section>
+        <!-- Page heading -->
+        <div class="contact-hero reveal">
+            <h1>Get in <span>Touch</span></h1>
+            <p>Ready to upgrade your clinic or book a demo experience? We'd love to hear from you.</p>
+        </div>
 
-        <div class="contact-layout">
+        <!-- Grid -->
+        <div class="contact-grid">
 
-            <!-- ── Contact Form ── -->
-            <div class="reveal">
-                <div class="contact-form-card">
+            <!-- LEFT: Form -->
+            <div class="reveal" style="transition-delay:0.05s">
+                <div class="form-card">
+                    <div class="form-title">Send Us a Message</div>
+                    <div class="form-subtitle">We reply within 24 hours on business days.</div>
 
-                    <div id="ej-notice"></div>
+                    <form id="contact-form" novalidate autocomplete="on">
 
-                    <form id="contact-form" novalidate>
-
-                        <div class="form-group">
-                            <input type="text" id="name" name="from_name" required placeholder=" " autocomplete="name">
+                        <div class="field" id="f-name">
                             <label for="name">Full Name</label>
+                            <input type="text" id="name" name="from_name" required autocomplete="name" placeholder="Jane Smith">
+                            <span class="field-err">Please enter your name</span>
                         </div>
 
-                        <div class="form-group">
-                            <input type="email" id="email" name="reply_to" required placeholder=" " autocomplete="email">
+                        <div class="field" id="f-email">
                             <label for="email">Email Address</label>
+                            <input type="email" id="email" name="reply_to" required autocomplete="email" placeholder="jane@clinic.com">
+                            <span class="field-err">Please enter a valid email</span>
                         </div>
 
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder=" ">
+                        <div class="field" id="f-subject">
                             <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="e.g. Demo request">
                         </div>
 
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-                            <label for="message">Your Message</label>
+                        <div class="field" id="f-message">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your clinic and how we can help…"></textarea>
+                            <span class="field-err">Please enter your message</span>
                         </div>
 
-                        <button type="submit" class="btn-submit" id="submit-btn">
-                            <span id="btn-text">Send Message</span>
-                            <svg id="btn-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <button type="submit" class="btn-send" id="submit-btn">
+                            <span id="btn-label">Send Message</span>
+                            <svg id="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                             </svg>
                         </button>
@@ -205,74 +369,76 @@
                 </div>
             </div>
 
-            <!-- ── Contact Info ── -->
-            <div class="reveal" style="transition-delay:0.12s;">
-                <div class="contact-info-list">
+            <!-- RIGHT: Info -->
+            <div class="reveal" style="transition-delay:0.15s">
+                <div class="info-card">
 
-                    <div class="contact-info-item">
+                    <div class="info-item">
                         <div class="info-icon">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 21s6-6.8 6-11.2A6 6 0 1 0 6 9.8C6 14.2 12 21 12 21Z" stroke-width="1.6" stroke-linejoin="round"/>
-                                <circle cx="12" cy="9.8" r="2.3" stroke-width="1.6"/>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21s6-6.8 6-11.2A6 6 0 1 0 6 9.8C6 14.2 12 21 12 21Z" stroke-linejoin="round"/>
+                                <circle cx="12" cy="9.8" r="2.3"/>
                             </svg>
                         </div>
-                        <div class="info-text">
-                            <h4>Visit Us</h4>
-                            <p>Dentaverse HQ, United Kingdom</p>
+                        <div>
+                            <div class="info-label">Location</div>
+                            <div class="info-value">Dentaverse HQ, United Kingdom</div>
                         </div>
                     </div>
 
-                    <div class="contact-info-item">
+                    <div class="info-item">
                         <div class="info-icon">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.5 7.2 12 12l7.5-4.8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                <rect x="4" y="6" width="16" height="12" rx="1.7" stroke-width="1.6" stroke-linejoin="round"/>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.5 7.2 12 12l7.5-4.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="4" y="6" width="16" height="12" rx="1.7" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <div class="info-text">
-                            <h4>Email Us</h4>
-                            <p>elitesupport@dentaverse.uk</p>
+                        <div>
+                            <div class="info-label">Email</div>
+                            <div class="info-value">elitesupport@dentaverse.uk</div>
                         </div>
                     </div>
 
-                    <div class="contact-info-item">
+                    <div class="info-item">
                         <div class="info-icon">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6.6 3h10.8A1.6 1.6 0 0 1 19 4.6v14.8A1.6 1.6 0 0 1 17.4 21H6.6A1.6 1.6 0 0 1 5 19.4V4.6A1.6 1.6 0 0 1 6.6 3Z" stroke-width="1.6" stroke-linejoin="round"/>
-                                <path d="M9 17h6" stroke-width="1.6" stroke-linecap="round"/>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.5 3h11A1.5 1.5 0 0 1 19 4.5v15A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5v-15A1.5 1.5 0 0 1 6.5 3Z" stroke-linejoin="round"/>
+                                <path d="M9 18h6" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <div class="info-text">
-                            <h4>Call Us</h4>
-                            <p>+44 7887 772083</p>
+                        <div>
+                            <div class="info-label">Phone</div>
+                            <div class="info-value">+44 7887 772083</div>
                         </div>
                     </div>
 
-                    <div class="contact-info-item">
+                    <div class="info-item">
                         <div class="info-icon">
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="9" stroke-width="1.6"/>
-                                <path d="M12 7v5l3 3" stroke-width="1.6" stroke-linecap="round"/>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="9"/>
+                                <path d="M12 7v5l3 3" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <div class="info-text">
-                            <h4>Support Hours</h4>
-                            <p>Mon–Fri: 9am – 6pm GMT</p>
+                        <div>
+                            <div class="info-label">Hours</div>
+                            <div class="info-value">Mon–Fri &nbsp;9am – 6pm GMT</div>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="map-container reveal" style="transition-delay:0.22s;">
-                    <img src="map-ivory.svg" alt="Dentaverse HQ location map" style="width:100%;height:100%;object-fit:cover;opacity:0.9;" loading="lazy">
-                    <div style="position:absolute;width:18px;height:18px;background:var(--gold,#C5A059);border:3px solid white;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,0.2);"></div>
-                    <p style="position:absolute;bottom:16px;font-weight:700;color:#14120F;background:white;padding:8px 14px;border-radius:20px;font-size:0.85rem;box-shadow:0 4px 16px rgba(0,0,0,0.1);">Dentaverse HQ</p>
+                <div class="map-box">
+                    <div class="map-pin"></div>
+                    <div class="map-label">Dentaverse HQ</div>
                 </div>
             </div>
 
         </div>
     </div>
-</main>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" role="alert" aria-live="polite"></div>
 
 <!-- FOOTER -->
 <footer class="dv-footer">
@@ -311,169 +477,146 @@
     </div>
 </footer>
 
-<!-- EmailJS CDN -->
+<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-/* ================================================================
-   EMAILJS CONFIGURATION — credentials are live
-================================================================ */
-const EMAILJS_CONFIG = {
+/* ── EmailJS credentials ── */
+var EJ = {
     publicKey:  'QF7fvFkKBQDLTit88',
     serviceId:  'service_uiolezp',
-    templateId: 'template_vxbcoy4',
+    templateId: 'template_vxbcoy4'
 };
 
-(function () {
-    'use strict';
+/* ── Page init ── */
+document.addEventListener('DOMContentLoaded', function () {
 
-    const notConfigured = Object.values(EMAILJS_CONFIG).some(v => v.startsWith('YOUR_'));
+    /* Init EmailJS */
+    emailjs.init({ publicKey: EJ.publicKey });
 
-    document.addEventListener('DOMContentLoaded', () => {
+    /* Hide loader */
+    var loader = document.getElementById('loader');
+    if (loader) {
+        setTimeout(function () { loader.classList.add('hidden'); }, 900);
+    }
 
-        /* ── Init EmailJS ── */
-        if (!notConfigured) {
-            emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
-        } else {
-            const notice = document.getElementById('ej-notice');
-            if (notice) {
-                notice.style.display = 'block';
-                notice.innerHTML = '⚙️ <strong>EmailJS not configured:</strong> Fill in your keys in the EMAILJS_CONFIG.';
-            }
-        }
-
-        /* ── Universal nav ── */
-        document.body.classList.add('ready');
-        setTimeout(() => document.getElementById('loader')?.classList.add('hidden'), 1400);
-
-        document.querySelectorAll('a[href]').forEach(link => {
-            link.addEventListener('click', e => {
-                const href = link.getAttribute('href');
-                if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-                e.preventDefault();
-                document.body.classList.add('fade-out');
-                setTimeout(() => window.location.href = href, 280);
-            });
-        });
-
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
-
-        const hbg = document.getElementById('dvHamburger');
-        const mob = document.getElementById('dvMobileMenu');
-        if (hbg && mob) {
-            hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
-            mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mob.classList.remove('open'); }));
-        }
-
-        window.addEventListener('scroll', () => {
-            document.getElementById('dvHeader')?.classList.toggle('scrolled', window.scrollY > 40);
-        }, { passive: true });
-
-        /* ── Form logic ── */
-        const form      = document.getElementById('contact-form');
-        const btnText   = document.getElementById('btn-text');
-        const spinner   = document.getElementById('btn-spinner');
-        const submitBtn = document.getElementById('submit-btn');
-        if (!form) return;
-
-        /* Floating labels */
-        form.querySelectorAll('input, textarea').forEach(el => {
-            const g = el.closest('.form-group');
-            el.addEventListener('focus', () => g?.classList.add('focused'));
-            el.addEventListener('blur',  () => { if (!el.value) g?.classList.remove('focused'); });
-        });
-
-        /* Validate */
-        function validate() {
-            let ok = true;
-            form.querySelectorAll('[required]').forEach(el => {
-                const g = el.closest('.form-group');
-                g?.classList.remove('has-error');
-                g?.querySelector('.field-error')?.remove();
-                if (!el.value.trim()) {
-                    mark(g, 'This field is required'); ok = false;
-                } else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
-                    mark(g, 'Enter a valid email address'); ok = false;
-                }
-            });
-            return ok;
-        }
-
-        function mark(g, msg) {
-            g?.classList.add('has-error');
-            const err = document.createElement('span');
-            err.className = 'field-error';
-            err.textContent = msg;
-            g?.appendChild(err);
-        }
-
-        /* Toast */
-        function showToast(msg, isError) {
-            let t = document.getElementById('dv-toast');
-            if (!t) {
-                t = document.createElement('div');
-                t.id = 'dv-toast';
-                Object.assign(t.style, {
-                    position: 'fixed', bottom: '-120px', left: '50%', transform: 'translateX(-50%)',
-                    padding: '14px 28px', borderRadius: '999px', fontWeight: '700', fontSize: '0.95rem',
-                    display: 'flex', alignItems: 'center', gap: '10px', zIndex: '99999',
-                    whiteSpace: 'nowrap', transition: 'bottom 0.5s cubic-bezier(0.34,1.56,0.64,1)',
-                    color: 'white',
-                });
-                document.body.appendChild(t);
-            }
-            t.style.background = isError ? 'linear-gradient(135deg,#ef4444,#dc2626)' : 'linear-gradient(135deg,#C5A059,#D4AF37)';
-            t.style.boxShadow  = isError ? '0 10px 40px rgba(239,68,68,0.4)' : '0 10px 40px rgba(197,160,89,0.4)';
-            t.innerHTML = isError
-                ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> ${msg}`
-                : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> ${msg}`;
-            setTimeout(() => t.style.bottom = '36px', 20);
-            setTimeout(() => t.style.bottom = '-120px', 4500);
-        }
-
-        /* Submit */
-        form.addEventListener('submit', async e => {
+    /* Page transition links */
+    document.querySelectorAll('a[href]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            var href = link.getAttribute('href');
+            if (!href || href.charAt(0) === '#' ||
+                href.indexOf('http') === 0 ||
+                href.indexOf('mailto') === 0 ||
+                href.indexOf('tel') === 0) return;
             e.preventDefault();
-            if (!validate()) return;
-
-            submitBtn.disabled = true;
-            btnText.textContent = 'Sending…';
-            spinner.style.display = 'inline-block';
-
-            if (notConfigured) {
-                await new Promise(r => setTimeout(r, 1200));
-                btnText.textContent = 'Send Message';
-                spinner.style.display = 'none';
-                submitBtn.disabled = false;
-                form.reset();
-                form.querySelectorAll('.form-group').forEach(g => g.classList.remove('focused'));
-                showToast('Demo mode — add EmailJS keys to go live!', false);
-                return;
-            }
-
-            try {
-                await emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form);
-                btnText.textContent = 'Send Message';
-                spinner.style.display = 'none';
-                submitBtn.disabled = false;
-                form.reset();
-                form.querySelectorAll('.form-group').forEach(g => g.classList.remove('focused'));
-                showToast("Message sent! We'll be in touch soon. ✓", false);
-            } catch (err) {
-                console.error('EmailJS error:', err);
-                btnText.textContent = 'Send Message';
-                spinner.style.display = 'none';
-                submitBtn.disabled = false;
-                showToast('Failed to send. Email us at elitesupport@dentaverse.uk', true);
-            }
+            setTimeout(function () { window.location.href = href; }, 200);
         });
-
     });
-}());
-</script>
 
+    /* Scroll reveals */
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('active'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    /* Hamburger */
+    var hbg = document.getElementById('dvHamburger');
+    var mob = document.getElementById('dvMobileMenu');
+    if (hbg && mob) {
+        hbg.addEventListener('click', function () {
+            hbg.classList.toggle('open');
+            mob.classList.toggle('open');
+        });
+        mob.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                hbg.classList.remove('open');
+                mob.classList.remove('open');
+            });
+        });
+    }
+
+    /* Scroll header */
+    window.addEventListener('scroll', function () {
+        var h = document.getElementById('dvHeader');
+        if (h) h.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ── Form ── */
+    var form      = document.getElementById('contact-form');
+    var btn       = document.getElementById('submit-btn');
+    var btnLabel  = document.getElementById('btn-label');
+    var spinner   = document.getElementById('spinner');
+
+    function setField(id, ok, msg) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.classList.toggle('error', !ok);
+        if (!ok) {
+            var errEl = el.querySelector('.field-err');
+            if (errEl && msg) errEl.textContent = msg;
+        }
+    }
+
+    function validate() {
+        var name    = form.querySelector('#name').value.trim();
+        var email   = form.querySelector('#email').value.trim();
+        var message = form.querySelector('#message').value.trim();
+        var ok = true;
+
+        setField('f-name',    !!name,                             'Please enter your name');
+        setField('f-email',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), 'Please enter a valid email');
+        setField('f-message', !!message,                          'Please enter your message');
+
+        if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message) ok = false;
+        return ok;
+    }
+
+    function showToast(msg, type) {
+        var t = document.getElementById('toast');
+        t.innerHTML = (type === 'success'
+            ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>'
+            : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>')
+            + ' ' + msg;
+        t.className = type;
+        t.classList.add('show');
+        setTimeout(function () { t.classList.remove('show'); }, 4500);
+    }
+
+    function setLoading(on) {
+        btn.disabled      = on;
+        btnLabel.textContent = on ? 'Sending…' : 'Send Message';
+        spinner.style.display = on ? 'inline-block' : 'none';
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!validate()) return;
+        setLoading(true);
+
+        emailjs.sendForm(EJ.serviceId, EJ.templateId, form)
+            .then(function () {
+                setLoading(false);
+                form.reset();
+                document.querySelectorAll('.field').forEach(function (f) { f.classList.remove('error'); });
+                showToast("Message sent! We'll be in touch soon.", 'success');
+            })
+            .catch(function (err) {
+                console.error('EmailJS error:', err);
+                setLoading(false);
+                showToast('Send failed. Email us at elitesupport@dentaverse.uk', 'error');
+            });
+    });
+
+    /* Clear error on input */
+    form.querySelectorAll('input, textarea').forEach(function (el) {
+        el.addEventListener('input', function () {
+            var wrap = el.closest('.field');
+            if (wrap) wrap.classList.remove('error');
+        });
+    });
+});
+</script>
 </body>
 </html>
