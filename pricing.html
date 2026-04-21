@@ -14,14 +14,27 @@
         @keyframes loaderHide { to { opacity: 0; visibility: hidden; pointer-events: none; } }
         #loader { animation: loaderHide 0.5s ease 2s forwards; }
 
+        /* ── REDIRECT NOTICE BANNER ── */
+        .redirect-notice {
+            background: linear-gradient(135deg, #0A2558, #0066CC);
+            color: white; text-align: center;
+            padding: 1rem 2rem; position: relative; z-index: 50;
+        }
+        .redirect-notice p { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin: 0; }
+        .redirect-notice a {
+            color: #00CCFF; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(0,204,255,0.4);
+            margin-left: 0.5rem;
+        }
+
         /* ── PAGE LAYOUT ── */
         .pricing-hero {
             padding: calc(var(--nav-h, 75px) + 6rem) 0 4rem;
             text-align: center;
-            background: linear-gradient(135deg, #FDFCF9 0%, #EDF5F0 100%);
-            border-bottom: 1px solid rgba(197,160,89,0.1);
+            background: linear-gradient(135deg, #FFFFFF 0%, #EBF4FF 100%);
+            border-bottom: 1px solid rgba(0,102,204,0.09);
             position: relative;
         }
+
 
         .pricing-eyebrow {
             display: inline-block;
@@ -341,10 +354,18 @@
 
     <!-- WRAPPER -->
     <main>
-        
+
+        <!-- REDIRECT NOTICE BANNER -->
+        <div class="redirect-notice">
+            <p>📌 Products &amp; Pricing have been merged into one page for a better experience.
+                <a href="products.html">View the full Products &amp; Pricing page →</a>
+            </p>
+        </div>
+
         <section class="pricing-hero">
             <div class="container">
-                <span class="pricing-eyebrow">Clear & Simple Pricing</span>
+                <span class="pricing-eyebrow">Clear &amp; Simple Pricing</span>
+
                 <h1>Plans that scale with your <em>Practice</em></h1>
                 <p>No hidden fees. No complicated add-ons. Get the complete VR therapy experience tailored to the size of your clinic.</p>
 

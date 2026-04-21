@@ -16,23 +16,34 @@
            DENTAVERSE ELITE — PREMIUM DESIGN SYSTEM
            ========================================================= */
         :root {
-            --ivory:       #FDFCF9;
-            --ivory-dark:  #F2EFE8;
-            --gold:        #C5A059;
-            --gold-light:  #D4AF37;
-            --gold-glow:   rgba(197,160,89,0.35);
-            --dark:        #0F0E0C;
-            --dark-2:      #1A1916;
-            --dark-3:      #252320;
-            --text:        #1A1916;
-            --muted:       #6B6762;
+            /* ── Dentaverse ELITE Brand Palette (logo-exact) ── */
+            --brand-dark:  #0A2558;
+            --brand-mid:   #0066CC;
+            --brand-cyan:  #00CCFF;
+            --brand-cyan-glow: rgba(0,204,255,0.28);
+            --brand-mid-glow:  rgba(0,102,204,0.22);
+            /* backgrounds */
+            --bg:          #FFFFFF;
+            --bg-soft:     #F0F6FF;
+            --bg-deep:     #E0EAF8;
+            --text:        #333333;
+            --muted:       #5E6E85;
             --white:       #FFFFFF;
-            --glass:       rgba(253,252,249,0.72);
-            --glass-border: rgba(197,160,89,0.18);
-            --shadow-sm:   0 2px 12px rgba(0,0,0,0.06);
-            --shadow-md:   0 8px 32px rgba(0,0,0,0.10);
-            --shadow-lg:   0 20px 60px rgba(0,0,0,0.14);
-            --shadow-gold: 0 8px 32px rgba(197,160,89,0.25);
+            /* legacy aliases */
+            --ivory:       #F0F6FF;
+            --ivory-dark:  #E0EAF8;
+            --gold:        #00CCFF;
+            --gold-light:  #0066CC;
+            --gold-glow:   rgba(0,204,255,0.28);
+            --dark:        #0A2558;
+            --dark-2:      #091e4a;
+            --dark-3:      #071640;
+            --glass:       rgba(255,255,255,0.82);
+            --glass-border: rgba(0,102,204,0.18);
+            --shadow-sm:   0 2px 12px rgba(10,37,88,0.07);
+            --shadow-md:   0 8px 32px rgba(10,37,88,0.11);
+            --shadow-lg:   0 20px 60px rgba(10,37,88,0.14);
+            --shadow-gold: 0 6px 28px rgba(0,102,204,0.28);
             --ease:        cubic-bezier(0.16, 1, 0.3, 1);
             --ease-out:    cubic-bezier(0.25, 0.8, 0.25, 1);
             --radius:      16px;
@@ -146,7 +157,7 @@
             padding: calc(var(--nav-h, 64px) + 4rem) 0 5rem;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(145deg, #FDFCF9 0%, #EDF5F0 50%, #F8F4EC 100%);
+            background: linear-gradient(145deg, #FFFFFF 0%, #EBF4FF 50%, #F0F9FF 100%);
         }
 
         /* Animated orbs */
@@ -159,19 +170,19 @@
         }
         .orb-1 {
             width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(197,160,89,0.18) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0,204,255,0.12) 0%, transparent 70%);
             top: -10%; right: -5%;
             animation: orbFloat1 14s ease-in-out infinite;
         }
         .orb-2 {
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(100,180,150,0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, transparent 70%);
             bottom: 5%; left: -8%;
             animation: orbFloat2 18s ease-in-out infinite;
         }
         .orb-3 {
             width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(197,160,89,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0,204,255,0.07) 0%, transparent 70%);
             top: 40%; left: 30%;
             animation: orbFloat3 22s ease-in-out infinite;
         }
@@ -231,9 +242,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(197,160,89,0.1);
-            border: 1px solid rgba(197,160,89,0.25);
-            color: var(--gold);
+            background: rgba(0,204,255,0.10);
+            border: 1px solid rgba(0,204,255,0.30);
+            color: var(--brand-mid);
             font-size: 0.78rem;
             font-weight: 600;
             letter-spacing: 0.12em;
@@ -245,7 +256,7 @@
         .hero-badge::before {
             content: '';
             width: 6px; height: 6px;
-            background: var(--gold);
+            background: var(--brand-cyan);
             border-radius: 50%;
             animation: blink 2s ease-in-out infinite;
         }
@@ -254,11 +265,11 @@
         .hero h1 {
             font-size: clamp(2.6rem, 6vw, 4.8rem);
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: var(--brand-dark);
         }
         .hero h1 em {
             font-style: italic;
-            color: var(--gold);
+            color: var(--brand-cyan);
             -webkit-text-stroke: 0;
         }
         .hero-desc {
@@ -290,24 +301,24 @@
             transition: all 0.28s var(--ease-out);
         }
         .btn-gold {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
             color: white;
-            box-shadow: var(--shadow-gold);
+            box-shadow: 0 6px 28px rgba(0,102,204,0.28);
         }
         .btn-gold:hover {
-            background: var(--gold-light);
+            background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid));
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(197,160,89,0.45);
+            box-shadow: 0 12px 40px rgba(0,102,204,0.42);
         }
         .btn-outline {
             background: transparent;
-            color: var(--text);
-            border: 1.5px solid rgba(26,25,22,0.2);
+            color: var(--brand-dark);
+            border: 1.5px solid rgba(10,37,88,0.22);
         }
         .btn-outline:hover {
-            background: var(--text);
+            background: var(--brand-dark);
             color: white;
-            border-color: var(--text);
+            border-color: var(--brand-dark);
         }
         .btn svg { width:16px; height:16px; stroke:currentColor; fill:none; }
 
@@ -415,8 +426,8 @@
         .about-strip {
             padding: 5rem 0;
             background: white;
-            border-top: 1px solid #F0ECE4;
-            border-bottom: 1px solid #F0ECE4;
+            border-top: 1px solid rgba(0,102,204,0.08);
+            border-bottom: 1px solid rgba(0,102,204,0.08);
         }
         .about-strip-grid {
             display: grid;
@@ -426,21 +437,21 @@
         @media (max-width: 860px) { .about-strip-grid { grid-template-columns: 1fr; gap: 1.8rem; } }
 
         .about-strip-card {
-            background: #FDFCF9;
-            border: 1.5px solid #EDE6D9;
+            background: #F6F9FF;
+            border: 1.5px solid #D8E8F8;
             border-radius: 20px;
             padding: 2.2rem;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .about-strip-card:hover {
-            border-color: rgba(197,160,89,0.35);
-            box-shadow: 0 12px 40px rgba(197,160,89,0.10);
+            border-color: rgba(0,204,255,0.4);
+            box-shadow: 0 12px 40px rgba(0,102,204,0.10);
             transform: translateY(-4px);
         }
         .asc-icon {
             width: 48px; height: 48px;
-            background: rgba(197,160,89,0.08);
-            border: 1px solid rgba(197,160,89,0.18);
+            background: rgba(0,204,255,0.08);
+            border: 1px solid rgba(0,102,204,0.15);
             border-radius: 13px;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 1.3rem;
@@ -450,38 +461,38 @@
             font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #C5A059;
+            color: #0066CC;
             margin-bottom: 0.7rem;
         }
         .about-strip-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.15rem;
             font-weight: 700;
-            color: #1A1916;
+            color: #0A2558;
             margin-bottom: 0.7rem;
             line-height: 1.3;
         }
         .about-strip-card p {
             font-size: 0.88rem;
-            color: #6B6762;
+            color: #5E6E85;
             line-height: 1.7;
             margin-bottom: 1.3rem;
         }
         .asc-link {
             font-size: 0.82rem;
             font-weight: 700;
-            color: #C5A059;
+            color: #0066CC;
             letter-spacing: 0.03em;
             transition: color 0.2s;
         }
-        .asc-link:hover { color: #D4AF37; }
+        .asc-link:hover { color: #00CCFF; }
 
 
 
         /* =========================================================
            FEATURES — THE ELITE EDGE
            ========================================================= */
-        .features { background: var(--ivory); }
+        .features { background: var(--bg-soft, #F0F6FF); }
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3,1fr);
@@ -493,7 +504,7 @@
             padding: 2.5rem 2rem;
             text-align: center;
             box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,102,204,0.07);
             transition: all 0.4s var(--ease-out);
             position: relative;
             overflow: hidden;
@@ -502,33 +513,33 @@
             content:'';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(197,160,89,0.04) 0%, transparent 60%);
+            background: linear-gradient(135deg, rgba(0,204,255,0.04) 0%, transparent 60%);
             opacity: 0;
             transition: opacity 0.3s;
         }
         .feature-card:hover {
             transform: translateY(-12px);
             box-shadow: var(--shadow-lg);
-            border-color: rgba(197,160,89,0.15);
+            border-color: rgba(0,204,255,0.25);
         }
         .feature-card:hover::before { opacity: 1; }
         .feature-icon {
             width: 64px; height: 64px;
-            background: linear-gradient(135deg, rgba(197,160,89,0.12) 0%, rgba(197,160,89,0.04) 100%);
+            background: linear-gradient(135deg, rgba(0,204,255,0.10) 0%, rgba(0,102,204,0.05) 100%);
             border-radius: 18px;
             display: flex; align-items:center; justify-content:center;
             margin: 0 auto 1.5rem;
-            border: 1px solid rgba(197,160,89,0.15);
+            border: 1px solid rgba(0,102,204,0.12);
             transition: all 0.3s;
         }
         .feature-card:hover .feature-icon {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
             border-color: transparent;
-            box-shadow: var(--shadow-gold);
+            box-shadow: 0 6px 24px rgba(0,102,204,0.30);
         }
-        .feature-icon svg { width:28px; height:28px; stroke: var(--gold); fill:none; transition: stroke 0.3s; }
+        .feature-icon svg { width:28px; height:28px; stroke: #0066CC; fill:none; transition: stroke 0.3s; }
         .feature-card:hover .feature-icon svg { stroke: white; }
-        .feature-card h4 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+        .feature-card h4 { font-size: 1.25rem; margin-bottom: 0.75rem; color: #0A2558; }
         .feature-card p { font-size: 0.9rem; color: var(--muted); }
         @media(max-width:900px){ .features-grid{grid-template-columns:repeat(2,1fr);} }
         @media(max-width:600px){ .features-grid{grid-template-columns:1fr;} }
@@ -553,9 +564,9 @@
             flex-shrink: 0;
             width: 44px; height: 44px;
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            background: linear-gradient(135deg, #0066CC 0%, #00CCFF 100%);
             display: flex; align-items:center; justify-content:center;
-            box-shadow: var(--shadow-gold);
+            box-shadow: 0 6px 20px rgba(0,102,204,0.30);
         }
         .step-num {
             font-family: 'Playfair Display', serif;
@@ -563,7 +574,7 @@
             font-weight: 700;
             color: white;
         }
-        .step-content h4 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .step-content h4 { font-size: 1.1rem; margin-bottom: 0.4rem; color: #0A2558; }
         .step-content p { font-size: 0.9rem; color: var(--muted); }
         .how-img-wrap { position:relative; border-radius: var(--radius-lg); overflow:hidden; }
         .how-img-wrap img {
@@ -574,9 +585,9 @@
         .how-img-badge {
             position: absolute;
             bottom: 1.5rem; left: 1.5rem;
-            background: rgba(15,14,12,0.75);
+            background: rgba(10,37,88,0.80);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(197,160,89,0.25);
+            border: 1px solid rgba(0,204,255,0.30);
             border-radius: 14px;
             padding: 0.8rem 1.2rem;
             color: white;
@@ -589,52 +600,74 @@
         }
 
         /* =========================================================
-           TESTIMONIALS
+           TESTIMONIALS — redesigned with Patient / Doctor tabs
            ========================================================= */
-        .testimonials { background: var(--ivory); }
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 2rem;
+        .testimonials { background: #F0F6FF; }
+        /* Tab pills */
+        .testi-tabs {
+            display: flex; gap: 0.6rem; justify-content: center; margin-bottom: 2.8rem; flex-wrap: wrap;
         }
-        .testimonial-card {
+        .testi-tab {
+            padding: 0.5rem 1.4rem; border-radius: 999px;
+            font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+            cursor: pointer; border: 2px solid transparent;
+            transition: all 0.25s; background: white;
+            color: #5E6E85; border-color: #D0DFF0;
+        }
+        .testi-tab.active { background: #0A2558; color: white; border-color: #0A2558; }
+        .testi-tab:hover:not(.active) { border-color: #00CCFF; color: #0066CC; }
+        /* Scroll snap track */
+        .testi-track {
+            display: flex; gap: 1.5rem;
+            overflow-x: auto; scroll-snap-type: x mandatory;
+            padding-bottom: 1rem; -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .testi-track::-webkit-scrollbar { display: none; }
+        .testi-panel { display: none; }
+        .testi-panel.active { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        /* Card */
+        .testi-card {
             background: white;
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 20px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 4px 24px rgba(10,37,88,0.09);
+            border: 1px solid rgba(0,102,204,0.08);
             transition: all 0.35s var(--ease-out);
-            position: relative;
+            position: relative; overflow: hidden;
+            flex: 1 1 300px; min-width: 280px; max-width: 380px;
         }
-        .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-        .testimonial-card::before {
+        .testi-card::before {
             content: '\201C';
             font-family: 'Playfair Display', serif;
             font-size: 5rem;
-            color: var(--gold);
-            opacity: 0.15;
+            color: #00CCFF;
+            opacity: 0.12;
             position: absolute;
-            top: 0.5rem; left: 1.2rem;
+            top: -0.3rem; left: 1rem;
             line-height: 1;
         }
-        .testimonial-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.8rem; }
-        .testimonial-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.4rem; }
-        .testimonial-author { display:flex; align-items:center; gap:0.8rem; }
-        .author-avatar {
-            width:40px; height:40px; border-radius:50%;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            display:flex; align-items:center; justify-content:center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem; font-weight: 700;
-            color: white; flex-shrink:0;
+        .testi-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(10,37,88,0.14); }
+        /* Reviewer type badge */
+        .testi-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 3px 10px; border-radius: 999px;
+            margin-bottom: 0.9rem;
         }
-        .author-info .name { font-size: 0.88rem; font-weight: 600; color: var(--text); }
-        .author-info .role { font-size: 0.78rem; color: var(--muted); }
-        @media(max-width:900px){ .testimonials-grid{grid-template-columns:repeat(2,1fr);} }
-        @media(max-width:600px){ .testimonials-grid{grid-template-columns:1fr;} }
+        .testi-badge.patient { background: rgba(0,204,255,0.10); color: #0066CC; }
+        .testi-badge.doctor  { background: rgba(10,37,88,0.07);  color: #0A2558; }
+        /* Stars — Accent Cyan #00CCFF */
+        .testi-stars { font-size: 1rem; color: #00CCFF; margin-bottom: 0.8rem; letter-spacing: 2px; }
+        .testi-card blockquote { font-size: 0.93rem; color: #5E6E85; line-height: 1.75; margin-bottom: 1.4rem; font-style: italic; }
+        .testi-author { display:flex; align-items:center; gap:0.75rem; }
+        .testi-avatar {
+            width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+            background: linear-gradient(135deg, #0066CC, #00CCFF);
+            display: flex; align-items:center; justify-content:center;
+            font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: white;
+        }
+        .testi-name { font-size: 0.9rem; font-weight: 700; color: #0A2558; }
+        .testi-role { font-size: 0.78rem; color: #5E6E85; }
 
         /* =========================================================
            FAQ SECTION
@@ -648,15 +681,15 @@
             margin: 0 auto;
         }
         .faq-item {
-            background: var(--ivory);
-            border: 1px solid var(--ivory-dark);
+            background: #F0F6FF;
+            border: 1px solid #D0DFF0;
             border-radius: var(--radius);
             overflow: hidden;
             transition: border-color 0.25s, box-shadow 0.25s;
         }
         .faq-item.open {
             box-shadow: var(--shadow-md);
-            border-color: rgba(197,160,89,0.25);
+            border-color: rgba(0,204,255,0.35);
         }
         .faq-question {
             display: flex;
@@ -671,20 +704,20 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--text);
+            color: #0A2558;
             line-height: 1.45;
         }
         .faq-icon {
             flex-shrink: 0;
             width: 30px; height: 30px;
             border-radius: 8px;
-            background: var(--ivory-dark);
+            background: #D0DFF0;
             display: flex; align-items:center; justify-content:center;
             transition: background 0.25s, transform 0.35s var(--ease);
         }
-        .faq-icon svg { width:14px; height:14px; stroke: var(--muted); fill:none; transition: stroke 0.25s; }
+        .faq-icon svg { width:14px; height:14px; stroke: #5E6E85; fill:none; transition: stroke 0.25s; }
         .faq-item.open .faq-icon {
-            background: var(--gold);
+            background: linear-gradient(135deg, #0066CC, #00CCFF);
             transform: rotate(45deg);
         }
         .faq-item.open .faq-icon svg { stroke: white; }
@@ -706,7 +739,7 @@
            CTA SECTION
            ========================================================= */
         .cta-section {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-3) 100%);
+            background: linear-gradient(135deg, #0A2558 0%, #091e4a 100%);
             padding: 7rem 0;
             text-align: center;
             position: relative;
@@ -718,7 +751,7 @@
             top:-40%; left:50%;
             transform:translateX(-50%);
             width:800px; height:800px;
-            background: radial-gradient(circle, rgba(197,160,89,0.12) 0%, transparent 65%);
+            background: radial-gradient(circle, rgba(0,204,255,0.10) 0%, transparent 65%);
             pointer-events:none;
         }
         .cta-section h2 {
@@ -727,7 +760,7 @@
             margin-bottom: 1.2rem;
         }
         .cta-section p {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.65);
             font-size: 1.05rem;
             margin-bottom: 2.8rem;
             max-width: 500px;
@@ -735,12 +768,12 @@
         }
         .cta-section .btn-outline-white {
             background: transparent;
-            color: rgba(255,255,255,0.8);
-            border: 1.5px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+            border: 1.5px solid rgba(255,255,255,0.28);
         }
         .cta-section .btn-outline-white:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.10);
+            border-color: rgba(255,255,255,0.5);
         }
         .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 
@@ -778,10 +811,10 @@
             .hero h1 { font-size: 2.4rem; }
         }
 
-        /* Gold divider */
+        /* Brand divider */
         .divider-gold {
             width: 50px; height: 3px;
-            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            background: linear-gradient(90deg, #0066CC, #00CCFF);
             border-radius: 2px;
             margin: 0 auto 1rem;
         }
@@ -863,7 +896,7 @@
 
             <div class="about-strip-card reveal">
                 <div class="asc-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
                 </div>
                 <div class="asc-tag">Who We Are</div>
                 <h3>A UK health-tech company on a mission</h3>
@@ -873,7 +906,7 @@
 
             <div class="about-strip-card reveal" style="transition-delay:.1s">
                 <div class="asc-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
                 </div>
                 <div class="asc-tag">What We Do</div>
                 <h3>VR headsets that make procedures feel effortless</h3>
@@ -883,7 +916,7 @@
 
             <div class="about-strip-card reveal" style="transition-delay:.2s">
                 <div class="asc-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
                 <div class="asc-tag">Who It's For</div>
                 <h3>Independent practices to large dental groups</h3>
@@ -1000,48 +1033,107 @@
 </section>
 
 <!-- ======================= TESTIMONIALS ======================= -->
-<section class="testimonials">
+<section class="testimonials" id="testimonials">
     <div class="container">
         <div class="section-header">
             <span class="section-eyebrow reveal">Real Voices</span>
-            <h2 class="section-title reveal">What Patients Say</h2>
+            <h2 class="section-title reveal">What Patients &amp; Doctors Say</h2>
             <div class="divider-gold reveal"></div>
-            <p class="section-subtitle reveal">Stories from those who've experienced the Dentaverse Elite difference first-hand.</p>
+            <p class="section-subtitle reveal">Stories from those who've experienced the Dentaverse Elite difference first-hand — both in the chair and behind it.</p>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card reveal">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"I've been terrified of the dentist my entire life. The moment I put on the VR headset and found myself on a peaceful beach, I completely forgot I was in a dental chair."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">S</div>
-                    <div class="author-info">
-                        <div class="name">Sarah M.</div>
-                        <div class="role">Patient, London</div>
+
+        <!-- Tab pills -->
+        <div class="testi-tabs reveal">
+            <button class="testi-tab active" id="tab-patients" onclick="switchTestiTab('patients')" aria-selected="true">🧑‍⚕️ Patient Reviews</button>
+            <button class="testi-tab" id="tab-doctors" onclick="switchTestiTab('doctors')" aria-selected="false">👨‍⚕️ Doctor Reviews</button>
+        </div>
+
+        <!-- PATIENT REVIEWS panel -->
+        <div class="testi-panel active" id="panel-patients">
+
+            <div class="testi-card reveal">
+                <span class="testi-badge patient">Patient</span>
+                <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                <blockquote>"I've been terrified of the dentist my entire life. The moment I put on the VR headset and found myself on a peaceful beach, I completely forgot I was in a dental chair."</blockquote>
+                <div class="testi-author">
+                    <div class="testi-avatar">S</div>
+                    <div>
+                        <div class="testi-name">Sarah M.</div>
+                        <div class="testi-role">Patient — London</div>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card reveal" style="transition-delay:.1s">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"As a dentist, watching my patients visibly relax and actually smile after their appointments has been transformative. Dentaverse Elite has completely changed my practice."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">D</div>
-                    <div class="author-info">
-                        <div class="name">Dr. James A.</div>
-                        <div class="role">Dentist, Edinburgh</div>
+
+            <div class="testi-card reveal" style="transition-delay:.1s">
+                <span class="testi-badge patient">Patient</span>
+                <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                <blockquote>"My son has autism and dental visits were a nightmare for the whole family. With Dentaverse Elite he was calm throughout — I genuinely couldn't believe the difference."</blockquote>
+                <div class="testi-author">
+                    <div class="testi-avatar">P</div>
+                    <div>
+                        <div class="testi-name">Priya K.</div>
+                        <div class="testi-role">Parent — Manchester</div>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card reveal" style="transition-delay:.2s">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"My son has autism and dental visits were a nightmare for the whole family. With Dentaverse Elite he was calm throughout — I genuinely couldn't believe the difference."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">P</div>
-                    <div class="author-info">
-                        <div class="name">Priya K.</div>
-                        <div class="role">Parent, Manchester</div>
+
+            <div class="testi-card reveal" style="transition-delay:.2s">
+                <span class="testi-badge patient">Patient</span>
+                <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                <blockquote>"I always needed multiple breaks and nearly cancelled every appointment. The VR world kept me so calm I barely noticed the procedure was finished."</blockquote>
+                <div class="testi-author">
+                    <div class="testi-avatar">R</div>
+                    <div>
+                        <div class="testi-name">Rohan T.</div>
+                        <div class="testi-role">Patient — Birmingham</div>
                     </div>
                 </div>
             </div>
+
+        </div>
+
+        <!-- DOCTOR REVIEWS panel -->
+        <div class="testi-panel" id="panel-doctors">
+
+            <div class="testi-card reveal">
+                <span class="testi-badge doctor">Doctor</span>
+                <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                <blockquote>"Watching my patients visibly relax and actually smile after their appointments has been transformative. Dentaverse Elite has completely changed my practice."</blockquote>
+                <div class="testi-author">
+                    <div class="testi-avatar">J</div>
+                    <div>
+                        <div class="testi-name">Dr. James A.</div>
+                        <div class="testi-role">Dentist — Edinburgh</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card reveal" style="transition-delay:.1s">
+                <span class="testi-badge doctor">Doctor</span>
+                <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                <blockquote>"Procedures that used to take 90 minutes with constant reassurance now run smoothly in under 60. Patients keep still naturally when immersed in VR."</blockquote>
+                <div class="testi-author">
+                    <div class="testi-avatar">F</div>
+                    <div>
+                        <div class="testi-name">Dr. Fatima R.</div>
+                        <div class="testi-role">Oral Surgeon — Leeds</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card reveal" style="transition-delay:.2s">
+                <span class="testi-badge doctor">Doctor</span>
+                <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                <blockquote>"I now use Dentaverse Elite as a reference and learning tool during training. My trainees can observe expert procedures in VR — it's a genuine educational leap."</blockquote>
+                <div class="testi-author">
+                    <div class="testi-avatar">N</div>
+                    <div>
+                        <div class="testi-name">Dr. Nikhil P.</div>
+                        <div class="testi-role">Dental Trainer — Bristol</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -1293,14 +1385,25 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ---- Header Scroll Effect ---- */
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
-    if (window.scrollY > 40) {
-        header.style.background = 'rgba(253,252,249,0.92)';
-        header.style.boxShadow = '0 2px 24px rgba(0,0,0,0.09)';
-    } else {
-        header.style.background = 'rgba(253,252,249,0.72)';
-        header.style.boxShadow = '0 2px 12px rgba(0,0,0,0.06)';
+    if (header) {
+        if (window.scrollY > 40) {
+            header.style.background = 'rgba(255,255,255,0.96)';
+            header.style.boxShadow = '0 2px 24px rgba(10,37,88,0.09)';
+        } else {
+            header.style.background = 'rgba(255,255,255,0.82)';
+            header.style.boxShadow = '0 2px 12px rgba(10,37,88,0.05)';
+        }
     }
 }, { passive: true });
+
+/* ---- Testimonial Tab Switcher ---- */
+function switchTestiTab(tab) {
+    document.querySelectorAll('.testi-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.testi-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    document.getElementById('tab-' + tab).setAttribute('aria-selected','true');
+    document.getElementById('panel-' + tab).classList.add('active');
+}
 
 /* ---- Hero Particle Canvas ---- */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1330,7 +1433,7 @@ document.addEventListener('DOMContentLoaded', () => {
         particles.forEach(p => {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(197,160,89,${p.alpha})`;
+            ctx.fillStyle = `rgba(0,204,255,${p.alpha * 0.7})`;
             ctx.fill();
             p.x += p.vx; p.y += p.vy;
             if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
