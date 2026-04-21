@@ -36,7 +36,6 @@
             --radius:      16px;
             --radius-lg:   24px;
             --radius-pill: 999px;
-            --bottom-nav-h: 72px;
         }
 
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -51,7 +50,6 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             opacity: 0;
-            padding-bottom: var(--bottom-nav-h);
         }
         body.ready { animation: fadeIn 0.5s var(--ease) forwards; }
         body.fade-out { animation: fadeOut 0.28s var(--ease-out) forwards; }
@@ -845,6 +843,7 @@
         .footer-col h5 { font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:1.2rem; }
         .footer-col a { display:block; font-size:0.88rem; color:rgba(255,255,255,0.55); margin-bottom:0.6rem; transition:color 0.22s; }
         .footer-col a:hover { color:var(--gold); }
+        /* No bottom nav */
         .footer-divider { height:1px; background:rgba(255,255,255,0.07); margin-bottom:1.5rem; }
         .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; font-size:0.8rem; color:rgba(255,255,255,0.3); }
         @media(max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr;} }
@@ -894,37 +893,13 @@
             <a href="index.html" class="active">Home</a>
             <a href="how-it-works.html">How It Works</a>
             <a href="products.html">Products</a>
+            <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
             <a href="contact.html" class="btn-book">Book Experience</a>
         </nav>
     </div>
 </header>
-
-<!-- ======================= BOTTOM NAV ======================= -->
-<nav class="bottom-nav" aria-label="Primary navigation">
-    <div class="bottom-nav-inner">
-        <a href="index.html" class="bn-item active" id="bn-home">
-            <svg viewBox="0 0 24 24"><path d="M3 12L12 4l9 8M5 10v9a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-9"/></svg>
-            Home
-        </a>
-        <a href="how-it-works.html" class="bn-item" id="bn-how">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            How It Works
-        </a>
-        <a href="contact.html" class="bn-item bn-item-cta" id="bn-book">
-            <svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
-            Book
-        </a>
-        <a href="products.html" class="bn-item" id="bn-products">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2"/></svg>
-            Products
-        </a>
-        <a href="about.html" class="bn-item" id="bn-about">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            About
-        </a>
-    </div>
-</nav>
 
 <!-- ======================= HERO ======================= -->
 <section class="hero" id="home">
@@ -944,19 +919,6 @@
                     Find a Clinic
                 </a>
                 <a href="how-it-works.html" class="btn btn-outline">Discover Our Tech →</a>
-            </div>
-        </div>
-
-        <div class="hero-float-card">
-            <div class="hero-card-icon">
-                <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h4>Clinical Grade VR</h4>
-            <p>Certified immersive environments tailored for dental procedures of any length.</p>
-            <div class="hero-card-tags">
-                <span class="hero-card-tag">Anxiety-Free</span>
-                <span class="hero-card-tag">Hygienic</span>
-                <span class="hero-card-tag">Certified</span>
             </div>
         </div>
     </div>

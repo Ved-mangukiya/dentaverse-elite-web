@@ -2,1186 +2,851 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How It Works | Dentaverse Elite</title>
+    <meta name="description" content="Discover the journey of Dentaverse Elite — from clinician consultation to complete immersive relaxation. A vintage storytelling experience.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
     <style>
-/* ==========================================================================
-   DENTAVERSE ELITE - UNIVERSAL THEME
-   ========================================================================== */
-
-:root {
-    --ivory: #FCFCFA;
-    --ivory-dark: #F5F4F0;
-    --gold-primary: #C5A059;
-    --gold-hover: #D4AF37;
-    --text-dark: #1A1A1A;
-    --text-muted: #5A5A5A;
-    --pastel-mint: #EBF3F0;
-    --white: #FFFFFF;
-    --shadow-subtle: 0 10px 40px rgba(0, 0, 0, 0.04);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --shadow-premium: var(--shadow-subtle);
-    --primary: var(--gold-primary);
-    --primary-dark: var(--gold-hover);
-    --text: var(--text-dark);
-}
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--ivory);
-    color: var(--text-dark);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    opacity: 0;
-}
-
-body.fade-in { animation: pageFadeIn 0.45s forwards; }
-body.fade-out { animation: pageFadeOut 0.28s forwards; }
-
-@keyframes pageFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes pageFadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-h1, h2, h3, h4 {
-    font-family: "Optima", "Georgia", serif;
-    font-weight: 500;
-    color: var(--text-dark);
-    letter-spacing: 0.02em;
-}
-
-p {
-    color: var(--text-muted);
-    font-size: clamp(14px, 2.1vw, 17px);
-}
-
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(16px, 4vw, 32px);
-}
-
-.page-main {
-    padding-top: 88px;
-    padding-bottom: 40px;
-}
-
-@media (min-width: 768px) {
-    .page-main { padding-top: 104px; padding-bottom: 56px; }
-}
-
-/* ==========================================================================
-   BUTTONS
-   ========================================================================== */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    min-width: 48px;
-    padding: 0.85rem 1.6rem;
-    border-radius: 999px;
-    font-size: clamp(14px, 1.6vw, 15px);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-gold,
-.btn-primary {
-    background-color: var(--gold-primary);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.28);
-}
-
-.btn-gold:hover,
-.btn-primary:hover {
-    background-color: var(--gold-hover);
-    transform: translateY(-1px);
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: var(--text-dark);
-    border: 1px solid var(--text-dark);
-}
-
-.btn-outline:hover {
-    background-color: var(--text-dark);
-    color: var(--white);
-}
-
-.btn-block { width: 100%; }
-
-/* ==========================================================================
-   HEADER & NAV
-   ========================================================================== */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(252, 252, 250, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 74px;
-}
-
-.logo {
-    font-family: "Optima", serif;
-    font-size: clamp(20px, 2.2vw, 24px);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo img {
-    width: 34px;
-    height: 34px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.logo-accent { color: var(--gold-primary); }
-
-.logo-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: #fff url("logo.png") center/cover no-repeat;
-    border: 1px solid rgba(0,0,0,0.06);
-}
-
-#nav-menu ul {
-    display: flex;
-    gap: 1.8rem;
-}
-
-#nav-menu a {
-    font-size: clamp(14px, 1.6vw, 14px);
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-#nav-menu a:hover,
-#nav-menu a.active {
-    color: var(--gold-primary);
-}
-
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.hamburger span {
-    width: 22px;
-    height: 2px;
-    background: var(--text-dark);
-    border-radius: 2px;
-}
-
-@media (max-width: 860px) {
-    .hamburger { display: flex; }
-
-    #nav-menu {
-        display: none;
-        position: absolute;
-        top: 74px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        border-bottom: 1px solid rgba(0,0,0,0.06);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.04);
-    }
-
-    #nav-menu.active { display: block; }
-
-    #nav-menu ul {
-        flex-direction: column;
-        padding: 1.2rem 1.1rem 1.3rem;
-        gap: 0.5rem;
-    }
-
-    #nav-menu a {
-        display: block;
-        padding: 0.75rem 0.25rem;
-    }
-}
-
-/* ==========================================================================
-   COMMON PAGE BLOCKS
-   ========================================================================== */
-.section-title {
-    text-align: center;
-    font-size: clamp(30px, 4vw, 44px);
-    margin-bottom: 0.7rem;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: clamp(14px, 2vw, 18px);
-    margin-bottom: 2.5rem;
-    max-width: 700px;
-    margin-inline: auto;
-}
-
-.card {
-    background: var(--white);
-    border-radius: 14px;
-    box-shadow: var(--shadow-subtle);
-    border: 1px solid rgba(0,0,0,0.03);
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-footer {
-    background-color: var(--text-dark);
-    color: var(--white);
-    padding: 3.5rem 0 1.6rem;
-    margin-top: 3rem;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-.footer-about p,
-.footer-links a,
-.footer-contact p {
-    color: #A0A0A0;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-    color: var(--white);
-    margin-bottom: 0.9rem;
-    font-size: clamp(18px, 2vw, 20px);
-}
-
-.footer-links li { margin-bottom: 0.55rem; }
-.footer-links a:hover { color: var(--gold-primary); }
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: #A0A0A0;
-    font-size: clamp(14px, 1.5vw, 14px);
-}
-
-@media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; }
-}
-
-/* ==========================================================================
-   LOADER (PREMIUM DENTAL TECH AESTHETIC)
-   ========================================================================== */
-#loader {
-    position: fixed;
-    inset: 0;
-    background: rgba(252, 252, 250, 0.98);
-    backdrop-filter: blur(20px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
-}
-
-.loader-panel {
-    width: min(400px, 85vw);
-    padding: 3rem 2rem;
-    border-radius: 20px;
-    background: transparent;
-    text-align: center;
-    position: relative;
-}
-
-.loader-scan {
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05), transparent);
-    animation: scanPulse 3s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes scanPulse {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-}
-
-.loader-grid { display: none; } /* keep grid hidden for clean look */
-
-.loader-inner {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.loader-mark {
-    background: var(--white);
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
-    margin-bottom: 0.5rem;
-    animation: loaderFloat 3s ease-in-out infinite;
-}
-
-.loader-mark svg {
-    stroke: var(--gold-primary);
-    width: 32px; height: 32px;
-}
-
-@keyframes loaderFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.loader-title {
-    font-family: "Optima", "Georgia", serif;
-    font-size: clamp(24px, 3vw, 28px);
-    color: var(--text-dark);
-    line-height: 1;
-}
-
-.loader-sub {
-    font-size: 14px;
-    color: var(--gold-primary);
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-}
-
-.loader-progress {
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: rgba(197, 160, 89, 0.2);
-    overflow: hidden;
-    position: relative;
-}
-
-.loader-progress > span {
-    display: block;
-    position: absolute;
-    left: -100%;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-    animation: progressLoad 1.5s ease-in-out infinite;
-}
-
-@keyframes progressLoad {
-    0% { left: -100%; }
-    100% { left: 100%; }
-}
-
-.loader-status {
-    font-size: 13px;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
-    margin-top: 1rem;
-    animation: pulseText 2s ease-in-out infinite;
-}
-
-@keyframes pulseText {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-}
-
-/* ==========================================================================
-   LEGACY UTILS (for compatibility)
-   ========================================================================== */
-.text-gradient { color: var(--gold-primary); }
-.page-header p { max-width: 760px; margin-inline: auto; }
-
-/* Disable custom cursor for stability */
-.cursor-dot,
-.cursor-ring {
-    display: none !important;
-}
-
-.bottom-nav { display: none !important; }
-
-</style>
-    <style>
-/* 
-   Dentaverse Elite - Animations
-   Clean, hardware-accelerated animations 
-*/
-
-/* Page Transitions */
-@keyframes pageFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes pageFadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-/* 3D Floating VR Headset */
-@keyframes vrFloat {
-    0%, 100% { 
-        transform: translateY(0px) rotateY(0deg) rotateX(0deg); 
-    }
-    33% {
-        transform: translateY(-20px) rotateY(10deg) rotateX(5deg);
-    }
-    66% {
-        transform: translateY(-10px) rotateY(-10deg) rotateX(-5deg);
-    }
-}
-
-/* Gradient Background Shift */
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.animated-bg {
-    background-size: 400% 400%;
-    animation: gradientShift 10s ease infinite;
-}
-
-/* Staggered Reveals */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 3D Card Flip
-   Mobile base: OFF (prevents overlap + weird touch behavior)
-   Enable on larger screens only.
-*/
-.flip-card { perspective: none; }
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: none;
-    transform-style: flat;
-}
-
-.flip-card:hover .flip-card-inner { transform: none; }
-
-.flip-card-front, .flip-card-back {
-    position: relative;
-    width: 100%;
-    height: auto;
-    backface-visibility: visible;
-    border-radius: 20px;
-}
-
-.flip-card-back {
-    display: none;
-}
-
-@media (min-width: 768px) and (pointer: fine) {
-    .flip-card { perspective: 1000px; }
-    .flip-card-inner { transition: transform 0.8s; transform-style: preserve-3d; }
-    .flip-card-front, .flip-card-back {
-        position: absolute;
-        height: 100%;
-        backface-visibility: hidden;
-    }
-    .flip-card-back { display: block; transform: rotateY(180deg); }
-    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-}
-
-/* Glowing Pulse */
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.4); }
-    70% { box-shadow: 0 0 0 20px rgba(0, 180, 216, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0); }
-}
-
-.pulse {
-    animation: pulseGlow 2s infinite;
-}
-
-/* Typing Animation */
-.typing {
-    /* Mobile base: no typing animation (prevents cut/offscreen) */
-    overflow: visible;
-    white-space: normal;
-    border-right: 0;
-    animation: none;
-}
-
-@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-    .typing {
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 3px solid var(--primary);
-        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        will-change: width;
-    }
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--primary) }
-}
-
-/* Progress Bar */
-.progress-container {
-    width: 100%;
-    background: #eee;
-    border-radius: 10px;
-    height: 10px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0;
-    background: var(--gradient);
-    transition: width 1.5s ease-out;
-}
-
-/* Ambient Ambient Light */
-.ambient-light {
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    filter: blur(80px);
-    opacity: 0.2;
-    z-index: -1;
-    animation: ambientFlow 20s linear infinite;
-}
-
-/* Image Reveal Wipe */
-.reveal-wipe {
-    position: relative;
-    overflow: hidden;
-}
-
-.reveal-wipe::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradient);
-    transform: translateX(-101%);
-    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
-    z-index: 2;
-}
-
-.reveal-wipe.active::after {
-    transform: translateX(101%);
-}
-
-.reveal-wipe img {
-    opacity: 0;
-    transition: opacity 0.1s 0.5s;
-}
-
-.reveal-wipe.active img {
-    opacity: 1;
-}
-
-</style>
-    <style>
-/* 
-   Dentaverse Elite - How It Works Specific
-*/
-
-.timeline {
-    position: relative;
-    max-width: 100%;
-    margin: 3.5rem auto;
-    padding: 20px 0;
-}
-
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    background: linear-gradient(to bottom, rgba(197,160,89,0.1), var(--gold-primary), rgba(197,160,89,0.1));
-    top: 0;
-    bottom: 0;
-    left: 31px;
-    margin-left: 0;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
-}
-
-.timeline-item {
-    padding: 20px 0 20px 60px;
-    position: relative;
-    background-color: inherit;
-    width: 100%;
-}
-
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 24px;
-    background-color: var(--white);
-    border: 4px solid var(--gold-primary);
-    top: 25px;
-    border-radius: 50%;
-    z-index: 1;
-    box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
-}
-
-.left { left: 0; }
-.right { left: 0; }
-
-.timeline-content {
-    padding: 1.5rem;
-    background-color: rgba(255,253,250,0.85);
-    border: 1px solid rgba(197,160,89,0.2);
-    position: relative;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    backdrop-filter: blur(12px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(197, 160, 89, 0.15);
-}
-
-.timeline-number {
-    position: absolute;
-    top: -20px;
-    background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
-    color: white;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
-}
-
-.left .timeline-number, .right .timeline-number { left: 20px; }
-
-/* Accordion */
-.accordion {
-    max-width: 100%;
-    margin: 40px auto;
-}
-
-.acc-item {
-    margin-bottom: 20px;
-    background: rgba(255,253,250,0.72);
-    border: 1px solid rgba(20,18,15,0.10);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: var(--shadow-premium);
-    backdrop-filter: blur(12px);
-}
-
-.acc-header {
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 700;
-    min-height: 48px;
-}
-
-.acc-content {
-    max-height: 0;
-    padding: 0 16px;
-    transition: 0.5s ease;
-    visibility: hidden;
-}
-
-.acc-item.active .acc-content {
-    max-height: 200px;
-    padding-bottom: 20px;
-    visibility: visible;
-}
-
-@media (min-width: 768px) {
-    .timeline::after { left: 50%; margin-left: -3px; }
-    .timeline-item { width: 50%; padding: 20px 40px; }
-    .timeline-item.left { padding-right: 50px; padding-left: 0; }
-    .timeline-item.right { padding-left: 50px; padding-right: 0;}
-    .right { left: 50%; }
-    .timeline-item::after { left: auto; right: -13px; }
-    .right::after { left: -13px; right: auto; }
-    .left .timeline-number { right: 30px; left: auto; }
-    .right .timeline-number { left: 30px; }
-    .timeline-content { padding: 30px; }
-    .accordion { max-width: 800px; }
-    .acc-header { padding: 20px 30px; }
-    .acc-content { padding: 0 30px; }
-}
-
-</style>
+        /* =========================================================
+           DENTAVERSE ELITE — SHARED TOKENS
+           ========================================================= */
+        :root {
+            --ivory:        #FDFCF9;
+            --ivory-dark:   #F2EFE8;
+            --ivory-deeper: #E8E2D6;
+            --gold:         #C5A059;
+            --gold-light:   #D4AF37;
+            --gold-dim:     rgba(197,160,89,0.18);
+            --dark:         #0F0E0C;
+            --dark-2:       #1A1916;
+            --text:         #1A1916;
+            --muted:        #6B6762;
+            --white:        #FFFFFF;
+            --glass:        rgba(253,252,249,0.82);
+            --glass-border: rgba(197,160,89,0.18);
+            --shadow-sm:    0 2px 12px rgba(0,0,0,0.05);
+            --shadow-md:    0 8px 32px rgba(0,0,0,0.09);
+            --shadow-lg:    0 24px 64px rgba(0,0,0,0.12);
+            --shadow-gold:  0 6px 28px rgba(197,160,89,0.22);
+            --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+            --radius:       16px;
+            --radius-lg:    24px;
+            --radius-pill:  999px;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--ivory);
+            color: var(--text);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            opacity: 0;
+        }
+        body.ready { animation: fadeIn 0.5s var(--ease) forwards; }
+        body.fade-out { animation: fadeOut 0.28s ease forwards; }
+        @keyframes fadeIn  { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+        @keyframes fadeOut { from{opacity:1} to{opacity:0} }
+
+        a { text-decoration:none; color:inherit; }
+        ul { list-style:none; }
+        img { display:block; max-width:100%; }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 40px);
+        }
+
+        /* =========================================================
+           LOADER
+           ========================================================= */
+        #loader {
+            position: fixed; inset:0;
+            background: var(--ivory);
+            z-index: 9999;
+            display: flex; align-items:center; justify-content:center;
+            transition: opacity 0.6s var(--ease), visibility 0.6s;
+        }
+        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-inner { text-align:center; }
+        .loader-icon {
+            width:72px; height:72px; border-radius:50%;
+            overflow:hidden; margin:0 auto 1.2rem;
+            box-shadow: 0 0 0 0 rgba(197,160,89,0.35);
+            animation: loaderPulse 2s ease-in-out infinite;
+        }
+        .loader-icon img { width:100%; height:100%; object-fit:cover; }
+        @keyframes loaderPulse {
+            0%,100%{ box-shadow:0 0 0 0 rgba(197,160,89,0.35); transform:scale(1); }
+            50%    { box-shadow:0 0 0 16px transparent; transform:scale(1.06); }
+        }
+        .loader-brand { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text); }
+        .loader-brand span { color:var(--gold); }
+        .loader-bar { width:160px; height:2px; background:var(--ivory-dark); border-radius:2px; margin:1.2rem auto 0; overflow:hidden; }
+        .loader-bar::after { content:''; display:block; height:100%; width:40%; background:var(--gold); border-radius:2px; animation:loaderBar 1.4s ease-in-out infinite; }
+        @keyframes loaderBar { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }
+
+        /* =========================================================
+           HEADER
+           ========================================================= */
+        header {
+            position: fixed; top:0; left:0; right:0; height:70px;
+            z-index: 500;
+            display: flex; align-items:center;
+            background: var(--glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-sm);
+        }
+        header .header-inner { display:flex; align-items:center; justify-content:space-between; width:100%; }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem; font-weight: 600;
+            color: var(--text); display:flex; align-items:center; gap:10px;
+        }
+        .logo-accent { color:var(--gold); font-style:italic; }
+        .logo-icon { width:38px; height:38px; border-radius:10px; overflow:hidden; box-shadow:var(--shadow-gold); flex-shrink:0; }
+        .logo-icon img { width:100%; height:100%; object-fit:cover; }
+
+        /* Hamburger */
+        .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
+        .hamburger span { width:22px; height:2px; background:var(--text); border-radius:2px; display:block; transition:all 0.3s; }
+
+        .top-nav-links { display:flex; gap:1.8rem; align-items:center; }
+        .top-nav-links a { font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.25s; }
+        .top-nav-links a:hover, .top-nav-links a.active { color:var(--gold); }
+        .top-nav-links .btn-book {
+            background:var(--gold); color:white; padding:0.5rem 1.4rem;
+            border-radius:var(--radius-pill); font-size:0.8rem; font-weight:600;
+            letter-spacing:0.06em; text-transform:uppercase; box-shadow:var(--shadow-gold); transition:all 0.25s;
+        }
+        .top-nav-links .btn-book:hover { background:var(--gold-light); transform:translateY(-1px); }
+
+        /* Mobile nav */
+        .mobile-menu {
+            display:none; position:absolute; top:70px; left:0; right:0;
+            background:white; border-bottom:1px solid var(--ivory-dark);
+            box-shadow:var(--shadow-md); padding:1.5rem;
+            flex-direction:column; gap:1rem;
+        }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a { font-size:0.9rem; font-weight:500; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); padding:0.5rem 0; border-bottom:1px solid var(--ivory-dark); }
+        .mobile-menu a:last-child { border:none; color:var(--gold); font-weight:600; }
+        @media(max-width:860px){ .top-nav-links{display:none;} .hamburger{display:flex;} }
+
+        /* =========================================================
+           VINTAGE HERO / PAGE HEADER
+           ========================================================= */
+        .page-hero {
+            padding: 130px 0 70px;
+            text-align: center;
+            background: var(--ivory);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content:'';
+            position:absolute; inset:0;
+            background: 
+                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(197,160,89,0.07) 0%, transparent 70%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A059' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events:none;
+        }
+        .page-hero-inner { position:relative; z-index:2; }
+
+        /* Ornamental top rule */
+        .ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .ornament-line { flex:1; max-width:80px; height:1px; background:linear-gradient(90deg, transparent, var(--gold)); }
+        .ornament-line.rev { background:linear-gradient(90deg, var(--gold), transparent); }
+        .ornament-diamond {
+            width:10px; height:10px;
+            background:var(--gold);
+            transform:rotate(45deg);
+            flex-shrink:0;
+        }
+        .ornament-text { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+        .page-hero h1 em { font-style:italic; color:var(--gold); }
+
+        .page-hero-desc {
+            font-family: 'IM Fell English', 'Georgia', serif;
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--muted);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Chapter ornamental divider */
+        .chapter-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 5rem 0 3.5rem;
+        }
+        .chapter-divider-line { flex:1; height:1px; background:var(--ivory-deeper); }
+        .chapter-divider-center {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--gold);
+            font-size:0.72rem;
+            font-weight:700;
+            letter-spacing:0.18em;
+            text-transform:uppercase;
+            white-space:nowrap;
+        }
+        .chapter-divider-center::before,
+        .chapter-divider-center::after {
+            content:'✦';
+            font-size:0.6rem;
+            color:var(--gold);
+            opacity:0.6;
+        }
+
+        /* =========================================================
+           VINTAGE TIMELINE
+           ========================================================= */
+        .timeline-section { padding: 0 0 7rem; background: var(--ivory); }
+        .timeline-intro {
+            text-align:center;
+            max-width:700px;
+            margin:0 auto 5rem;
+        }
+        .timeline-intro p {
+            font-family:'IM Fell English','Georgia',serif;
+            font-size:clamp(1rem,2vw,1.15rem);
+            font-style:italic;
+            color:var(--muted);
+            line-height:1.9;
+        }
+
+        /* Central timeline spine */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content:'';
+            position:absolute;
+            left:50%; top:0; bottom:0;
+            width:2px;
+            background: linear-gradient(to bottom,
+                transparent,
+                var(--gold) 8%,
+                var(--gold) 92%,
+                transparent);
+            transform:translateX(-50%);
+        }
+        @media(max-width:700px){
+            .timeline::before { left:28px; transform:none; }
+        }
+
+        .tl-item {
+            display:grid;
+            grid-template-columns:1fr 60px 1fr;
+            gap:0;
+            margin-bottom:5rem;
+            position:relative;
+        }
+        .tl-item:last-child { margin-bottom:0; }
+
+        /* Even items: content left, empty right */
+        .tl-item .tl-content { grid-column:1; text-align:right; padding-right:2.5rem; }
+        .tl-item .tl-spine  { grid-column:2; display:flex; flex-direction:column; align-items:center; }
+        .tl-item .tl-empty  { grid-column:3; }
+
+        /* Odd items: empty left, content right */
+        .tl-item.right .tl-content { grid-column:3; text-align:left; padding-right:0; padding-left:2.5rem; }
+        .tl-item.right .tl-empty  { grid-column:1; }
+
+        /* Spine node */
+        .tl-node {
+            width:44px; height:44px;
+            border-radius:50%;
+            background:white;
+            border:3px solid var(--gold);
+            display:flex; align-items:center; justify-content:center;
+            flex-shrink:0;
+            box-shadow:var(--shadow-gold), inset 0 0 0 4px rgba(197,160,89,0.08);
+            position:relative;
+            z-index:2;
+        }
+        .tl-node-num {
+            font-family:'Playfair Display',serif;
+            font-size:1rem; font-weight:700;
+            color:var(--gold); line-height:1;
+        }
+
+        /* Horizontal connector line */
+        .tl-connector {
+            flex:1;
+            width:2px;
+            background:linear-gradient(to bottom, rgba(197,160,89,0.2), transparent);
+        }
+
+        /* The vintage card */
+        .tl-card {
+            background: white;
+            border-radius:var(--radius);
+            border:1px solid var(--ivory-deeper);
+            box-shadow:var(--shadow-sm);
+            padding:2rem 2.2rem;
+            position:relative;
+            transition:all 0.4s var(--ease);
+
+            /* Aged paper feel */
+            background: linear-gradient(145deg, #FFFDF8 0%, #FEFDFA 50%, #FAF7F0 100%);
+        }
+        .tl-card::before {
+            content:'';
+            position:absolute;
+            inset:0;
+            border-radius:inherit;
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events:none;
+            opacity:0.5;
+        }
+        .tl-card:hover {
+            transform:translateY(-6px);
+            box-shadow:var(--shadow-md), 0 0 0 1px rgba(197,160,89,0.15);
+            border-color:rgba(197,160,89,0.25);
+        }
+
+        .tl-chapter-tag {
+            display:inline-flex; align-items:center; gap:6px;
+            font-size:0.7rem; font-weight:700;
+            letter-spacing:0.16em; text-transform:uppercase;
+            color:var(--gold); margin-bottom:0.7rem;
+        }
+        .tl-chapter-tag::before { content:'§'; font-size:0.85rem; }
+
+        .tl-card h3 {
+            font-family:'Playfair Display',serif;
+            font-size:1.4rem; font-weight:700;
+            color:var(--dark); margin-bottom:0.9rem;
+            line-height:1.25;
+        }
+        .tl-card p {
+            font-size:0.92rem; color:var(--muted); line-height:1.8;
+            font-family:'IM Fell English','Georgia',serif;
+        }
+        .tl-card-detail {
+            margin-top:1.2rem; padding-top:1rem;
+            border-top:1px solid var(--ivory-deeper);
+            display:flex; align-items:center; gap:0.6rem;
+            font-size:0.78rem; color:var(--muted); font-weight:500;
+        }
+        .tl-card-detail .detail-dot {
+            width:6px; height:6px; border-radius:50%;
+            background:var(--gold); flex-shrink:0;
+        }
+
+        /* Arrow pointing from card toward spine */
+        .tl-card.arrow-right::after {
+            content:'';
+            position:absolute;
+            right:-11px; top:50%;
+            transform:translateY(-50%);
+            border:10px solid transparent;
+            border-left-color:var(--ivory-deeper);
+        }
+        .tl-card.arrow-left::after {
+            content:'';
+            position:absolute;
+            left:-11px; top:50%;
+            transform:translateY(-50%);
+            border:10px solid transparent;
+            border-right-color:var(--ivory-deeper);
+        }
+
+        /* Mobile: stacked */
+        @media(max-width:700px){
+            .tl-item, .tl-item.right {
+                grid-template-columns:60px 1fr;
+                grid-template-rows:auto;
+            }
+            .tl-item .tl-spine { grid-column:1; grid-row:1; }
+            .tl-item .tl-content,
+            .tl-item.right .tl-content {
+                grid-column:2; grid-row:1;
+                text-align:left; padding-left:1.5rem; padding-right:0;
+            }
+            .tl-item .tl-empty,
+            .tl-item.right .tl-empty { display:none; }
+            .tl-card.arrow-right::after,
+            .tl-card.arrow-left::after { display:none; }
+        }
+
+        /* =========================================================
+           THE EXPERIENCE CALLOUT
+           ========================================================= */
+        .experience-callout {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .experience-callout::before {
+            content:'';
+            position:absolute; top:-50%; left:50%; transform:translateX(-50%);
+            width:900px; height:900px;
+            background:radial-gradient(circle, rgba(197,160,89,0.10) 0%, transparent 65%);
+            pointer-events:none;
+        }
+        .experience-callout h2 {
+            font-family:'Playfair Display',serif;
+            font-size:clamp(1.8rem,4vw,2.8rem);
+            color:white; margin-bottom:1rem; position:relative; z-index:2;
+        }
+        .experience-callout h2 em { font-style:italic; color:var(--gold); }
+        .experience-callout p { color:rgba(255,255,255,0.55); font-size:1rem; max-width:480px; margin:0 auto 2.5rem; position:relative; z-index:2; }
+
+        .callout-grid {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:1.5rem; max-width:760px;
+            margin:0 auto 3rem;
+            position:relative; z-index:2;
+        }
+        .callout-stat {
+            background:rgba(197,160,89,0.09);
+            border:1px solid rgba(197,160,89,0.2);
+            border-radius:var(--radius);
+            padding:1.5rem 1rem;
+        }
+        .callout-stat .stat-num {
+            font-family:'Playfair Display',serif;
+            font-size:2rem; color:var(--gold);
+            font-weight:700; display:block;
+            margin-bottom:0.3rem;
+        }
+        .callout-stat .stat-lbl { font-size:0.78rem; color:rgba(255,255,255,0.45); letter-spacing:0.08em; text-transform:uppercase; }
+        @media(max-width:600px){ .callout-grid{grid-template-columns:1fr;} }
+
+        .btn-gold {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:0.9rem 2rem; border-radius:var(--radius-pill);
+            font-size:0.9rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
+            background:var(--gold); color:white;
+            box-shadow:0 6px 28px rgba(197,160,89,0.35);
+            transition:all 0.28s; border:none; cursor:pointer;
+            position:relative; z-index:2;
+        }
+        .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 12px 40px rgba(197,160,89,0.45); }
+
+        /* =========================================================
+           SCIENCE SECTION
+           ========================================================= */
+        .science-section { padding:7rem 0; background:white; }
+        .science-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+        @media(max-width:760px){ .science-grid{grid-template-columns:1fr; gap:3rem;} }
+
+        .science-text h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.4rem); margin-bottom:1.2rem; }
+        .science-text h2 em { font-style:italic; color:var(--gold); }
+        .science-text p { font-size:0.95rem; color:var(--muted); line-height:1.9; margin-bottom:1.2rem; }
+
+        .science-facts { display:flex; flex-direction:column; gap:1rem; }
+        .fact-item {
+            display:flex; gap:1rem; align-items:flex-start;
+            padding:1.2rem; background:var(--ivory);
+            border-radius:var(--radius); border:1px solid var(--ivory-deeper);
+            transition:all 0.3s;
+        }
+        .fact-item:hover { border-color:rgba(197,160,89,0.25); background:linear-gradient(105deg,rgba(197,160,89,0.04),transparent); }
+        .fact-icon {
+            width:40px; height:40px; border-radius:10px;
+            background:linear-gradient(135deg,var(--gold),var(--gold-light));
+            display:flex; align-items:center; justify-content:center;
+            flex-shrink:0; box-shadow:0 4px 12px rgba(197,160,89,0.25);
+        }
+        .fact-icon svg { width:20px; height:20px; stroke:white; fill:none; }
+        .fact-body h4 { font-size:0.95rem; font-weight:600; margin-bottom:0.3rem; }
+        .fact-body p { font-size:0.85rem; color:var(--muted); margin:0; }
+
+        /* Reveal */
+        .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.85s var(--ease), transform 0.85s var(--ease); }
+        .reveal.active { opacity:1; transform:none; }
+        .reveal-left { opacity:0; transform:translateX(-30px); transition:opacity 0.85s var(--ease), transform 0.85s var(--ease); }
+        .reveal-left.active { opacity:1; transform:none; }
+        .reveal-right { opacity:0; transform:translateX(30px); transition:opacity 0.85s var(--ease), transform 0.85s var(--ease); }
+        .reveal-right.active { opacity:1; transform:none; }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+        footer { background:var(--dark-2); color:rgba(255,255,255,0.7); padding:4rem 0 2rem; }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2.5rem; }
+        .footer-logo { font-family:'Playfair Display',serif; font-size:1.25rem; color:white; margin-bottom:0.8rem; display:flex; align-items:center; gap:10px; }
+        .footer-logo span { color:var(--gold); }
+        .footer-logo img { width:34px; height:34px; border-radius:8px; object-fit:cover; }
+        .footer-about p { font-size:0.85rem; line-height:1.7; color:rgba(255,255,255,0.5); max-width:280px; }
+        .footer-col h5 { font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:1.2rem; }
+        .footer-col a { display:block; font-size:0.88rem; color:rgba(255,255,255,0.55); margin-bottom:0.6rem; transition:color 0.22s; }
+        .footer-col a:hover { color:var(--gold); }
+        .footer-divider { height:1px; background:rgba(255,255,255,0.07); margin-bottom:1.5rem; }
+        .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; font-size:0.8rem; color:rgba(255,255,255,0.3); }
+        @media(max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+        @media(max-width:560px){ .footer-grid{grid-template-columns:1fr;} .footer-bottom{flex-direction:column; text-align:center;} }
+    </style>
 </head>
-<body class="use-custom-cursor">
+<body>
 
-    <div id="loader">
-        <div class="loader-panel" role="status" aria-live="polite" aria-label="Loading">
-            <div class="loader-scan" aria-hidden="true"></div>
-            <div class="loader-grid" aria-hidden="true"></div>
-            <div class="loader-inner">
-                <div class="loader-mark" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M7.2 13.4c-1.1-1.1-1.7-2.6-1.7-4.1V7.6c0-1.1.9-2 2-2h9c1.1 0 2 .9 2 2v1.7c0 1.5-.6 3-1.7 4.1l-1.1 1.1c-.5.5-1.2.8-2 .8H10.3c-.7 0-1.4-.3-2-.8l-1.1-1.1Z" stroke="rgba(20,18,15,0.75)" stroke-width="1.6" stroke-linejoin="round"/>
-                        <path d="M8.2 7.2h7.6" stroke="rgba(20,18,15,0.55)" stroke-width="1.6" stroke-linecap="round"/>
-                    </svg>
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-inner">
+        <div class="loader-icon"><img src="logo.png" alt="Dentaverse Elite"></div>
+        <div class="loader-brand">Dentaverse <span>Elite</span></div>
+        <div class="loader-bar"></div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><img src="logo.png" alt="Dentaverse Elite Logo"></div>
+            Dentaverse <span class="logo-accent">Elite</span>
+        </a>
+        <nav class="top-nav-links">
+            <a href="index.html">Home</a>
+            <a href="how-it-works.html" class="active">How It Works</a>
+            <a href="products.html">Products</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html" class="btn-book">Book Experience</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="products.html">Products</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Book Experience →</a>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="container page-hero-inner reveal">
+        <div class="ornament">
+            <div class="ornament-line"></div>
+            <div class="ornament-diamond"></div>
+            <span class="ornament-text">The Dentaverse Method</span>
+            <div class="ornament-diamond"></div>
+            <div class="ornament-line rev"></div>
+        </div>
+        <h1>The Art &amp; Science of<br><em>Fearless Dentistry</em></h1>
+        <p class="page-hero-desc">"In the theatre of the mind, fear has no stage." Discover how Dentaverse Elite transforms every appointment from a source of dread into a moment of wonder.</p>
+    </div>
+</div>
+
+<!-- VINTAGE TIMELINE -->
+<section class="timeline-section">
+    <div class="container">
+        <div class="timeline-intro reveal">
+            <p>"The journey from anxiety to serenity is not one of chance, but of careful craft. Each step has been engineered with both clinical precision and the gentleness of a patient hand."</p>
+        </div>
+
+        <div class="timeline">
+
+            <!-- Chapter I -->
+            <div class="tl-item">
+                <div class="tl-content">
+                    <div class="tl-card arrow-right reveal">
+                        <div class="tl-chapter-tag">Chapter I</div>
+                        <h3>The Consultation</h3>
+                        <p>Before a single headset is fitted, the clinician engages in a brief, warm conversation with the patient. What brings them joy? What calms their mind? A mountain retreat, an ocean horizon, the gentle hum of a forest? This conversation shapes everything that follows.</p>
+                        <div class="tl-card-detail">
+                            <div class="detail-dot"></div>
+                            <span>Average duration: 3–5 minutes</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="loader-title">Dentaverse</div>
-                <div class="loader-sub">Elite</div>
-                <div class="loader-progress" aria-hidden="true"><span></span></div>
-                <div class="loader-status" id="loader-status">Preparing your experience…</div>
+                <div class="tl-spine">
+                    <div class="tl-node"><span class="tl-node-num">I</span></div>
+                    <div class="tl-connector"></div>
+                </div>
+                <div class="tl-empty"></div>
+            </div>
+
+            <!-- Chapter II -->
+            <div class="tl-item right">
+                <div class="tl-empty"></div>
+                <div class="tl-spine">
+                    <div class="tl-node"><span class="tl-node-num">II</span></div>
+                    <div class="tl-connector"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-card arrow-left reveal">
+                        <div class="tl-chapter-tag">Chapter II</div>
+                        <h3>Selecting the World</h3>
+                        <p>The patient is invited to browse a curated library of over fifty immersive environments — each one developed in collaboration with psychologists and relaxation specialists. From starlit galaxies to sunlit meadows, every scene is a portal to calm.</p>
+                        <div class="tl-card-detail">
+                            <div class="detail-dot"></div>
+                            <span>50+ therapeutic environments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter III -->
+            <div class="tl-item">
+                <div class="tl-content">
+                    <div class="tl-card arrow-right reveal">
+                        <div class="tl-chapter-tag">Chapter III</div>
+                        <h3>The Fitting</h3>
+                        <p>Our clinical team carefully fits the patient with a lightweight, medically certified VR headset — each unit sanitised with a disposable, single-use hygiene barrier before every appointment. The headset is engineered to allow full clinical access to the oral area, so the dentist may proceed unimpeded.</p>
+                        <div class="tl-card-detail">
+                            <div class="detail-dot"></div>
+                            <span>Medical-grade hygiene protocol observed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tl-spine">
+                    <div class="tl-node"><span class="tl-node-num">III</span></div>
+                    <div class="tl-connector"></div>
+                </div>
+                <div class="tl-empty"></div>
+            </div>
+
+            <!-- Chapter IV -->
+            <div class="tl-item right">
+                <div class="tl-empty"></div>
+                <div class="tl-spine">
+                    <div class="tl-node"><span class="tl-node-num">IV</span></div>
+                    <div class="tl-connector"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-card arrow-left reveal">
+                        <div class="tl-chapter-tag">Chapter IV</div>
+                        <h3>Immersion Begins</h3>
+                        <p>The moment the chosen environment loads, the transformation is immediate. Clinical sights, bright overhead lights, and the sound of instruments dissolve. In their place: the sound of waves, birdsong, or a distant wind through ancient pines. The patient's breathing slows. Their grip on the armrest releases.</p>
+                        <div class="tl-card-detail">
+                            <div class="detail-dot"></div>
+                            <span>Anxiety measurably reduced within 90 seconds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter V -->
+            <div class="tl-item">
+                <div class="tl-content">
+                    <div class="tl-card arrow-right reveal">
+                        <div class="tl-chapter-tag">Chapter V</div>
+                        <h3>The Treatment</h3>
+                        <p>With the patient's mind peacefully occupied elsewhere, the dentist is free to perform their work with precision and confidence. Patients who once required repeated breaks — or could not attend at all — sit calmly for the full duration. The clinician and patient, each at their best.</p>
+                        <div class="tl-card-detail">
+                            <div class="detail-dot"></div>
+                            <span>Fewer disruptions. Better clinical outcomes.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tl-spine">
+                    <div class="tl-node"><span class="tl-node-num">V</span></div>
+                    <div class="tl-connector"></div>
+                </div>
+                <div class="tl-empty"></div>
+            </div>
+
+            <!-- Chapter VI -->
+            <div class="tl-item right">
+                <div class="tl-empty"></div>
+                <div class="tl-spine">
+                    <div class="tl-node"><span class="tl-node-num">VI</span></div>
+                    <div class="tl-connector"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-card arrow-left reveal">
+                        <div class="tl-chapter-tag">Chapter VI</div>
+                        <h3>The Return &amp; Reflection</h3>
+                        <p>As the procedure concludes, the patient is gently guided back. Many describe the experience as feeling shorter than expected — the hallmark of genuine cognitive engagement. A brief wellness check and optional digital feedback report round out each session, ensuring every visit improves upon the last.</p>
+                        <div class="tl-card-detail">
+                            <div class="detail-dot"></div>
+                            <span>Session feedback informs future visits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.timeline -->
+
+        <div class="chapter-divider reveal">
+            <div class="chapter-divider-line"></div>
+            <div class="chapter-divider-center">Finis — The Experience Concluded</div>
+            <div class="chapter-divider-line"></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SCIENCE SECTION -->
+<section class="science-section">
+    <div class="container science-grid">
+        <div class="science-text reveal-left">
+            <span style="font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem;">The Science Behind It</span>
+            <h2>Why VR Works for<br><em>Dental Anxiety</em></h2>
+            <p>The brain cannot fully process two streams of vivid sensory experience simultaneously. By occupying the visual, auditory, and spatial cortex with a rich, immersive environment, VR effectively gates the perception of discomfort and clinical stimuli.</p>
+            <p>This is not distraction in the conventional sense — it is a clinically validated form of <strong>cognitive offloading</strong>, studied across over forty peer-reviewed papers in dental and surgical contexts.</p>
+        </div>
+        <div class="science-facts reveal-right">
+            <div class="fact-item">
+                <div class="fact-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="fact-body">
+                    <h4>Peer-Reviewed Efficacy</h4>
+                    <p>VR distraction therapy is backed by clinical trials demonstrating significant reduction in both perceived pain and procedural anxiety scores.</p>
+                </div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <div class="fact-body">
+                    <h4>Shorter Perceived Time</h4>
+                    <p>Patients consistently report appointments feeling shorter than they were — a direct effect of deep immersion engagement.</p>
+                </div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div class="fact-body">
+                    <h4>Measurable Physiological Change</h4>
+                    <p>Studies record lower heart rate variance and reduced salivary cortisol in VR-assisted dental patients versus control groups.</p>
+                </div>
             </div>
         </div>
     </div>
+</section>
 
-    <header>
-        <div class="container">
-            <div class="nav-container">
-                <a href="index.html" class="logo">
-                    <div class="logo-box" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M7.2 13.4c-1.1-1.1-1.7-2.6-1.7-4.1V7.6c0-1.1.9-2 2-2h9c1.1 0 2 .9 2 2v1.7c0 1.5-.6 3-1.7 4.1l-1.1 1.1c-.5.5-1.2.8-2 .8H10.3c-.7 0-1.4-.3-2-.8l-1.1-1.1Z" stroke="rgba(255,255,255,0.92)" stroke-width="1.6" stroke-linejoin="round"/>
-                            <path d="M8.2 7.2h7.6" stroke="rgba(255,255,255,0.7)" stroke-width="1.6" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    Dentaverse <span class="text-gradient" style="font-weight:850;">Elite</span>
-                </a>
-                <nav id="nav-menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="how-it-works.html" class="active">How It Works</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+<!-- CALLOUT -->
+<section class="experience-callout">
+    <div class="container">
+        <h2>Ready to Begin<br>the <em>Experience</em>?</h2>
+        <p>Contact us today to arrange a free demonstration for your clinic, or find a Dentaverse Elite partner near you.</p>
+
+        <div class="callout-grid">
+            <div class="callout-stat">
+                <span class="stat-num">50+</span>
+                <span class="stat-lbl">VR Environments</span>
+            </div>
+            <div class="callout-stat">
+                <span class="stat-num">6</span>
+                <span class="stat-lbl">Step Process</span>
+            </div>
+            <div class="callout-stat">
+                <span class="stat-num">100%</span>
+                <span class="stat-lbl">Clinical Access</span>
             </div>
         </div>
-    </header>
 
-    <main class="page-main">
-        <section class="page-header text-center reveal">
-            <div class="container">
-                <h1>The <span class="text-gradient">Elite Process</span></h1>
-                <p style="max-width: 720px; margin: 0 auto; color: var(--text-muted);">
-                    Four simple steps to transform the dental experience—from fear and anxiety to calm, distraction-free comfort.
-                </p>
-            </div>
-        </section>
+        <a href="contact.html" class="btn-gold">Book a free demonstration</a>
+    </div>
+</section>
 
-        <section class="timeline-section" style="padding: 60px 0;">
-            <div class="container">
-                <div class="timeline">
-                    <!-- Step 1 -->
-                    <div class="timeline-item left reveal">
-                        <div class="timeline-content">
-                            <div class="timeline-number">1</div>
-                            <h3>Choose Experience</h3>
-                            <p>The patient selects a relaxing VR environment—beach, forest, or serene nature scenes—tailored to their preference.</p>
-                        </div>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="timeline-item right reveal" style="transition-delay: 0.1s;">
-                        <div class="timeline-content">
-                            <div class="timeline-number">2</div>
-                            <h3>Wear VR Headset</h3>
-                            <p>A lightweight, hygienically designed headset is placed before the procedure begins—comfortable for all ages.</p>
-                        </div>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="timeline-item left reveal" style="transition-delay: 0.2s;">
-                        <div class="timeline-content">
-                            <div class="timeline-number">3</div>
-                            <h3>Immersive Relaxation</h3>
-                            <p>Calming visuals and soothing audio transport the patient’s mind away—dramatically reducing stress and anxiety.</p>
-                        </div>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="timeline-item right reveal" style="transition-delay: 0.3s;">
-                        <div class="timeline-content">
-                            <div class="timeline-number">4</div>
-                            <h3>Comfortable Treatment</h3>
-                            <p>Dentists can work with a calmer, more cooperative patient—improving outcomes and reducing interruptions.</p>
-                        </div>
-                    </div>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Dentaverse Elite">
+                    Dentaverse <span>Elite</span>
                 </div>
+                <p>Redefining dental care through the power of immersive VR technology. Making every visit calm and positive.</p>
             </div>
-        </section>
-
-        <section class="faq-accordion" style="padding: 80px 0; background: var(--bg-light);">
-            <div class="container">
-                <div class="section-header text-center reveal">
-                    <h2>Advanced Questions</h2>
-                </div>
-                <div class="accordion reveal">
-                    <div class="acc-item">
-                        <div class="acc-header" onclick="this.parentElement.classList.toggle('active')">
-                            What type of content is available?
-                            <span>+</span>
-                        </div>
-                        <div class="acc-content">
-                            <p>Patients can choose from educational videos, cartoons & entertainment, relaxation environments (beaches/forests/nature), and music therapy.</p>
-                        </div>
-                    </div>
-                    <div class="acc-item">
-                        <div class="acc-header" onclick="this.parentElement.classList.toggle('active')">
-                            Is it suitable for children and anxious patients?
-                            <span>+</span>
-                        </div>
-                        <div class="acc-content">
-                            <p>Yes. The headset is lightweight and adjustable, and the content library includes cartoons and calming experiences designed for children and nervous patients.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="products.html">Products</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About Us</a>
+                <a href="blog.html">Blog</a>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 Dentaverse Elite. All Rights Reserved.</p>
+            <div class="footer-col">
+                <h5>Connect</h5>
+                <a href="contact.html">Book Experience</a>
+                <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
+                <a href="tel:+447887772083">+44 7887 772083</a>
             </div>
         </div>
-    </footer>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
+            <span>Crafted with care in the UK</span>
+        </div>
+    </div>
+</footer>
 
-    <!-- Mobile Bottom Nav -->
-    <nav class="bottom-nav" aria-label="Primary">
-        <a href="index.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.5 12 4l8 6.5V20a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 20v-9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.2 21.5v-6.2c0-.8.6-1.4 1.4-1.4h2.8c.8 0 1.4.6 1.4 1.4v6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Home
-        </a>
-        <a class="active" href="how-it-works.html" aria-current="page">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M7 4.5h10M7 8.5h10M7 12.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M6.5 3.5h11A2.5 2.5 0 0 1 20 6v12a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 18V6a2.5 2.5 0 0 1 2.5-2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Process
-        </a>
-        <a href="products.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M7 8.5h10c1.1 0 2 .9 2 2v5.2c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2v-5.2c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5V7.3c0-1 .8-1.8 1.8-1.8h2.4c1 0 1.8.8 1.8 1.8v1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            Products
-        </a>
-        <a href="about.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 12.2a4 4 0 1 0-0.01 0Z" stroke="currentColor" stroke-width="1.6"/><path d="M4.6 20c1.6-3.2 4.2-4.8 7.4-4.8s5.8 1.6 7.4 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            About
-        </a>
-        <a href="contact.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 7.2 12 12l7.5-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 6h12.6A1.7 1.7 0 0 1 20 7.7v8.6A1.7 1.7 0 0 1 18.3 18H5.7A1.7 1.7 0 0 1 4 16.3V7.7A1.7 1.7 0 0 1 5.7 6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Contact
-        </a>
-    </nav>
-
-    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
-
-    <script>
-/* 
-   Dentaverse Elite - Navigation Logic
-   Handles page transitions and menu
-*/
-
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initial Page Load Fade In
-    document.body.classList.add('fade-in');
+    document.body.classList.add('ready');
+    setTimeout(() => document.getElementById('loader')?.classList.add('hidden'), 1400);
 
-    // 2. Navigation Interceptor for Transitions
-    const navLinks = document.querySelectorAll('a[href]');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Page transitions
+    document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', e => {
             const href = link.getAttribute('href');
-            
-            // Ignore external and anchor links
-            if (href.startsWith('http') || href.startsWith('#')) return;
-
+            if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
             e.preventDefault();
-            
-            // Fade out
             document.body.classList.add('fade-out');
-            
-            setTimeout(() => {
-                window.location.href = href;
-            }, 300);
+            setTimeout(() => window.location.href = href, 280);
         });
     });
 
-    // 3. Hamburger Menu
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+
+    // Mobile menu
     const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav-menu');
-    
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('is-active');
-        });
+    const menu = document.getElementById('mobileMenu');
+    if(hamburger && menu){
+        hamburger.addEventListener('click', () => menu.classList.toggle('open'));
     }
 
-    // 4. Loader removal
-    const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            loader.style.visibility = 'hidden';
-        }, 1500);
-    }
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const h = document.querySelector('header');
+        h.style.background = window.scrollY > 40 ? 'rgba(253,252,249,0.96)' : 'rgba(253,252,249,0.82)';
+    }, { passive: true });
 });
-
-</script>
-    <script>
-/*
-  Dentaverse Elite - Loader status text (optional)
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('loader-status');
-  if (!el) return;
-
-  const statuses = [
-    'Preparing your experience…',
-    'Loading calming scenes…',
-    'Optimising for mobile…',
-    'Finalising interface…'
-  ];
-
-  let i = 0;
-  const tick = () => {
-    i = (i + 1) % statuses.length;
-    el.textContent = statuses[i];
-  };
-
-  const t = setInterval(tick, 500);
-
-  // Stop when loader is hidden
-  const loader = document.getElementById('loader');
-  if (!loader) return;
-  const obs = new MutationObserver(() => {
-    const s = getComputedStyle(loader);
-    if (s.visibility === 'hidden' || s.opacity === '0') {
-      clearInterval(t);
-      obs.disconnect();
-    }
-  });
-  obs.observe(loader, { attributes: true, attributeFilter: ['style', 'class'] });
-});
-
-
-</script>
-    <script>
-/* 
-   Dentaverse Elite - Scroll & Viewport Animations
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Intersection Observer for Reveals
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.15
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // 2. Animated Counters
-    const counters = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute('data-target'));
-                animateValue(entry.target, 0, target, 2000);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    });
-
-    counters.forEach(counter => counterObserver.observe(counter));
-
-    function animateValue(obj, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    // 3. Progress Bars
-    const progressBars = document.querySelectorAll('.progress-bar');
-    const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.getAttribute('data-width');
-                entry.target.style.width = width + '%';
-                barObserver.unobserve(entry.target);
-            }
-        });
-    });
-
-    progressBars.forEach(bar => barObserver.observe(bar));
-});
-
-</script>
-    <script>
-/* 
-  Dentaverse Elite - Premium Cursor
-  Desktop only (CSS gates via @media(pointer:fine))
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  const dot = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (!dot || !ring) return;
-
-  const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
-  if (!isFinePointer) return;
-
-  let mx = window.innerWidth / 2;
-  let my = window.innerHeight / 2;
-  let rx = mx;
-  let ry = my;
-  let visible = true;
-
-  const setVisible = (isVisible) => {
-    visible = isVisible;
-    const v = isVisible ? '1' : '0';
-    dot.style.opacity = v;
-    ring.style.opacity = v;
-  };
-
-  const onMove = (e) => {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.left = `${mx}px`;
-    dot.style.top = `${my}px`;
-    if (!visible) setVisible(true);
-  };
-
-  document.addEventListener('mousemove', onMove, { passive: true });
-  window.addEventListener('mouseleave', () => setVisible(false), { passive: true });
-  window.addEventListener('mouseenter', () => setVisible(true), { passive: true });
-
-  const animate = () => {
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    ring.style.left = `${rx}px`;
-    ring.style.top = `${ry}px`;
-    requestAnimationFrame(animate);
-  };
-  animate();
-
-  const setHover = (isHover) => {
-    dot.classList.toggle('is-hover', isHover);
-    ring.classList.toggle('is-hover', isHover);
-  };
-
-  document.addEventListener('pointerover', (e) => {
-    const el = e.target;
-    if (!(el instanceof Element)) return;
-    if (el.closest('a, button, input, textarea, select, [role="button"]')) setHover(true);
-  }, { passive: true });
-
-  document.addEventListener('pointerout', (e) => {
-    const el = e.relatedTarget;
-    if (el instanceof Element && el.closest('a, button, input, textarea, select, [role="button"]')) return;
-    setHover(false);
-  }, { passive: true });
-});
-
-
 </script>
 </body>
 </html>
