@@ -1,733 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Contact Us | Dentaverse Elite</title>
     <meta name="description" content="Book a demo, reach out to us, or find a Dentaverse Elite clinic near you.">
     <link rel="stylesheet" href="theme.css">
-    /* ==========================================================================
-    DENTAVERSE ELITE - UNIVERSAL THEME
-    ========================================================================== */
-
-    :root {
-    --ivory: #FCFCFA;
-    --ivory-dark: #F5F4F0;
-    --gold-primary: #C5A059;
-    --gold-hover: #D4AF37;
-    --text-dark: #1A1A1A;
-    --text-muted: #5A5A5A;
-    --pastel-mint: #EBF3F0;
-    --white: #FFFFFF;
-    --shadow-subtle: 0 10px 40px rgba(0, 0, 0, 0.04);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --shadow-premium: var(--shadow-subtle);
-    --primary: var(--gold-primary);
-    --primary-dark: var(--gold-hover);
-    --text: var(--text-dark);
-    }
-
-    *,
-    *::before,
-    *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
-
-    html {
-    scroll-behavior: smooth;
-    }
-
-    body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--ivory);
-    color: var(--text-dark);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    opacity: 0;
-    }
-
-    body.fade-in { animation: pageFadeIn 0.45s forwards; }
-    body.fade-out { animation: pageFadeOut 0.28s forwards; }
-
-    @keyframes pageFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-    }
-
-    @keyframes pageFadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-    }
-
-    h1, h2, h3, h4 {
-    font-family: "Optima", "Georgia", serif;
-    font-weight: 500;
-    color: var(--text-dark);
-    letter-spacing: 0.02em;
-    }
-
-    p {
-    color: var(--text-muted);
-    font-size: clamp(14px, 2.1vw, 17px);
-    }
-
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-
-    .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(16px, 4vw, 32px);
-    }
-
-    .page-main {
-    padding-top: 88px;
-    padding-bottom: 40px;
-    }
-
-    @media (min-width: 768px) {
-    .page-main { padding-top: 104px; padding-bottom: 56px; }
-    }
-
-    /* ==========================================================================
-    BUTTONS
-    ========================================================================== */
-    .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    min-width: 48px;
-    padding: 0.85rem 1.6rem;
-    border-radius: 999px;
-    font-size: clamp(14px, 1.6vw, 15px);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    }
-
-    .btn-gold,
-    .btn-primary {
-    background-color: var(--gold-primary);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.28);
-    }
-
-    .btn-gold:hover,
-    .btn-primary:hover {
-    background-color: var(--gold-hover);
-    transform: translateY(-1px);
-    }
-
-    .btn-outline {
-    background-color: transparent;
-    color: var(--text-dark);
-    border: 1px solid var(--text-dark);
-    }
-
-    .btn-outline:hover {
-    background-color: var(--text-dark);
-    color: var(--white);
-    }
-
-    .btn-block { width: 100%; }
-
-    /* ==========================================================================
-    HEADER & NAV
-    ========================================================================== */
-    header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(252, 252, 250, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 74px;
-    }
-
-    .logo {
-    font-family: "Optima", serif;
-    font-size: clamp(20px, 2.2vw, 24px);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    }
-
-    .logo img {
-    width: 34px;
-    height: 34px;
-    object-fit: cover;
-    border-radius: 8px;
-    }
-
-    .logo-accent { color: var(--gold-primary); }
-
-    .logo-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: #fff url("logo.png") center/cover no-repeat;
-    border: 1px solid rgba(0,0,0,0.06);
-    }
-
-    #nav-menu ul {
-    display: flex;
-    gap: 1.8rem;
-    }
-
-    #nav-menu a {
-    font-size: clamp(14px, 1.6vw, 14px);
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    }
-
-    #nav-menu a:hover,
-    #nav-menu a.active {
-    color: var(--gold-primary);
-    }
-
-    .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-    }
-
-    .hamburger span {
-    width: 22px;
-    height: 2px;
-    background: var(--text-dark);
-    border-radius: 2px;
-    }
-
-    @media (max-width: 860px) {
-    .hamburger { display: flex; }
-
-    #nav-menu {
-    display: none;
-    position: absolute;
-    top: 74px;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.04);
-    }
-
-    #nav-menu.active { display: block; }
-
-    #nav-menu ul {
-    flex-direction: column;
-    padding: 1.2rem 1.1rem 1.3rem;
-    gap: 0.5rem;
-    }
-
-    #nav-menu a {
-    display: block;
-    padding: 0.75rem 0.25rem;
-    }
-    }
-
-    /* ==========================================================================
-    COMMON PAGE BLOCKS
-    ========================================================================== */
-    .section-title {
-    text-align: center;
-    font-size: clamp(30px, 4vw, 44px);
-    margin-bottom: 0.7rem;
-    }
-
-    .section-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: clamp(14px, 2vw, 18px);
-    margin-bottom: 2.5rem;
-    max-width: 700px;
-    margin-inline: auto;
-    }
-
-    .card {
-    background: var(--white);
-    border-radius: 14px;
-    box-shadow: var(--shadow-subtle);
-    border: 1px solid rgba(0,0,0,0.03);
-    }
-
-    /* ==========================================================================
-    FOOTER
-    ========================================================================== */
-    footer {
-    background-color: var(--text-dark);
-    color: var(--white);
-    padding: 3.5rem 0 1.6rem;
-    margin-top: 3rem;
-    }
-
-    .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 2.5rem;
-    margin-bottom: 2rem;
-    }
-
-    .footer-about p,
-    .footer-links a,
-    .footer-contact p {
-    color: #A0A0A0;
-    }
-
-    .footer-links h4,
-    .footer-contact h4 {
-    color: var(--white);
-    margin-bottom: 0.9rem;
-    font-size: clamp(18px, 2vw, 20px);
-    }
-
-    .footer-links li { margin-bottom: 0.55rem; }
-    .footer-links a:hover { color: var(--gold-primary); }
-
-    .footer-bottom {
-    text-align: center;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: #A0A0A0;
-    font-size: clamp(14px, 1.5vw, 14px);
-    }
-
-    @media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ==========================================================================
-    LOADER (PREMIUM DENTAL TECH AESTHETIC)
-    ========================================================================== */
-    #loader {
-    position: fixed;
-    inset: 0;
-    background: rgba(252, 252, 250, 0.98);
-    backdrop-filter: blur(20px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
-    }
-
-    .loader-panel {
-    width: min(400px, 85vw);
-    padding: 3rem 2rem;
-    border-radius: 20px;
-    background: transparent;
-    text-align: center;
-    position: relative;
-    }
-
-    .loader-scan {
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05), transparent);
-    animation: scanPulse 3s linear infinite;
-    pointer-events: none;
-    }
-
-    @keyframes scanPulse {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-    }
-
-    .loader-grid { display: none; } /* keep grid hidden for clean look */
-
-    .loader-inner {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    }
-
-    .loader-mark {
-    background: var(--white);
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
-    margin-bottom: 0.5rem;
-    animation: loaderFloat 3s ease-in-out infinite;
-    }
-
-    .loader-mark svg {
-    stroke: var(--gold-primary);
-    width: 32px; height: 32px;
-    }
-
-    @keyframes loaderFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    }
-
-    .loader-title {
-    font-family: "Optima", "Georgia", serif;
-    font-size: clamp(24px, 3vw, 28px);
-    color: var(--text-dark);
-    line-height: 1;
-    }
-
-    .loader-sub {
-    font-size: 14px;
-    color: var(--gold-primary);
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    }
-
-    .loader-progress {
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: rgba(197, 160, 89, 0.2);
-    overflow: hidden;
-    position: relative;
-    }
-
-    .loader-progress > span {
-    display: block;
-    position: absolute;
-    left: -100%;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-    animation: progressLoad 1.5s ease-in-out infinite;
-    }
-
-    @keyframes progressLoad {
-    0% { left: -100%; }
-    100% { left: 100%; }
-    }
-
-    .loader-status {
-    font-size: 13px;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
-    margin-top: 1rem;
-    animation: pulseText 2s ease-in-out infinite;
-    }
-
-    @keyframes pulseText {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-    }
-
-    /* ==========================================================================
-    LEGACY UTILS (for compatibility)
-    ========================================================================== */
-    .text-gradient { color: var(--gold-primary); }
-    .page-header p { max-width: 760px; margin-inline: auto; }
-
-    /* Disable custom cursor for stability */
-    .cursor-dot,
-    .cursor-ring {
-    display: none !important;
-    }
-
-    .bottom-nav { display: none !important; }
-
-    </style>
     <style>
-        /* 
-   Dentaverse Elite - Animations
-   Clean, hardware-accelerated animations 
-*/
-
-        /* Page Transitions */
-        @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes pageFadeOut {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
-
-        /* 3D Floating VR Headset */
-        @keyframes vrFloat {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotateY(0deg) rotateX(0deg);
-            }
-
-            33% {
-                transform: translateY(-20px) rotateY(10deg) rotateX(5deg);
-            }
-
-            66% {
-                transform: translateY(-10px) rotateY(-10deg) rotateX(-5deg);
-            }
-        }
-
-        /* Gradient Background Shift */
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .animated-bg {
-            background-size: 400% 400%;
-            animation: gradientShift 10s ease infinite;
-        }
-
-        /* Staggered Reveals */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 3D Card Flip
-   Mobile base: OFF (prevents overlap + weird touch behavior)
-   Enable on larger screens only.
-*/
-        .flip-card {
-            perspective: none;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: none;
-            transform-style: flat;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: none;
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            position: relative;
-            width: 100%;
-            height: auto;
-            backface-visibility: visible;
-            border-radius: 20px;
-        }
-
-        .flip-card-back {
-            display: none;
-        }
-
-        @media (min-width: 768px) and (pointer: fine) {
-            .flip-card {
-                perspective: 1000px;
-            }
-
-            .flip-card-inner {
-                transition: transform 0.8s;
-                transform-style: preserve-3d;
-            }
-
-            .flip-card-front,
-            .flip-card-back {
-                position: absolute;
-                height: 100%;
-                backface-visibility: hidden;
-            }
-
-            .flip-card-back {
-                display: block;
-                transform: rotateY(180deg);
-            }
-
-            .flip-card:hover .flip-card-inner {
-                transform: rotateY(180deg);
-            }
-        }
-
-        /* Glowing Pulse */
-        @keyframes pulseGlow {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.4);
-            }
-
-            70% {
-                box-shadow: 0 0 0 20px rgba(0, 180, 216, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 180, 216, 0);
-            }
-        }
-
-        .pulse {
-            animation: pulseGlow 2s infinite;
-        }
-
-        /* Typing Animation */
-        .typing {
-            /* Mobile base: no typing animation (prevents cut/offscreen) */
-            overflow: visible;
-            white-space: normal;
-            border-right: 0;
-            animation: none;
-        }
-
-        @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-            .typing {
-                overflow: hidden;
-                white-space: nowrap;
-                border-right: 3px solid var(--primary);
-                animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-                will-change: width;
-            }
-        }
-
-        @keyframes typing {
-            from {
-                width: 0
-            }
-
-            to {
-                width: 100%
-            }
-        }
-
-        @keyframes blink-caret {
-
-            from,
-            to {
-                border-color: transparent
-            }
-
-            50% {
-                border-color: var(--primary)
-            }
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            background: #eee;
-            border-radius: 10px;
-            height: 10px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background: var(--gradient);
-            transition: width 1.5s ease-out;
-        }
-
-        /* Ambient Ambient Light */
-        .ambient-light {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            filter: blur(80px);
-            opacity: 0.2;
-            z-index: -1;
-            animation: ambientFlow 20s linear infinite;
-        }
-
-        /* Image Reveal Wipe */
-        .reveal-wipe {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reveal-wipe::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            transform: translateX(-101%);
-            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
-            z-index: 2;
-        }
-
-        .reveal-wipe.active::after {
-            transform: translateX(101%);
-        }
-
-        .reveal-wipe img {
-            opacity: 0;
-            transition: opacity 0.1s 0.5s;
-        }
-
-        .reveal-wipe.active img {
-            opacity: 1;
-        }
-    </style>
-    <style>
-        /* 
-   Dentaverse Elite - Contact Page Specific
-*/
-
         .contact-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -738,852 +17,463 @@
         .contact-form-card {
             background: rgba(255, 253, 250, 0.72);
             border: 1px solid rgba(20, 18, 15, 0.10);
-            padding: clamp(16px, 4vw, 20px);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-premium);
-            backdrop-filter: blur(12px);
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .form-group label {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--text-muted);
-            transition: 0.3s;
-            pointer-events: none;
-        }
-
-        .form-group.focused label,
-        .form-group input:not(:placeholder-shown)~label {
-            top: -25px;
-            left: 5px;
-            font-size: clamp(14px, 3.2vw, 15px);
-            color: var(--primary);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid rgba(20, 18, 15, 0.12);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 15px;
-            transition: var(--transition-smooth);
-            background: rgba(255, 255, 255, 0.65);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.1);
-        }
-
-        .contact-info-list {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .contact-info-item {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 180, 216, 0.1);
-            color: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .error-msg {
-            color: #ef4444;
-            font-size: clamp(14px, 3.2vw, 15px);
-            font-weight: 700;
-            margin-top: 5px;
-            display: block;
-        }
-
-        .map-container {
-            height: 300px;
-            background: #eee;
+            padding: clamp(20px, 4vw, 48px);
             border-radius: 20px;
-            margin-top: 40px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
         @media (min-width: 960px) {
-            .contact-layout {
-                grid-template-columns: 1.2fr 0.8fr;
-                gap: 70px;
-            }
-
-            .contact-form-card {
-                padding: 54px;
-            }
+            .contact-layout { grid-template-columns: 1.2fr 0.8fr; gap: 70px; }
         }
 
-        </head><body>< !-- LOADER --><div id="loader"><div class="dv-loader"><div class="dv-loader-icon"><img src="logo.png" alt="Dentaverse Elite"></div><div class="dv-loader-brand">Dentaverse <em>Elite</em></div><div class="dv-loader-bar"></div></div></div>< !-- HEADER --><header class="dv-header" id="dvHeader"><div class="container dv-nav"><a href="index.html" class="dv-logo"><div class="dv-logo-img"><img src="logo.png" alt="Dentaverse Elite"></div>Dentaverse <em>Elite</em></a><nav class="dv-nav-links"><a href="index.html">Home</a><a href="how-it-works.html">How It Works</a><a href="products.html">Products</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="blog.html">Blog</a></nav><div class="dv-nav-right"><a href="contact.html" class="dv-btn-book active">Book Experience</a><button class="dv-hamburger" id="dvHamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></div><div class="dv-mobile-menu" id="dvMobileMenu"><a href="index.html">Home</a><a href="how-it-works.html">How It Works</a><a href="products.html">Products</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html" class="dv-mobile-cta">Book Experience</a></div></header><main class="page-main" style="padding-bottom: 100px;"><div class="container"><section class="page-header text-center reveal"><h1>Get in <span class="text-gradient">Touch</span></h1><p style="color: var(--text-muted);">Ready to upgrade your clinic or book a session? We're here to help.</p>
- </section><div class="contact-layout">< !-- Contact Form --><div class="contact-form-side reveal"><div class="contact-form-card">< !-- EmailJS status banner --><div id="ej-notice" style="
- display:none;
-        padding:12px 16px;
-        border-radius:12px;
-        font-size:0.85rem;
-        font-weight:600;
-        margin-bottom:1.5rem;
-        line-height:1.4;
-        "></div>
+        .contact-info-list { display: flex; flex-direction: column; gap: 36px; }
 
-        <form id="contact-form" novalidate><div class="form-group"><input type="text" id="name" name="from_name" required placeholder=" " autocomplete="name"><label for="name">Full Name</label></div><div class="form-group"><input type="email" id="email" name="reply_to" required placeholder=" " autocomplete="email"><label for="email">Email Address</label></div><div class="form-group"><input type="text" id="subject" name="subject" placeholder=" "><label for="subject">Subject</label></div><div class="form-group"><textarea id="message" name="message" rows="5" required placeholder=" "></textarea><label for="message">Your Message</label></div><button type="submit" class="btn btn-primary btn-block" id="submit-btn"><span id="btn-text">Send Message</span><svg id="btn-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none;animation:spin 0.8s linear infinite;"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" /></svg></button></form></div></div>< !-- Contact Info --><div class="contact-info-side reveal" style="transition-delay: 0.1s;"><div class="contact-info-list"><div class="contact-info-item"><div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 21s6-6.8 6-11.2A6 6 0 1 0 6 9.8C6 14.2 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="M12 12.2a2.3 2.3 0 1 0 0-4.6 2.3 2.3 0 0 0 0 4.6Z" stroke="currentColor" stroke-width="1.6" /></svg></div><div class="info-text"><h4 style="margin-bottom: 5px;">Visit Us</h4><p style="color: var(--text-muted);">Dentaverse HQ,
-        United Kingdom</p></div></div><div class="contact-info-item"><div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 7.2 12 12l7.5-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /><path d="M5.7 6h12.6A1.7 1.7 0 0 1 20 7.7v8.6A1.7 1.7 0 0 1 18.3 18H5.7A1.7 1.7 0 0 1 4 16.3V7.7A1.7 1.7 0 0 1 5.7 6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /></svg></div><div class="info-text"><h4 style="margin-bottom: 5px;">Email Us</h4><p style="color: var(--text-muted);">support@dentaverse.uk</p></div></div><div class="contact-info-item"><div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 13.2v3.6c0 1.7 1.4 3.1 3.1 3.1h.8v-8.7h-.8c-1.7 0-3.1 1.4-3.1 3.1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="M19.5 13.2v3.6c0 1.7-1.4 3.1-3.1 3.1h-.8v-8.7h.8c1.7 0 3.1 1.4 3.1 3.1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" /><path d="M4.5 13.2a7.5 7.5 0 0 1 15 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg></div><div class="info-text"><h4 style="margin-bottom: 5px;">Support Hours</h4><p style="color: var(--text-muted);">Mon-Fri: 9am - 6pm GMT</p></div></div></div><div class="map-container reveal" style="transition-delay: 0.2s;"><img src="map-ivory.svg" alt="London area map (illustrative)" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.95;" loading="lazy" decoding="async"><div class="map-pin pulse" style="position: absolute; width: 20px; height: 20px; background: var(--primary); border: 4px solid white; border-radius: 50%;"></div><p style="position: absolute; bottom: 20px; font-weight: 700; color: var(--dark); background: white; padding: 10px 14px; border-radius: 20px; font-size: clamp(14px, 3.2vw, 15px);">Dentaverse HQ</p></div></div></div></div></main><footer class="dv-footer"><div class="container"><div class="dv-footer-grid"><div class="dv-footer-about"><div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse <em>Elite</em></div><p>Redefining dental care through immersive VR technology. Every visit becomes calm and cooperative.</p></div><div class="dv-footer-col"><h5>Explore</h5><a href="how-it-works.html">How It Works</a><a href="products.html">Products</a><a href="pricing.html">Pricing</a><a href="about.html">About Us</a><a href="blog.html">Blog</a></div><div class="dv-footer-col"><h5>Connect</h5><a href="contact.html">Book Experience</a><a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a><a href="tel:+447887772083">+44 7887 772083</a></div><div class="dv-footer-col"><h5>Legal</h5><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div></div><div class="dv-footer-divider"></div><div class="dv-footer-bottom"><span>&copy;
+        .contact-info-item { display: flex; gap: 18px; align-items: flex-start; }
 
-        2026 Dentaverse Elite. All Rights Reserved.</span><span>Crafted with care in the UK</span></div></div></footer>< !-- ── EmailJS CDN ───────────────── --><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script><style>@keyframes spin {
-            from {
-                transform: rotate(0deg)
-            }
-
-            to {
-                transform: rotate(360deg)
-            }
+        .info-icon {
+            width: 48px; height: 48px; min-width: 48px;
+            background: rgba(197, 160, 89, 0.10);
+            color: var(--gold, #C5A059);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        .form-group {
-            position: relative;
-            margin-bottom: 1.8rem;
+        .info-icon svg { width: 22px; height: 22px; stroke: var(--gold, #C5A059); }
+
+        .info-text h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: #14120F; }
+        .info-text p { font-size: 0.9rem; color: #6B6560; margin: 0; }
+
+        .map-container {
+            height: 260px; background: #f0ede8; border-radius: 20px;
+            margin-top: 36px; position: relative; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
         }
+
+        /* ── Form fields ── */
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .form-group { position: relative; margin-bottom: 2rem; }
 
         .form-group label {
-            position: absolute;
-            top: 15px;
-            left: 16px;
-            font-size: 0.88rem;
-            color: var(--muted);
-            pointer-events: none;
-            transition: all 0.22s;
+            position: absolute; top: 15px; left: 16px;
+            font-size: 0.88rem; color: #9B8F84;
+            pointer-events: none; transition: all 0.22s ease;
         }
 
         .form-group.focused label,
-        .form-group input:not(:placeholder-shown)~label,
-        .form-group textarea:not(:placeholder-shown)~label {
-            top: -20px;
-            left: 2px;
-            font-size: 0.75rem;
-            color: var(--gold);
-            font-weight: 600;
+        .form-group input:not(:placeholder-shown) ~ label,
+        .form-group textarea:not(:placeholder-shown) ~ label {
+            top: -20px; left: 2px; font-size: 0.75rem;
+            color: var(--gold, #C5A059); font-weight: 700;
         }
 
         .form-group input,
         .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1.5px solid var(--ivory-deeper, #E8E2D6);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            background: rgba(253, 252, 249, 0.9);
-            transition: border-color 0.22s, box-shadow 0.22s;
-            outline: none;
+            width: 100%; padding: 14px 16px;
+            border: 1.5px solid #E4DDD4;
+            border-radius: 12px; font-family: inherit;
+            font-size: 0.95rem; background: rgba(255,255,255,0.8);
+            transition: border-color 0.22s, box-shadow 0.22s; outline: none;
+            color: #14120F;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.12);
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--gold, #C5A059);
+            box-shadow: 0 0 0 3px rgba(197,160,89,0.14);
         }
 
         .form-group.has-error input,
-        .form-group.has-error textarea {
-            border-color: #ef4444;
+        .form-group.has-error textarea { border-color: #ef4444; }
+
+        .field-error { font-size: 0.78rem; color: #ef4444; margin-top: 4px; display: block; }
+
+        .btn-submit {
+            width: 100%; padding: 15px 24px;
+            background: linear-gradient(135deg, #C5A059, #D4AF6A);
+            color: white; border: none; border-radius: 14px;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 24px rgba(197,160,89,0.35);
         }
 
-        .field-error {
-            font-size: 0.78rem;
-            color: #ef4444;
-            margin-top: 4px;
-            display: block;
-        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(197,160,89,0.45); }
+        .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
-        #contact-form-card {
-            padding: 2.5rem;
-        }
+        #btn-spinner { animation: spin 0.8s linear infinite; display: none; }
 
-        .contact-form-card {
-            padding: 2.5rem;
+        /* ── Notice banner ── */
+        #ej-notice {
+            display: none; padding: 12px 16px; border-radius: 12px;
+            font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; line-height: 1.5;
+            background: rgba(197,160,89,0.10); border: 1px solid rgba(197,160,89,0.25); color: #8a6d1e;
         }
     </style>
+</head>
+<body>
 
-    <script>
-        /* ================================================================
-           EMAILJS CONFIGURATION
-           1. Sign up free at https://www.emailjs.com
-           2. Create a Service (Gmail, Outlook, etc.) → copy Service ID
-           3. Create a Template — use these variables:
-              {{from_name}}  {{reply_to}}  {{subject}}  {{message}}
-           4. Copy your Public Key from Account → API Keys
-           5. Fill in the three values below and you're live!
-        ================================================================ */
-        const EMAILJS_CONFIG = {
-            publicKey: 'QF7fvFkKBQDLTit88',      // e.g. 'abc123XYZ'
-            serviceId: 'service_uiolezp',      // e.g. 'service_xxxxxx'
-            templateId: 'template_vxbcoy4',     // e.g. 'template_xxxxxx'
-        };
-        /* ============================================================== */
+<!-- LOADER -->
+<div id="loader">
+    <div class="dv-loader">
+        <div class="dv-loader-icon"><img src="logo.png" alt="Dentaverse Elite"></div>
+        <div class="dv-loader-brand">Dentaverse <em>Elite</em></div>
+        <div class="dv-loader-bar"></div>
+    </div>
+</div>
 
-        (function initEmailJS() {
-            'use strict';
+<!-- HEADER -->
+<header class="dv-header" id="dvHeader">
+    <div class="container dv-nav">
+        <a href="index.html" class="dv-logo">
+            <div class="dv-logo-img"><img src="logo.png" alt="Dentaverse Elite"></div>
+            Dentaverse <em>Elite</em>
+        </a>
+        <nav class="dv-nav-links">
+            <a href="index.html">Home</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="products.html">Products</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+        <div class="dv-nav-right">
+            <a href="contact.html" class="dv-btn-book active">Book Experience</a>
+            <button class="dv-hamburger" id="dvHamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div class="dv-mobile-menu" id="dvMobileMenu">
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="products.html">Products</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
+    </div>
+</header>
 
-            // Bail if keys not filled in yet
-            const notConfigured = Object.values(EMAILJS_CONFIG).some(v => v.startsWith('YOUR_'));
+<main class="page-main">
+    <div class="container">
 
-            document.addEventListener('DOMContentLoaded', () => {
+        <section class="page-header text-center reveal" style="padding: 40px 0 20px;">
+            <h1>Get in <span class="text-gradient">Touch</span></h1>
+            <p style="max-width:640px;margin:0 auto;color:#6B6560;">Ready to upgrade your clinic or book a demo? We'd love to hear from you.</p>
+        </section>
 
-                // Init EmailJS
-                if (!notConfigured) emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+        <div class="contact-layout">
 
-                // Show setup notice if not yet configured
-                const notice = document.getElementById('ej-notice');
-                if (notConfigured && notice) {
-                    notice.style.display = 'block';
-                    notice.style.background = 'rgba(197,160,89,0.10)';
-                    notice.style.border = '1px solid rgba(197,160,89,0.25)';
-                    notice.style.color = '#8a6d1e';
-                    notice.innerHTML = '⚙️ <strong>EmailJS setup needed:</strong> Open contact.html and fill in your <code>publicKey</code>, <code>serviceId</code>, and <code>templateId</code> in the EMAILJS_CONFIG block at the bottom of the file.';
-                }
+            <!-- ── Contact Form ── -->
+            <div class="reveal">
+                <div class="contact-form-card">
 
-                const form = document.getElementById('contact-form');
-                const btnText = document.getElementById('btn-text');
-                const spinner = document.getElementById('btn-spinner');
-                const submitBtn = document.getElementById('submit-btn');
-                if (!form) return;
+                    <div id="ej-notice"></div>
 
-                // Floating labels
-                form.querySelectorAll('input, textarea').forEach(el => {
-                    const group = el.closest('.form-group');
-                    el.addEventListener('focus', () => group?.classList.add('focused'));
-                    el.addEventListener('blur', () => { if (!el.value) group?.classList.remove('focused'); });
-                    if (el.value) group?.classList.add('focused');
-                });
+                    <form id="contact-form" novalidate>
 
-                // Validate
-                function validate() {
-                    let ok = true;
-                    form.querySelectorAll('[required]').forEach(el => {
-                        const g = el.closest('.form-group');
-                        if (!el.value.trim()) {
-                            g?.classList.add('has-error');
-                            let err = g?.querySelector('.field-error');
-                            if (!err) { err = document.createElement('span'); err.className = 'field-error'; g?.appendChild(err); }
-                            err.textContent = 'This field is required';
-                            ok = false;
-                        } else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
-                            g?.classList.add('has-error');
-                            let err = g?.querySelector('.field-error');
-                            if (!err) { err = document.createElement('span'); err.className = 'field-error'; g?.appendChild(err); }
-                            err.textContent = 'Enter a valid email address';
-                            ok = false;
-                        } else {
-                            g?.classList.remove('has-error');
-                            g?.querySelector('.field-error')?.remove();
-                        }
-                    });
-                    return ok;
-                }
+                        <div class="form-group">
+                            <input type="text" id="name" name="from_name" required placeholder=" " autocomplete="name">
+                            <label for="name">Full Name</label>
+                        </div>
 
-                // Toast helper
-                function showToast(message, isError = false) {
-                    let toast = document.getElementById('dv-toast');
-                    if (!toast) {
-                        toast = document.createElement('div');
-                        toast.id = 'dv-toast';
-                        toast.style.cssText = `
-                    position:fixed; bottom:-120px; left:50%; transform:translateX(-50%);
-                    padding:14px 28px; border-radius:999px;
-                    font-weight:600; font-size:0.95rem;
-                    display:flex; align-items:center; gap:10px;
-                    z-index:99999; white-space:nowrap;
-                    transition:bottom 0.5s cubic-bezier(0.34,1.56,0.64,1);
-                `;
-                        document.body.appendChild(toast);
-                    }
-                    toast.style.background = isError
-                        ? 'linear-gradient(135deg,#ef4444,#dc2626)'
-                        : 'linear-gradient(135deg,var(--gold),var(--gold-light,#D4AF37))';
-                    toast.style.boxShadow = isError
-                        ? '0 10px 40px rgba(239,68,68,0.4)'
-                        : '0 10px 40px rgba(197,160,89,0.4)';
-                    toast.style.color = 'white';
-                    toast.innerHTML = isError
-                        ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> ${message}`
-                        : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> ${message}`;
-                    setTimeout(() => toast.style.bottom = '36px', 20);
-                    setTimeout(() => toast.style.bottom = '-120px', 4500);
-                }
+                        <div class="form-group">
+                            <input type="email" id="email" name="reply_to" required placeholder=" " autocomplete="email">
+                            <label for="email">Email Address</label>
+                        </div>
 
-                // Submit
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    if (!validate()) return;
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder=" ">
+                            <label for="subject">Subject</label>
+                        </div>
 
-                    // Loading state
-                    submitBtn.disabled = true;
-                    btnText.textContent = 'Sending…';
-                    spinner.style.display = 'inline-block';
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
 
-                    if (notConfigured) {
-                        // Demo mode — simulate send
-                        await new Promise(r => setTimeout(r, 1200));
-                        btnText.textContent = 'Send Message';
-                        spinner.style.display = 'none';
-                        submitBtn.disabled = false;
-                        form.reset();
-                        form.querySelectorAll('.form-group').forEach(g => g.classList.remove('focused'));
-                        showToast('Demo mode: message not sent. Add your EmailJS keys to go live!', false);
-                        return;
-                    }
+                        <button type="submit" class="btn-submit" id="submit-btn">
+                            <span id="btn-text">Send Message</span>
+                            <svg id="btn-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </button>
 
-                    try {
-                        await emailjs.sendForm(
-                            EMAILJS_CONFIG.serviceId,
-                            EMAILJS_CONFIG.templateId,
-                            form
-                        );
-                        btnText.textContent = 'Send Message';
-                        spinner.style.display = 'none';
-                        submitBtn.disabled = false;
-                        form.reset();
-                        form.querySelectorAll('.form-group').forEach(g => g.classList.remove('focused'));
-                        showToast('Message sent successfully! We\'ll be in touch soon.', false);
-                    } catch (err) {
-                        console.error('EmailJS error:', err);
-                        btnText.textContent = 'Send Message';
-                        spinner.style.display = 'none';
-                        submitBtn.disabled = false;
-                        showToast('Failed to send. Please email us directly at elitesupport@dentaverse.uk', true);
-                    }
-                });
-            });
-        }());
-    </script>
+                    </form>
+                </div>
+            </div>
 
-    <!-- Universal nav/loader/reveal script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Loader
-            document.body.classList.add('ready');
-            setTimeout(() => document.getElementById('loader')?.classList.add('hidden'), 1400);
+            <!-- ── Contact Info ── -->
+            <div class="reveal" style="transition-delay:0.12s;">
+                <div class="contact-info-list">
 
-            // Page transitions
-            document.querySelectorAll('a[href]').forEach(link => {
-                link.addEventListener('click', e => {
-                    const href = link.getAttribute('href');
-                    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => window.location.href = href, 280);
-                });
-            });
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21s6-6.8 6-11.2A6 6 0 1 0 6 9.8C6 14.2 12 21 12 21Z" stroke-width="1.6" stroke-linejoin="round"/>
+                                <circle cx="12" cy="9.8" r="2.3" stroke-width="1.6"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Visit Us</h4>
+                            <p>Dentaverse HQ, United Kingdom</p>
+                        </div>
+                    </div>
 
-            // Scroll reveals
-            const obs = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.5 7.2 12 12l7.5-4.8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="4" y="6" width="16" height="12" rx="1.7" stroke-width="1.6" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email Us</h4>
+                            <p>elitesupport@dentaverse.uk</p>
+                        </div>
+                    </div>
 
-            // Hamburger menu
-            const hbg = document.getElementById('dvHamburger');
-            const mob = document.getElementById('dvMobileMenu');
-            if (hbg && mob) {
-                hbg.addEventListener('click', () => {
-                    hbg.classList.toggle('open');
-                    mob.classList.toggle('open');
-                });
-                // Close when a link is clicked
-                mob.querySelectorAll('a').forEach(a => {
-                    a.addEventListener('click', () => {
-                        hbg.classList.remove('open');
-                        mob.classList.remove('open');
-                    });
-                });
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.6 3h10.8A1.6 1.6 0 0 1 19 4.6v14.8A1.6 1.6 0 0 1 17.4 21H6.6A1.6 1.6 0 0 1 5 19.4V4.6A1.6 1.6 0 0 1 6.6 3Z" stroke-width="1.6" stroke-linejoin="round"/>
+                                <path d="M9 17h6" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Call Us</h4>
+                            <p>+44 7887 772083</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="9" stroke-width="1.6"/>
+                                <path d="M12 7v5l3 3" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Support Hours</h4>
+                            <p>Mon–Fri: 9am – 6pm GMT</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="map-container reveal" style="transition-delay:0.22s;">
+                    <img src="map-ivory.svg" alt="Dentaverse HQ location map" style="width:100%;height:100%;object-fit:cover;opacity:0.9;" loading="lazy">
+                    <div style="position:absolute;width:18px;height:18px;background:var(--gold,#C5A059);border:3px solid white;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,0.2);"></div>
+                    <p style="position:absolute;bottom:16px;font-weight:700;color:#14120F;background:white;padding:8px 14px;border-radius:20px;font-size:0.85rem;box-shadow:0 4px 16px rgba(0,0,0,0.1);">Dentaverse HQ</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="dv-footer">
+    <div class="container">
+        <div class="dv-footer-grid">
+            <div class="dv-footer-about">
+                <div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse <em>Elite</em></div>
+                <p>Redefining dental care through immersive VR technology. Every visit becomes calm and cooperative.</p>
+            </div>
+            <div class="dv-footer-col">
+                <h5>Explore</h5>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="products.html">Products</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About Us</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="dv-footer-col">
+                <h5>Connect</h5>
+                <a href="contact.html">Book Experience</a>
+                <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
+                <a href="tel:+447887772083">+44 7887 772083</a>
+            </div>
+            <div class="dv-footer-col">
+                <h5>Legal</h5>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+        <div class="dv-footer-divider"></div>
+        <div class="dv-footer-bottom">
+            <span>&copy; 2026 Dentaverse Elite. All Rights Reserved.</span>
+            <span>Crafted with care in the UK</span>
+        </div>
+    </div>
+</footer>
+
+<!-- EmailJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+/* ================================================================
+   EMAILJS CONFIGURATION — credentials are live
+================================================================ */
+const EMAILJS_CONFIG = {
+    publicKey:  'QF7fvFkKBQDLTit88',
+    serviceId:  'service_uiolezp',
+    templateId: 'template_vxbcoy4',
+};
+
+(function () {
+    'use strict';
+
+    const notConfigured = Object.values(EMAILJS_CONFIG).some(v => v.startsWith('YOUR_'));
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        /* ── Init EmailJS ── */
+        if (!notConfigured) {
+            emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+        } else {
+            const notice = document.getElementById('ej-notice');
+            if (notice) {
+                notice.style.display = 'block';
+                notice.innerHTML = '⚙️ <strong>EmailJS not configured:</strong> Fill in your keys in the EMAILJS_CONFIG.';
             }
+        }
 
-            // Header scroll glass effect
-            window.addEventListener('scroll', () => {
-                document.getElementById('dvHeader')?.classList.toggle('scrolled', window.scrollY > 40);
-            }, { passive: true });
-        });
-    </script>
+        /* ── Universal nav ── */
+        document.body.classList.add('ready');
+        setTimeout(() => document.getElementById('loader')?.classList.add('hidden'), 1400);
 
-    <!-- Legacy bottom-nav hidden by theme.css -->
-    <nav class="bottom-nav" aria-label="Primary">
-        <a href="index.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 10.5 12 4l8 6.5V20a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 20v-9.5Z" stroke="currentColor"
-                    stroke-width="1.6" stroke-linejoin="round" />
-                <path d="M9.2 21.5v-6.2c0-.8.6-1.4 1.4-1.4h2.8c.8 0 1.4.6 1.4 1.4v6.2" stroke="currentColor"
-                    stroke-width="1.6" stroke-linecap="round" />
-            </svg>
-            Home
-        </a>
-        <a href="how-it-works.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 4.5h10M7 8.5h10M7 12.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                <path
-                    d="M6.5 3.5h11A2.5 2.5 0 0 1 20 6v12a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 18V6a2.5 2.5 0 0 1 2.5-2.5Z"
-                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-            </svg>
-            Process
-        </a>
-        <a href="products.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 8.5h10c1.1 0 2 .9 2 2v5.2c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2v-5.2c0-1.1.9-2 2-2Z"
-                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                <path d="M9 8.5V7.3c0-1 .8-1.8 1.8-1.8h2.4c1 0 1.8.8 1.8 1.8v1.2" stroke="currentColor"
-                    stroke-width="1.6" stroke-linecap="round" />
-            </svg>
-            Products
-        </a>
-        <a href="about.html">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 12.2a4 4 0 1 0-0.01 0Z" stroke="currentColor" stroke-width="1.6" />
-                <path d="M4.6 20c1.6-3.2 4.2-4.8 7.4-4.8s5.8 1.6 7.4 4.8" stroke="currentColor" stroke-width="1.6"
-                    stroke-linecap="round" />
-            </svg>
-            About
-        </a>
-        <a class="active" href="contact.html" aria-current="page">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 7.2 12 12l7.5-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path
-                    d="M5.7 6h12.6A1.7 1.7 0 0 1 20 7.7v8.6A1.7 1.7 0 0 1 18.3 18H5.7A1.7 1.7 0 0 1 4 16.3V7.7A1.7 1.7 0 0 1 5.7 6Z"
-                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-            </svg>
-            Contact
-        </a>
-    </nav>
-
-    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
-
-    <script>
-        /* 
-           Dentaverse Elite - Navigation Logic
-           Handles page transitions and menu
-        */
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Initial Page Load Fade In
-            document.body.classList.add('fade-in');
-
-            // 2. Navigation Interceptor for Transitions
-            const navLinks = document.querySelectorAll('a[href]');
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const href = link.getAttribute('href');
-
-                    // Ignore external and anchor links
-                    if (href.startsWith('http') || href.startsWith('#')) return;
-
-                    e.preventDefault();
-
-                    // Fade out
-                    document.body.classList.add('fade-out');
-
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 300);
-                });
+        document.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', e => {
+                const href = link.getAttribute('href');
+                if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+                e.preventDefault();
+                document.body.classList.add('fade-out');
+                setTimeout(() => window.location.href = href, 280);
             });
-
-            // 3. Hamburger Menu
-            const hamburger = document.getElementById('hamburger');
-            const nav = document.getElementById('nav-menu');
-
-            if (hamburger) {
-                hamburger.addEventListener('click', () => {
-                    nav.classList.toggle('active');
-                    hamburger.classList.toggle('is-active');
-                });
-            }
-
-            // 4. Loader removal
-            const loader = document.getElementById('loader');
-            if (loader) {
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    loader.style.visibility = 'hidden';
-                }, 1500);
-            }
         });
 
-    </script>
-    <script>
-        /*
-          Dentaverse Elite - Loader status text (optional)
-        */
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const el = document.getElementById('loader-status');
-            if (!el) return;
+        const hbg = document.getElementById('dvHamburger');
+        const mob = document.getElementById('dvMobileMenu');
+        if (hbg && mob) {
+            hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
+            mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mob.classList.remove('open'); }));
+        }
 
-            const statuses = [
-                'Preparing your experience…',
-                'Loading calming scenes…',
-                'Optimising for mobile…',
-                'Finalising interface…'
-            ];
+        window.addEventListener('scroll', () => {
+            document.getElementById('dvHeader')?.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
 
-            let i = 0;
-            const tick = () => {
-                i = (i + 1) % statuses.length;
-                el.textContent = statuses[i];
-            };
+        /* ── Form logic ── */
+        const form      = document.getElementById('contact-form');
+        const btnText   = document.getElementById('btn-text');
+        const spinner   = document.getElementById('btn-spinner');
+        const submitBtn = document.getElementById('submit-btn');
+        if (!form) return;
 
-            const t = setInterval(tick, 500);
+        /* Floating labels */
+        form.querySelectorAll('input, textarea').forEach(el => {
+            const g = el.closest('.form-group');
+            el.addEventListener('focus', () => g?.classList.add('focused'));
+            el.addEventListener('blur',  () => { if (!el.value) g?.classList.remove('focused'); });
+        });
 
-            // Stop when loader is hidden
-            const loader = document.getElementById('loader');
-            if (!loader) return;
-            const obs = new MutationObserver(() => {
-                const s = getComputedStyle(loader);
-                if (s.visibility === 'hidden' || s.opacity === '0') {
-                    clearInterval(t);
-                    obs.disconnect();
+        /* Validate */
+        function validate() {
+            let ok = true;
+            form.querySelectorAll('[required]').forEach(el => {
+                const g = el.closest('.form-group');
+                g?.classList.remove('has-error');
+                g?.querySelector('.field-error')?.remove();
+                if (!el.value.trim()) {
+                    mark(g, 'This field is required'); ok = false;
+                } else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
+                    mark(g, 'Enter a valid email address'); ok = false;
                 }
             });
-            obs.observe(loader, { attributes: true, attributeFilter: ['style', 'class'] });
-        });
+            return ok;
+        }
 
+        function mark(g, msg) {
+            g?.classList.add('has-error');
+            const err = document.createElement('span');
+            err.className = 'field-error';
+            err.textContent = msg;
+            g?.appendChild(err);
+        }
 
-    </script>
-    <script>
-        /* 
-           Dentaverse Elite - Scroll & Viewport Animations
-        */
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Intersection Observer for Reveals
-            const revealElements = document.querySelectorAll('.reveal');
-
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        revealObserver.unobserve(entry.target);
-                    }
+        /* Toast */
+        function showToast(msg, isError) {
+            let t = document.getElementById('dv-toast');
+            if (!t) {
+                t = document.createElement('div');
+                t.id = 'dv-toast';
+                Object.assign(t.style, {
+                    position: 'fixed', bottom: '-120px', left: '50%', transform: 'translateX(-50%)',
+                    padding: '14px 28px', borderRadius: '999px', fontWeight: '700', fontSize: '0.95rem',
+                    display: 'flex', alignItems: 'center', gap: '10px', zIndex: '99999',
+                    whiteSpace: 'nowrap', transition: 'bottom 0.5s cubic-bezier(0.34,1.56,0.64,1)',
+                    color: 'white',
                 });
-            }, {
-                threshold: 0.15
-            });
-
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            // 2. Animated Counters
-            const counters = document.querySelectorAll('.counter');
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = parseInt(entry.target.getAttribute('data-target'));
-                        animateValue(entry.target, 0, target, 2000);
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            });
-
-            counters.forEach(counter => counterObserver.observe(counter));
-
-            function animateValue(obj, start, end, duration) {
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    obj.innerHTML = Math.floor(progress * (end - start) + start);
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    }
-                };
-                window.requestAnimationFrame(step);
+                document.body.appendChild(t);
             }
+            t.style.background = isError ? 'linear-gradient(135deg,#ef4444,#dc2626)' : 'linear-gradient(135deg,#C5A059,#D4AF37)';
+            t.style.boxShadow  = isError ? '0 10px 40px rgba(239,68,68,0.4)' : '0 10px 40px rgba(197,160,89,0.4)';
+            t.innerHTML = isError
+                ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> ${msg}`
+                : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> ${msg}`;
+            setTimeout(() => t.style.bottom = '36px', 20);
+            setTimeout(() => t.style.bottom = '-120px', 4500);
+        }
 
-            // 3. Progress Bars
-            const progressBars = document.querySelectorAll('.progress-bar');
-            const barObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const width = entry.target.getAttribute('data-width');
-                        entry.target.style.width = width + '%';
-                        barObserver.unobserve(entry.target);
-                    }
-                });
-            });
+        /* Submit */
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            if (!validate()) return;
 
-            progressBars.forEach(bar => barObserver.observe(bar));
-        });
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending…';
+            spinner.style.display = 'inline-block';
 
-    </script>
-    <script>
-        /* 
-           Dentaverse Elite - Contact Form Validation
-        */
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('contact-form');
-            if (!form) return;
-
-            // Offline/static: draft autosave + restore (localStorage)
-            const DRAFT_KEY = 'dentaverse.contactDraft.v1';
-            const SUBMISSIONS_KEY = 'dentaverse.contactSubmissions.v1';
-            const inputsAll = form.querySelectorAll('input, textarea');
+            if (notConfigured) {
+                await new Promise(r => setTimeout(r, 1200));
+                btnText.textContent = 'Send Message';
+                spinner.style.display = 'none';
+                submitBtn.disabled = false;
+                form.reset();
+                form.querySelectorAll('.form-group').forEach(g => g.classList.remove('focused'));
+                showToast('Demo mode — add EmailJS keys to go live!', false);
+                return;
+            }
 
             try {
-                const saved = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null');
-                if (saved && typeof saved === 'object') {
-                    inputsAll.forEach((el) => {
-                        if (!el.id) return;
-                        if (typeof saved[el.id] === 'string') {
-                            el.value = saved[el.id];
-                            if (el.value) el.parentElement?.classList.add('focused');
-                        }
-                    });
-                }
-            } catch (_) { }
-
-            const saveDraft = () => {
-                const payload = {};
-                inputsAll.forEach((el) => {
-                    if (!el.id) return;
-                    payload[el.id] = el.value || '';
-                });
-                try { localStorage.setItem(DRAFT_KEY, JSON.stringify(payload)); } catch (_) { }
-            };
-            inputsAll.forEach((el) => el.addEventListener('input', saveDraft, { passive: true }));
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                let isValid = true;
-                const inputs = form.querySelectorAll('input[required], textarea[required]');
-
-                inputs.forEach(input => {
-                    if (!input.value.trim()) {
-                        showError(input, 'This field is required');
-                        isValid = false;
-                    } else {
-                        removeError(input);
-                    }
-
-                    if (input.type === 'email' && input.value) {
-                        if (!validateEmail(input.value)) {
-                            showError(input, 'Please enter a valid email');
-                            isValid = false;
-                        }
-                    }
-                });
-
-                if (isValid) {
-                    handleSuccess(form);
-                }
-            });
-
-            // Floating Label Effect
-            const formInputs = form.querySelectorAll('input, textarea');
-            formInputs.forEach(input => {
-                input.addEventListener('focus', () => {
-                    input.parentElement.classList.add('focused');
-                });
-
-                input.addEventListener('blur', () => {
-                    if (!input.value) {
-                        input.parentElement.classList.remove('focused');
-                    }
-                });
-            });
-        });
-
-        function validateEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
-
-        function showError(input, message) {
-            const group = input.parentElement;
-            group.classList.add('error');
-            let errorMsg = group.querySelector('.error-msg');
-            if (!errorMsg) {
-                errorMsg = document.createElement('span');
-                errorMsg.className = 'error-msg';
-                group.appendChild(errorMsg);
-            }
-            errorMsg.innerText = message;
-        }
-
-        function removeError(input) {
-            const group = input.parentElement;
-            group.classList.remove('error');
-            const errorMsg = group.querySelector('.error-msg');
-            if (errorMsg) group.removeChild(errorMsg);
-        }
-
-        function handleSuccess(form) {
-            const btn = form.querySelector('button');
-            const originalText = btn.innerHTML;
-
-            btn.innerHTML = 'Sending...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                const payload = {};
-                form.querySelectorAll('input, textarea').forEach((el) => {
-                    if (!el.id) return;
-                    payload[el.id] = el.value || '';
-                });
-                try {
-                    const existing = JSON.parse(localStorage.getItem(SUBMISSIONS_KEY) || '[]');
-                    const list = Array.isArray(existing) ? existing : [];
-                    list.unshift({ ...payload, submittedAt: new Date().toISOString() });
-                    localStorage.setItem(SUBMISSIONS_KEY, JSON.stringify(list.slice(0, 25)));
-                    localStorage.removeItem(DRAFT_KEY);
-                } catch (_) { }
-
-                // Clear the fields visually
+                await emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form);
+                btnText.textContent = 'Send Message';
+                spinner.style.display = 'none';
+                submitBtn.disabled = false;
                 form.reset();
-                form.querySelectorAll('.focused').forEach((g) => g.classList.remove('focused'));
-
-                // Restore button state
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-
-                // Premium Toast Popup
-                let toast = document.getElementById('success-toast');
-                if (!toast) {
-                    toast = document.createElement('div');
-                    toast.id = 'success-toast';
-                    toast.style.cssText = `
-                position: fixed;
-                bottom: -100px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
-                color: white;
-                padding: 16px 28px;
-                border-radius: 999px;
-                font-weight: 600;
-                font-size: 16px;
-                box-shadow: 0 10px 40px rgba(197, 160, 89, 0.4);
-                z-index: 99999;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                white-space: nowrap;
-            `;
-                    toast.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Your message has been submitted!`;
-                    document.body.appendChild(toast);
-                }
-
-                // Remove legacy static text notice
-                const oldNotice = form.querySelector('.success-message');
-                if (oldNotice) oldNotice.remove();
-
-                // Slide up
-                setTimeout(() => toast.style.bottom = '40px', 10);
-
-                // Slide down
-                setTimeout(() => toast.style.bottom = '-100px', 4000);
-
-            }, 1500);
-        }
-
-    </script>
-    <script>
-        /* 
-          Dentaverse Elite - Premium Cursor
-          Desktop only (CSS gates via @media(pointer:fine))
-        */
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const dot = document.getElementById('cursor-dot');
-            const ring = document.getElementById('cursor-ring');
-            if (!dot || !ring) return;
-
-            const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
-            if (!isFinePointer) return;
-
-            let mx = window.innerWidth / 2;
-            let my = window.innerHeight / 2;
-            let rx = mx;
-            let ry = my;
-            let visible = true;
-
-            const setVisible = (isVisible) => {
-                visible = isVisible;
-                const v = isVisible ? '1' : '0';
-                dot.style.opacity = v;
-                ring.style.opacity = v;
-            };
-
-            const onMove = (e) => {
-                mx = e.clientX;
-                my = e.clientY;
-                dot.style.left = `${mx}px`;
-                dot.style.top = `${my}px`;
-                if (!visible) setVisible(true);
-            };
-
-            document.addEventListener('mousemove', onMove, { passive: true });
-            window.addEventListener('mouseleave', () => setVisible(false), { passive: true });
-            window.addEventListener('mouseenter', () => setVisible(true), { passive: true });
-
-            const animate = () => {
-                rx += (mx - rx) * 0.14;
-                ry += (my - ry) * 0.14;
-                ring.style.left = `${rx}px`;
-                ring.style.top = `${ry}px`;
-                requestAnimationFrame(animate);
-            };
-            animate();
-
-            const setHover = (isHover) => {
-                dot.classList.toggle('is-hover', isHover);
-                ring.classList.toggle('is-hover', isHover);
-            };
-
-            document.addEventListener('pointerover', (e) => {
-                const el = e.target;
-                if (!(el instanceof Element)) return;
-                if (el.closest('a, button, input, textarea, select, [role="button"]')) setHover(true);
-            }, { passive: true });
-
-            document.addEventListener('pointerout', (e) => {
-                const el = e.relatedTarget;
-                if (el instanceof Element && el.closest('a, button, input, textarea, select, [role="button"]')) return;
-                setHover(false);
-            }, { passive: true });
+                form.querySelectorAll('.form-group').forEach(g => g.classList.remove('focused'));
+                showToast("Message sent! We'll be in touch soon. ✓", false);
+            } catch (err) {
+                console.error('EmailJS error:', err);
+                btnText.textContent = 'Send Message';
+                spinner.style.display = 'none';
+                submitBtn.disabled = false;
+                showToast('Failed to send. Email us at elitesupport@dentaverse.uk', true);
+            }
         });
 
+    });
+}());
+</script>
 
-    </script>
-    </body>
-
+</body>
 </html>
