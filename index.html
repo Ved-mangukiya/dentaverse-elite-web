@@ -57,7 +57,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--ivory);
+            background: var(--bg-soft);
             color: var(--text);
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
@@ -95,7 +95,7 @@
         #loader {
             position: fixed;
             inset: 0;
-            background: var(--ivory);
+            background: var(--bg-soft);
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -300,12 +300,12 @@
             cursor: pointer;
             transition: all 0.28s var(--ease-out);
         }
-        .btn-gold {
+        .btn-primary {
             background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
             color: white;
             box-shadow: 0 6px 28px rgba(0,102,204,0.28);
         }
-        .btn-gold:hover {
+        .btn-primary:hover {
             background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid));
             transform: translateY(-2px);
             box-shadow: 0 12px 40px rgba(0,102,204,0.42);
@@ -335,7 +335,7 @@
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--radius-lg);
             padding: 2rem;
-            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(197,160,89,0.08);
+            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,102,204,0.08);
             animation: heroCardFloat 6s ease-in-out infinite;
             z-index: 2;
         }
@@ -347,11 +347,11 @@
 
         .hero-card-icon {
             width: 52px; height: 52px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            background: linear-gradient(135deg, var(--brand-mid) 0%, var(--brand-cyan) 100%);
             border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 1.2rem;
-            box-shadow: var(--shadow-gold);
+            box-shadow: 0 6px 20px rgba(0,102,204,0.25);
         }
         .hero-card-icon svg { width:26px; height:26px; stroke:white; fill:none; }
         .hero-float-card h4 { font-size: 1rem; margin-bottom: 0.4rem; color: var(--dark); }
@@ -362,7 +362,7 @@
         }
         .hero-card-tag {
             padding: 4px 10px;
-            background: var(--ivory-dark);
+            background: var(--bg-deep);
             border-radius: var(--radius-pill);
             font-size: 0.72rem;
             font-weight: 600;
@@ -812,11 +812,12 @@
         }
 
         /* Brand divider */
-        .divider-gold {
-            width: 50px; height: 3px;
-            background: linear-gradient(90deg, #0066CC, #00CCFF);
+        .divider-brand {
+            width: 44px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-mid), var(--brand-cyan));
             border-radius: 2px;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.8rem;
         }
     </style>
 </head>
@@ -844,8 +845,7 @@
         <nav class="dv-nav-links">
             <a href="index.html" class="active">Home</a>
             <a href="how-it-works.html">How It Works</a>
-            <a href="products.html">Products</a>
-            <a href="pricing.html">Pricing</a>
+            <a href="products.html">Solutions</a>
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
         </nav>
@@ -857,8 +857,7 @@
     <div class="dv-mobile-menu" id="dvMobileMenu">
         <a href="index.html" class="active">Home</a>
         <a href="how-it-works.html">How It Works</a>
-        <a href="products.html">Products</a>
-        <a href="pricing.html">Pricing</a>
+        <a href="products.html">Solutions</a>
         <a href="about.html">About</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
@@ -877,9 +876,9 @@
             <div class="hero-badge">VR Distraction Therapy · UK</div>
             <h1>Dental Anxiety?<br><em>Not Anymore.</em></h1>
             <p class="hero-desc">Dentaverse Elite puts patients inside a calming VR world — oceans, forests, galaxies — so they feel nothing but peace while treatment happens. Simple, proven, life-changing.</p>
-            <div class="hero-actions">
-                <a href="contact.html" class="btn btn-gold">Book a Free Demo →</a>
-                <a href="how-it-works.html" class="btn btn-outline">See How It Works</a>
+            <div class="hero-actions reveal" style="transition-delay: 0.1s;">
+                <a href="contact.html" class="btn btn-primary">Book Demo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <a href="products.html" class="btn btn-outline">Explore Products</a>
             </div>
         </div>
 
@@ -932,10 +931,10 @@
 <section class="features" id="features">
     <div class="container">
         <div class="section-header">
-            <span class="section-eyebrow reveal">What You Get</span>
-            <h2 class="section-title reveal">Everything Your Clinic Needs</h2>
-            <div class="divider-gold reveal"></div>
-            <p class="section-subtitle reveal">One system. Every appointment. Complete patient comfort — backed by technology that works.</p>
+            <span class="section-eyebrow reveal">The Dentaverse Elite Difference</span>
+            <h2 class="section-title reveal">Why Clinics Choose <em>Elite</em></h2>
+            <div class="divider-brand reveal"></div>
+            <p class="section-subtitle reveal">We combine clinical-grade VR hardware with a bespoke patient experience platform that integrates seamlessly into your workflow.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card reveal">
@@ -1289,51 +1288,78 @@
         <h2>Ready to Experience the<br>Future of Dentistry?</h2>
         <p>Transform your clinic or book your first VR dental appointment today.</p>
         <div class="cta-btns">
-            <a href="contact.html" class="btn btn-gold">Contact Us Today</a>
+            <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
             <a href="how-it-works.html" class="btn btn-outline-white btn">Learn More →</a>
         </div>
     </div>
 </section>
 
-<!-- ======================= FOOTER ======================= -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
-                <img src="logo.png" alt="Dentaverse Elite" style="width:34px;height:34px;border-radius:8px;object-fit:cover;">
-                Dentaverse <span>Elite</span>
+    <!-- UNIVERSAL FOOTER -->
+    <footer class="dv-footer">
+        <div class="container">
+            <div class="dv-footer-grid">
+                <div class="dv-footer-about">
+                    <div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse <em>Elite</em></div>
+                    <p>Redefining dental care through immersive VR technology. Every visit becomes calm, cooperative, and positive.</p>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="products.html">Solutions</a>
+                    <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Connect</h5>
+                    <a href="contact.html">Book Experience</a>
+                    <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
+                    <a href="tel:+447887772083">+44 7887 772083</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Legal</h5>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
             </div>
-                <p>Redefining dental care through the power of immersive VR technology. Making every visit a calm, cooperative, and positive experience.</p>
-            </div>
-            <div class="footer-col">
-                <h5>Explore</h5>
-                <a href="how-it-works.html">How It Works</a>
-                <a href="products.html">Products</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html">About Us</a>
-                <a href="blog.html">Blog</a>
-                <a href="#faq">FAQ</a>
-            </div>
-            <div class="footer-col">
-                <h5>Connect</h5>
-                <a href="contact.html">Book Experience</a>
-                <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
-                <a href="tel:+447887772083">+44 7887 772083</a>
-                <a>United Kingdom</a>
+            <div class="dv-footer-divider"></div>
+            <div class="dv-footer-bottom">
+                <span>&copy; 2026 Dentaverse Elite. All Rights Reserved.</span>
+                <span>Crafted with care in the UK</span>
             </div>
         </div>
-        <div class="footer-divider"></div>
-        <div class="footer-bottom">
-            <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
-            <span>Crafted with care in the UK</span>
+    </footer>
+
+    <!-- PRIVACY BAR -->
+    <div class="privacy-bar" id="privacyBar">
+        <div class="privacy-text">We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</div>
+        <div class="privacy-btns">
+            <button class="privacy-btn btn-deny" id="privacyDeny">Deny</button>
+            <button class="privacy-btn btn-accept" id="privacyAccept">Accept All</button>
         </div>
     </div>
-</footer>
 
-<!-- ======================= SCRIPTS ======================= -->
-<script>
-/* ---- Loader ---- */
+    <!-- ======================= SCRIPTS ======================= -->
+    <script>
+    /* ---- Privacy Bar ---- */
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!localStorage.getItem('privacyAccepted')) {
+            setTimeout(() => {
+                const pb = document.getElementById('privacyBar');
+                if(pb) pb.classList.add('show');
+            }, 3000);
+        }
+        document.getElementById('privacyAccept').onclick = function() {
+            localStorage.setItem('privacyAccepted', 'true');
+            document.getElementById('privacyBar').classList.remove('show');
+        };
+        document.getElementById('privacyDeny').onclick = function() {
+            document.getElementById('privacyBar').classList.remove('show');
+        };
+    });
+
+    /* ---- Loader ---- */
 document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('ready');
     const loader = document.getElementById('loader');

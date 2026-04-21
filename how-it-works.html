@@ -1,973 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="icon" type="image/png" href="logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How It Works | Dentaverse Elite</title>
-    <meta name="description" content="Discover the journey of Dentaverse Elite — from clinician consultation to complete immersive relaxation. A vintage storytelling experience.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="Discover how Dentaverse Elite transforms every appointment into a moment of wonder through our immersive VR technology.">
+    <link rel="stylesheet" href="theme.css">
     <style>
-        /* =========================================================
-           DENTAVERSE ELITE — SHARED TOKENS
-           ========================================================= */
-        :root {
-            --ivory:        #F0F6FF;
-            --ivory-dark:   #E0EAF8;
-            --ivory-deeper: #D4E3F7;
-            --gold:         #00CCFF;
-            --gold-light:   #0066CC;
-            --gold-dim:     rgba(0,204,255,0.18);
-            --dark:         #0A2558;
-            --dark-2:       #091e4a;
-            --text:         #333333;
-            --muted:        #5E6E85;
-            --white:        #FFFFFF;
-            --glass:        rgba(255,255,255,0.82);
-            --glass-border: rgba(0,102,204,0.18);
-            --shadow-sm:    0 2px 12px rgba(10,37,88,0.06);
-            --shadow-md:    0 8px 32px rgba(10,37,88,0.10);
-            --shadow-lg:    0 24px 64px rgba(10,37,88,0.13);
-            --shadow-gold:  0 6px 28px rgba(0,102,204,0.26);
-            --ease:         cubic-bezier(0.16, 1, 0.3, 1);
-            --radius:       16px;
-            --radius-lg:    24px;
-            --radius-pill:  999px;
+        /* ── Page Overrides ── */
+        .how-page {
+            background: var(--bg);
         }
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--ivory);
-            color: var(--text);
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            opacity: 0;
-        }
-        body.ready { animation: fadeIn 0.5s var(--ease) forwards; }
-        body.fade-out { animation: fadeOut 0.28s ease forwards; }
-        @keyframes fadeIn  { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
-        @keyframes fadeOut { from{opacity:1} to{opacity:0} }
-
-        a { text-decoration:none; color:inherit; }
-        ul { list-style:none; }
-        img { display:block; max-width:100%; }
-
-        .container {
-            max-width: 1160px;
-            margin: 0 auto;
-            padding: 0 clamp(16px, 4vw, 40px);
-        }
-
-        /* =========================================================
-           LOADER
-           ========================================================= */
-        #loader {
-            position: fixed; inset:0;
-            background: var(--ivory);
-            z-index: 9999;
-            display: flex; align-items:center; justify-content:center;
-            transition: opacity 0.6s var(--ease), visibility 0.6s;
-        }
-        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
-        .loader-inner { text-align:center; }
-        .loader-icon {
-            width:72px; height:72px; border-radius:50%;
-            overflow:hidden; margin:0 auto 1.2rem;
-            box-shadow: 0 0 0 0 rgba(197,160,89,0.35);
-            animation: loaderPulse 2s ease-in-out infinite;
-        }
-        .loader-icon img { width:100%; height:100%; object-fit:cover; }
-        @keyframes loaderPulse {
-            0%,100%{ box-shadow:0 0 0 0 rgba(197,160,89,0.35); transform:scale(1); }
-            50%    { box-shadow:0 0 0 16px transparent; transform:scale(1.06); }
-        }
-        .loader-brand { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text); }
-        .loader-brand span { color:var(--gold); }
-        .loader-bar { width:160px; height:2px; background:var(--ivory-dark); border-radius:2px; margin:1.2rem auto 0; overflow:hidden; }
-        .loader-bar::after { content:''; display:block; height:100%; width:40%; background:var(--gold); border-radius:2px; animation:loaderBar 1.4s ease-in-out infinite; }
-        @keyframes loaderBar { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }
-
-        /* =========================================================
-           HEADER
-           ========================================================= */
-        header {
-            position: fixed; top:0; left:0; right:0; height:70px;
-            z-index: 500;
-            display: flex; align-items:center;
-            background: var(--glass);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-sm);
-        }
-        header .header-inner { display:flex; align-items:center; justify-content:space-between; width:100%; }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem; font-weight: 600;
-            color: var(--text); display:flex; align-items:center; gap:10px;
-        }
-        .logo-accent { color:var(--gold); font-style:italic; }
-        .logo-icon { width:38px; height:38px; border-radius:10px; overflow:hidden; box-shadow:var(--shadow-gold); flex-shrink:0; }
-        .logo-icon img { width:100%; height:100%; object-fit:cover; }
-
-        /* Hamburger */
-        .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
-        .hamburger span { width:22px; height:2px; background:var(--text); border-radius:2px; display:block; transition:all 0.3s; }
-
-        .top-nav-links { display:flex; gap:1.8rem; align-items:center; }
-        .top-nav-links a { font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.25s; }
-        .top-nav-links a:hover, .top-nav-links a.active { color:var(--gold); }
-        .top-nav-links .btn-book {
-            background:var(--gold); color:white; padding:0.5rem 1.4rem;
-            border-radius:var(--radius-pill); font-size:0.8rem; font-weight:600;
-            letter-spacing:0.06em; text-transform:uppercase; box-shadow:var(--shadow-gold); transition:all 0.25s;
-        }
-        .top-nav-links .btn-book:hover { background:var(--gold-light); transform:translateY(-1px); }
-
-        /* Mobile nav */
-        .mobile-menu {
-            display:none; position:absolute; top:70px; left:0; right:0;
-            background:white; border-bottom:1px solid var(--ivory-dark);
-            box-shadow:var(--shadow-md); padding:1.5rem;
-            flex-direction:column; gap:1rem;
-        }
-        .mobile-menu.open { display:flex; }
-        .mobile-menu a { font-size:0.9rem; font-weight:500; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); padding:0.5rem 0; border-bottom:1px solid var(--ivory-dark); }
-        .mobile-menu a:last-child { border:none; color:var(--gold); font-weight:600; }
-        @media(max-width:860px){ .top-nav-links{display:none;} .hamburger{display:flex;} }
-
-        /* =========================================================
-           VINTAGE HERO / PAGE HEADER
-           ========================================================= */
+        /* Modern Hero */
         .page-hero {
-            padding: 130px 0 70px;
+            padding: 80px 0 60px;
             text-align: center;
-            background: var(--ivory);
+            background: var(--bg);
             position: relative;
             overflow: hidden;
         }
-        .page-hero::before {
-            content:'';
-            position:absolute; inset:0;
-            background: 
-                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(197,160,89,0.07) 0%, transparent 70%),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A059' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events:none;
-        }
-        .page-hero-inner { position:relative; z-index:2; }
 
-        /* Ornamental top rule */
-        .ornament {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, var(--brand-mid-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
-        .ornament-line { flex:1; max-width:80px; height:1px; background:linear-gradient(90deg, transparent, var(--gold)); }
-        .ornament-line.rev { background:linear-gradient(90deg, var(--gold), transparent); }
-        .ornament-diamond {
-            width:10px; height:10px;
-            background:var(--gold);
-            transform:rotate(45deg);
-            flex-shrink:0;
+
+        .brand-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--brand-cyan);
+            margin-bottom: 1.2rem;
         }
-        .ornament-text { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
 
         .page-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1.2rem;
+            font-size: clamp(2.4rem, 6vw, 4rem);
             line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
-        .page-hero h1 em { font-style:italic; color:var(--gold); }
+
+        .page-hero h1 em {
+            color: var(--brand-cyan);
+            font-style: italic;
+        }
 
         .page-hero-desc {
-            font-family: 'IM Fell English', 'Georgia', serif;
-            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            max-width: 650px;
+            margin: 0 auto;
             color: var(--muted);
-            font-style: italic;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
-        /* Chapter ornamental divider */
-        .chapter-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.2rem;
-            margin: 5rem 0 3.5rem;
-        }
-        .chapter-divider-line { flex:1; height:1px; background:var(--ivory-deeper); }
-        .chapter-divider-center {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            color: var(--gold);
-            font-size:0.72rem;
-            font-weight:700;
-            letter-spacing:0.18em;
-            text-transform:uppercase;
-            white-space:nowrap;
-        }
-        .chapter-divider-center::before,
-        .chapter-divider-center::after {
-            content:'✦';
-            font-size:0.6rem;
-            color:var(--gold);
-            opacity:0.6;
+        /* Timeline Section */
+        .timeline-section {
+            padding: 4rem 0 8rem;
         }
 
-        /* =========================================================
-           VINTAGE TIMELINE
-           ========================================================= */
-        .timeline-section { padding: 0 0 7rem; background: var(--ivory); }
-        .timeline-intro {
-            text-align:center;
-            max-width:700px;
-            margin:0 auto 5rem;
-        }
-        .timeline-intro p {
-            font-family:'IM Fell English','Georgia',serif;
-            font-size:clamp(1rem,2vw,1.15rem);
-            font-style:italic;
-            color:var(--muted);
-            line-height:1.9;
-        }
-
-        /* Central timeline spine */
         .timeline {
             position: relative;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 6rem auto 0;
         }
+
         .timeline::before {
-            content:'';
-            position:absolute;
-            left:50%; top:0; bottom:0;
-            width:2px;
-            background: linear-gradient(to bottom,
-                transparent,
-                var(--gold) 8%,
-                var(--gold) 92%,
-                transparent);
-            transform:translateX(-50%);
-        }
-        @media(max-width:700px){
-            .timeline::before { left:28px; transform:none; }
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--brand-cyan-glow), var(--brand-mid), var(--brand-cyan-glow));
+            transform: translateX(-50%);
+            opacity: 0.3;
         }
 
         .tl-item {
-            display:grid;
-            grid-template-columns:1fr 60px 1fr;
-            gap:0;
-            margin-bottom:5rem;
-            position:relative;
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            margin-bottom: 6rem;
+            align-items: center;
         }
-        .tl-item:last-child { margin-bottom:0; }
 
-        /* Even items: content left, empty right */
-        .tl-item .tl-content { grid-column:1; text-align:right; padding-right:2.5rem; }
-        .tl-item .tl-spine  { grid-column:2; display:flex; flex-direction:column; align-items:center; }
-        .tl-item .tl-empty  { grid-column:3; }
-
-        /* Odd items: empty left, content right */
-        .tl-item.right .tl-content { grid-column:3; text-align:left; padding-right:0; padding-left:2.5rem; }
-        .tl-item.right .tl-empty  { grid-column:1; }
-
-        /* Spine node */
         .tl-node {
-            width:44px; height:44px;
-            border-radius:50%;
-            background:white;
-            border:3px solid var(--gold);
-            display:flex; align-items:center; justify-content:center;
-            flex-shrink:0;
-            box-shadow:var(--shadow-gold), inset 0 0 0 4px rgba(197,160,89,0.08);
-            position:relative;
-            z-index:2;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: var(--white);
+            border: 2px solid var(--brand-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: var(--shadow-cyan);
+            position: relative;
+            z-index: 2;
         }
+
         .tl-node-num {
-            font-family:'Playfair Display',serif;
-            font-size:1rem; font-weight:700;
-            color:var(--gold); line-height:1;
+            font-weight: 700;
+            color: var(--brand-mid);
+            font-size: 1.2rem;
         }
 
-        /* Horizontal connector line */
-        .tl-connector {
-            flex:1;
-            width:2px;
-            background:linear-gradient(to bottom, rgba(197,160,89,0.2), transparent);
-        }
-
-        /* The vintage card */
         .tl-card {
-            background: white;
-            border-radius:var(--radius);
-            border:1px solid var(--ivory-deeper);
-            box-shadow:var(--shadow-sm);
-            padding:2rem 2.2rem;
-            position:relative;
-            transition:all 0.4s var(--ease);
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--bg-deep);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s var(--ease);
+        }
 
-            /* Aged paper feel */
-            background: linear-gradient(145deg, #FFFDF8 0%, #FEFDFA 50%, #FAF7F0 100%);
-        }
-        .tl-card::before {
-            content:'';
-            position:absolute;
-            inset:0;
-            border-radius:inherit;
-            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            pointer-events:none;
-            opacity:0.5;
-        }
         .tl-card:hover {
-            transform:translateY(-6px);
-            box-shadow:var(--shadow-md), 0 0 0 1px rgba(197,160,89,0.15);
-            border-color:rgba(197,160,89,0.25);
+            transform: translateY(-8px);
+            border-color: var(--brand-cyan);
+            box-shadow: var(--shadow-lg);
         }
-
-        .tl-chapter-tag {
-            display:inline-flex; align-items:center; gap:6px;
-            font-size:0.7rem; font-weight:700;
-            letter-spacing:0.16em; text-transform:uppercase;
-            color:var(--gold); margin-bottom:0.7rem;
-        }
-        .tl-chapter-tag::before { content:'§'; font-size:0.85rem; }
 
         .tl-card h3 {
-            font-family:'Playfair Display',serif;
-            font-size:1.4rem; font-weight:700;
-            color:var(--dark); margin-bottom:0.9rem;
-            line-height:1.25;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--brand-dark);
         }
+
         .tl-card p {
-            font-size:0.92rem; color:var(--muted); line-height:1.8;
-            font-family:'IM Fell English','Georgia',serif;
-        }
-        .tl-card-detail {
-            margin-top:1.2rem; padding-top:1rem;
-            border-top:1px solid var(--ivory-deeper);
-            display:flex; align-items:center; gap:0.6rem;
-            font-size:0.78rem; color:var(--muted); font-weight:500;
-        }
-        .tl-card-detail .detail-dot {
-            width:6px; height:6px; border-radius:50%;
-            background:var(--gold); flex-shrink:0;
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.7;
         }
 
-        /* Arrow pointing from card toward spine */
-        .tl-card.arrow-right::after {
-            content:'';
-            position:absolute;
-            right:-11px; top:50%;
-            transform:translateY(-50%);
-            border:10px solid transparent;
-            border-left-color:var(--ivory-deeper);
-        }
-        .tl-card.arrow-left::after {
-            content:'';
-            position:absolute;
-            left:-11px; top:50%;
-            transform:translateY(-50%);
-            border:10px solid transparent;
-            border-right-color:var(--ivory-deeper);
+        .tl-tag {
+            color: var(--brand-cyan);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
-        /* Mobile: stacked */
-        @media(max-width:700px){
-            .tl-item, .tl-item.right {
-                grid-template-columns:60px 1fr;
-                grid-template-rows:auto;
+        @media(max-width: 850px) {
+            .timeline::before {
+                left: 30px;
+                transform: none;
             }
-            .tl-item .tl-spine { grid-column:1; grid-row:1; }
-            .tl-item .tl-content,
-            .tl-item.right .tl-content {
-                grid-column:2; grid-row:1;
-                text-align:left; padding-left:1.5rem; padding-right:0;
+
+            .tl-item {
+                grid-template-columns: 60px 1fr;
+                gap: 0;
             }
-            .tl-item .tl-empty,
-            .tl-item.right .tl-empty { display:none; }
-            .tl-card.arrow-right::after,
-            .tl-card.arrow-left::after { display:none; }
+
+            .tl-card {
+                margin-left: 1rem;
+            }
+
+            .tl-empty {
+                display: none;
+            }
         }
 
-        /* =========================================================
-           THE EXPERIENCE CALLOUT
-           ========================================================= */
-        .experience-callout {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
-            padding: 6rem 0;
+        /* Science Section */
+        .science-section {
+            padding: 8rem 0;
+            background: var(--bg-soft);
+            border-radius: 60px 60px 0 0;
+        }
+
+        .science-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        @media(max-width: 900px) {
+            .science-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .science-text h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .science-text h2 em {
+            color: var(--brand-cyan);
+            font-style: italic;
+        }
+
+        .fact-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            border-color: var(--brand-cyan);
+            transform: translateX(8px);
+        }
+
+        .fact-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-soft);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brand-mid);
+            flex-shrink: 0;
+        }
+
+        .fact-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+        }
+
+        .fact-body h4 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--brand-dark);
+        }
+
+        .cta-section {
+            padding: 10rem 0;
             text-align: center;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+            background: var(--brand-dark);
+            border-radius: 40px;
+            color: white;
             position: relative;
             overflow: hidden;
         }
-        .experience-callout::before {
-            content:'';
-            position:absolute; top:-50%; left:50%; transform:translateX(-50%);
-            width:900px; height:900px;
-            background:radial-gradient(circle, rgba(197,160,89,0.10) 0%, transparent 65%);
-            pointer-events:none;
-        }
-        .experience-callout h2 {
-            font-family:'Playfair Display',serif;
-            font-size:clamp(1.8rem,4vw,2.8rem);
-            color:white; margin-bottom:1rem; position:relative; z-index:2;
-        }
-        .experience-callout h2 em { font-style:italic; color:var(--gold); }
-        .experience-callout p { color:rgba(255,255,255,0.55); font-size:1rem; max-width:480px; margin:0 auto 2.5rem; position:relative; z-index:2; }
 
-        .callout-grid {
-            display:grid; grid-template-columns:repeat(3,1fr);
-            gap:1.5rem; max-width:760px;
-            margin:0 auto 3rem;
-            position:relative; z-index:2;
+        .cta-box h2 {
+            color: white;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
         }
-        .callout-stat {
-            background:rgba(197,160,89,0.09);
-            border:1px solid rgba(197,160,89,0.2);
-            border-radius:var(--radius);
-            padding:1.5rem 1rem;
+
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
         }
-        .callout-stat .stat-num {
-            font-family:'Playfair Display',serif;
-            font-size:2rem; color:var(--gold);
-            font-weight:700; display:block;
-            margin-bottom:0.3rem;
-        }
-        .callout-stat .stat-lbl { font-size:0.78rem; color:rgba(255,255,255,0.45); letter-spacing:0.08em; text-transform:uppercase; }
-        @media(max-width:600px){ .callout-grid{grid-template-columns:1fr;} }
-
-        .btn-gold {
-            display:inline-flex; align-items:center; gap:8px;
-            padding:0.9rem 2rem; border-radius:var(--radius-pill);
-            font-size:0.9rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
-            background:var(--gold); color:white;
-            box-shadow:0 6px 28px rgba(197,160,89,0.35);
-            transition:all 0.28s; border:none; cursor:pointer;
-            position:relative; z-index:2;
-        }
-        .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 12px 40px rgba(197,160,89,0.45); }
-
-        /* =========================================================
-           SCIENCE SECTION
-           ========================================================= */
-        .science-section { padding:7rem 0; background:white; }
-        .science-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-        @media(max-width:760px){ .science-grid{grid-template-columns:1fr; gap:3rem;} }
-
-        .science-text h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.4rem); margin-bottom:1.2rem; }
-        .science-text h2 em { font-style:italic; color:var(--gold); }
-        .science-text p { font-size:0.95rem; color:var(--muted); line-height:1.9; margin-bottom:1.2rem; }
-
-        .science-facts { display:flex; flex-direction:column; gap:1rem; }
-        .fact-item {
-            display:flex; gap:1rem; align-items:flex-start;
-            padding:1.2rem; background:var(--ivory);
-            border-radius:var(--radius); border:1px solid var(--ivory-deeper);
-            transition:all 0.3s;
-        }
-        .fact-item:hover { border-color:rgba(197,160,89,0.25); background:linear-gradient(105deg,rgba(197,160,89,0.04),transparent); }
-        .fact-icon {
-            width:40px; height:40px; border-radius:10px;
-            background:linear-gradient(135deg,var(--gold),var(--gold-light));
-            display:flex; align-items:center; justify-content:center;
-            flex-shrink:0; box-shadow:0 4px 12px rgba(197,160,89,0.25);
-        }
-        .fact-icon svg { width:20px; height:20px; stroke:white; fill:none; }
-        .fact-body h4 { font-size:0.95rem; font-weight:600; margin-bottom:0.3rem; }
-        .fact-body p { font-size:0.85rem; color:var(--muted); margin:0; }
-
-        /* Reveal */
-        .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.85s var(--ease), transform 0.85s var(--ease); }
-        .reveal.active { opacity:1; transform:none; }
-        .reveal-left { opacity:0; transform:translateX(-30px); transition:opacity 0.85s var(--ease), transform 0.85s var(--ease); }
-        .reveal-left.active { opacity:1; transform:none; }
-        .reveal-right { opacity:0; transform:translateX(30px); transition:opacity 0.85s var(--ease), transform 0.85s var(--ease); }
-        .reveal-right.active { opacity:1; transform:none; }
-
-        /* =========================================================
-           FOOTER
-           ========================================================= */
-        footer { background:var(--dark-2); color:rgba(255,255,255,0.7); padding:4rem 0 2rem; }
-        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2.5rem; }
-        .footer-logo { font-family:'Playfair Display',serif; font-size:1.25rem; color:white; margin-bottom:0.8rem; display:flex; align-items:center; gap:10px; }
-        .footer-logo span { color:var(--gold); }
-        .footer-logo img { width:34px; height:34px; border-radius:8px; object-fit:cover; }
-        .footer-about p { font-size:0.85rem; line-height:1.7; color:rgba(255,255,255,0.5); max-width:280px; }
-        .footer-col h5 { font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:1.2rem; }
-        .footer-col a { display:block; font-size:0.88rem; color:rgba(255,255,255,0.55); margin-bottom:0.6rem; transition:color 0.22s; }
-        .footer-col a:hover { color:var(--gold); }
-        .footer-divider { height:1px; background:rgba(255,255,255,0.07); margin-bottom:1.5rem; }
-        .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; font-size:0.8rem; color:rgba(255,255,255,0.3); }
-        @media(max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr;} }
-        @media(max-width:560px){ .footer-grid{grid-template-columns:1fr;} .footer-bottom{flex-direction:column; text-align:center;} }
     </style>
 </head>
-<body>
 
-<!-- LOADER -->
-<div id="loader">
-    <div class="loader-inner">
-        <div class="loader-icon"><img src="logo.png" alt="Dentaverse Elite"></div>
-        <div class="loader-brand">Dentaverse <span>Elite</span></div>
-        <div class="loader-bar"></div>
+<body class="how-page">
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="dv-loader">
+            <div class="dv-loader-icon"><img src="logo.png" alt="Dentaverse Elite"></div>
+            <div class="dv-loader-brand">Dentaverse <em>Elite</em></div>
+            <div class="dv-loader-bar"></div>
+        </div>
     </div>
-</div>
 
-<!-- HEADER -->
-<header>
-    <div class="container header-inner">
-        <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="logo.png" alt="Dentaverse Elite Logo"></div>
-            Dentaverse <span class="logo-accent">Elite</span>
-        </a>
-        <nav class="top-nav-links">
+    <!-- UNIVERSAL HEADER -->
+    <header class="dv-header" id="dvHeader">
+        <div class="container dv-nav">
+            <a href="index.html" class="dv-logo">
+                <div class="dv-logo-img"><img src="logo.png" alt="Dentaverse Elite"></div>
+                Dentaverse <em>Elite</em>
+            </a>
+            <nav class="dv-nav-links">
+                <a href="index.html">Home</a>
+                <a href="how-it-works.html" class="active">How It Works</a>
+                <a href="products.html">Solutions</a>
+                <a href="about.html">About</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="dv-nav-right">
+                <a href="contact.html" class="dv-btn-book">Book Experience</a>
+                <button class="dv-hamburger" id="dvHamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="dv-mobile-menu" id="dvMobileMenu">
             <a href="index.html">Home</a>
             <a href="how-it-works.html" class="active">How It Works</a>
             <a href="products.html">Products</a>
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
-            <a href="contact.html" class="btn-book">Book Experience</a>
-        </nav>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="products.html">Products</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Book Experience →</a>
-    </div>
-</header>
-
-<!-- PAGE HERO -->
-<div class="page-hero">
-    <div class="container page-hero-inner reveal">
-        <div class="ornament">
-            <div class="ornament-line"></div>
-            <div class="ornament-diamond"></div>
-            <span class="ornament-text">The Dentaverse Method</span>
-            <div class="ornament-diamond"></div>
-            <div class="ornament-line rev"></div>
+            <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
         </div>
-        <h1>The Art &amp; Science of<br><em>Fearless Dentistry</em></h1>
-        <p class="page-hero-desc">"In the theatre of the mind, fear has no stage." Discover how Dentaverse Elite transforms every appointment from a source of dread into a moment of wonder.</p>
-    </div>
-</div>
+    </header>
 
-<!-- VINTAGE TIMELINE -->
-<section class="timeline-section">
-    <div class="container">
-        <div class="timeline-intro reveal">
-            <p>"The journey from anxiety to serenity is not one of chance, but of careful craft. Each step has been engineered with both clinical precision and the gentleness of a patient hand."</p>
-        </div>
+    <main>
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="container reveal">
+                <span class="brand-eyebrow">The Dentaverse Method</span>
+                <h1>Modernizing the <em>Patient Journey</em></h1>
+                <p class="page-hero-desc">Discover how we combine cognitive science with high-fidelity VR to eliminate
+                    dental anxiety and transform clinical efficiency.</p>
+            </div>
+        </section>
 
-        <div class="timeline">
+        <!-- TIMELINE -->
+        <section class="timeline-section">
+            <div class="container">
+                <div class="timeline">
 
-            <!-- Chapter I -->
-            <div class="tl-item">
-                <div class="tl-content">
-                    <div class="tl-card arrow-right reveal">
-                        <div class="tl-chapter-tag">Chapter I</div>
-                        <h3>The Consultation</h3>
-                        <p>Before a single headset is fitted, the clinician engages in a brief, warm conversation with the patient. What brings them joy? What calms their mind? A mountain retreat, an ocean horizon, the gentle hum of a forest? This conversation shapes everything that follows.</p>
-                        <div class="tl-card-detail">
-                            <div class="detail-dot"></div>
-                            <span>Average duration: 3–5 minutes</span>
+                    <div class="tl-item">
+                        <div class="tl-content">
+                            <div class="tl-card reveal">
+                                <span class="tl-tag">Phase 01</span>
+                                <h3>Cognitive Consultation</h3>
+                                <p>Before treatment begins, the clinician identifies patient triggers and preferences.
+                                    This allows for a curated environmental selection tailored to the individual's
+                                    psychological comfort zone.</p>
+                            </div>
+                        </div>
+                        <div class="tl-node reveal-scale"><span class="tl-node-num">1</span></div>
+                        <div class="tl-empty"></div>
+                    </div>
+
+                    <div class="tl-item">
+                        <div class="tl-empty"></div>
+                        <div class="tl-node reveal-scale"><span class="tl-node-num">2</span></div>
+                        <div class="tl-content">
+                            <div class="tl-card reveal">
+                                <span class="tl-tag">Phase 02</span>
+                                <h3>Environment Selection</h3>
+                                <p>Patients choose from a library of 50+ hyper-realistic 8K environments. From
+                                    bioluminescent forests to tranquil deep-sea explorations, each world is engineered
+                                    for maximum immersion.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="tl-spine">
-                    <div class="tl-node"><span class="tl-node-num">I</span></div>
-                    <div class="tl-connector"></div>
-                </div>
-                <div class="tl-empty"></div>
-            </div>
 
-            <!-- Chapter II -->
-            <div class="tl-item right">
-                <div class="tl-empty"></div>
-                <div class="tl-spine">
-                    <div class="tl-node"><span class="tl-node-num">II</span></div>
-                    <div class="tl-connector"></div>
-                </div>
-                <div class="tl-content">
-                    <div class="tl-card arrow-left reveal">
-                        <div class="tl-chapter-tag">Chapter II</div>
-                        <h3>Selecting the World</h3>
-                        <p>The patient is invited to browse a curated library of over fifty immersive environments — each one developed in collaboration with psychologists and relaxation specialists. From starlit galaxies to sunlit meadows, every scene is a portal to calm.</p>
-                        <div class="tl-card-detail">
-                            <div class="detail-dot"></div>
-                            <span>50+ therapeutic environments</span>
+                    <div class="tl-item">
+                        <div class="tl-content">
+                            <div class="tl-card reveal">
+                                <span class="tl-tag">Phase 03</span>
+                                <h3>Seamless Integration</h3>
+                                <p>Our custom hardware is fitted with surgical precision. Designed not to obstruct the
+                                    clinician's workspace, the headset creates a private sanctuary for the patient while
+                                    maintaining full procedural access.</p>
+                            </div>
+                        </div>
+                        <div class="tl-node reveal-scale"><span class="tl-node-num">3</span></div>
+                        <div class="tl-empty"></div>
+                    </div>
+
+                    <div class="tl-item">
+                        <div class="tl-empty"></div>
+                        <div class="tl-node reveal-scale"><span class="tl-node-num">4</span></div>
+                        <div class="tl-content">
+                            <div class="tl-card reveal">
+                                <span class="tl-tag">Phase 04</span>
+                                <h3>Deep Immersion</h3>
+                                <p>As clinical sounds are replaced by spatial audio and bright lights are substituted
+                                    with serene vistas, the patient's heart rate lowers and "time compression" begins,
+                                    making long visits feel like minutes.</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </section>
 
-            <!-- Chapter III -->
-            <div class="tl-item">
-                <div class="tl-content">
-                    <div class="tl-card arrow-right reveal">
-                        <div class="tl-chapter-tag">Chapter III</div>
-                        <h3>The Fitting</h3>
-                        <p>Our clinical team carefully fits the patient with a lightweight, medically certified VR headset — each unit sanitised with a disposable, single-use hygiene barrier before every appointment. The headset is engineered to allow full clinical access to the oral area, so the dentist may proceed unimpeded.</p>
-                        <div class="tl-card-detail">
-                            <div class="detail-dot"></div>
-                            <span>Medical-grade hygiene protocol observed</span>
-                        </div>
+        <!-- SCIENCE -->
+        <section class="science-section">
+            <div class="container">
+                <div class="science-grid">
+                    <div class="science-text reveal">
+                        <span class="brand-eyebrow">Clinical Validation</span>
+                        <h2>The Science of <em>Neural Distraction</em></h2>
+                        <p>Dentaverse ELITE utilizes "Cognitive Gate Control Theory." By saturating the visual and
+                            auditory pathways with peaceful stimuli, we effectively block anxiety-related signals from
+                            reaching the primary consciousness.</p>
+                        <p>This results in higher patient cooperation, fewer procedural interruptions, and a
+                            significantly elevated clinic reputation.</p>
                     </div>
-                </div>
-                <div class="tl-spine">
-                    <div class="tl-node"><span class="tl-node-num">III</span></div>
-                    <div class="tl-connector"></div>
-                </div>
-                <div class="tl-empty"></div>
-            </div>
-
-            <!-- Chapter IV -->
-            <div class="tl-item right">
-                <div class="tl-empty"></div>
-                <div class="tl-spine">
-                    <div class="tl-node"><span class="tl-node-num">IV</span></div>
-                    <div class="tl-connector"></div>
-                </div>
-                <div class="tl-content">
-                    <div class="tl-card arrow-left reveal">
-                        <div class="tl-chapter-tag">Chapter IV</div>
-                        <h3>Immersion Begins</h3>
-                        <p>The moment the chosen environment loads, the transformation is immediate. Clinical sights, bright overhead lights, and the sound of instruments dissolve. In their place: the sound of waves, birdsong, or a distant wind through ancient pines. The patient's breathing slows. Their grip on the armrest releases.</p>
-                        <div class="tl-card-detail">
-                            <div class="detail-dot"></div>
-                            <span>Anxiety measurably reduced within 90 seconds</span>
+                    <div class="science-cards">
+                        <div class="fact-card reveal">
+                            <div class="fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" />
+                                </svg></div>
+                            <div class="fact-body">
+                                <h4>60% Anxiety Reduction</h4>
+                                <p>Validated through clinical tests measuring cortisol levels and heart rate
+                                    variability.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chapter V -->
-            <div class="tl-item">
-                <div class="tl-content">
-                    <div class="tl-card arrow-right reveal">
-                        <div class="tl-chapter-tag">Chapter V</div>
-                        <h3>The Treatment</h3>
-                        <p>With the patient's mind peacefully occupied elsewhere, the dentist is free to perform their work with precision and confidence. Patients who once required repeated breaks — or could not attend at all — sit calmly for the full duration. The clinician and patient, each at their best.</p>
-                        <div class="tl-card-detail">
-                            <div class="detail-dot"></div>
-                            <span>Fewer disruptions. Better clinical outcomes.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tl-spine">
-                    <div class="tl-node"><span class="tl-node-num">V</span></div>
-                    <div class="tl-connector"></div>
-                </div>
-                <div class="tl-empty"></div>
-            </div>
-
-            <!-- Chapter VI -->
-            <div class="tl-item right">
-                <div class="tl-empty"></div>
-                <div class="tl-spine">
-                    <div class="tl-node"><span class="tl-node-num">VI</span></div>
-                    <div class="tl-connector"></div>
-                </div>
-                <div class="tl-content">
-                    <div class="tl-card arrow-left reveal">
-                        <div class="tl-chapter-tag">Chapter VI</div>
-                        <h3>The Return &amp; Reflection</h3>
-                        <p>As the procedure concludes, the patient is gently guided back. Many describe the experience as feeling shorter than expected — the hallmark of genuine cognitive engagement. A brief wellness check and optional digital feedback report round out each session, ensuring every visit improves upon the last.</p>
-                        <div class="tl-card-detail">
-                            <div class="detail-dot"></div>
-                            <span>Session feedback informs future visits</span>
+                        <div class="fact-card reveal">
+                            <div class="fact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 8v4l3 3" stroke-width="2" />
+                                </svg></div>
+                            <div class="fact-body">
+                                <h4>Time Compression</h4>
+                                <p>Immersive environments create a psychological effect where procedures feel 40%
+                                    faster.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-        </div><!-- /.timeline -->
+        <!-- CTA -->
+        <section class="cta-section container">
+            <div class="cta-box reveal">
+                <h2>Transform Your <em>Clinic Today</em></h2>
+                <p>Join the elite network of clinics redefining the dental experience.</p>
+                <a href="contact.html" class="btn btn-primary">Book Your Experience</a>
+            </div>
+        </section>
+    </main>
 
-        <div class="chapter-divider reveal">
-            <div class="chapter-divider-line"></div>
-            <div class="chapter-divider-center">Finis — The Experience Concluded</div>
-            <div class="chapter-divider-line"></div>
-        </div>
-
-    </div>
-</section>
-
-<!-- SCIENCE SECTION -->
-<section class="science-section">
-    <div class="container science-grid">
-        <div class="science-text reveal-left">
-            <span style="font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem;">The Science Behind It</span>
-            <h2>Why VR Works for<br><em>Dental Anxiety</em></h2>
-            <p>The brain cannot fully process two streams of vivid sensory experience simultaneously. By occupying the visual, auditory, and spatial cortex with a rich, immersive environment, VR effectively gates the perception of discomfort and clinical stimuli.</p>
-            <p>This is not distraction in the conventional sense — it is a clinically validated form of <strong>cognitive offloading</strong>, studied across over forty peer-reviewed papers in dental and surgical contexts.</p>
-        </div>
-        <div class="science-facts reveal-right">
-            <div class="fact-item">
-                <div class="fact-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <!-- UNIVERSAL FOOTER -->
+    <footer class="dv-footer">
+        <div class="container">
+            <div class="dv-footer-grid">
+                <div class="dv-footer-about">
+                    <div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse <em>Elite</em></div>
+                    <p>Redefining dental care through immersive VR technology. Every visit becomes calm, cooperative,
+                        and positive.</p>
                 </div>
-                <div class="fact-body">
-                    <h4>Peer-Reviewed Efficacy</h4>
-                    <p>VR distraction therapy is backed by clinical trials demonstrating significant reduction in both perceived pain and procedural anxiety scores.</p>
+                <div class="dv-footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="products.html">Products</a>
+                    <a href="pricing.html">Pricing</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Connect</h5>
+                    <a href="contact.html">Book Experience</a>
+                    <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
+                    <a href="tel:+447887772083">+44 7887 772083</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Legal</h5>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
                 </div>
             </div>
-            <div class="fact-item">
-                <div class="fact-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-                </div>
-                <div class="fact-body">
-                    <h4>Shorter Perceived Time</h4>
-                    <p>Patients consistently report appointments feeling shorter than they were — a direct effect of deep immersion engagement.</p>
-                </div>
-            </div>
-            <div class="fact-item">
-                <div class="fact-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                </div>
-                <div class="fact-body">
-                    <h4>Measurable Physiological Change</h4>
-                    <p>Studies record lower heart rate variance and reduced salivary cortisol in VR-assisted dental patients versus control groups.</p>
-                </div>
+            <div class="dv-footer-divider"></div>
+            <div class="dv-footer-bottom">
+                <span>&copy; 2026 Dentaverse Elite. All Rights Reserved.</span>
+                <span>Crafted with care in the UK</span>
             </div>
         </div>
-    </div>
-</section>
+    </footer>
 
-<!-- ===================== WHO IT'S FOR ===================== -->
-<section style="padding:6rem 0; background:#F0F6FF;">
-    <div class="container">
-        <div style="text-align:center; margin-bottom:3.5rem;">
-            <span style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.9rem;">Target Audience</span>
-            <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);color:#0A2558;margin-bottom:0.8rem;">Who Is Dentaverse ELITE For?</h2>
-            <div style="width:44px;height:3px;background:linear-gradient(90deg,#0066CC,#00CCFF);border-radius:2px;margin:0 auto 1rem;"></div>
-            <p class="reveal" style="color:#5E6E85;max-width:560px;margin:0 auto;line-height:1.75;">Our VR solution is built for every person involved in modern dental care — patients, practitioners, learners, and institutions.</p>
-        </div>
-
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem;" class="audience-grid">
-
-            <!-- Patients -->
-            <div class="reveal" style="background:white;border-radius:20px;padding:2rem 2.2rem;border:1.5px solid #D8E8F8;box-shadow:0 4px 20px rgba(10,37,88,0.07);display:flex;gap:1.2rem;align-items:flex-start;transition:all 0.35s;">
-                <div style="width:52px;height:52px;background:linear-gradient(135deg,#0066CC,#00CCFF);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 18px rgba(0,102,204,0.28);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                </div>
-                <div>
-                    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.5rem;">For Patients</div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#0A2558;margin-bottom:0.5rem;">Immersive Anxiety Relief</h3>
-                    <p style="font-size:0.9rem;color:#5E6E85;line-height:1.7;margin:0;">To experience immersive VR that reduces fear and anxiety, transforming every dental visit into a calm, stress-free moment.</p>
-                </div>
-            </div>
-
-            <!-- Doctors -->
-            <div class="reveal" style="background:white;border-radius:20px;padding:2rem 2.2rem;border:1.5px solid #D8E8F8;box-shadow:0 4px 20px rgba(10,37,88,0.07);display:flex;gap:1.2rem;align-items:flex-start;transition:all 0.35s;" data-delay=".1">
-                <div style="width:52px;height:52px;background:linear-gradient(135deg,#0066CC,#00CCFF);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 18px rgba(0,102,204,0.28);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                </div>
-                <div>
-                    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.5rem;">For Doctors</div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#0A2558;margin-bottom:0.5rem;">Clinical Resource Access</h3>
-                    <p style="font-size:0.9rem;color:#5E6E85;line-height:1.7;margin:0;">To search for reference material, treatments, and medical resources — all within an integrated VR environment.</p>
-                </div>
-            </div>
-
-            <!-- Trainee Doctors -->
-            <div class="reveal" style="background:white;border-radius:20px;padding:2rem 2.2rem;border:1.5px solid #D8E8F8;box-shadow:0 4px 20px rgba(10,37,88,0.07);display:flex;gap:1.2rem;align-items:flex-start;transition:all 0.35s;" data-delay=".2">
-                <div style="width:52px;height:52px;background:linear-gradient(135deg,#0066CC,#00CCFF);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 18px rgba(0,102,204,0.28);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                </div>
-                <div>
-                    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.5rem;">For Trainee Doctors</div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#0A2558;margin-bottom:0.5rem;">Expert-Led VR Learning</h3>
-                    <p style="font-size:0.9rem;color:#5E6E85;line-height:1.7;margin:0;">For learning and seeing experts in action — immersive observation of real procedures accelerates clinical skill development.</p>
-                </div>
-            </div>
-
-            <!-- Training Institutes -->
-            <div class="reveal" style="background:white;border-radius:20px;padding:2rem 2.2rem;border:1.5px solid #D8E8F8;box-shadow:0 4px 20px rgba(10,37,88,0.07);display:flex;gap:1.2rem;align-items:flex-start;transition:all 0.35s;" data-delay=".3">
-                <div style="width:52px;height:52px;background:linear-gradient(135deg,#0066CC,#00CCFF);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 18px rgba(0,102,204,0.28);">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                </div>
-                <div>
-                    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.5rem;">For Training Institutes &amp; Medical Colleges</div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#0A2558;margin-bottom:0.5rem;">Institutional Reference Library</h3>
-                    <p style="font-size:0.9rem;color:#5E6E85;line-height:1.7;margin:0;">For accessing reference material, real patient treatment videos, and clinical images — enabling evidence-based, scalable education.</p>
-                </div>
-            </div>
-
+    <div class="privacy-bar" id="privacyBar">
+        <div class="privacy-text">We use cookies to enhance your experience and analyze our traffic. By clicking "Accept
+            All", you consent to our use of cookies.</div>
+        <div class="privacy-btns">
+            <button class="privacy-btn btn-deny" id="privacyDeny">Deny</button>
+            <button class="privacy-btn btn-accept" id="privacyAccept">Accept All</button>
         </div>
     </div>
-</section>
 
-<!-- =============== PATIENT PROCESS OF ELITE ================= -->
-<section style="padding:6rem 0; background:white;">
-    <div class="container">
-        <div style="text-align:center; margin-bottom:3.5rem;">
-            <span style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.9rem;">The Patient Journey</span>
-            <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);color:#0A2558;margin-bottom:0.8rem;">Patient Process of Elite</h2>
-            <div style="width:44px;height:3px;background:linear-gradient(90deg,#0066CC,#00CCFF);border-radius:2px;margin:0 auto 1rem;"></div>
-            <p class="reveal" style="color:#5E6E85;max-width:540px;margin:0 auto;line-height:1.75;">A seamless three-stage workflow designed to support the patient before, during, and after every Dentaverse ELITE appointment.</p>
-        </div>
+    <script>
+        (function () {
+            if (!localStorage.getItem('privacyAccepted')) {
+                setTimeout(() => {
+                    const pb = document.getElementById('privacyBar');
+                    if (pb) pb.classList.add('show');
+                }, 3000);
+            }
+            document.getElementById('privacyAccept').onclick = function () {
+                localStorage.setItem('privacyAccepted', 'true');
+                document.getElementById('privacyBar').classList.remove('show');
+            };
+            document.getElementById('privacyDeny').onclick = function () {
+                document.getElementById('privacyBar').classList.remove('show');
+            };
 
-        <!-- 3-step timeline -->
-        <div style="display:flex;flex-direction:column;gap:0;max-width:760px;margin:0 auto;position:relative;" class="process-steps">
+            var hbg = document.getElementById('dvHamburger');
+            document.body.classList.add('ready');
+            setTimeout(function () {
+                var l = document.getElementById('loader');
+                if (l) { l.style.opacity = '0'; l.style.visibility = 'hidden'; l.style.pointerEvents = 'none'; }
+            }, 1200);
 
-            <!-- vertical line -->
-            <div style="position:absolute;left:32px;top:40px;bottom:40px;width:2px;background:linear-gradient(to bottom,#0066CC,#00CCFF);border-radius:2px;" aria-hidden="true"></div>
+            var mob = document.getElementById('dvMobileMenu');
+            var hdr = document.getElementById('dvHeader');
+            if (hbg && mob) {
+                hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
+            }
+            window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-            <!-- Step 1 -->
-            <div class="reveal" style="display:flex;gap:1.8rem;align-items:flex-start;padding:0 0 3rem 0;">
-                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#0066CC,#00CCFF);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(0,102,204,0.30);position:relative;z-index:2;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                </div>
-                <div style="background:#F0F6FF;border-radius:20px;padding:1.8rem 2rem;border:1.5px solid #D8E8F8;flex:1;box-shadow:0 4px 18px rgba(10,37,88,0.06);">
-                    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.5rem;">Step 01</div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#0A2558;margin-bottom:0.6rem;">Pre-treatment Education</h3>
-                    <p style="font-size:0.92rem;color:#5E6E85;line-height:1.75;margin:0;">Before the procedure begins, patients are introduced to the Dentaverse system. The clinician selects an appropriate VR environment and the patient receives a brief, reassuring orientation — understanding what to expect and choosing their immersive world.</p>
-                </div>
-            </div>
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal, .reveal-scale').forEach(function (el) { obs.observe(el); });
 
-            <!-- Step 2 -->
-            <div class="reveal" style="display:flex;gap:1.8rem;align-items:flex-start;padding:0 0 3rem 0;" data-delay=".15">
-                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#0A2558,#0066CC);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(10,37,88,0.28);position:relative;z-index:2;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2"/></svg>
-                </div>
-                <div style="background:#F0F6FF;border-radius:20px;padding:1.8rem 2rem;border:1.5px solid #D8E8F8;flex:1;box-shadow:0 4px 18px rgba(10,37,88,0.06);">
-                    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.5rem;">Step 02</div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#0A2558;margin-bottom:0.6rem;">The Main VR-assisted Procedure</h3>
-                    <p style="font-size:0.92rem;color:#5E6E85;line-height:1.75;margin:0;">The patient is fitted with the lightweight, hygienic VR headset and fully immerses in their chosen environment. Clinical sights and sounds are replaced with calming visuals and spatial audio. The dentist performs the procedure unimpeded while the patient remains calm and cooperative throughout.</p>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="reveal" style="display:flex;gap:1.8rem;align-items:flex-start;" data-delay=".3">
-                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#00CCFF,#0066CC);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(0,204,255,0.28);position:relative;z-index:2;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                </div>
-                <div style="background:#F0F6FF;border-radius:20px;padding:1.8rem 2rem;border:1.5px solid #D8E8F8;flex:1;box-shadow:0 4px 18px rgba(10,37,88,0.06);">
-                    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#00CCFF;margin-bottom:0.5rem;">Step 03</div>
-                    <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#0A2558;margin-bottom:0.6rem;">Post-treatment Guidance</h3>
-                    <p style="font-size:0.92rem;color:#5E6E85;line-height:1.75;margin:0;">After the procedure, the patient is gently guided back and provided with aftercare instructions. A brief digital wellness check-in captures feedback to personalise future VR sessions. Patients consistently report feeling the appointment was shorter and more comfortable than expected.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- CALLOUT -->
-<section class="experience-callout">
-    <div class="container">
-        <h2>Ready to Begin<br>the <em>Experience</em>?</h2>
-        <p>Contact us today to arrange a free demonstration for your clinic, or find a Dentaverse Elite partner near you.</p>
-
-        <div class="callout-grid">
-            <div class="callout-stat">
-                <span class="stat-num">50+</span>
-                <span class="stat-lbl">VR Environments</span>
-            </div>
-            <div class="callout-stat">
-                <span class="stat-num">6</span>
-                <span class="stat-lbl">Step Process</span>
-            </div>
-            <div class="callout-stat">
-                <span class="stat-num">100%</span>
-                <span class="stat-lbl">Clinical Access</span>
-            </div>
-        </div>
-
-        <a href="contact.html" class="btn-gold">Book a free demonstration</a>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <img src="logo.png" alt="Dentaverse Elite">
-                    Dentaverse <span>Elite</span>
-                </div>
-                <p>Redefining dental care through the power of immersive VR technology. Making every visit calm and positive.</p>
-            </div>
-            <div class="footer-col">
-                <h5>Explore</h5>
-                <a href="how-it-works.html">How It Works</a>
-                <a href="products.html">Products</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html">About Us</a>
-                <a href="blog.html">Blog</a>
-            </div>
-            <div class="footer-col">
-                <h5>Connect</h5>
-                <a href="contact.html">Book Experience</a>
-                <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
-                <a href="tel:+447887772083">+44 7887 772083</a>
-            </div>
-        </div>
-        <div class="footer-divider"></div>
-        <div class="footer-bottom">
-            <span>© 2026 Dentaverse Elite. All Rights Reserved.</span>
-            <span>Crafted with care in the UK</span>
-        </div>
-    </div>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('ready');
-    setTimeout(() => document.getElementById('loader')?.classList.add('hidden'), 1400);
-
-    // Page transitions
-    document.querySelectorAll('a[href]').forEach(link => {
-        link.addEventListener('click', e => {
-            const href = link.getAttribute('href');
-            if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-            e.preventDefault();
-            document.body.classList.add('fade-out');
-            setTimeout(() => window.location.href = href, 280);
-        });
-    });
-
-    // Reveal on scroll
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
-
-    // Mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const menu = document.getElementById('mobileMenu');
-    if(hamburger && menu){
-        hamburger.addEventListener('click', () => menu.classList.toggle('open'));
-    }
-
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        const h = document.querySelector('header');
-        if(h) h.style.background = window.scrollY > 40 ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.82)';
-    }, { passive: true });
-});
-</script>
+            document.querySelectorAll('a[href]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var href = link.getAttribute('href');
+                    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(function () { window.location.href = href; }, 250);
+                });
+            });
+        })();
+    </script>
 </body>
+
+</html>>
+
 </html>

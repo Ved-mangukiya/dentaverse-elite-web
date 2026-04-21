@@ -4,225 +4,72 @@
     <link rel="icon" type="image/png" href="logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Products &amp; Pricing | Dentaverse ELITE</title>
-    <meta name="description" content="Explore Dentaverse ELITE's VR headset solutions and choose from Hardware Sales, Subscription Services, or Customization Packages tailored for your dental clinic.">
+    <title>Solutions & Pricing | Dentaverse ELITE</title>
+    <meta name="description" content="Explore Dentaverse ELITE's VR solutions and flexible pricing plans. Purpose-built hardware and tailored library for dental clinics.">
     <link rel="stylesheet" href="theme.css">
     <style>
-        /* ── Page override: force visible ── */
-        html, body { opacity: 1 !important; visibility: visible !important; }
-        @keyframes loaderHide { to { opacity: 0; visibility: hidden; pointer-events: none; } }
-        #loader { animation: loaderHide 0.5s ease 2s forwards; }
-
-        /* ── HERO ── */
+        body { opacity: 0; transition: opacity 0.5s var(--ease); overflow-x: hidden; }
+        body.ready { opacity: 1; }
+        
         .products-hero {
-            padding: calc(var(--nav-h, 64px) + 5rem) 0 4.5rem;
+            padding: calc(var(--nav-h, 72px) + 5rem) 0 5rem;
             text-align: center;
-            background: linear-gradient(160deg, #FFFFFF 0%, #EBF4FF 55%, #F0F9FF 100%);
-            border-bottom: 1px solid rgba(0,102,204,0.09);
-            position: relative; overflow: hidden;
-        }
-        .products-hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(0,204,255,0.07) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .products-hero > * { position: relative; z-index: 2; }
-        .products-eyebrow {
-            display: inline-block; font-size: 0.75rem; font-weight: 700;
-            letter-spacing: 0.16em; text-transform: uppercase;
-            color: #00CCFF; margin-bottom: 1rem;
-        }
-        .products-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
-            color: #0A2558; margin-bottom: 1.2rem; line-height: 1.1;
-        }
-        .products-hero h1 em { font-style: italic; color: #00CCFF; }
-        .products-hero p.lead {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            color: #5E6E85; max-width: 620px; margin: 0 auto; line-height: 1.7;
-        }
-
-        /* ── Section helpers ── */
-        .sec { padding: 5.5rem 0; }
-        .sec-alt { background: #F0F6FF; }
-        .sec-white { background: #FFFFFF; }
-        .sec-dark { background: #0A2558; }
-
-        .sec-head { text-align: center; margin-bottom: 3.5rem; }
-        .sec-eyebrow {
-            display: inline-block; font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.18em; text-transform: uppercase;
-            color: #00CCFF; margin-bottom: 0.9rem;
-        }
-        .sec-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.9rem, 4vw, 2.8rem); color: #0A2558; margin-bottom: 0.8rem;
-        }
-        .sec-title em { font-style: italic; color: #00CCFF; }
-        .sec-divider {
-            width: 44px; height: 3px;
-            background: linear-gradient(90deg, #0066CC, #00CCFF);
-            border-radius: 2px; margin: 0 auto 1rem;
-        }
-        .sec-sub { font-size: clamp(0.95rem,2vw,1.05rem); color: #5E6E85; max-width: 560px; margin: 0 auto; line-height: 1.75; }
-
-        /* ── 2-col grid ── */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
-        @media(max-width:860px){ .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; } }
-        @media(max-width:680px){ .grid-3 { grid-template-columns: 1fr; } }
-
-        /* ── Hardware cards ── */
-        .hw-card {
-            background: white; border: 1.5px solid #D8E8F8; border-radius: 22px;
-            padding: 2.5rem 2.2rem; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-            box-shadow: 0 4px 20px rgba(10,37,88,0.05);
-        }
-        .hw-card:hover {
-            transform: translateY(-6px); border-color: rgba(0,204,255,0.40);
-            box-shadow: 0 16px 44px rgba(0,102,204,0.11);
-        }
-        .hw-icon {
-            width: 56px; height: 56px; border-radius: 15px;
-            background: linear-gradient(135deg, rgba(0,102,204,0.10), rgba(0,204,255,0.06));
-            border: 1px solid rgba(0,102,204,0.12);
-            display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
-        .hw-card:hover .hw-icon { background: linear-gradient(135deg,#0066CC,#00CCFF); border-color: transparent; box-shadow: 0 6px 20px rgba(0,102,204,0.30); }
-        .hw-icon svg { width: 26px; height: 26px; stroke: #0066CC; fill: none; stroke-width: 1.8; transition: stroke 0.3s; }
-        .hw-card:hover .hw-icon svg { stroke: white; }
-        .hw-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #0A2558; margin-bottom: 0.9rem; }
-        .hw-card ul { list-style: none; color: #5E6E85; }
-        .hw-card ul li { padding: 0.45rem 0 0.45rem 1.4rem; position: relative; font-size: 0.9rem; line-height: 1.6; }
-        .hw-card ul li::before { content: '›'; color: #0066CC; font-weight: 700; position: absolute; left: 0; }
-
-        /* ── Package Cards (Business Model) ── */
-        .pkg-card {
-            background: white; border-radius: 24px; padding: 2.5rem 2rem;
-            border: 1.5px solid #D8E8F8; position: relative;
-            display: flex; flex-direction: column;
-            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-            box-shadow: 0 4px 20px rgba(10,37,88,0.05);
-        }
-        .pkg-card:hover { transform: translateY(-8px); box-shadow: 0 20px 52px rgba(0,102,204,0.13); border-color: rgba(0,204,255,0.35); }
-        .pkg-card.featured {
-            border: 2px solid #0066CC;
-            box-shadow: 0 12px 40px rgba(0,102,204,0.18);
-            transform: scale(1.03);
-        }
-        .pkg-card.featured:hover { transform: scale(1.03) translateY(-8px); }
-        .pkg-featured-badge {
-            position: absolute; top: 0; left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #0066CC, #00CCFF);
-            color: white; font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.10em; text-transform: uppercase;
-            padding: 6px 18px; border-radius: 999px;
-            box-shadow: 0 4px 14px rgba(0,102,204,0.35);
-            white-space: nowrap;
-        }
-        .pkg-icon-wrap {
-            width: 60px; height: 60px; border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.3rem;
-        }
-        .pkg-icon-wrap svg { width: 28px; height: 28px; fill: none; stroke: white; stroke-width: 1.8; }
-        .pkg-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #00CCFF; margin-bottom: 0.5rem; }
-        .pkg-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #0A2558; margin-bottom: 0.7rem; }
-        .pkg-desc { font-size: 0.9rem; color: #5E6E85; line-height: 1.65; margin-bottom: 1.8rem; }
-        .pkg-features { list-style: none; flex-grow: 1; margin-bottom: 2rem; }
-        .pkg-features li {
-            display: flex; align-items: flex-start; gap: 10px;
-            font-size: 0.9rem; color: #333; padding: 0.5rem 0;
-            border-bottom: 1px solid #EDF4FF;
-        }
-        .pkg-features li:last-child { border: none; }
-        .pkg-check {
-            width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
-            background: rgba(0,204,255,0.12);
-            display: flex; align-items: center; justify-content: center; margin-top: 1px;
-        }
-        .pkg-check svg { width: 11px; height: 11px; stroke: #0066CC; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .pkg-btn {
-            display: block; text-align: center; width: 100%;
-            padding: 14px; border-radius: 12px;
-            font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-            transition: all 0.25s;
-        }
-        .pkg-btn-outline { background: rgba(0,102,204,0.06); color: #0066CC; border: 1.5px solid rgba(0,102,204,0.18); }
-        .pkg-btn-outline:hover { background: rgba(0,102,204,0.12); border-color: #0066CC; }
-        .pkg-btn-solid { background: linear-gradient(135deg,#0066CC,#00CCFF); color: white; box-shadow: 0 6px 20px rgba(0,102,204,0.28); }
-        .pkg-btn-solid:hover { box-shadow: 0 10px 32px rgba(0,102,204,0.42); transform: translateY(-2px); }
-
-        /* ── Value grid ── */
-        .val-card {
-            background: white; border-radius: 20px; padding: 2rem 1.8rem;
-            border: 1.5px solid #D8E8F8; transition: all 0.35s;
-            box-shadow: 0 3px 16px rgba(10,37,88,0.05);
-            display: flex; gap: 1rem; align-items: flex-start;
-        }
-        .val-card:hover { transform: translateY(-4px); border-color: rgba(0,204,255,0.40); box-shadow: 0 12px 36px rgba(0,102,204,0.10); }
-        .val-num {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700;
-            color: #00CCFF; line-height: 1; flex-shrink: 0; min-width: 44px;
-        }
-        .val-body h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #0A2558; margin-bottom: 0.4rem; }
-        .val-body p { font-size: 0.88rem; color: #5E6E85; line-height: 1.65; margin: 0; }
-
-        /* ── Enterprise Banner ── */
-        .enterprise-bar {
-            background: #0A2558; border-radius: 24px;
-            padding: 3rem 4rem; margin-top: 4rem;
-            display: flex; align-items: center; justify-content: space-between; gap: 2rem;
-            position: relative; overflow: hidden;
-        }
-        .enterprise-bar::before {
-            content: ''; position: absolute; top: 0; right: 0; width: 420px; height: 100%;
-            background: radial-gradient(circle at right, rgba(0,204,255,0.12) 0%, transparent 70%);
-        }
-        .ent-text h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: white; margin-bottom: 0.5rem; position: relative; }
-        .ent-text p { color: rgba(255,255,255,0.6); max-width: 480px; line-height: 1.65; position: relative; }
-        .ent-cta {
-            background: white; color: #0A2558;
-            padding: 14px 28px; border-radius: 999px;
-            font-weight: 700; white-space: nowrap; transition: transform 0.2s;
+            background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #F5F9FF 100%);
+            border-bottom: 1px solid var(--border);
             position: relative;
         }
-        .ent-cta:hover { transform: translateY(-2px); }
-        @media(max-width:760px){ .enterprise-bar{ flex-direction:column; text-align:center; padding:2.5rem 2rem; } }
+        .products-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--brand-dark); margin-bottom: 1.5rem; }
+        .products-hero h1 em { font-style: italic; color: var(--brand-cyan); }
+        .products-hero p { font-size: 1.15rem; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.8; }
 
-        /* ── Responsive ── */
-        @media(max-width:860px){ .grid-2 { grid-template-columns: 1fr; } }
-        @media(max-width:960px){ .grid-3 { grid-template-columns: 1fr; max-width:500px; margin:0 auto; } }
+        .sec { padding: 6.5rem 0; }
+        .sec-alt { background: var(--bg-soft); }
+        .sec-head { text-align: center; margin-bottom: 4rem; }
+        .sec-head h2 { font-size: 2.8rem; color: var(--brand-dark); margin-bottom: 1rem; }
+        .sec-head h2 em { font-style: italic; color: var(--brand-cyan); }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .hw-card { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 3rem; box-shadow: var(--shadow-sm); transition: 0.3s; }
+        .hw-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--brand-cyan); }
+        .hw-icon { width: 64px; height: 64px; background: var(--bg-soft); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--brand-mid); }
+        .hw-card h3 { font-size: 1.7rem; margin-bottom: 1.2rem; }
+        .hw-card ul { list-style: none; padding: 0; }
+        .hw-card ul li { padding: 0.5rem 0; color: var(--muted); display: flex; align-items: center; gap: 12px; }
+        .hw-card ul li::before { content: '→'; color: var(--brand-cyan); font-weight: 700; }
+
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2rem; }
+        .price-card { background: white; border: 1px solid var(--border); border-radius: 28px; padding: 3.5rem 2.5rem; transition: 0.3s; position: relative; }
+        .price-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); border-color: var(--brand-cyan); }
+        .price-card.featured { border-color: var(--brand-cyan); background: #faffff; transform: scale(1.03); }
+        .price-card.featured:hover { transform: scale(1.03) translateY(-10px); }
+        .price-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--brand-cyan); color: white; padding: 6px 16px; border-radius: 99px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+        .price-title { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--brand-dark); }
+        .price-amt { font-size: 3rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 2rem; }
+        .price-amt span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+        .price-list { list-style: none; padding: 0; margin-bottom: 3rem; }
+        .price-list li { padding: 0.75rem 0; font-size: 0.95rem; color: var(--text); border-bottom: 1px solid #f0f0f0; }
+        .price-list li:last-child { border-bottom: none; }
+        
+        @media(max-width: 991px) {
+            .grid-2, .pricing-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: none; margin: 1rem 0; }
+            .price-card.featured:hover { transform: translateY(-10px); }
+        }
     </style>
 </head>
-<body>
-
-    <script>document.documentElement.style.opacity='1';document.documentElement.style.visibility='visible';</script>
-
-    <!-- LOADER -->
-    <div id="loader">
-        <div class="dv-loader">
-            <div class="dv-loader-icon"><img src="logo.png" alt="Dentaverse ELITE"></div>
-            <div class="dv-loader-brand">Dentaverse <em>Elite</em></div>
-            <div class="dv-loader-bar"></div>
-        </div>
-    </div>
+<body class="ready">
 
     <!-- UNIVERSAL HEADER -->
     <header class="dv-header" id="dvHeader">
         <div class="container dv-nav">
             <a href="index.html" class="dv-logo">
-                <div class="dv-logo-img"><img src="logo.png" alt="Dentaverse ELITE"></div>
+                <div class="dv-logo-img"><img src="logo.png" alt="Dentaverse Elite"></div>
                 Dentaverse <em>Elite</em>
             </a>
             <nav class="dv-nav-links">
                 <a href="index.html">Home</a>
                 <a href="how-it-works.html">How It Works</a>
-                <a href="products.html" class="active">Products &amp; Pricing</a>
+                <a href="products.html" class="active">Solutions</a>
                 <a href="about.html">About</a>
                 <a href="blog.html">Blog</a>
             </nav>
@@ -236,7 +83,7 @@
         <div class="dv-mobile-menu" id="dvMobileMenu">
             <a href="index.html">Home</a>
             <a href="how-it-works.html">How It Works</a>
-            <a href="products.html" class="active">Products &amp; Pricing</a>
+            <a href="products.html" class="active">Solutions</a>
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
             <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
@@ -244,200 +91,107 @@
     </header>
 
     <main>
-
         <!-- HERO -->
         <section class="products-hero reveal">
             <div class="container">
-                <span class="products-eyebrow">VR Headset Solution &amp; Packages</span>
-                <h1>Immersive Technology &amp;<br><em>Flexible Pricing</em></h1>
-                <p class="lead">One complete platform. Choose the model that fits your clinic — from outright hardware purchase to fully managed subscription and bespoke customization packages.</p>
+                <span class="section-eyebrow">The Guided Experience</span>
+                <h1>One Seamless <em>Clinical Solution</em></h1>
+                <p>We provide the medically-certified hardware and the curated VR library. You provide the better patient outcomes. Simple, integrated, and effective.</p>
             </div>
         </section>
 
-        <!-- ===================== VR HARDWARE ===================== -->
-        <section class="sec sec-white">
+        <!-- HARDWARE -->
+        <section class="sec">
             <div class="container">
                 <div class="sec-head reveal">
-                    <span class="sec-eyebrow">The Technology</span>
-                    <h2 class="sec-title">VR Headset <em>Solution</em></h2>
-                    <div class="sec-divider"></div>
-                    <p class="sec-sub">Purpose-built for dental environments — combining clinical precision with immersive patient comfort.</p>
+                    <h2 class="sec-title">Step 1: Clinical <em>Hardware</em></h2>
+                    <p class="sec-subtitle">Purpose-built for high-turnover dental environments.</p>
                 </div>
                 <div class="grid-2">
                     <div class="hw-card reveal">
                         <div class="hw-icon">
-                            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20l-2 10H4L2 7z"/><path d="M6 7v0"/><path d="M18 7v0"/><path d="M10 21v-4"/><path d="M14 21v-4"/></svg>
                         </div>
-                        <h3>VR Headset Hardware</h3>
-                        <p style="color:#5E6E85;font-size:0.92rem;margin-bottom:1.4rem;line-height:1.7;">Dentaverse ELITE headsets are engineered specifically for active dental procedures — not repurposed consumer devices.</p>
+                        <h3>Dentaverse V1 Headset</h3>
                         <ul>
-                            <li>Lightweight, adjustable fit for all patient age groups</li>
-                            <li>Designed for use during procedures without jaw or instrument interference</li>
-                            <li>Easy for dental staff to operate and sanitise between patients</li>
-                            <li>Disposable medical-grade hygiene covers, changed with every use</li>
-                            <li>Clinically certified for dental environments — UK medical device compliant</li>
+                            <li>Ultra-low latency 8K displays</li>
+                            <li>Antimicrobial surgical-grade surface</li>
+                            <li>Balanced weight for patient comfort</li>
+                            <li>4-hour clinical battery life</li>
                         </ul>
                     </div>
-                    <div class="hw-card reveal" style="transition-delay:.1s">
+                    <div class="hw-card reveal" style="transition-delay:0.1s">
                         <div class="hw-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
-                        <h3>Customised Content Library</h3>
-                        <p style="color:#5E6E85;font-size:0.92rem;margin-bottom:1.4rem;line-height:1.7;">Our VR system includes a constantly-growing library of immersive content, developed for different patient profiles and anxiety levels.</p>
+                        <h3>Clinical Hub Station</h3>
                         <ul>
-                            <li><strong>Educational Videos:</strong> Explain procedures visually — reducing fear of the unknown</li>
-                            <li><strong>Relaxation Environments:</strong> Virtual beaches, forests, and waterfalls promoting calmness</li>
-                            <li><strong>Cartoons &amp; Entertainment:</strong> Engaging distraction for children and anxious patients</li>
-                            <li><strong>Music Therapy:</strong> Clinically curated calming audio to reduce procedural stress</li>
-                            <li><strong>Expert Reference Videos:</strong> Treatment and medical resource library for practitioners</li>
+                            <li>UV-C rapid sanitization bay</li>
+                            <li>Magnetic wireless charging</li>
+                            <li>Compact mobile clinical stand</li>
+                            <li>Ethernet & WiFi 6E integrated</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== BUSINESS MODEL PACKAGES ===================== -->
-        <section class="sec sec-alt" id="pricing">
+        <!-- PRICING -->
+        <section class="sec sec-alt">
             <div class="container">
                 <div class="sec-head reveal">
-                    <span class="sec-eyebrow">Business Model</span>
-                    <h2 class="sec-title">Choose Your <em>Package</em></h2>
-                    <div class="sec-divider"></div>
-                    <p class="sec-sub">Three flexible models designed to suit clinics of every size — from independent practitioners to hospital networks and training institutions.</p>
+                    <h2 class="sec-title">Step 2: Choosing Your <em>Plan</em></h2>
+                    <p class="sec-subtitle">Flexible packages designed for private practices and regional groups.</p>
                 </div>
-
-                <div class="grid-3">
-
-                    <!-- Package 1: Hardware Sales -->
-                    <div class="pkg-card reveal">
-                        <div class="pkg-icon-wrap" style="background:linear-gradient(135deg,#0A2558,#0066CC);">
-                            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2"/></svg>
-                        </div>
-                        <div class="pkg-label">Package 01</div>
-                        <div class="pkg-name">Hardware Sales</div>
-                        <p class="pkg-desc">Own your VR equipment outright. A one-time capital purchase that gives your clinic permanent access to Dentaverse ELITE hardware with no recurring commitment.</p>
-                        <ul class="pkg-features">
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Purchase 1–20+ VR headsets directly</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Full ownership of hardware assets</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Installation &amp; staff training included</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> 12-month hardware warranty</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Optional content subscription add-on</li>
+                <div class="pricing-grid">
+                    <!-- Package 1 -->
+                    <div class="price-card reveal">
+                        <div class="price-title">Hardware Sales</div>
+                        <div class="price-amt">£2,450<span>/unit</span></div>
+                        <ul class="price-list">
+                            <li>1x V1 Headset Ownership</li>
+                            <li>Clinical Docking Station</li>
+                            <li>12-Month Support Package</li>
+                            <li>On-site Clinical Training</li>
                         </ul>
-                        <a href="contact.html" class="pkg-btn pkg-btn-outline">Enquire About Hardware</a>
+                        <a href="contact.html" class="btn btn-outline" style="width:100%">Enquire Now</a>
                     </div>
-
-                    <!-- Package 2: Subscription Services (featured) -->
-                    <div class="pkg-card featured reveal" style="transition-delay:.1s">
-                        <div class="pkg-featured-badge">Most Popular</div>
-                        <div class="pkg-icon-wrap" style="background:linear-gradient(135deg,#0066CC,#00CCFF);">
-                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <div class="pkg-label">Package 02</div>
-                        <div class="pkg-name">Subscription Services</div>
-                        <p class="pkg-desc">Hardware included. Monthly or annual content updates, new VR environments, software upgrades, and dedicated clinic support — all in one managed plan.</p>
-                        <ul class="pkg-features">
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Headsets included in plan price</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Monthly &amp; annual billing options</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Continuous content library updates</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Live Practitioner Dashboard access</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Priority UK-based support line</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> New environment drops quarterly</li>
+                    <!-- Package 2 -->
+                    <div class="price-card featured reveal" style="transition-delay:0.1s">
+                        <div class="price-badge">Most Popular</div>
+                        <div class="price-title">Managed Elite</div>
+                        <div class="price-amt">£129<span>/mo</span></div>
+                        <ul class="price-list">
+                            <li>Hardware Included (No Upfront)</li>
+                            <li>Lifetime Warranty & Swaps</li>
+                            <li>Full Content Library Access</li>
+                            <li>Priority Support Line</li>
                         </ul>
-                        <a href="contact.html" class="pkg-btn pkg-btn-solid">Start Free Trial</a>
+                        <a href="contact.html" class="btn btn-primary" style="width:100%">Start 30-Day Trial</a>
                     </div>
-
-                    <!-- Package 3: Customization -->
-                    <div class="pkg-card reveal" style="transition-delay:.2s">
-                        <div class="pkg-icon-wrap" style="background:linear-gradient(135deg,#00CCFF,#0066CC);">
-                            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                        </div>
-                        <div class="pkg-label">Package 03</div>
-                        <div class="pkg-name">Customization Packages</div>
-                        <p class="pkg-desc">Bespoke VR experiences tailored precisely to your clinic's patient demographic, branding, and clinical speciality. Ideal for specialist practices and teaching institutions.</p>
-                        <ul class="pkg-features">
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Branded VR environments (clinic logo)</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Bespoke content for patient demographic</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Real patient treatment video integration</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> Trainee doctor &amp; reference modules</li>
-                            <li><div class="pkg-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div> White-label for medical colleges</li>
+                    <!-- Package 3 -->
+                    <div class="price-card reveal" style="transition-delay:0.2s">
+                        <div class="price-title">Enterprise</div>
+                        <div class="price-amt">Custom<span>Quote</span></div>
+                        <ul class="price-list">
+                            <li>Multi-Clinic Fleet Deployment</li>
+                            <li>White-Labeled Content Portal</li>
+                            <li>Bespoke Treatment Modules</li>
+                            <li>Dedicated Account Manager</li>
                         </ul>
-                        <a href="contact.html" class="pkg-btn pkg-btn-outline">Discuss Customization</a>
+                        <a href="contact.html" class="btn btn-outline" style="width:100%">Consult Sales</a>
                     </div>
-
-                </div>
-
-                <!-- Enterprise Banner -->
-                <div class="enterprise-bar reveal">
-                    <div class="ent-text">
-                        <h3>NHS &amp; Hospital Networks</h3>
-                        <p>Require 10+ headsets, custom SSO, NHS framework compliance, or a full API integration? We offer dedicated enterprise agreements with volume pricing and on-site support.</p>
-                    </div>
-                    <a href="contact.html" class="ent-cta">Talk to Enterprise →</a>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== WHO IT'S FOR ===================== -->
-        <section class="sec sec-white">
-            <div class="container">
-                <div class="sec-head reveal">
-                    <span class="sec-eyebrow">Value Across the Board</span>
-                    <h2 class="sec-title">Built for <em>Everyone</em> in Dental Care</h2>
-                    <div class="sec-divider"></div>
-                    <p class="sec-sub">Dentaverse ELITE delivers meaningful value to every stakeholder across the dental ecosystem.</p>
-                </div>
-                <div class="grid-2">
-
-                    <div class="val-card reveal">
-                        <div class="val-num">01</div>
-                        <div class="val-body">
-                            <h4>For Patients</h4>
-                            <p>To experience immersive VR that reduces fear and anxiety — transforming dental visits from a source of dread into a calm, cooperative moment of wonder.</p>
-                        </div>
-                    </div>
-
-                    <div class="val-card reveal" style="transition-delay:.1s">
-                        <div class="val-num">02</div>
-                        <div class="val-body">
-                            <h4>For Doctors</h4>
-                            <p>To search for reference material, treatments, and medical resources within an integrated VR environment — supporting better clinical decisions at the chair.</p>
-                        </div>
-                    </div>
-
-                    <div class="val-card reveal" style="transition-delay:.2s">
-                        <div class="val-num">03</div>
-                        <div class="val-body">
-                            <h4>For Trainee Doctors</h4>
-                            <p>For learning and seeing experts in action — immersive observation of real patient treatment videos accelerates clinical confidence and skill development.</p>
-                        </div>
-                    </div>
-
-                    <div class="val-card reveal" style="transition-delay:.3s">
-                        <div class="val-num">04</div>
-                        <div class="val-body">
-                            <h4>For Training Institutes &amp; Medical Colleges</h4>
-                            <p>For accessing reference material, real patient treatment videos, and clinical images — enabling evidence-based, scalable dental education at institutional level.</p>
-                        </div>
-                    </div>
-
-                </div>
+        <!-- CTA -->
+        <section class="sec" style="text-align: center;">
+            <div class="container reveal">
+                <h2 class="sec-title" style="margin-bottom: 2rem;">Ready to Guide Your <em>Patients?</em></h2>
+                <a href="contact.html" class="btn btn-primary">Book Your Demo Experience</a>
             </div>
         </section>
-
-        <!-- ===================== CTA ===================== -->
-        <section style="background:linear-gradient(135deg,#0A2558 0%,#091e4a 100%);padding:6rem 0;text-align:center;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(0,204,255,0.10) 0%,transparent 65%);pointer-events:none;"></div>
-            <div class="container reveal" style="position:relative;z-index:2;">
-                <span style="display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#00CCFF;margin-bottom:1rem;">Get Started</span>
-                <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);color:white;margin-bottom:1.2rem;">Ready to Transform Your Clinic?</h2>
-                <p style="color:rgba(255,255,255,0.6);font-size:1.05rem;max-width:480px;margin:0 auto 2.5rem;line-height:1.7;">Book a free demonstration and see Dentaverse ELITE in action. Our team handles everything from installation to training.</p>
-                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-                    <a href="contact.html" class="btn btn-gold">Book a Free Demo →</a>
-                    <a href="how-it-works.html" class="btn btn-outline-white">See How It Works</a>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <!-- UNIVERSAL FOOTER -->
@@ -450,9 +204,10 @@
                 </div>
                 <div class="dv-footer-col">
                     <h5>Explore</h5>
+                    <a href="index.html">Home</a>
                     <a href="how-it-works.html">How It Works</a>
-                    <a href="products.html">Products &amp; Pricing</a>
-                    <a href="about.html">About Us</a>
+                    <a href="products.html" class="active">Solutions</a>
+                    <a href="about.html">About</a>
                     <a href="blog.html">Blog</a>
                 </div>
                 <div class="dv-footer-col">
@@ -476,39 +231,28 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script>
         (function () {
-            // Hide loader
-            setTimeout(function() {
-                var l = document.getElementById('loader');
-                if (l) { l.style.opacity='0'; l.style.visibility='hidden'; l.style.pointerEvents='none'; }
-            }, 1300);
-
-            // Body ready
-            document.body.classList.add('ready');
-
-            // Nav
             var hbg = document.getElementById('dvHamburger');
             var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
-            if (hbg && mob) hbg.addEventListener('click', function(){ hbg.classList.toggle('open'); mob.classList.toggle('open'); });
-            window.addEventListener('scroll', function(){ if(hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive:true });
+            if (hbg && mob) {
+                hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
+            }
+            window.addEventListener('scroll', function () { if(hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-            // Reveal
-            var obs = new IntersectionObserver(function(entries){
-                entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); } });
-            }, { threshold: 0.10 });
-            document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
-            // Page transitions
-            document.querySelectorAll('a[href]').forEach(function(link){
-                link.addEventListener('click', function(e){
+            document.querySelectorAll('a[href]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
                     var href = link.getAttribute('href');
                     if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
                     e.preventDefault();
                     document.body.classList.add('fade-out');
-                    setTimeout(function(){ window.location.href = href; }, 280);
+                    setTimeout(function() { window.location.href = href; }, 250);
                 });
             });
         })();
