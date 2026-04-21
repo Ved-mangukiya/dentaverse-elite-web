@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dentaverse Elite | Premium VR Dental Care</title>
     <meta name="description" content="Dentaverse Elite transforms dental anxiety into calm confidence using cutting-edge VR distraction therapy. Experience the future of dentistry.">
+    <link rel="stylesheet" href="theme.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -881,23 +882,33 @@
 </div>
 
 <!-- ======================= HEADER ======================= -->
-<header>
-    <div class="container header-inner">
-        <a href="index.html" class="logo">
-            <div class="logo-icon">
-                <img src="logo.png" alt="Dentaverse Elite Logo">
-            </div>
-            Dentaverse <span class="logo-accent">Elite</span>
+<header class="dv-header" id="dvHeader">
+    <div class="container dv-nav">
+        <a href="index.html" class="dv-logo">
+            <div class="dv-logo-img"><img src="logo.png" alt="Dentaverse Elite"></div>
+            Dentaverse <em>Elite</em>
         </a>
-        <nav class="top-nav-links">
+        <nav class="dv-nav-links">
             <a href="index.html" class="active">Home</a>
             <a href="how-it-works.html">How It Works</a>
             <a href="products.html">Products</a>
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
-            <a href="contact.html" class="btn-book">Book Experience</a>
         </nav>
+        <div class="dv-nav-right">
+            <a href="contact.html" class="dv-btn-book">Book Experience</a>
+            <button class="dv-hamburger" id="dvHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+    <div class="dv-mobile-menu" id="dvMobileMenu">
+        <a href="index.html" class="active">Home</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="products.html">Products</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
     </div>
 </header>
 
