@@ -233,7 +233,7 @@ img {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
-    z-index: 1000;
+    z-index: 2000;
     transition: all 0.33s var(--ease);
 }
 
@@ -296,6 +296,8 @@ img {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    position: relative;
+    z-index: 2002;
 }
 
 .dv-btn-book {
@@ -322,6 +324,10 @@ img {
     background: none;
     border: none;
     cursor: pointer;
+    position: relative;
+    z-index: 2003;
+    pointer-events: auto;
+    touch-action: manipulation;
 }
 
 .dv-hamburger span {
@@ -345,7 +351,7 @@ img {
     transform: translateY(-120%);
     transition: transform 0.4s var(--ease);
     border-bottom: 1px solid var(--border);
-    z-index: 999;
+    z-index: 1999;
 }
 
 .dv-mobile-menu.open {
@@ -768,6 +774,7 @@ img {
 html, body { max-width: 100%; overflow-x: hidden; }
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+* { min-width: 0; }
 
 .container {
     max-width: 1180px;
@@ -809,9 +816,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 767px) {
     :root { --nav-h: 60px; }
 
+    /* Keep header in normal flow on mobile to prevent overlap */
+    .dv-header {
+        position: sticky;
+        top: 0;
+        overflow: visible;
+    }
+
+    .dv-mobile-menu {
+        position: absolute;
+        top: calc(100% - 1px);
+        left: 0;
+        right: 0;
+        max-height: calc(100dvh - var(--nav-h));
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
     /* Typography */
     .section-title  { font-size: clamp(1.6rem, 7vw, 2.2rem) !important; }
     .section-subtitle { font-size: 0.95rem; margin-bottom: 2rem; }
+    h1, h2, h3, h4, h5, p, a, span, li {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
 
     /* Buttons */
     .btn { width: 100%; padding: 1rem 1.2rem; font-size: 0.9rem; min-height: 52px; justify-content: center; }
@@ -862,7 +890,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
     /* Testimonials */
     .testi-panel.active { flex-direction: column; }
-    .testi-card { max-width: 100% !important; min-width: 0 !important; }
+    .testi-card { max-width: 100% !important; min-width: 0 !important; width: 100% !important; }
 
     /* CTA button groups */
     .cta-btns, .about-cta-btns, .final-cta-btns, .urgency-btns,
@@ -890,6 +918,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
     /* News form */
     .news-form { flex-direction: column; }
+    .news-input { width: 100%; min-width: 0; }
 
     /* Footer */
     .dv-footer { padding-top: 3rem; }
