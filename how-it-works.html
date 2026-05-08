@@ -17,7 +17,7 @@
 
         /* Modern Hero */
         .page-hero {
-            padding: 80px 0 60px;
+            padding: calc(var(--nav-h, 64px) + 3rem) 0 4rem;
             text-align: center;
             background: var(--bg);
             position: relative;
@@ -74,18 +74,18 @@
         .timeline::before {
             content: '';
             position: absolute;
-            left: 50%;
+            left: 30px;
             top: 0;
             bottom: 0;
             width: 2px;
             background: linear-gradient(180deg, var(--brand-cyan-glow), var(--brand-mid), var(--brand-cyan-glow));
-            transform: translateX(-50%);
             opacity: 0.3;
         }
 
         .tl-item {
             display: grid;
-            grid-template-columns: 1fr 80px 1fr;
+            grid-template-columns: 60px 1fr;
+            gap: 0;
             margin-bottom: 6rem;
             align-items: center;
         }
@@ -118,6 +118,7 @@
             border: 1px solid var(--bg-deep);
             box-shadow: var(--shadow-md);
             transition: all 0.4s var(--ease);
+            margin-left: 1rem;
         }
 
         .tl-card:hover {
@@ -148,23 +149,26 @@
             display: block;
         }
 
-        @media(max-width: 850px) {
+        .tl-empty {
+            display: none;
+        }
+
+        @media(min-width: 851px) {
             .timeline::before {
-                left: 30px;
-                transform: none;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             .tl-item {
-                grid-template-columns: 60px 1fr;
-                gap: 0;
+                grid-template-columns: 1fr 80px 1fr;
             }
 
             .tl-card {
-                margin-left: 1rem;
+                margin-left: 0;
             }
 
             .tl-empty {
-                display: none;
+                display: block;
             }
         }
 
@@ -177,14 +181,15 @@
 
         .science-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
+            grid-template-columns: 1fr;
+            gap: 3rem;
             align-items: center;
         }
 
-        @media(max-width: 900px) {
+        @media(min-width: 901px) {
             .science-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 6rem;
             }
         }
 

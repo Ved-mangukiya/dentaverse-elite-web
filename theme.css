@@ -407,7 +407,7 @@ img {
 
 /* Page hero (inner pages) */
 .page-hero {
-    padding: 3.5rem 0 3rem;
+    padding: calc(var(--nav-h, 64px) + 3rem) 0 3rem;
     text-align: center;
     background: var(--bg);
     position: relative;
@@ -884,7 +884,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
     }
 
     /* Sections */
-    section:not(.hero) { padding: 3.5rem 0 !important; }
+    section:not([class*="hero"]) { padding: 3.5rem 0 !important; }
     .sec    { padding: 3.5rem 0 !important; }
 
     /* All multi-col grids → single column */
