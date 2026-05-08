@@ -1,4 +1,4 @@
-# Dentaverse Elite — Static Premium Site
+# Dentaverse — Static Premium Site
 
 This is a **100% static**, **zero-CDN** website designed to be hosted directly on **GitHub Pages**.
 Users can open `index.html` locally and everything will work offline (no external fonts, libraries, or image CDNs).
