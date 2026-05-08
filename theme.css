@@ -245,9 +245,10 @@ img {
 
 .dv-nav {
     height: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
+    column-gap: 1rem;
 }
 
 .dv-logo {
@@ -276,6 +277,7 @@ img {
 .dv-nav-links {
     display: flex;
     gap: 2rem;
+    justify-self: center;
 }
 
 .dv-nav-links a {
@@ -298,6 +300,7 @@ img {
     gap: 1.5rem;
     position: relative;
     z-index: 2002;
+    justify-self: end;
 }
 
 .dv-btn-book {
