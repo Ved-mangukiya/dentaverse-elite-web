@@ -422,8 +422,8 @@
         </div>
     </div>
 
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
+    <!-- NodeMailer Backend Configuration -->
+    <!-- The contact form logic below now communicates with the Node.js Express server. -->
 
     <script>
         (function () {
@@ -472,10 +472,6 @@
 
             // Form Logic
             document.addEventListener('DOMContentLoaded', function () {
-                var EJ_KEY = 'QF7fvFkKBQDLTit88';
-                var EJ_SERVICE = 'service_uiolezp';
-                var EJ_TEMPLATE = 'template_vxbcoy4';
-
                 var form = document.getElementById('cf');
                 var btn = document.getElementById('sbtn');
                 var lbl = document.getElementById('slbl');
@@ -506,7 +502,7 @@
                     return name && re.test(email) && msg;
                 }
 
-                form.addEventListener('submit', function (e) {
+                form.addEventListener('submit', async function (e) {
                     e.preventDefault();
                     if (!validate()) return;
                     
@@ -514,38 +510,37 @@
                     lbl.textContent = 'Sending...';
                     spin.style.display = 'block';
 
-                    var attempts = 0;
-                    function trySend() {
-                        if (typeof emailjs !== 'undefined') {
-                            emailjs.init({ publicKey: EJ_KEY });
-                            var safeSubject = document.getElementById('inp-subject').value.trim() || 'Website Enquiry';
-                            var formData = {
-                                from_name: document.getElementById('inp-name').value.trim(),
-                                reply_to: document.getElementById('inp-email').value.trim(),
-                                subject: safeSubject,
-                                user_subject: safeSubject,
-                                message: document.getElementById('inp-msg').value.trim(),
-                                full_message: 'Subject: ' + safeSubject + '\n\n' + document.getElementById('inp-msg').value.trim()
-                            };
+                    var safeSubject = document.getElementById('inp-subject').value.trim() || 'Website Enquiry';
+                    var formData = {
+                        from_name: document.getElementById('inp-name').value.trim(),
+                        reply_to: document.getElementById('inp-email').value.trim(),
+                        subject: safeSubject,
+                        message: document.getElementById('inp-msg').value.trim()
+                    };
 
-                            emailjs.send(EJ_SERVICE, EJ_TEMPLATE, formData)
-                                .then(function () {
-                                    btn.disabled = false; lbl.textContent = 'Send Message'; spin.style.display = 'none';
-                                    form.reset();
-                                    showToast("✅ Message sent! We'll reply shortly.", true);
-                                })
-                                .catch(function (err) {
-                                    btn.disabled = false; lbl.textContent = 'Send Message'; spin.style.display = 'none';
-                                    showToast('❌ Send failed. Please try again.', false);
-                                });
-                        } else if (attempts < 10) {
-                            attempts++; setTimeout(trySend, 300);
-                        } else {
+                    try {
+                        const response = await fetch('http://localhost:3000/send-email', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        });
+
+                        const result = await response.json();
+
+                        if (response.ok) {
                             btn.disabled = false; lbl.textContent = 'Send Message'; spin.style.display = 'none';
-                            showToast('❌ Connection error. Please email us.', false);
+                            form.reset();
+                            showToast("✅ Message sent! We'll reply shortly.", true);
+                        } else {
+                            throw new Error(result.error || 'Failed to send');
                         }
+                    } catch (error) {
+                        console.error('Email error:', error);
+                        btn.disabled = false; lbl.textContent = 'Send Message'; spin.style.display = 'none';
+                        showToast('❌ Send failed. Is the server running?', false);
                     }
-                    trySend();
                 });
             });
 
