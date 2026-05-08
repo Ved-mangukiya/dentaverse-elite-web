@@ -35,16 +35,21 @@
 
     /* ── Glassmorphism ── */
     --glass: rgba(255, 255, 255, 0.88);
+    --glass-light: rgba(255, 255, 255, 0.92);
     --glass-border: rgba(0, 102, 204, 0.12);
+    --glass-border-blue: rgba(0, 102, 204, 0.18);
 
     /* ── Elevation ── */
     --shadow-sm: 0 4px 12px rgba(10, 37, 88, 0.04);
     --shadow-md: 0 12px 32px rgba(10, 37, 88, 0.08);
     --shadow-lg: 0 24px 64px rgba(10, 37, 88, 0.12);
     --shadow-cyan: 0 8px 24px rgba(0, 204, 255, 0.25);
+    --shadow-blue: 0 10px 26px rgba(0, 102, 204, 0.28);
+    --shadow-xl: 0 20px 46px rgba(10, 37, 88, 0.2);
 
     /* ── Animation & Radii ── */
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     --nav-h: 72px;
     --radius: 16px;
     --radius-lg: 24px;
@@ -462,52 +467,56 @@ img {
     background: var(--bg-soft);
 }
 
-/* ── Cookie Consent (Top Bar) ── */
+/* ── Cookie Consent (Bottom Popup) ── */
 .cookie-consent {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #0A2558;
-    color: white;
-    padding: 12px 20px;
+    right: 20px;
+    bottom: 20px;
+    width: min(420px, calc(100vw - 32px));
+    background: rgba(10, 37, 88, 0.98);
+    color: #fff;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
     z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    transform: translateY(-100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: grid;
+    gap: 14px;
+    transform: translateY(22px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.28s var(--ease), opacity 0.28s var(--ease), visibility 0.28s;
+    box-shadow: 0 14px 38px rgba(6, 20, 46, 0.45);
 }
 
 .cookie-consent.show {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
 .cookie-consent.fade-out {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(16px);
     pointer-events: none;
 }
 
 .cookie-text {
     font-size: 13px;
-    line-height: 1.4;
-    max-width: 800px;
-    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+    color: rgba(255,255,255,0.88);
 }
 
 .cookie-btns {
     display: flex;
-    gap: 12px;
-    flex-shrink: 0;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .cookie-btn {
-    padding: 6px 16px;
+    padding: 9px 14px;
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.25s;
@@ -519,12 +528,22 @@ img {
 .cb-deny {
     background: transparent;
     color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.35);
 }
 
 .cb-deny:hover {
     background: rgba(255,255,255,0.1);
     border-color: white;
+}
+
+.cb-manage {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.22);
+}
+
+.cb-manage:hover {
+    background: rgba(255,255,255,0.16);
 }
 
 .cb-accept {
@@ -539,12 +558,14 @@ img {
 
 @media (max-width: 768px) {
     .cookie-consent {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-        padding: 16px;
+        right: 12px;
+        bottom: 12px;
+        width: calc(100vw - 24px);
+        padding: 16px 14px;
     }
     .cookie-text { font-size: 12px; }
+    .cookie-btns { justify-content: stretch; }
+    .cookie-btn { flex: 1; min-height: 40px; }
 }
 
 .reveal-left {
@@ -745,7 +766,7 @@ img {
    ══════════════════════════════════════════════════════ */
 
 html, body { max-width: 100%; overflow-x: hidden; }
-*, *::before, *::after { box-sizing: border-box; max-width: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 
 .container {
@@ -795,6 +816,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
     /* Buttons */
     .btn { width: 100%; padding: 1rem 1.2rem; font-size: 0.9rem; min-height: 52px; justify-content: center; }
     .dv-btn-book { padding: 0.55rem 1rem; font-size: 0.75rem; }
+    .dv-nav-right { gap: 0.5rem; }
+    .dv-nav-right .dv-btn-book { display: none; }
 
     /* Logo */
     .dv-logo { font-size: 1rem; gap: 8px; }

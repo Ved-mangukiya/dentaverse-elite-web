@@ -548,7 +548,8 @@
     <div class="cookie-consent" id="cookieConsent">
         <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</div>
         <div class="cookie-btns">
-            <button class="cookie-btn cb-deny" id="cookieDeny">Deny</button>
+            <button class="cookie-btn cb-manage" id="cookieManage">Manage</button>
+            <button class="cookie-btn cb-deny" id="cookieDeny">Reject All</button>
             <button class="cookie-btn cb-accept" id="cookieAccept">Accept All</button>
         </div>
     </div>
@@ -570,8 +571,10 @@
 
             const acceptBtn = document.getElementById('cookieAccept');
             const denyBtn = document.getElementById('cookieDeny');
+            const manageBtn = document.getElementById('cookieManage');
             if (acceptBtn) acceptBtn.onclick = () => { localStorage.setItem('cookieConsent', 'accepted'); hideConsent(); };
             if (denyBtn) denyBtn.onclick = () => { localStorage.setItem('cookieConsent', 'denied'); hideConsent(); };
+            if (manageBtn) manageBtn.onclick = () => { localStorage.setItem('cookieConsent', 'customized'); hideConsent(); };
 
             var hbg = document.getElementById('dvHamburger');
             document.body.classList.add('ready');

@@ -162,9 +162,37 @@
         .sec-head { text-align: center; margin-bottom: 4rem; }
         .sec-head h2 { font-size: 2.8rem; color: var(--brand-dark); margin-bottom: 1rem; }
         .sec-head h2 em { font-style: italic; color: var(--brand-cyan); }
+
+        .sec-subtitle {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--muted);
+            line-height: 1.75;
+        }
         
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .hw-card { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 3rem; box-shadow: var(--shadow-sm); transition: 0.3s; }
+        .hw-card {
+            background: linear-gradient(165deg, #ffffff 0%, #f5f9ff 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .hw-card::after {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -70px;
+            top: -80px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 204, 255, 0.16) 0%, rgba(0, 204, 255, 0) 70%);
+            pointer-events: none;
+        }
+        .hw-card > * { position: relative; z-index: 1; }
         .hw-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--brand-cyan); }
         .hw-icon { width: 64px; height: 64px; background: var(--bg-soft); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--brand-mid); }
         .hw-card h3 { font-size: 1.7rem; margin-bottom: 1.2rem; }
@@ -196,6 +224,29 @@
         .pc.featured { border-color:var(--brand-cyan); background:linear-gradient(160deg,#fff 0%,#f4fbff 100%);
                        box-shadow:0 8px 36px rgba(0,102,204,0.14); transform:translateY(-4px); }
         .pc.featured:hover { transform:translateY(-12px); }
+
+        .pc::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-top-left-radius: 28px;
+            border-top-right-radius: 28px;
+            background: linear-gradient(90deg, rgba(0, 102, 204, 0.05), rgba(0, 204, 255, 0.55), rgba(0, 102, 204, 0.05));
+            opacity: 0;
+            transition: opacity 0.25s var(--ease);
+        }
+        .pc:hover::before,
+        .pc.featured::before { opacity: 1; }
+
+        .pricing-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.86rem;
+            color: var(--muted);
+        }
 
         .pc-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%);
                     background:linear-gradient(135deg,var(--brand-mid),var(--brand-cyan));
@@ -533,6 +584,8 @@
                     </div>
 
                 </div><!-- /panel-annual -->
+
+                <p class="pricing-note reveal">All subscriptions include onboarding support, remote setup guidance, and access to new experience drops.</p>
 
             </div>
         </section>

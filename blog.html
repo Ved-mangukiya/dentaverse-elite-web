@@ -11,7 +11,7 @@
     <style>
         /* ── Blog Specific Styles ── */
         .blog-hero {
-            padding: 4rem 0 3rem;
+            padding: calc(var(--nav-h) + 2.5rem) 0 3rem;
             text-align: center;
             background: radial-gradient(circle at 50% 0%, var(--bg-soft) 0%, var(--bg) 70%);
         }
@@ -55,6 +55,11 @@
             color: var(--white);
             border-color: var(--brand-mid);
             box-shadow: var(--shadow-sm);
+        }
+
+        .cat-pill:focus-visible {
+            outline: 3px solid var(--brand-cyan-glow);
+            outline-offset: 2px;
         }
 
         /* Featured Post */
@@ -223,6 +228,21 @@
             color: var(--brand-cyan);
         }
 
+        .blog-empty {
+            display: none;
+            text-align: center;
+            padding: 2.2rem;
+            border: 1.5px dashed var(--bg-deep);
+            border-radius: 20px;
+            margin-bottom: 3.5rem;
+            color: var(--muted);
+            background: var(--bg-soft);
+        }
+
+        .blog-empty.show {
+            display: block;
+        }
+
         /* Newsletter */
         .news-box {
             background: var(--brand-dark);
@@ -254,6 +274,18 @@
         }
 
         @media(max-width: 600px) {
+            .featured-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .featured-body h2 {
+                font-size: 1.5rem;
+            }
+
+            .post-card .card-body {
+                padding: 1.4rem;
+            }
+
             .news-form {
                 flex-direction: column;
             }
@@ -318,8 +350,7 @@
         <div class="dv-mobile-menu" id="dvMobileMenu">
             <a href="index.html">Home</a>
             <a href="how-it-works.html">How It Works</a>
-            <a href="products.html">Products</a>
-            <a href="pricing.html">Pricing</a>
+            <a href="products.html">Solutions</a>
             <a href="about.html">About</a>
             <a href="blog.html" class="active">Blog</a>
             <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
@@ -340,86 +371,39 @@
 
         <div class="container">
 
-            <div class="cat-bar reveal">
-                <button class="cat-pill active">All Articles</button>
-                <button class="cat-pill">Clinical Research</button>
-                <button class="cat-pill">Patient Experience</button>
-                <button class="cat-pill">Technology</button>
-                <button class="cat-pill">News</button>
+            <div class="cat-bar reveal" id="catBar">
+                <button class="cat-pill active" data-category="all">All Articles</button>
+                <button class="cat-pill" data-category="Clinical Research">Clinical Research</button>
+                <button class="cat-pill" data-category="Patient Experience">Patient Experience</button>
+                <button class="cat-pill" data-category="Technology">Technology</button>
+                <button class="cat-pill" data-category="Practice Tips">Practice Tips</button>
+                <button class="cat-pill" data-category="News">News</button>
             </div>
 
             <!-- FEATURED POST -->
-            <div class="featured-card reveal">
+            <div class="featured-card reveal" id="featuredCard">
                 <div class="featured-img">
-                    <div class="featured-img-overlay">Main Feature</div>
+                    <div class="featured-img-overlay" id="featuredBadge">Main Feature</div>
                     <svg viewBox="0 0 24 24">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
                 </div>
                 <div class="featured-body">
                     <div class="post-meta">
-                        <span class="post-tag">Clinical Research</span>
+                        <span class="post-tag" id="featuredTag">Clinical Research</span>
                         <span>·</span>
-                        <span>8 min read</span>
+                        <span id="featuredReadTime">8 min read</span>
                     </div>
-                    <h2>How VR Reduces Dental Procedural Anxiety by Up to 60%</h2>
-                    <p>A landmark review of clinical studies confirming how immersive VR distraction therapy minimizes
+                    <h2 id="featuredTitle">How VR Reduces Dental Procedural Anxiety by Up to 60%</h2>
+                    <p id="featuredExcerpt">A landmark review of clinical studies confirming how immersive VR distraction therapy minimizes
                         cortisol levels and improves patient cooperation during complex procedures.</p>
-                    <a href="#" class="read-link">Full Research Article →</a>
+                    <a href="#" class="read-link" id="featuredLink">Full Research Article →</a>
                 </div>
             </div>
 
             <!-- GRID -->
-            <div class="blog-grid">
-
-                <div class="post-card reveal">
-                    <div class="card-img"><svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 8v4l3 3" />
-                        </svg></div>
-                    <div class="card-body">
-                        <div class="post-meta"><span class="post-tag">Technology</span><span>·</span><span>5 min</span>
-                        </div>
-                        <h3>Dentaverse Elite 3.0: Spatial Audio Updates</h3>
-                        <p>Exploring how our new 3D spatial audio engine creates a truly immersive escape for anxious
-                            patients.</p>
-                        <a href="#" class="read-link">Read More →</a>
-                    </div>
-                </div>
-
-                <div class="post-card reveal" style="transition-delay: 0.1s;">
-                    <div class="card-img"><svg viewBox="0 0 24 24">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                        </svg></div>
-                    <div class="card-body">
-                        <div class="post-meta"><span class="post-tag">Practice Tips</span><span>·</span><span>6
-                                min</span></div>
-                        <h3>5 Ways to Introduce VR to Your Dental Team</h3>
-                        <p>Successful change management: How to onboard your clinical staff to use VR seamlessly during
-                            patient visits.</p>
-                        <a href="#" class="read-link">Read More →</a>
-                    </div>
-                </div>
-
-                <div class="post-card reveal" style="transition-delay: 0.2s;">
-                    <div class="card-img"><svg viewBox="0 0 24 24">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                        </svg></div>
-                    <div class="card-body">
-                        <div class="post-meta"><span class="post-tag">Patient Story</span><span>·</span><span>4
-                                min</span></div>
-                        <h3>Overcoming 10 Years of Dental Phobia</h3>
-                        <p>How one patient used Dentaverse ELITE to finally receive the treatment they had delayed for
-                            over a decade.</p>
-                        <a href="#" class="read-link">Read More →</a>
-                    </div>
-                </div>
-
-            </div>
+            <div class="blog-grid" id="blogGrid"></div>
+            <div class="blog-empty" id="blogEmpty">No articles in this category yet. Try another topic.</div>
 
             <!-- NEWSLETTER -->
             <div class="news-box reveal">
@@ -478,7 +462,8 @@
     <div class="cookie-consent" id="cookieConsent">
         <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</div>
         <div class="cookie-btns">
-            <button class="cookie-btn cb-deny" id="cookieDeny">Deny</button>
+            <button class="cookie-btn cb-manage" id="cookieManage">Manage</button>
+            <button class="cookie-btn cb-deny" id="cookieDeny">Reject All</button>
             <button class="cookie-btn cb-accept" id="cookieAccept">Accept All</button>
         </div>
     </div>
@@ -501,8 +486,10 @@
 
             const acceptBtn = document.getElementById('cookieAccept');
             const denyBtn = document.getElementById('cookieDeny');
+            const manageBtn = document.getElementById('cookieManage');
             if (acceptBtn) acceptBtn.onclick = () => { localStorage.setItem('cookieConsent', 'accepted'); hideConsent(); };
             if (denyBtn) denyBtn.onclick = () => { localStorage.setItem('cookieConsent', 'denied'); hideConsent(); };
+            if (manageBtn) manageBtn.onclick = () => { localStorage.setItem('cookieConsent', 'customized'); hideConsent(); };
 
 
             document.body.classList.add('ready');
@@ -523,6 +510,116 @@
                 entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+
+            var posts = [
+                {
+                    title: "How VR Reduces Dental Procedural Anxiety by Up to 60%",
+                    category: "Clinical Research",
+                    readTime: "8 min read",
+                    excerpt: "A landmark review of clinical studies confirming how immersive VR distraction therapy minimizes cortisol levels and improves patient cooperation during complex procedures.",
+                    href: "#",
+                    featured: true
+                },
+                {
+                    title: "Dentaverse Elite 3.0: Spatial Audio Updates",
+                    category: "Technology",
+                    readTime: "5 min read",
+                    excerpt: "How our 3D spatial audio engine improves immersion and reduces noise sensitivity during chair-side treatment.",
+                    href: "#"
+                },
+                {
+                    title: "5 Ways to Introduce VR to Your Dental Team",
+                    category: "Practice Tips",
+                    readTime: "6 min read",
+                    excerpt: "A practical onboarding framework for clinics introducing VR into daily workflows without slowing appointments.",
+                    href: "#"
+                },
+                {
+                    title: "Overcoming 10 Years of Dental Phobia",
+                    category: "Patient Experience",
+                    readTime: "4 min read",
+                    excerpt: "A real-world story of how guided VR helped a highly anxious patient complete long-delayed treatment.",
+                    href: "#"
+                },
+                {
+                    title: "Quarterly Product Updates for Partner Clinics",
+                    category: "News",
+                    readTime: "3 min read",
+                    excerpt: "Latest dashboard improvements, headset firmware notes, and rollout timelines for clinic partners.",
+                    href: "#"
+                },
+                {
+                    title: "Measuring Chair-Time Efficiency with Immersive Workflows",
+                    category: "Clinical Research",
+                    readTime: "7 min read",
+                    excerpt: "What new comparative data shows about appointment completion times and patient interruption rates.",
+                    href: "#"
+                }
+            ];
+
+            var activeCategory = "all";
+            var catBar = document.getElementById("catBar");
+            var blogGrid = document.getElementById("blogGrid");
+            var blogEmpty = document.getElementById("blogEmpty");
+            var featuredCard = document.getElementById("featuredCard");
+
+            function filteredPosts() {
+                if (activeCategory === "all") return posts.slice();
+                return posts.filter(function (post) { return post.category === activeCategory; });
+            }
+
+            function updateFeatured(pool) {
+                var pick = pool.find(function (post) { return post.featured; }) || pool[0] || posts[0];
+                if (!pick) return;
+
+                document.getElementById("featuredTag").textContent = pick.category;
+                document.getElementById("featuredReadTime").textContent = pick.readTime;
+                document.getElementById("featuredTitle").textContent = pick.title;
+                document.getElementById("featuredExcerpt").textContent = pick.excerpt;
+                document.getElementById("featuredLink").setAttribute("href", pick.href);
+                document.getElementById("featuredBadge").textContent = activeCategory === "all" ? "Main Feature" : activeCategory;
+            }
+
+            function renderPosts() {
+                var pool = filteredPosts();
+                updateFeatured(pool);
+                blogGrid.innerHTML = "";
+
+                if (!pool.length) {
+                    blogEmpty.classList.add("show");
+                    return;
+                }
+
+                blogEmpty.classList.remove("show");
+                pool.slice(0, 6).forEach(function (post, index) {
+                    var card = document.createElement("article");
+                    card.className = "post-card reveal active";
+                    card.style.transitionDelay = (index * 0.08) + "s";
+                    card.innerHTML =
+                        '<div class="card-img"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg></div>' +
+                        '<div class="card-body">' +
+                        '<div class="post-meta"><span class="post-tag">' + post.category + '</span><span>·</span><span>' + post.readTime.replace(" read", "") + '</span></div>' +
+                        '<h3>' + post.title + '</h3>' +
+                        '<p>' + post.excerpt + '</p>' +
+                        '<a href="' + post.href + '" class="read-link">Read More →</a>' +
+                        '</div>';
+                    blogGrid.appendChild(card);
+                });
+            }
+
+            if (catBar) {
+                catBar.addEventListener("click", function (event) {
+                    var btn = event.target.closest(".cat-pill");
+                    if (!btn) return;
+                    activeCategory = btn.getAttribute("data-category") || "all";
+                    catBar.querySelectorAll(".cat-pill").forEach(function (pill) { pill.classList.remove("active"); });
+                    btn.classList.add("active");
+                    renderPosts();
+                    featuredCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                });
+            }
+
+            renderPosts();
 
             document.querySelectorAll('a[href]').forEach(function (link) {
                 link.addEventListener('click', function (e) {

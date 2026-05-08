@@ -64,6 +64,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-y: auto;
         }
 
         body {
@@ -73,6 +74,7 @@
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            overflow-y: auto;
             opacity: 0;
         }
 
@@ -734,6 +736,86 @@
             color: #5E6E85;
             line-height: 1.7;
             margin-bottom: 1.3rem;
+        }
+
+        .offer-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #ffffff 0%, #f4f9ff 100%);
+            border-color: rgba(0, 102, 204, 0.2);
+        }
+
+        .offer-card::after {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 204, 255, 0.18) 0%, rgba(0, 204, 255, 0) 72%);
+            right: -60px;
+            top: -60px;
+            pointer-events: none;
+        }
+
+        .offer-card h3,
+        .offer-card p,
+        .offer-card .asc-link,
+        .offer-card .asc-icon,
+        .offer-card .asc-tag {
+            position: relative;
+            z-index: 2;
+        }
+
+        .offer-list {
+            display: grid;
+            gap: 0.55rem;
+            margin: 0 0 1.25rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .offer-list li {
+            font-size: 0.83rem;
+            color: #0A2558;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem 0.65rem;
+        }
+
+        .offer-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            padding: 0.62rem 1.05rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .offer-cta-primary {
+            color: #fff;
+            background: linear-gradient(135deg, #0066CC, #00CCFF);
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.25);
+        }
+
+        .offer-cta-primary:hover {
+            color: #fff;
+            filter: brightness(1.03);
+        }
+
+        .offer-cta-outline {
+            color: #0066CC;
+            border: 1.5px solid rgba(0, 102, 204, 0.25);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .offer-cta-outline:hover {
+            color: #0A2558;
+            border-color: rgba(0, 204, 255, 0.55);
         }
 
         .asc-link {
@@ -1483,7 +1565,7 @@
                     <a href="about.html" class="asc-link">Our story →</a>
                 </div>
 
-                <div class="about-strip-card reveal" style="transition-delay:.1s">
+                <div class="about-strip-card offer-card reveal" style="transition-delay:.1s">
                     <div class="asc-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -1497,10 +1579,15 @@
                     <h3>VR headsets that make procedures feel effortless</h3>
                     <p>We supply clinics with our VR headsets, 50+ immersive environments, and a clinical management
                         dashboard — so dentists can focus on the treatment while patients relax completely.</p>
-                    <a href="products.html" class="asc-link">See our products →</a>
+                    <ul class="offer-list">
+                        <li>Premium VR hardware ready for chairside use</li>
+                        <li>50+ calming worlds with regular content updates</li>
+                        <li>Clinic dashboard for session and patient controls</li>
+                    </ul>
+                    <a href="products.html" class="asc-link offer-cta offer-cta-primary">See Products</a>
                 </div>
 
-                <div class="about-strip-card reveal" style="transition-delay:.2s">
+                <div class="about-strip-card offer-card reveal" style="transition-delay:.2s">
                     <div class="asc-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -1512,7 +1599,12 @@
                     <h3>Independent practices to large dental groups</h3>
                     <p>Whether you have one chair or fifty, our plans scale with you. From solo practitioners wanting a
                         calmer waiting room to NHS-integrated hospital groups needing enterprise solutions.</p>
-                    <a href="pricing.html" class="asc-link">View plans →</a>
+                    <ul class="offer-list">
+                        <li>Starter setup for single-chair clinics</li>
+                        <li>Growth plans for multi-location practices</li>
+                        <li>Enterprise onboarding and support options</li>
+                    </ul>
+                    <a href="contact.html" class="asc-link offer-cta offer-cta-outline">View Subscription Options</a>
                 </div>
 
             </div>
@@ -2018,7 +2110,8 @@
     <div class="cookie-consent" id="cookieConsent">
         <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</div>
         <div class="cookie-btns">
-            <button class="cookie-btn cb-deny" id="cookieDeny">Deny</button>
+            <button class="cookie-btn cb-manage" id="cookieManage">Manage</button>
+            <button class="cookie-btn cb-deny" id="cookieDeny">Reject All</button>
             <button class="cookie-btn cb-accept" id="cookieAccept">Accept All</button>
         </div>
     </div>
@@ -2030,7 +2123,7 @@
             const consent = localStorage.getItem('cookieConsent');
             const box = document.getElementById('cookieConsent');
             if (!consent && box) {
-                setTimeout(() => box.classList.add('show'), 2000);
+                setTimeout(() => box.classList.add('show'), 250);
             }
             
             function hideConsent() {
@@ -2040,14 +2133,28 @@
                 }
             }
 
-            document.getElementById('cookieAccept').onclick = function () {
-                localStorage.setItem('cookieConsent', 'accepted');
-                hideConsent();
-            };
-            document.getElementById('cookieDeny').onclick = function () {
-                localStorage.setItem('cookieConsent', 'denied');
-                hideConsent();
-            };
+            const acceptBtn = document.getElementById('cookieAccept');
+            const denyBtn = document.getElementById('cookieDeny');
+            const manageBtn = document.getElementById('cookieManage');
+
+            if (acceptBtn) {
+                acceptBtn.onclick = function () {
+                    localStorage.setItem('cookieConsent', 'accepted');
+                    hideConsent();
+                };
+            }
+            if (denyBtn) {
+                denyBtn.onclick = function () {
+                    localStorage.setItem('cookieConsent', 'denied');
+                    hideConsent();
+                };
+            }
+            if (manageBtn) {
+                manageBtn.onclick = function () {
+                    localStorage.setItem('cookieConsent', 'customized');
+                    hideConsent();
+                };
+            }
         });
 
         /* ---- Loader ---- */
