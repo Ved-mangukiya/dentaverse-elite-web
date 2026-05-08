@@ -82,12 +82,18 @@ body {
 
 body.ready {
     opacity: 1;
-    transition: opacity 0.5s var(--ease);
+    transition: opacity 0.6s var(--ease);
+    animation: pageIn 0.6s var(--ease) both;
 }
 
 body.fade-out {
     opacity: 0;
     transition: opacity 0.28s var(--ease);
+}
+
+@keyframes pageIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 h1,
@@ -136,9 +142,24 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     cursor: pointer;
-    transition: all 0.33s var(--ease);
+    transition: all 0.35s var(--ease);
     border: none;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer sweep on all buttons */
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.28) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.55s var(--ease);
+}
+.btn:hover::after {
+    transform: translateX(100%);
 }
 
 .btn-primary {
@@ -148,8 +169,13 @@ img {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(0, 102, 204, 0.35);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0, 102, 204, 0.38);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 0.1s;
 }
 
 .btn-outline {
@@ -162,6 +188,7 @@ img {
     border-color: var(--brand-cyan);
     color: var(--brand-mid);
     background: var(--bg-soft);
+    transform: translateY(-2px);
 }
 
 .btn-outline-white {
@@ -230,11 +257,17 @@ img {
     right: 0;
     height: var(--nav-h);
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
     border-bottom: 1px solid var(--glass-border);
     z-index: 2000;
-    transition: all 0.33s var(--ease);
+    transition: height 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    animation: navSlideDown 0.5s var(--ease) both;
+}
+
+@keyframes navSlideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
 }
 
 .dv-header.scrolled {
@@ -286,7 +319,27 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--muted);
-    transition: color 0.25s;
+    transition: color 0.25s var(--ease);
+    position: relative;
+    padding-bottom: 2px;
+}
+
+/* Animated underline on nav links */
+.dv-nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-mid), var(--brand-cyan));
+    border-radius: 2px;
+    transition: width 0.3s var(--ease);
+}
+
+.dv-nav-links a:hover::after,
+.dv-nav-links a.active::after {
+    width: 100%;
 }
 
 .dv-nav-links a:hover,
@@ -304,7 +357,7 @@ img {
 }
 
 .dv-btn-book {
-    background: var(--brand-cyan);
+    background: linear-gradient(135deg, var(--brand-cyan), var(--brand-mid));
     color: var(--white);
     padding: 0.65rem 1.4rem;
     border-radius: var(--radius-pill);
@@ -312,12 +365,24 @@ img {
     font-weight: 700;
     text-transform: uppercase;
     box-shadow: var(--shadow-cyan);
-    transition: all 0.25s;
+    transition: all 0.3s var(--ease);
+    position: relative;
+    overflow: hidden;
 }
 
+.dv-btn-book::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.22) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.5s var(--ease);
+}
+.dv-btn-book:hover::after { transform: translateX(100%); }
+
 .dv-btn-book:hover {
-    background: var(--brand-mid);
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 28px rgba(0, 204, 255, 0.35);
 }
 
 .dv-hamburger {
@@ -338,28 +403,58 @@ img {
     height: 2px;
     background: var(--brand-dark);
     border-radius: 2px;
-    transition: 0.33s;
+    transition: transform 0.35s var(--ease), opacity 0.25s var(--ease), background 0.25s;
+    transform-origin: center;
 }
+
+/* Hamburger → X morph */
+.dv-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.dv-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.dv-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .dv-mobile-menu {
     position: fixed;
     top: var(--nav-h);
     left: 0;
     right: 0;
-    background: var(--white);
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    transform: translateY(-120%);
-    transition: transform 0.4s var(--ease);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.38s var(--ease), opacity 0.32s var(--ease);
     border-bottom: 1px solid var(--border);
     z-index: 1999;
+    box-shadow: 0 16px 40px rgba(10,37,88,0.10);
 }
 
 .dv-mobile-menu.open {
     transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
 }
+
+/* Stagger each mobile menu link */
+.dv-mobile-menu a {
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), color 0.2s;
+}
+.dv-mobile-menu.open a {
+    opacity: 1;
+    transform: translateX(0);
+}
+.dv-mobile-menu.open a:nth-child(1) { transition-delay: 0.04s; }
+.dv-mobile-menu.open a:nth-child(2) { transition-delay: 0.08s; }
+.dv-mobile-menu.open a:nth-child(3) { transition-delay: 0.12s; }
+.dv-mobile-menu.open a:nth-child(4) { transition-delay: 0.16s; }
+.dv-mobile-menu.open a:nth-child(5) { transition-delay: 0.20s; }
+.dv-mobile-menu.open a:nth-child(6) { transition-delay: 0.24s; }
 
 @media (max-width: 991px) {
     .dv-nav {
@@ -463,16 +558,47 @@ img {
     box-shadow: var(--shadow-md), 0 0 0 1px rgba(0, 102, 204, 0.05);
 }
 
-/* ── Reveal animations ──────────────────────────────────/* Scroll reveal */
+/* ── Reveal animations (scroll-triggered) ────────────── */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    transform: translateY(40px);
+    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
 }
-
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Stagger helpers — add these to siblings for cascade effect */
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
+
+/* Card / element shimmer on hover */
+.glass-card,
+.glass-card-gold {
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    position: relative;
+    overflow: hidden;
+}
+.glass-card::before,
+.glass-card-gold::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255,255,255,0.18), transparent);
+    transition: left 0.6s var(--ease);
+    pointer-events: none;
+    z-index: 1;
+}
+.glass-card:hover::before,
+.glass-card-gold:hover::before { left: 150%; }
+.glass-card:hover,
+.glass-card-gold:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
 }
 
 /* ── Blog Hero Fix ── */
@@ -788,7 +914,8 @@ img {
    MOBILE-FIRST — prevents horizontal scroll on all pages
    ══════════════════════════════════════════════════════ */
 
-html, body { max-width: 100%; overflow-x: hidden; }
+html, body { max-width: 100%; }
+body { overflow-x: hidden; }
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 * { min-width: 0; }
@@ -874,6 +1001,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
         font-size: 1rem; font-weight: 600;
         padding: 0.85rem 0; border-bottom: 1px solid var(--bg-deep);
         display: flex; align-items: center; min-height: 48px;
+        /* keep animation-compatible props */
+        color: var(--brand-dark);
     }
     .dv-mobile-menu a:last-child { border-bottom: none; }
     .dv-mobile-cta {

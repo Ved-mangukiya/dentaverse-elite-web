@@ -52,101 +52,122 @@
         .cg { display: grid; grid-template-columns: 1fr; gap: 36px; margin-top: 48px; }
         @media (min-width: 900px) { .cg { grid-template-columns: 1.2fr 0.8fr; gap: 64px; } }
 
-        /* ── Form card ── */
         .form-card {
-            background: var(--white);
-            border: 1.5px solid var(--bg-deep);
-            border-radius: 24px;
-            padding: clamp(24px, 5vw, 52px);
-            box-shadow: var(--shadow-md);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 28px;
+            padding: clamp(28px, 5vw, 48px);
+            box-shadow: 0 16px 48px rgba(0, 102, 204, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
         }
-        .form-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--brand-dark); margin-bottom: 6px; }
-        .form-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 32px; }
+        .form-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 8px; }
+        .form-sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 36px; }
 
-        /* ── Fields ── */
-        .f { margin-bottom: 22px; }
+        /* ── Floating Label Fields ── */
+        .f { position: relative; margin-bottom: 28px; }
         .f label {
-            display: block; font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--brand-mid); margin-bottom: 8px;
+            position: absolute; left: 16px; top: 18px;
+            font-size: 0.95rem; color: #888;
+            pointer-events: none; transition: all 0.3s var(--ease-spring);
         }
         .f input, .f textarea {
-            width: 100%; padding: 14px 18px;
-            border: 1.5px solid var(--bg-deep);
-            border-radius: 14px; font-family: inherit;
-            font-size: 0.95rem; color: var(--text);
-            background: var(--bg-soft); outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            width: 100%; padding: 26px 16px 10px;
+            border: 2px solid transparent;
+            border-radius: 16px; font-family: inherit;
+            font-size: 1rem; color: var(--text);
+            background: rgba(240, 246, 255, 0.6); outline: none;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s var(--ease);
         }
+        .f textarea { resize: vertical; min-height: 140px; padding-top: 32px; }
+        
         .f input:focus, .f textarea:focus {
-            border-color: var(--brand-cyan);
-            box-shadow: 0 0 0 4px var(--brand-cyan-glow);
             background: var(--white);
+            border-color: var(--brand-cyan);
+            box-shadow: 0 0 0 4px var(--brand-cyan-glow), inset 0 2px 6px rgba(0,0,0,0.01);
         }
-        .f.err input, .f.err textarea { border-color: #ff4757 !important; }
-        .ferr { font-size: 0.75rem; color: #ff4757; margin-top: 6px; display: none; font-weight: 500; }
+        .f input:focus ~ label, .f input:not(:placeholder-shown) ~ label,
+        .f textarea:focus ~ label, .f textarea:not(:placeholder-shown) ~ label {
+            transform: translateY(-12px) scale(0.8);
+            color: var(--brand-mid);
+            font-weight: 600;
+        }
+
+        .f.err input, .f.err textarea { border-color: #ff4757 !important; background: #fff0f2; }
+        .ferr { font-size: 0.8rem; color: #ff4757; margin-top: 6px; display: none; font-weight: 500; position: absolute; bottom: -20px; left: 4px; }
         .f.err .ferr { display: block; }
-        .f textarea { resize: vertical; min-height: 130px; }
 
         /* ── Submit button ── */
         .btn-send {
-            width: 100%; padding: 16px 24px;
+            width: 100%; padding: 18px 24px; margin-top: 10px;
             background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
             color: white; border: none; border-radius: 16px;
-            font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+            font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
             cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-            box-shadow: var(--shadow-blue);
-            transition: all 0.3s var(--ease);
+            box-shadow: 0 10px 24px rgba(0, 204, 255, 0.3);
+            transition: all 0.4s var(--ease-spring);
+            position: relative; overflow: hidden;
+        }
+        .btn-send::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
         }
         .btn-send:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-            background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid));
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 16px 36px rgba(0, 102, 204, 0.35);
         }
-        .btn-send:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn-send:hover::after { left: 100%; }
+        .btn-send:disabled { opacity: 0.7; cursor: not-allowed; transform: none; box-shadow: none; }
 
         @keyframes dv-spin { 100% { transform: rotate(360deg); } }
         #spin-ico { animation: dv-spin 0.85s linear infinite; display: none; }
 
         /* ── Info side ── */
-        .info-list { display: flex; flex-direction: column; gap: 32px; }
-        .info-row { display: flex; gap: 18px; align-items: flex-start; }
+        .info-list { display: flex; flex-direction: column; gap: 36px; }
+        .info-row { display: flex; gap: 20px; align-items: center; padding: 12px; border-radius: 20px; transition: background 0.3s var(--ease); }
+        .info-row:hover { background: rgba(255,255,255,0.6); box-shadow: var(--shadow-sm); }
         .i-icon {
-            width: 52px; height: 52px; min-width: 52px;
-            background: var(--bg-soft); border: 1.5px solid var(--bg-deep);
-            border-radius: 15px; display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s;
+            width: 56px; height: 56px; min-width: 56px;
+            background: white; border: 1.5px solid var(--border);
+            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            transition: all 0.4s var(--ease-spring);
+            box-shadow: 0 4px 12px rgba(10,37,88,0.04);
         }
-        .info-row:hover .i-icon { background: var(--white); border-color: var(--brand-cyan); transform: scale(1.05); color: var(--brand-cyan); }
-        .i-icon svg { width: 22px; height: 22px; stroke: var(--brand-mid); fill: none; stroke-width: 1.8; transition: stroke 0.3s; }
-        .info-row:hover .i-icon svg { stroke: var(--brand-cyan); }
+        .info-row:hover .i-icon { background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan)); border-color: transparent; transform: scale(1.1) rotate(5deg); box-shadow: var(--shadow-cyan); }
+        .i-icon svg { width: 24px; height: 24px; stroke: var(--brand-mid); fill: none; stroke-width: 2; transition: stroke 0.3s; }
+        .info-row:hover .i-icon svg { stroke: white; }
         
-        .i-lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-cyan); margin-bottom: 4px; }
-        .i-val { font-size: 1rem; color: var(--brand-dark); font-weight: 600; line-height: 1.4; }
+        .i-lbl { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-cyan); margin-bottom: 4px; }
+        .i-val { font-size: 1.05rem; color: var(--brand-dark); font-weight: 600; line-height: 1.4; }
 
         /* ── Map visual ── */
         .map-box {
-            height: 240px; background: linear-gradient(135deg, var(--bg-soft), var(--bg-deep));
-            border-radius: 24px; border: 1.5px solid var(--bg-deep);
-            margin-top: 40px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 12px; position: relative; overflow: hidden;
+            height: 260px; background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 100%);
+            border-radius: 28px; border: 1px solid rgba(0, 102, 204, 0.15);
+            margin-top: 48px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 16px; position: relative; overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(0, 204, 255, 0.05), var(--shadow-sm);
         }
         .map-box::before {
             content: ''; position: absolute; inset: 0;
-            background-image: radial-gradient(var(--brand-mid-glow) 1px, transparent 1px);
-            background-size: 20px 20px; opacity: 0.3;
+            background-image: radial-gradient(rgba(0, 102, 204, 0.15) 1.5px, transparent 1.5px);
+            background-size: 24px 24px; opacity: 0.5;
         }
         .mp-dot {
-            width: 16px; height: 16px; background: var(--brand-cyan);
-            border: 3px solid var(--white); border-radius: 50%;
-            box-shadow: 0 0 20px var(--brand-cyan); position: relative; z-index: 2;
-            animation: pulse-cyan 2s infinite;
+            width: 20px; height: 20px; background: var(--brand-cyan);
+            border: 4px solid var(--white); border-radius: 50%;
+            box-shadow: 0 0 24px var(--brand-cyan); position: relative; z-index: 2;
+            animation: pulse-cyan 2.5s infinite var(--ease);
         }
-        @keyframes pulse-cyan { 0% { box-shadow: 0 0 0 0 var(--brand-cyan-glow); } 70% { box-shadow: 0 0 0 15px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+        @keyframes pulse-cyan { 0% { box-shadow: 0 0 0 0 rgba(0,204,255,0.4); } 70% { box-shadow: 0 0 0 24px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
         .mp-lbl {
-            font-size: 0.85rem; font-weight: 700; color: var(--brand-dark);
-            background: var(--white); padding: 8px 16px; border-radius: 20px;
-            box-shadow: var(--shadow-sm); position: relative; z-index: 2;
+            font-size: 0.9rem; font-weight: 700; color: var(--brand-dark);
+            background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+            padding: 10px 20px; border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(10,37,88,0.1); position: relative; z-index: 2;
+            border: 1px solid var(--glass-border);
         }
 
         .quick-actions {
@@ -261,25 +282,25 @@
 
                         <form id="cf" novalidate>
                             <div class="f" id="w-name">
+                                <input type="text" id="inp-name" name="from_name" placeholder=" " required>
                                 <label for="inp-name">Full Name</label>
-                                <input type="text" id="inp-name" name="from_name" placeholder="Dr. Sarah Johnson" required>
                                 <div class="ferr">Please enter your name</div>
                             </div>
 
                             <div class="f" id="w-email">
+                                <input type="email" id="inp-email" name="reply_to" placeholder=" " required>
                                 <label for="inp-email">Email Address</label>
-                                <input type="email" id="inp-email" name="reply_to" placeholder="sarah@premiumdental.com" required>
                                 <div class="ferr">Please enter a valid email</div>
                             </div>
 
                             <div class="f">
+                                <input type="text" id="inp-subject" name="subject" placeholder=" ">
                                 <label for="inp-subject">Interested In</label>
-                                <input type="text" id="inp-subject" name="subject" placeholder="e.g. Subscription Services Demo">
                             </div>
 
                             <div class="f" id="w-msg">
+                                <textarea id="inp-msg" name="message" placeholder=" " required></textarea>
                                 <label for="inp-msg">Your Message</label>
-                                <textarea id="inp-msg" name="message" placeholder="Tell us about your clinic and your patient's needs…" required></textarea>
                                 <div class="ferr">Please enter your message</div>
                             </div>
 
