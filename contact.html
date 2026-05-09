@@ -12,20 +12,20 @@
         .contact-page {
             min-height: 100vh;
             background: var(--bg);
-            padding-top: calc(var(--nav-h) + 18px);
-            padding-bottom: 80px;
+            padding-top: calc(var(--nav-h) + 12px);
+            padding-bottom: 48px;
         }
         
-        .contact-hero { text-align: center; padding: 56px 0 28px; }
+        .contact-hero { text-align: center; padding: 36px 0 18px; }
         .contact-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 14px; }
         .contact-hero h1 em { color: var(--brand-cyan); font-style: italic; }
         .contact-hero p { max-width: 540px; margin: 0 auto; }
 
         .contact-highlights {
-            margin-top: 26px;
+            margin-top: 18px;
             display: grid;
             gap: 12px;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .highlight-chip {
@@ -49,8 +49,8 @@
             color: var(--muted);
         }
 
-        .cg { display: grid; grid-template-columns: 1fr; gap: 36px; margin-top: 48px; }
-        @media (min-width: 900px) { .cg { grid-template-columns: 1.2fr 0.8fr; gap: 64px; } }
+        .cg { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
+        @media (min-width: 900px) { .cg { grid-template-columns: 1.2fr 0.8fr; gap: 40px; } }
 
         .form-card {
             background: rgba(255, 255, 255, 0.75);
@@ -125,7 +125,7 @@
         #spin-ico { animation: dv-spin 0.85s linear infinite; display: none; }
 
         /* ── Info side ── */
-        .info-list { display: flex; flex-direction: column; gap: 36px; }
+        .info-list { display: flex; flex-direction: column; gap: 24px; }
         .info-row { display: flex; gap: 20px; align-items: center; padding: 12px; border-radius: 20px; transition: background 0.3s var(--ease); }
         .info-row:hover { background: rgba(255,255,255,0.6); box-shadow: var(--shadow-sm); }
         .i-icon {
@@ -146,7 +146,7 @@
         .map-box {
             height: 260px; background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 100%);
             border-radius: 28px; border: 1px solid rgba(0, 102, 204, 0.15);
-            margin-top: 48px; display: flex; flex-direction: column;
+            margin-top: 28px; display: flex; flex-direction: column;
             align-items: center; justify-content: center; gap: 16px; position: relative; overflow: hidden;
             box-shadow: inset 0 0 40px rgba(0, 204, 255, 0.05), var(--shadow-sm);
         }
@@ -196,9 +196,10 @@
         }
 
         @media (max-width: 640px) {
-            .contact-hero { padding-top: 30px; }
+            .contact-hero { padding-top: 20px; }
             .form-card { border-radius: 18px; }
             .quick-actions { grid-template-columns: 1fr; }
+            .contact-highlights { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* ── Toast Success ── */
@@ -269,6 +270,7 @@
                     <div class="highlight-chip"><b>24-hour response</b><span>Fast callback from our clinical team</span></div>
                     <div class="highlight-chip"><b>Tailored demos</b><span>Built around your clinic workflow</span></div>
                     <div class="highlight-chip"><b>UK support desk</b><span>Dedicated implementation guidance</span></div>
+                    <div class="highlight-chip"><b>Free consultation</b><span>No-obligation assessment for your clinic</span></div>
                 </div>
             </div>
 
@@ -466,9 +468,12 @@
 
             // Reveal
             var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) { if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); }});
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) { e.target.classList.remove('exit'); e.target.classList.add('active'); }
+                    else if (e.target.classList.contains('active')) { e.target.classList.remove('active'); e.target.classList.add('exit'); }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) { obs.observe(el); });
 
             // Form Logic
             document.addEventListener('DOMContentLoaded', function () {

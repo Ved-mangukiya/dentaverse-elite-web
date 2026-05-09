@@ -88,7 +88,8 @@ body.ready {
 
 body.fade-out {
     opacity: 0;
-    transition: opacity 0.28s var(--ease);
+    transform: translateY(-6px);
+    transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
 }
 
 @keyframes pageIn {
@@ -135,14 +136,14 @@ img {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 0.9rem 2.2rem;
+    padding: 1rem 2.4rem;
     border-radius: var(--radius-pill);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     cursor: pointer;
-    transition: all 0.35s var(--ease);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border: none;
     text-decoration: none;
     position: relative;
@@ -174,7 +175,7 @@ img {
 }
 
 .btn-primary:active {
-    transform: translateY(-1px) scale(0.99);
+    transform: translateY(0) scale(0.98);
     transition-duration: 0.1s;
 }
 
@@ -185,10 +186,11 @@ img {
 }
 
 .btn-outline:hover {
-    border-color: var(--brand-cyan);
-    color: var(--brand-mid);
-    background: var(--bg-soft);
+    border-color: var(--brand-mid);
+    color: white;
+    background: var(--brand-mid);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-outline-white {
@@ -561,12 +563,19 @@ img {
 /* ── Reveal animations (scroll-triggered) ────────────── */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    transform: translateY(28px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    will-change: transform, opacity;
 }
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+/* Reverse exit — subtle fade when scrolling back up */
+.reveal.exit {
+    opacity: 0;
+    transform: translateY(-16px);
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
 }
 
 /* Stagger helpers — add these to siblings for cascade effect */
@@ -579,9 +588,10 @@ img {
 /* Card / element shimmer on hover */
 .glass-card,
 .glass-card-gold {
-    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
 }
 .glass-card::before,
 .glass-card-gold::before {
@@ -597,8 +607,19 @@ img {
 .glass-card-gold:hover::before { left: 150%; }
 .glass-card:hover,
 .glass-card-gold:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px) rotateX(2deg) rotateY(-1deg);
     box-shadow: var(--shadow-lg);
+}
+
+/* ── Universal 3D Float Animation ────────────────────── */
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-6px) rotateX(1.5deg); }
+}
+@keyframes shimmerPulse {
+    0% { opacity: 0.3; transform: scale(0.95); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+    100% { opacity: 0.3; transform: scale(0.95); }
 }
 
 /* ── Blog Hero Fix ── */
@@ -711,35 +732,66 @@ img {
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-28px);
-    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    transform: translateX(-22px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    will-change: transform, opacity;
 }
 
 .reveal-left.active {
     opacity: 1;
     transform: none;
 }
+.reveal-left.exit {
+    opacity: 0;
+    transform: translateX(16px);
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(28px);
-    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    transform: translateX(22px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    will-change: transform, opacity;
 }
 
 .reveal-right.active {
     opacity: 1;
     transform: none;
 }
+.reveal-right.exit {
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
 
 .reveal-scale {
     opacity: 0;
     transform: scale(0.96);
-    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    will-change: transform, opacity;
 }
 
 .reveal-scale.active {
     opacity: 1;
     transform: none;
+}
+.reveal-scale.exit {
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
+
+/* ── Reduced Motion Preference ──────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
 /* ── Universal Footer ─────────────────────────────────── */

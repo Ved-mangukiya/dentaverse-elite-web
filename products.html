@@ -12,7 +12,7 @@
         body.ready { opacity: 1; }
         
         .products-hero {
-            padding: calc(var(--nav-h, 72px) + 4.5rem) 0 4.5rem;
+            padding: calc(var(--nav-h, 72px) + 3.5rem) 0 3.5rem;
             text-align: center;
             background: linear-gradient(160deg, #fff 0%, #eef5ff 55%, #f0f9ff 100%);
             position: relative;
@@ -78,9 +78,9 @@
         .proof-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; }
 
         /* Why section */
-        .why-sec { padding: 5.5rem 0; background: white; }
-        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
-        @media(max-width: 860px) { .why-grid { grid-template-columns: 1fr; } }
+        .why-sec { padding: 4rem 0; background: white; }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2.5rem; perspective: 1200px; }
+        @media(max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
         .why-card {
             background: rgba(240, 246, 255, 0.4);
             backdrop-filter: blur(20px);
@@ -130,7 +130,7 @@
 
         /* Final CTA */
         .final-cta {
-            padding: 6rem 0;
+            padding: 4.5rem 0;
             background: white;
             text-align: center;
         }
@@ -159,9 +159,9 @@
         .btn-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.35); }
         .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
-        .sec { padding: 6.5rem 0; }
+        .sec { padding: 4.5rem 0; }
         .sec-alt { background: var(--bg-soft); }
-        .sec-head { text-align: center; margin-bottom: 4rem; }
+        .sec-head { text-align: center; margin-bottom: 2.5rem; }
         .sec-head h2 { font-size: 2.8rem; color: var(--brand-dark); margin-bottom: 1rem; }
         .sec-head h2 em { font-style: italic; color: var(--brand-cyan); }
 
@@ -220,10 +220,97 @@
         .plan-panel.active { display:grid; animation: fadeSlideUp 0.6s var(--ease-spring) both; }
         @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Monthly panel — up to 4 cols */
-        #panel-monthly { grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:2rem; perspective: 1200px; }
-        /* Annual panel — 3 cols */
-        #panel-annual  { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:2rem; perspective: 1200px; }
+        /* Monthly panel — 2 cols */
+        #panel-monthly { grid-template-columns: repeat(2, 1fr); gap:2rem; perspective: 1200px; }
+        /* Annual panel — 2 cols */
+        #panel-annual  { grid-template-columns: repeat(2, 1fr); gap:2rem; perspective: 1200px; }
+
+        /* ── Add-On Horizontal Banner ── */
+        .pc-addon {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 2rem;
+            background: linear-gradient(135deg, #edf7ff 0%, #dff0ff 50%, #e8f4ff 100%);
+            border: 2px dashed rgba(0, 204, 255, 0.45);
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s var(--ease);
+            transform-style: preserve-3d;
+        }
+        .pc-addon::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,204,255,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .pc-addon::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; left: -40px;
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .pc-addon:hover {
+            transform: translateY(-6px);
+            border-color: var(--brand-cyan);
+            box-shadow: 0 16px 48px rgba(0,204,255,0.15);
+        }
+        .addon-icon-wrap {
+            width: 72px; height: 72px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 24px rgba(0,102,204,0.3);
+            flex-shrink: 0;
+            position: relative; z-index: 1;
+        }
+        .addon-icon-wrap svg { width: 32px; height: 32px; stroke: white; fill: none; stroke-width: 2; }
+        .addon-body { position: relative; z-index: 1; }
+        .addon-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b2c, #ff9147);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+            box-shadow: 0 3px 10px rgba(255,107,44,0.3);
+        }
+        .addon-body h4 { font-size: 1.25rem; color: var(--brand-dark); margin-bottom: 4px; }
+        .addon-body p { font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.6; }
+        .addon-body .addon-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--brand-dark); margin-top: 4px; }
+        .addon-cta-wrap { position: relative; z-index: 1; flex-shrink: 0; }
+        .addon-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 0.85rem 2rem;
+            border-radius: 999px;
+            font-size: 0.8rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.07em;
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 6px 22px rgba(0,102,204,0.26);
+            transition: all 0.3s var(--ease);
+        }
+        .addon-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,102,204,0.36); }
+
+        @media(max-width: 768px) {
+            .pc-addon { grid-template-columns: 1fr; text-align: center; gap: 1.2rem; padding: 1.8rem; }
+            .addon-icon-wrap { margin: 0 auto; }
+            .addon-cta-wrap { margin: 0 auto; }
+        }
 
         /* Card base */
         .pc { background:rgba(255,255,255,0.85); backdrop-filter: blur(20px); border:1px solid rgba(0, 102, 204, 0.15); border-radius:32px;
@@ -304,7 +391,16 @@
             #panel-monthly, #panel-annual { grid-template-columns:1fr; }
             .pc.featured { transform:none; }
             .pc.featured:hover { transform:translateY(-8px); }
+            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
         }
+
+        /* ── 3D Card Animations ── */
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            50% { transform: translateY(-6px) rotateX(1.5deg); }
+        }
+        .why-card, .hw-card, .pc { animation: float3d 6s ease-in-out infinite; animation-play-state: paused; }
+        .why-card:hover, .hw-card:hover, .pc:hover { animation-play-state: running; }
     </style>
 </head>
 <body class="ready">
@@ -368,13 +464,16 @@
         </div>
 
         <!-- LIVE ANXIETY COUNTER -->
-        <div style="background:linear-gradient(135deg,#fff8f0,#fff3e0);border-top:3px solid #ff6b35;border-bottom:3px solid #ff6b35;padding:1.8rem 0;text-align:center;">
-            <div class="container">
-                <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#c0392b;margin-bottom:0.5rem;">🔴 Live Research Data</p>
-                <p style="font-size:clamp(1rem,2.5vw,1.2rem);color:#333;font-weight:600;margin:0;line-height:1.6;">
-                    Right now, an estimated <strong style="color:#c0392b;font-size:1.4em;" id="liveCounter">0</strong> people in the UK are <strong>avoiding dental care due to anxiety</strong>.
+        <div class="reveal" style="background:linear-gradient(135deg,rgba(0,102,204,0.03),rgba(0,204,255,0.05));border-top:1px solid rgba(0,204,255,0.2);border-bottom:1px solid rgba(0,204,255,0.2);padding:2.5rem 0;text-align:center;">
+            <div class="container" style="max-width:800px;">
+                <p style="display:inline-flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand-mid);margin-bottom:0.8rem;background:white;padding:4px 12px;border-radius:999px;box-shadow:0 2px 8px rgba(0,102,204,0.1);">
+                    <span style="display:inline-block;width:8px;height:8px;background:var(--brand-cyan);border-radius:50%;animation:dvPulse 2s infinite;"></span>
+                    Live Research Data
                 </p>
-                <p style="font-size:0.82rem;color:#888;margin-top:0.5rem;">According to current NHS datasets, approximately 36% of UK adults experience dental anxiety; however, predictive regression models suggest this figure is trending upward, with real-time analytics forecasting a steady rise in prevalence over the coming decade.</p>
+                <p style="font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--brand-dark);font-family:'Playfair Display',serif;margin:0 0 1rem;line-height:1.4;">
+                    Right now, an estimated <strong style="color:var(--brand-mid);font-size:1.3em;" id="liveCounter">0</strong> people in the UK are <em style="color:var(--brand-cyan);">avoiding dental care</em> due to anxiety.
+                </p>
+                <p style="font-size:0.85rem;color:var(--muted);margin:0;line-height:1.6;">According to current NHS datasets, approximately 36% of UK adults experience dental anxiety; predictive models suggest this figure is trending upward.</p>
             </div>
         </div>
 
@@ -384,7 +483,7 @@
                 <div class="section-header reveal">
                     <span class="section-eyebrow">Why It Works</span>
                     <h2 class="section-title">The <em>Dentaverse Difference</em></h2>
-                    <p class="section-subtitle">Three reasons why clinics that switch to VR distraction therapy never go back.</p>
+                    <p class="section-subtitle">Four reasons why clinics that switch to VR distraction therapy never go back.</p>
                 </div>
                 <div class="why-grid">
                     <div class="why-card reveal">
@@ -401,6 +500,11 @@
                         <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
                         <h4>Clinics Get 5-Star Reviews</h4>
                         <p>Patients who leave calm leave reviews. Practices using Dentaverse report a measurable increase in online ratings and referrals.</p>
+                    </div>
+                    <div class="why-card reveal" style="transition-delay:.3s">
+                        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                        <h4>Kids Love It Too</h4>
+                        <p>Paediatric patients respond exceptionally well. Cartoons and interactive VR worlds keep children calm, cooperative, and even excited for appointments.</p>
                     </div>
                 </div>
             </div>
@@ -537,20 +641,25 @@
                         <a href="contact.html" class="pc-cta secondary">Enquire Now</a>
                     </div>
 
-                    <!-- Pay-per-content -->
-                    <div class="pc reveal" style="transition-delay:.4s">
-                        <div class="pc-label">Add-On</div>
-                        <div class="pc-name">Content Only</div>
-                        <div class="pc-desc">Exclusive kids videos — no hardware required.</div>
-                        <div class="pc-divider"></div>
-                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount range">4.99–14.99</span></div>
-                        <div class="pc-period">Per content item · No hardware included</div>
-                        <ul class="pc-features">
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Exclusive Kids Video Content</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>One-time purchase per item</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Compatible with existing headsets</li>
-                        </ul>
-                        <a href="contact.html" class="pc-cta secondary">Browse Content</a>
+                    <!-- ── ADD-ON HORIZONTAL BANNER ── -->
+                    <div class="pc-addon reveal" style="transition-delay:.4s">
+                        <div class="addon-icon-wrap">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="12" y1="18" x2="12" y2="12"/>
+                                <line x1="9" y1="15" x2="15" y2="15"/>
+                            </svg>
+                        </div>
+                        <div class="addon-body">
+                            <span class="addon-tag">✦ Optional Add-On</span>
+                            <h4>Content Only — Kids Video Library</h4>
+                            <p>Purchase exclusive kids content à la carte. No hardware or subscription required — works with any existing plan.</p>
+                            <div class="addon-price">£4.99 – £14.99 <span style="font-size:0.75rem;font-weight:400;color:var(--muted);font-family:Inter,sans-serif;">per content item</span></div>
+                        </div>
+                        <div class="addon-cta-wrap">
+                            <a href="contact.html" class="addon-cta">Browse Content →</a>
+                        </div>
                     </div>
 
                 </div><!-- /panel-monthly -->
@@ -664,9 +773,12 @@
             if (hbg && mob) { hbg.addEventListener('click', function() { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
             window.addEventListener('scroll', function() { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
             var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) { obs.observe(el); });
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) { e.target.classList.remove('exit'); e.target.classList.add('active'); }
+                    else if (e.target.classList.contains('active')) { e.target.classList.remove('active'); e.target.classList.add('exit'); }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) { obs.observe(el); });
             document.querySelectorAll('a[href]').forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     var href = link.getAttribute('href');
@@ -698,6 +810,16 @@
                     el.textContent = fmt(current);
                 }, 2000);
             })();
+
+            /* Easter eggs */
+            console.log('%c🦷 Dentaverse Solutions','font-size:20px;font-weight:bold;color:#0066CC;');
+            console.log('%cExplore our VR therapy plans.','font-size:11px;color:#5E6E85;');
+            var foot = document.querySelector('.dv-footer-bottom span:last-child');
+            if (foot) {
+                foot.style.cursor='default'; foot.style.transition='all 0.4s';
+                foot.addEventListener('mouseenter', function(){ foot.style.color='#00CCFF'; foot.style.textShadow='0 0 12px rgba(0,204,255,0.5)'; foot.textContent='\u2728 Crafted with love in the UK \u2728'; });
+                foot.addEventListener('mouseleave', function(){ foot.style.color=''; foot.style.textShadow=''; foot.textContent='Crafted with care in the UK'; });
+            }
         });
     </script>
 </body>

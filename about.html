@@ -16,23 +16,45 @@
 
         /* ── Hero ── */
         .about-hero {
-            padding: calc(var(--nav-h) + 4.5rem) 0 5rem;
+            padding: calc(var(--nav-h) + 3rem) 0 3.5rem;
             background: linear-gradient(160deg, #fff 0%, #eef5ff 55%, #f0f9ff 100%);
             position: relative;
             overflow: hidden;
             text-align: center;
         }
+
         .about-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,204,255,0.08) 0%, transparent 70%);
+            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0, 204, 255, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
-        .about-hero > * { position: relative; z-index: 1; }
-        .about-hero h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); color: var(--brand-dark); margin-bottom: 1.2rem; line-height: 1.1; }
-        .about-hero h1 em { color: var(--brand-cyan); font-style: italic; }
-        .about-hero p { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--muted); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.75; }
+
+        .about-hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            color: var(--brand-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .about-hero h1 em {
+            color: var(--brand-cyan);
+            font-style: italic;
+        }
+
+        .about-hero p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--muted);
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.75;
+        }
 
         /* Hero stats bar */
         .hero-stats {
@@ -44,12 +66,13 @@
             background: white;
             border-radius: 20px;
             border: 1.5px solid var(--bg-deep);
-            box-shadow: 0 8px 32px rgba(10,37,88,0.07);
+            box-shadow: 0 8px 32px rgba(10, 37, 88, 0.07);
             overflow: hidden;
             max-width: 780px;
             margin-left: auto;
             margin-right: auto;
         }
+
         .hero-stat {
             flex: 1;
             min-width: 160px;
@@ -57,7 +80,11 @@
             text-align: center;
             border-right: 1px solid var(--bg-deep);
         }
-        .hero-stat:last-child { border-right: none; }
+
+        .hero-stat:last-child {
+            border-right: none;
+        }
+
         .hero-stat-num {
             font-family: 'Playfair Display', serif;
             font-size: 2.4rem;
@@ -66,25 +93,62 @@
             line-height: 1;
             margin-bottom: 0.3rem;
         }
-        .hero-stat-num span { color: var(--brand-cyan); }
-        .hero-stat-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+        .hero-stat-num span {
+            color: var(--brand-cyan);
+        }
+
+        .hero-stat-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
 
         /* ── Story section ── */
         .story-sec {
-            padding: 6rem 0;
+            padding: 4rem 0;
             background: white;
         }
+
         .story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             align-items: center;
         }
-        @media(max-width: 860px) { .story-grid { grid-template-columns: 1fr; gap: 3rem; } }
-        .story-text h2 { font-size: clamp(2rem, 4vw, 2.8rem); color: var(--brand-dark); margin-bottom: 1.2rem; line-height: 1.2; }
-        .story-text h2 em { color: var(--brand-cyan); font-style: italic; }
-        .story-text p { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; }
-        .story-text p:last-child { margin-bottom: 0; }
+
+        @media(max-width: 860px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .story-text h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--brand-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .story-text h2 em {
+            color: var(--brand-cyan);
+            font-style: italic;
+        }
+
+        .story-text p {
+            font-size: 0.97rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .story-text p:last-child {
+            margin-bottom: 0;
+        }
+
         .story-visual {
             background: linear-gradient(135deg, var(--brand-dark) 0%, #0d3070 100%);
             border-radius: 28px;
@@ -92,12 +156,14 @@
             position: relative;
             overflow: hidden;
         }
+
         .story-visual::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(0,204,255,0.15) 0%, transparent 60%);
+            background: radial-gradient(circle at 70% 30%, rgba(0, 204, 255, 0.15) 0%, transparent 60%);
         }
+
         .story-quote {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.4rem, 3vw, 2rem);
@@ -108,6 +174,7 @@
             z-index: 1;
             margin-bottom: 1.5rem;
         }
+
         .story-quote::before {
             content: '\201C';
             font-size: 5rem;
@@ -119,9 +186,10 @@
             line-height: 1;
             font-style: normal;
         }
+
         .story-attr {
             font-size: 0.82rem;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255, 255, 255, 0.55);
             position: relative;
             z-index: 1;
             text-transform: uppercase;
@@ -130,102 +198,223 @@
         }
 
         /* ── Mission / Vision ── */
-        .mv-sec { background: var(--bg-soft); padding: 6rem 0; }
-        .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-        @media(max-width: 820px) { .mv-grid { grid-template-columns: 1fr; } }
+        .mv-sec {
+            background: var(--bg-soft);
+            padding: 4rem 0;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media(max-width: 820px) {
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .mv-card {
             background: white;
             border: 1.5px solid var(--bg-deep);
             padding: 3rem 2.8rem;
             border-radius: 28px;
-            box-shadow: 0 4px 20px rgba(10,37,88,0.05);
+            box-shadow: 0 4px 20px rgba(10, 37, 88, 0.05);
             position: relative;
             overflow: hidden;
             transition: all 0.4s var(--ease);
         }
-        .mv-card:hover { transform: translateY(-8px); border-color: var(--brand-cyan); box-shadow: 0 20px 56px rgba(10,37,88,0.11); }
+
+        .mv-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--brand-cyan);
+            box-shadow: 0 20px 56px rgba(10, 37, 88, 0.11);
+        }
+
         .mv-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--brand-mid), var(--brand-cyan));
         }
+
         .mv-icon {
-            width: 56px; height: 56px;
-            background: linear-gradient(135deg, rgba(0,102,204,0.1), rgba(0,204,255,0.08));
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 204, 255, 0.08));
             border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 1.6rem;
-            border: 1px solid rgba(0,102,204,0.12);
+            border: 1px solid rgba(0, 102, 204, 0.12);
         }
-        .mv-icon svg { width: 26px; height: 26px; stroke: var(--brand-mid); stroke-width: 2; fill: none; }
-        .mv-card h3 { font-size: 1.5rem; color: var(--brand-dark); margin-bottom: 1rem; }
-        .mv-card p { font-size: 0.93rem; color: var(--muted); line-height: 1.75; }
+
+        .mv-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--brand-mid);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .mv-card h3 {
+            font-size: 1.5rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+        }
+
+        .mv-card p {
+            font-size: 0.93rem;
+            color: var(--muted);
+            line-height: 1.75;
+        }
 
         /* ── Team ── */
-        .team-sec { padding: 6rem 0; background: white; }
+        .team-sec {
+            padding: 4rem 0;
+            background: white;
+        }
+
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            margin-top: 3.5rem;
+            margin-top: 2.5rem;
+            perspective: 1200px;
         }
+
+        .team-card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            justify-self: center;
+            width: 100%;
+            max-width: calc(50% - 1rem);
+        }
+
+        @media(max-width: 640px) {
+            .team-card:last-child:nth-child(odd) {
+                max-width: none;
+            }
+        }
+
+        @media(max-width: 640px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .team-card {
             background: white;
             border: 1.5px solid var(--bg-deep);
             border-radius: 24px;
             padding: 2.5rem 1.8rem 2rem;
             text-align: center;
-            transition: all 0.35s var(--ease);
-            box-shadow: 0 4px 16px rgba(10,37,88,0.05);
+            transition: all 0.5s var(--ease);
+            box-shadow: 0 4px 16px rgba(10, 37, 88, 0.05);
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
+
         .team-card::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; right: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--brand-mid), var(--brand-cyan));
             transform: scaleX(0);
             transition: transform 0.35s var(--ease);
             transform-origin: left;
         }
-        .team-card:hover { transform: translateY(-8px); border-color: rgba(0,204,255,0.4); box-shadow: 0 20px 48px rgba(10,37,88,0.11); }
-        .team-card:hover::after { transform: scaleX(1); }
+
+        .team-card:hover {
+            transform: translateY(-8px) rotateX(3deg) rotateY(-2deg);
+            border-color: rgba(0, 204, 255, 0.4);
+            box-shadow: 0 20px 48px rgba(10, 37, 88, 0.11);
+        }
+
+        .team-card:hover::after {
+            transform: scaleX(1);
+        }
+
         .tm-avatar {
-            width: 88px; height: 88px;
+            width: 88px;
+            height: 88px;
             background: linear-gradient(135deg, var(--bg-deep), var(--bg-soft));
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 0 auto 1.5rem;
             border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--brand-cyan), 0 8px 24px rgba(0,102,204,0.15);
+            box-shadow: 0 0 0 2px var(--brand-cyan), 0 8px 24px rgba(0, 102, 204, 0.15);
             color: var(--brand-mid);
         }
-        .tm-avatar svg { width: 36px; height: 36px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+        .tm-avatar svg {
+            width: 36px;
+            height: 36px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
         .tm-initials {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             font-weight: 700;
             color: var(--brand-mid);
         }
+
         .tm-role {
-            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
-            text-transform: uppercase; color: var(--brand-cyan); margin-bottom: 0.5rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--brand-cyan);
+            margin-bottom: 0.5rem;
         }
-        .tm-name { font-size: 1.1rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 0.4rem; line-height: 1.3; }
-        .tm-qual { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+        .tm-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+        }
+
+        .tm-qual {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
 
         /* ── Values ── */
-        .values-sec { padding: 6rem 0; background: var(--bg-soft); }
+        .values-sec {
+            padding: 4rem 0;
+            background: var(--bg-soft);
+        }
+
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.8rem;
-            margin-top: 3.5rem;
+            margin-top: 2.5rem;
+            perspective: 1200px;
         }
+
+        @media(max-width: 640px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .val-item {
             background: white;
             border: 1.5px solid var(--bg-deep);
@@ -236,42 +425,114 @@
             flex-direction: column;
             gap: 0.8rem;
         }
-        .val-item:hover { border-color: var(--brand-cyan); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(10,37,88,0.09); }
-        .val-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, rgba(0,102,204,0.1), rgba(0,204,255,0.07));
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            border: 1px solid rgba(0,102,204,0.12);
+
+        .val-item:hover {
+            border-color: var(--brand-cyan);
+            transform: translateY(-6px) rotateX(2deg) rotateY(-1deg);
+            box-shadow: 0 12px 36px rgba(10, 37, 88, 0.09);
         }
-        .val-icon svg { width: 22px; height: 22px; stroke: var(--brand-mid); fill: none; stroke-width: 2; }
-        .val-item strong { color: var(--brand-dark); font-weight: 700; font-size: 1.05rem; }
-        .val-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin: 0; }
+
+        .val-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 204, 255, 0.07));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 102, 204, 0.12);
+        }
+
+        .val-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--brand-mid);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .val-item strong {
+            color: var(--brand-dark);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .val-item p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+            margin: 0;
+        }
 
         /* ── CTA band ── */
         .about-cta {
-            padding: 6rem 0;
+            padding: 4rem 0;
             background: linear-gradient(135deg, var(--brand-dark) 0%, #0d3070 100%);
             text-align: center;
             position: relative;
             overflow: hidden;
         }
+
         .about-cta::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,204,255,0.12) 0%, transparent 70%);
+            background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0, 204, 255, 0.12) 0%, transparent 70%);
             pointer-events: none;
         }
-        .about-cta > * { position: relative; z-index: 1; }
-        .about-cta h2 { font-size: clamp(2rem, 4.5vw, 3rem); color: white; margin-bottom: 1rem; }
-        .about-cta h2 em { color: var(--brand-cyan); font-style: italic; }
-        .about-cta p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
-        .about-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-white { background: white; color: var(--brand-dark); border: none; }
-        .btn-white:hover { background: var(--bg-soft); transform: translateY(-2px); }
-        .btn-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.35); }
-        .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+        .about-cta>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-cta h2 {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .about-cta h2 em {
+            color: var(--brand-cyan);
+            font-style: italic;
+        }
+
+        .about-cta p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .about-cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--brand-dark);
+            border: none;
+        }
+
+        .btn-white:hover {
+            background: var(--bg-soft);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
     </style>
 </head>
 
@@ -326,7 +587,9 @@
             <div class="container">
                 <span class="section-eyebrow reveal">Our Story</span>
                 <h1 class="reveal" style="transition-delay:.05s">Built by Clinicians,<br>Designed for <em>Calm</em></h1>
-                <p class="reveal" style="transition-delay:.1s">Dentaverse was founded by dental professionals who experienced patient anxiety first-hand. We build premium VR therapy systems that transform how clinics deliver care — one appointment at a time.</p>
+                <p class="reveal" style="transition-delay:.1s">Dentaverse was founded by dental professionals who
+                    experienced patient anxiety first-hand. We build premium VR therapy systems that transform how
+                    clinics deliver care — one appointment at a time.</p>
                 <div class="hero-stats reveal" style="transition-delay:.15s">
                     <div class="hero-stat">
                         <div class="hero-stat-num">60<span>%</span></div>
@@ -355,9 +618,14 @@
                     <div class="story-text reveal-left">
                         <span class="section-eyebrow">How We Started</span>
                         <h2>A Problem We <em>Lived</em> Ourselves</h2>
-                        <p>Our founder, Dr. Jayshri Harini Dharanikumar, spent years watching patients grip the armrests, cancel appointments, and avoid necessary treatment — not because of the procedure, but because of fear.</p>
-                        <p>She assembled a team of clinicians, technologists, and patient advocates with one shared belief: dental anxiety is a solvable problem. The answer wasn't more sedation or longer appointments. It was immersion.</p>
-                        <p>Today, Dentaverse provides VR headsets and curated therapeutic content to dental clinics across the UK — turning the most dreaded appointment into a moment of genuine calm.</p>
+                        <p>Our founder, Dr. Jayshri Harini Dharanikumar, spent years watching patients grip the
+                            armrests, cancel appointments, and avoid necessary treatment — not because of the procedure,
+                            but because of fear.</p>
+                        <p>She assembled a team of clinicians, technologists, and patient advocates with one shared
+                            belief: dental anxiety is a solvable problem. The answer wasn't more sedation or longer
+                            appointments. It was immersion.</p>
+                        <p>Today, Dentaverse provides VR headsets and curated therapeutic content to dental clinics
+                            across the UK — turning the most dreaded appointment into a moment of genuine calm.</p>
                     </div>
                     <div class="story-visual reveal-right">
                         <div class="story-quote">
@@ -379,17 +647,28 @@
                 <div class="mv-grid" style="margin-top:3rem">
                     <div class="mv-card reveal">
                         <div class="mv-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
                         </div>
                         <h3>Our Mission</h3>
-                        <p>To design and deliver advanced VR headsets specifically for dental clinics, featuring customised therapeutic content — educational videos, cartoons, and immersive environments — to eliminate patient fear and improve clinical satisfaction.</p>
+                        <p>To design and deliver advanced VR headsets specifically for dental clinics, featuring
+                            customised therapeutic content — educational videos, cartoons, and immersive environments —
+                            to eliminate patient fear and improve clinical satisfaction.</p>
                     </div>
                     <div class="mv-card reveal" style="transition-delay:.12s">
                         <div class="mv-icon">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                <path d="M2 12h20" />
+                            </svg>
                         </div>
                         <h3>Our Vision</h3>
-                        <p>To become a global leader in immersive healthcare technology — transforming the future of dental care through innovative VR solutions that improve patient comfort and emotional well-being across the globe.</p>
+                        <p>To become a global leader in immersive healthcare technology — transforming the future of
+                            dental care through innovative VR solutions that improve patient comfort and emotional
+                            well-being across the globe.</p>
                     </div>
                 </div>
             </div>
@@ -401,7 +680,8 @@
                 <div class="section-header reveal">
                     <span class="section-eyebrow">Leadership</span>
                     <h2 class="section-title">The People Behind <em>Dentaverse</em></h2>
-                    <p class="section-subtitle">A multidisciplinary team of clinicians, technologists, and business leaders united by one mission.</p>
+                    <p class="section-subtitle">A multidisciplinary team of clinicians, technologists, and business
+                        leaders united by one mission.</p>
                 </div>
                 <div class="team-grid">
 
@@ -439,7 +719,6 @@
                         <div class="tm-name">Krutarth Mangukiya</div>
                         <div class="tm-qual">MBA (Global Business Development)</div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -450,26 +729,39 @@
                 <div class="section-header reveal">
                     <span class="section-eyebrow">The Dentaverse Way</span>
                     <h2 class="section-title">Our Core <em>Values</em></h2>
-                    <p class="section-subtitle">Every decision we make — from hardware design to content curation — is guided by these principles.</p>
+                    <p class="section-subtitle">Every decision we make — from hardware design to content curation — is
+                        guided by these principles.</p>
                 </div>
                 <div class="values-grid">
                     <div class="val-item reveal">
-                        <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="val-icon"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg></div>
                         <strong>Innovation</strong>
                         <p>Continuously push the boundaries of what's possible in VR healthcare.</p>
                     </div>
                     <div class="val-item reveal" style="transition-delay:.07s">
-                        <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                        <div class="val-icon"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            </svg></div>
                         <strong>Patient Comfort</strong>
                         <p>Prioritising clinical outcomes through emotional well-being and genuine care.</p>
                     </div>
                     <div class="val-item reveal" style="transition-delay:.14s">
-                        <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <div class="val-icon"><svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg></div>
                         <strong>Quality</strong>
                         <p>Delivering medically-compliant, reliable, and premium hardware every time.</p>
                     </div>
                     <div class="val-item reveal" style="transition-delay:.21s">
-                        <div class="val-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                        <div class="val-icon"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg></div>
                         <strong>Accessibility</strong>
                         <p>Making calm dental visits available to clinics of all sizes, everywhere.</p>
                     </div>
@@ -481,7 +773,8 @@
         <section class="about-cta">
             <div class="container">
                 <h2 class="reveal">Ready to Transform Your <em>Clinic?</em></h2>
-                <p class="reveal" style="transition-delay:.08s">Join the growing network of UK dental practices delivering fear-free appointments with Dentaverse.</p>
+                <p class="reveal" style="transition-delay:.08s">Join the growing network of UK dental practices
+                    delivering fear-free appointments with Dentaverse.</p>
                 <div class="about-cta-btns reveal" style="transition-delay:.16s">
                     <a href="contact.html" class="btn btn-white">Book a Free Demo</a>
                     <a href="products.html" class="btn btn-ghost">View Plans &amp; Pricing</a>
@@ -532,27 +825,30 @@
     <!-- SCRIPTS -->
     <script>
         document.body.classList.add('ready');
-        (function() {
+        (function () {
             var l = document.getElementById('loader');
-            if (l) setTimeout(function() { l.style.opacity='0'; l.style.visibility='hidden'; l.style.pointerEvents='none'; }, 1100);
+            if (l) setTimeout(function () { l.style.opacity = '0'; l.style.visibility = 'hidden'; l.style.pointerEvents = 'none'; }, 1100);
         })();
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var hbg = document.getElementById('dvHamburger');
             var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
-            if (hbg && mob) { hbg.addEventListener('click', function() { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
-            window.addEventListener('scroll', function() { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) { obs.observe(el); });
-            document.querySelectorAll('a[href]').forEach(function(link) {
-                link.addEventListener('click', function(e) {
+            if (hbg && mob) { hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
+            window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.remove('exit'); e.target.classList.add('active'); }
+                    else if (e.target.classList.contains('active')) { e.target.classList.remove('active'); e.target.classList.add('exit'); }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function (el) { obs.observe(el); });
+            document.querySelectorAll('a[href]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
                     var href = link.getAttribute('href');
                     if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
                     e.preventDefault();
                     document.body.classList.add('fade-out');
-                    setTimeout(function() { window.location.href = href; }, 250);
+                    setTimeout(function () { window.location.href = href; }, 250);
                 });
             });
         });

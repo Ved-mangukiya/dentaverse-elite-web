@@ -82,7 +82,7 @@
         }
 
         .featured-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-6px) rotateX(2deg) rotateY(-1deg);
             box-shadow: var(--shadow-xl);
             border-color: var(--brand-cyan-glow);
         }
@@ -154,10 +154,12 @@
         /* Grid */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
             margin-bottom: 6rem;
+            perspective: 1200px;
         }
+        @media(max-width: 700px) { .blog-grid { grid-template-columns: 1fr; } }
 
         .post-card {
             background: var(--white);
@@ -165,13 +167,14 @@
             border: 1.5px solid var(--bg-soft);
             overflow: hidden;
             box-shadow: var(--shadow-sm);
-            transition: all 0.35s var(--ease);
+            transition: all 0.5s var(--ease);
             display: flex;
             flex-direction: column;
+            transform-style: preserve-3d;
         }
 
         .post-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) rotateX(3deg) rotateY(-2deg);
             box-shadow: var(--shadow-md);
             border-color: var(--brand-cyan-glow);
         }
@@ -507,9 +510,12 @@
             window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
             var obs = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.remove('exit'); e.target.classList.add('active'); }
+                    else if (e.target.classList.contains('active')) { e.target.classList.remove('active'); e.target.classList.add('exit'); }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function (el) { obs.observe(el); });
 
             var posts = [
                 {
