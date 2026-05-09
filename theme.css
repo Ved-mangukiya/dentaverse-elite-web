@@ -30,7 +30,7 @@
 
     /* ── Typography & UI ── */
     --text: #333333;
-    --muted: #5E6E85;
+    --muted: #4A586E;
     --border: #D8E8F8;
 
     /* ── Glassmorphism ── */
@@ -72,6 +72,7 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
     background: var(--bg);
     color: var(--text);
     line-height: 1.65;
