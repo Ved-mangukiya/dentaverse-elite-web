@@ -919,7 +919,7 @@
 
         .feature-card:hover {
             transform: translateY(-12px) rotateX(3deg) rotateY(-2deg);
-            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,204,255,0.1);
+            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 204, 255, 0.1);
             border-color: rgba(0, 204, 255, 0.25);
         }
 
@@ -971,19 +971,35 @@
 
         /* ── 3D Card Animations ── */
         @keyframes float3d {
-            0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
-            25% { transform: translateY(-4px) rotateX(1deg) rotateY(-1deg); }
-            50% { transform: translateY(-7px) rotateX(2deg) rotateY(0.5deg); }
-            75% { transform: translateY(-4px) rotateX(1deg) rotateY(-0.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotateX(0deg) rotateY(0deg);
+            }
+
+            25% {
+                transform: translateY(-4px) rotateX(1deg) rotateY(-1deg);
+            }
+
+            50% {
+                transform: translateY(-7px) rotateX(2deg) rotateY(0.5deg);
+            }
+
+            75% {
+                transform: translateY(-4px) rotateX(1deg) rotateY(-0.5deg);
+            }
         }
+
         .about-strip-card:hover {
             transform: translateY(-8px) rotateX(3deg) rotateY(-2deg);
-            box-shadow: 0 20px 48px rgba(10,37,88,0.1);
-            border-color: rgba(0,204,255,0.3);
+            box-shadow: 0 20px 48px rgba(10, 37, 88, 0.1);
+            border-color: rgba(0, 204, 255, 0.3);
         }
+
         .testi-card {
             transform-style: preserve-3d;
         }
+
         .testi-card:hover {
             transform: translateY(-8px) rotateX(2deg) rotateY(-1deg) !important;
         }
@@ -1552,8 +1568,7 @@
     <div id="loader">
         <div class="loader-inner">
             <div class="loader-icon">
-                <img src="logo.png" alt="Dentaverse"
-                    style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                <img src="logo.png" alt="Dentaverse" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
             </div>
             <div class="loader-brand">Dentaverse</div>
             <div class="loader-bar"></div>
@@ -1690,7 +1705,8 @@
                     </div>
                     <div class="asc-tag">Why Us</div>
                     <h3>UK medical certified, clinician-founded</h3>
-                    <p>Built by dental professionals who've sat in the chair themselves. Every headset meets UK medical standards with lifetime warranty and dedicated technical support.</p>
+                    <p>Built by dental professionals who've sat in the chair themselves. Every headset meets UK medical
+                        standards with lifetime warranty and dedicated technical support.</p>
                     <a href="about.html" class="asc-link">Meet our team →</a>
                 </div>
 
@@ -2195,7 +2211,8 @@
 
     <!-- COOKIE CONSENT -->
     <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</div>
+        <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept
+            All', you consent to our use of cookies.</div>
         <div class="cookie-btns">
             <button class="cookie-btn cb-manage" id="cookieManage">Manage</button>
             <button class="cookie-btn cb-deny" id="cookieDeny">Reject All</button>
@@ -2212,7 +2229,7 @@
             if (!consent && box) {
                 setTimeout(() => box.classList.add('show'), 250);
             }
-            
+
             function hideConsent() {
                 if (box) {
                     box.classList.add('fade-out');
@@ -2389,24 +2406,24 @@
            ============================================================ */
         document.addEventListener('DOMContentLoaded', () => {
             /* 1. Konami Code → confetti burst */
-            const kc = [38,38,40,40,37,39,37,39,66,65];
+            const kc = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
             let kp = 0;
             document.addEventListener('keydown', e => {
-                if (e.keyCode === kc[kp]) { kp++; if (kp === kc.length) { kp=0; fireworks(); } } else { kp=0; }
+                if (e.keyCode === kc[kp]) { kp++; if (kp === kc.length) { kp = 0; fireworks(); } } else { kp = 0; }
             });
             function fireworks() {
-                const c = ['#00CCFF','#0066CC','#0A2558','#ff6b2c','#a855f7','#22c55e'];
+                const c = ['#00CCFF', '#0066CC', '#0A2558', '#ff6b2c', '#a855f7', '#22c55e'];
                 const box = document.createElement('div');
                 box.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:99999;overflow:hidden;';
                 document.body.appendChild(box);
-                for (let i=0;i<80;i++) {
+                for (let i = 0; i < 80; i++) {
                     const d = document.createElement('div');
-                    const s = Math.random()*8+4;
-                    d.style.cssText = `position:absolute;width:${s}px;height:${s}px;background:${c[i%c.length]};border-radius:${Math.random()>.5?'50%':'2px'};left:${Math.random()*100}%;top:-10px;animation:cFall ${Math.random()*1.5+1.5}s ${Math.random()*0.5}s ease-in forwards;`;
+                    const s = Math.random() * 8 + 4;
+                    d.style.cssText = `position:absolute;width:${s}px;height:${s}px;background:${c[i % c.length]};border-radius:${Math.random() > .5 ? '50%' : '2px'};left:${Math.random() * 100}%;top:-10px;animation:cFall ${Math.random() * 1.5 + 1.5}s ${Math.random() * 0.5}s ease-in forwards;`;
                     box.appendChild(d);
                 }
                 if (!document.getElementById('cFallCSS')) {
-                    const st = document.createElement('style'); st.id='cFallCSS';
+                    const st = document.createElement('style'); st.id = 'cFallCSS';
                     st.textContent = '@keyframes cFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}';
                     document.head.appendChild(st);
                 }
@@ -2414,25 +2431,25 @@
             }
 
             /* 2. Logo triple-click → spin */
-            let lc=0, lt;
+            let lc = 0, lt;
             const logo = document.querySelector('.dv-logo');
             if (logo) logo.addEventListener('click', () => {
-                lc++; clearTimeout(lt); lt = setTimeout(()=>{lc=0;},500);
-                if (lc>=3) { lc=0; const img=logo.querySelector('.dv-logo-img')||logo; img.style.transition='transform 0.8s cubic-bezier(0.16,1,0.3,1)'; img.style.transform='rotate(360deg) scale(1.1)'; setTimeout(()=>{img.style.transform='';},900); }
+                lc++; clearTimeout(lt); lt = setTimeout(() => { lc = 0; }, 500);
+                if (lc >= 3) { lc = 0; const img = logo.querySelector('.dv-logo-img') || logo; img.style.transition = 'transform 0.8s cubic-bezier(0.16,1,0.3,1)'; img.style.transform = 'rotate(360deg) scale(1.1)'; setTimeout(() => { img.style.transform = ''; }, 900); }
             });
 
             /* 3. Footer hover sparkle */
             const foot = document.querySelector('.dv-footer-bottom span:last-child');
             if (foot) {
-                foot.style.cursor='default'; foot.style.transition='all 0.4s';
-                foot.addEventListener('mouseenter', ()=>{ foot.style.color='#00CCFF'; foot.style.textShadow='0 0 12px rgba(0,204,255,0.5)'; foot.textContent='✨ Crafted with love in the UK ✨'; });
-                foot.addEventListener('mouseleave', ()=>{ foot.style.color=''; foot.style.textShadow=''; foot.textContent='Crafted with care in the UK'; });
+                foot.style.cursor = 'default'; foot.style.transition = 'all 0.4s';
+                foot.addEventListener('mouseenter', () => { foot.style.color = '#00CCFF'; foot.style.textShadow = '0 0 12px rgba(0,204,255,0.5)'; foot.textContent = '✨ Crafted with love in the UK ✨'; });
+                foot.addEventListener('mouseleave', () => { foot.style.color = ''; foot.style.textShadow = ''; foot.textContent = 'Crafted with care in the UK'; });
             }
 
             /* 4. Console welcome */
-            console.log('%c🦷 Dentaverse','font-size:24px;font-weight:bold;color:#0066CC;');
-            console.log('%cRedefining dental care through VR.','font-size:12px;color:#5E6E85;');
-            console.log('%c↑↑↓↓←→←→BA for a surprise 🎉','font-size:10px;color:#00CCFF;font-style:italic;');
+            console.log('%c🦷 Dentaverse', 'font-size:24px;font-weight:bold;color:#0066CC;');
+            console.log('%cRedefining dental care through VR.', 'font-size:12px;color:#5E6E85;');
+            console.log('%c↑↑↓↓←→←→BA for a surprise 🎉', 'font-size:10px;color:#00CCFF;font-style:italic;');
         });
     </script>
 
