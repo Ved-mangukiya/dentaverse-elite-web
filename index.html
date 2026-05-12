@@ -1900,9 +1900,10 @@
     <!-- ======================= WHO WE ARE STRIP ======================= -->
     <div class="about-strip">
         <div class="container">
-            <div class="about-strip-grid">
+            <!-- Using grid-4-col for 4 boxes -->
+            <div class="grid-4-col gap-lg">
 
-                <div class="about-strip-card reveal">
+                <div class="card card-bordered reveal">
                     <div class="asc-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -1912,12 +1913,12 @@
                     </div>
                     <div class="asc-tag">Who We Are</div>
                     <h3>A UK health-tech company on a mission</h3>
-                    <p>Dentaverse was founded by dental professionals who experienced patient anxiety first-hand.
-                        We build premium VR therapy systems that transform how clinics deliver care.</p>
+                    <p>Dentaverse was founded by dental professionals who experienced patient anxiety first-hand.</p>
+                    <p class="desktop-only">We build premium VR therapy systems that transform how clinics deliver care.</p>
                     <a href="pages/about.html" class="asc-link">Our story →</a>
                 </div>
 
-                <div class="about-strip-card offer-card reveal" style="transition-delay:.1s">
+                <div class="card card-bordered offer-card reveal" style="transition-delay:.1s">
                     <div class="asc-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -1929,9 +1930,8 @@
                     </div>
                     <div class="asc-tag">What We Do</div>
                     <h3>VR headsets that make procedures feel effortless</h3>
-                    <p>We supply clinics with our VR headsets, 50+ immersive environments, and a clinical management
-                        dashboard — so dentists can focus on the treatment while patients relax completely.</p>
-                    <ul class="offer-list">
+                    <p>We supply clinics with our VR headsets, 50+ immersive environments, and a clinical management dashboard.</p>
+                    <ul class="offer-list desktop-only">
                         <li>Premium VR hardware ready for chairside use</li>
                         <li>50+ calming worlds with regular content updates</li>
                         <li>Clinic dashboard for session and patient controls</li>
@@ -1939,7 +1939,7 @@
                     <a href="pages/products.html" class="asc-link offer-cta offer-cta-primary">See Products</a>
                 </div>
 
-                <div class="about-strip-card offer-card reveal" style="transition-delay:.2s">
+                <div class="card card-bordered offer-card reveal" style="transition-delay:.2s">
                     <div class="asc-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -1949,9 +1949,8 @@
                     </div>
                     <div class="asc-tag">Who It's For</div>
                     <h3>Independent practices to large dental groups</h3>
-                    <p>Whether you have one chair or fifty, our plans scale with you. From solo practitioners wanting a
-                        calmer waiting room to NHS-integrated hospital groups needing enterprise solutions.</p>
-                    <ul class="offer-list">
+                    <p>Whether you have one chair or fifty, our plans scale with you.</p>
+                    <ul class="offer-list desktop-only">
                         <li>Starter setup for single-chair clinics</li>
                         <li>Growth plans for multi-location practices</li>
                         <li>Enterprise onboarding and support options</li>
@@ -1959,7 +1958,7 @@
                     <a href="pages/contact.html" class="asc-link offer-cta offer-cta-outline">View Subscription Options</a>
                 </div>
 
-                <div class="about-strip-card reveal" style="transition-delay:.3s">
+                <div class="card card-bordered reveal" style="transition-delay:.3s">
                     <div class="asc-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -1968,8 +1967,8 @@
                     </div>
                     <div class="asc-tag">Why Us</div>
                     <h3>UK medical certified, clinician-founded</h3>
-                    <p>Built by dental professionals who've sat in the chair themselves. Every headset meets UK medical
-                        standards with lifetime warranty and dedicated technical support.</p>
+                    <p>Built by dental professionals who've sat in the chair themselves.</p>
+                    <p class="desktop-only">Every headset meets UK medical standards with lifetime warranty and dedicated technical support.</p>
                     <a href="pages/about.html" class="asc-link">Meet our team →</a>
                 </div>
 
@@ -1987,18 +1986,19 @@
                 <p class="section-subtitle reveal">We combine clinical-grade VR hardware with a bespoke patient
                     experience platform that integrates seamlessly into your workflow.</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card reveal">
+            <!-- Using grid-3-col for 6 features (2 rows of 3) -->
+            <div class="grid-3-col gap-lg">
+                <div class="card card-bordered reveal">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" stroke-width="1.5">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
                     </div>
                     <h4>Total Relaxation</h4>
-                    <p>Completely block out clinical sights, bright lights, and intimidating sounds of dental
-                        instruments.</p>
+                    <p>Completely block out clinical sights, bright lights, and intimidating sounds.</p>
+                    <p class="desktop-only">Immersive VR environments create a calming sanctuary during dental procedures.</p>
                 </div>
-                <div class="feature-card reveal" style="transition-delay:.08s">
+                <div class="card card-bordered reveal" style="transition-delay:.08s">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" stroke-width="1.5">
                             <rect x="2" y="7" width="20" height="10" rx="2" />
@@ -2007,10 +2007,10 @@
                         </svg>
                     </div>
                     <h4>Personalised Care</h4>
-                    <p>Curated experiences tailored to each patient's age and interests, from ocean adventures to forest
-                        walks.</p>
+                    <p>Curated experiences tailored to each patient's age and interests.</p>
+                    <p class="desktop-only">From ocean adventures to forest walks, choose the perfect environment for every patient.</p>
                 </div>
-                <div class="feature-card reveal" style="transition-delay:.16s">
+                <div class="card card-bordered reveal" style="transition-delay:.16s">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" stroke-width="1.5">
                             <circle cx="12" cy="12" r="10" />
@@ -2018,28 +2018,30 @@
                         </svg>
                     </div>
                     <h4>Active Distraction</h4>
-                    <p>Engaging therapeutic content that keeps the mind comfortably focused away from the procedure.</p>
+                    <p>Engaging therapeutic content that keeps the mind comfortably focused.</p>
+                    <p class="desktop-only">Interactive experiences actively distract from the dental procedure.</p>
                 </div>
-                <div class="feature-card reveal" style="transition-delay:.04s">
+                <div class="card card-bordered reveal" style="transition-delay:.04s">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" stroke-width="1.5">
                             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                         </svg>
                     </div>
                     <h4>Real-Time Monitoring</h4>
-                    <p>Live biometric awareness allows clinicians to adapt the VR experience to patient comfort in real
-                        time.</p>
+                    <p>Live biometric awareness allows clinicians to adapt the VR experience.</p>
+                    <p class="desktop-only">Monitor patient comfort levels and adjust settings in real-time for optimal care.</p>
                 </div>
-                <div class="feature-card reveal" style="transition-delay:.12s">
+                <div class="card card-bordered reveal" style="transition-delay:.12s">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" stroke-width="1.5">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
                     <h4>Extensive Library</h4>
-                    <p>Over 50+ premium therapeutic environments curated by psychologists and relaxation experts.</p>
+                    <p>Over 50+ premium therapeutic environments curated by experts.</p>
+                    <p class="desktop-only">Regularly updated content library designed by psychologists and relaxation specialists.</p>
                 </div>
-                <div class="feature-card reveal" style="transition-delay:.20s">
+                <div class="card card-bordered reveal" style="transition-delay:.20s">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" stroke-width="1.5">
                             <path
@@ -2047,8 +2049,8 @@
                         </svg>
                     </div>
                     <h4>Patient Feedback</h4>
-                    <p>Post-session wellness reports empower clinics with insight to continuously improve patient
-                        experience.</p>
+                    <p>Post-session wellness reports empower clinics with insight.</p>
+                    <p class="desktop-only">Continuously improve patient experience with detailed feedback and analytics.</p>
                 </div>
             </div>
         </div>

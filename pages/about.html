@@ -982,7 +982,7 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2.5rem;
             margin-top: 3rem;
             max-width: 1200px;
@@ -990,21 +990,22 @@
             margin-right: auto;
         }
 
+        /* Desktop: 4 in grid, 5th centered */
         @media(min-width: 1024px) {
             .team-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
             
-            /* Center the last 2 cards */
-            .team-card:nth-child(4) {
-                grid-column: 1 / 2;
-            }
+            /* Center the 5th card - spans 2 columns in middle */
             .team-card:nth-child(5) {
-                grid-column: 2 / 3;
+                grid-column: 2 / 4;
+                max-width: 400px;
+                margin: 0 auto;
             }
         }
 
-        @media(max-width: 860px) {
+        /* Tablet: 2 columns */
+        @media(min-width: 768px) and (max-width: 1023px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
@@ -1013,20 +1014,23 @@
             /* Center last card on 2-column layout */
             .team-card:nth-child(5) {
                 grid-column: 1 / -1;
-                max-width: 320px;
+                max-width: 350px;
                 margin: 0 auto;
             }
         }
 
-        @media(max-width: 560px) {
+        /* Mobile: 2 columns side by side */
+        @media(max-width: 767px) {
             .team-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
             
+            /* 5th card spans both columns and centered */
             .team-card:nth-child(5) {
-                grid-column: auto;
-                max-width: none;
+                grid-column: 1 / -1;
+                max-width: 280px;
+                margin: 0 auto;
             }
         }
 
@@ -1944,14 +1948,11 @@
                 padding: 1rem 0.6rem;
             }
 
+            /* 5th card spans both columns and centered */
             .team-card:nth-child(5) {
-                grid-column: 1 / 2;
-                max-width: none;
-                margin: 0;
-            }
-
-            .team-card:nth-child(6) {
-                grid-column: 2 / 3;
+                grid-column: 1 / -1;
+                max-width: 180px;
+                margin: 0 auto;
             }
 
             .tm-avatar-wrap {
