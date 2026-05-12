@@ -1798,7 +1798,10 @@
                 /* Simulate a "live" count that slowly ticks up — starts near 19.4M */
                 var base = 19400000;
                 var current = base + Math.floor(Math.random() * 50000);
-                function fmt(n) { return n.toLocaleString('en-GB'); }
+                function fmt(n) { 
+                    // Use automatic locale detection
+                    return window.formatNumber ? window.formatNumber(n) : n.toLocaleString(); 
+                }
                 el.textContent = fmt(current);
                 setInterval(function () {
                     /* Tick up by 1-3 every 2 seconds to feel live */
@@ -1818,6 +1821,7 @@
             }
         });
     </script>
+    <script src="../js/locale-formatter.js"></script>
     <script src="../js/design-system.js"></script>
 </body>
 

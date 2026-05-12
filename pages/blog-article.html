@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/jpeg" href="../images/Dentaverse Logo.jpeg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title id="articleTitle">Article | Dentaverse Blog</title>
+    <meta name="description" content="Read the latest insights from Dentaverse on VR dental care.">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/design-system.css">
+    <style>
+        body {
+            background: var(--bg-soft);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .article-page {
+            padding: calc(var(--nav-h) + 2rem) 0 4rem;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .article-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--brand-mid);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s var(--ease);
+            text-decoration: none;
+        }
+
+        .article-back:hover {
+            gap: 0.8rem;
+            color: var(--brand-cyan);
+        }
+
+        .article-back svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(10, 37, 88, 0.08);
+            border: 1px solid var(--bg-deep);
+        }
+
+        .article-hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            background: var(--brand-dark);
+        }
+
+        .article-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(10, 37, 88, 0.9) 80%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .article-category {
+            background: var(--brand-cyan);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .article-date,
+        .article-time {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .article-hero-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: white;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .article-author {
+            background: white;
+            padding: 2.5rem 3rem;
+            border-bottom: 1px solid var(--bg-deep);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(0, 102, 204, 0.25);
+        }
+
+        .author-info h2 {
+            font-size: 1.2rem;
+            color: var(--brand-dark);
+            margin: 0 0 0.3rem 0;
+        }
+
+        .author-info p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .article-content {
+            padding: 3.5rem;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            color: var(--brand-dark);
+            margin: 3rem 0 1.5rem;
+            line-height: 1.3;
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-content h3 {
+            font-size: 1.6rem;
+            color: var(--brand-dark);
+            margin: 2.5rem 0 1.2rem;
+            line-height: 1.4;
+        }
+
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.8rem;
+            color: var(--text);
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin: 2rem 0;
+            padding-left: 2.5rem;
+        }
+
+        .article-content li {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .article-content li strong {
+            color: var(--brand-dark);
+            font-weight: 700;
+        }
+
+        .article-content blockquote {
+            border-left: 5px solid var(--brand-cyan);
+            padding: 2rem 2.5rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.06), rgba(0, 102, 204, 0.06));
+            border-radius: 16px;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--brand-dark);
+        }
+
+        .article-content blockquote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            color: var(--brand-mid);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .article-content strong {
+            color: var(--brand-dark);
+            font-weight: 700;
+        }
+
+        .article-footer {
+            background: var(--bg-soft);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 0 0 32px 32px;
+            border-top: 1px solid var(--bg-deep);
+        }
+
+        .article-footer h3 {
+            font-size: 1.8rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+        }
+
+        .article-footer p {
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .article-footer .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .related-articles {
+            margin-top: 4rem;
+        }
+
+        .related-articles h3 {
+            font-size: 1.8rem;
+            color: var(--brand-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--bg-deep);
+            transition: all 0.3s var(--ease);
+            text-decoration: none;
+            display: block;
+        }
+
+        .related-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(10, 37, 88, 0.12);
+            border-color: var(--brand-cyan);
+        }
+
+        .related-card-img {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .related-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s var(--ease);
+        }
+
+        .related-card:hover .related-card-img img {
+            transform: scale(1.05);
+        }
+
+        .related-card-body {
+            padding: 1.5rem;
+        }
+
+        .related-card-body h4 {
+            font-size: 1.1rem;
+            color: var(--brand-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .related-card-body p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* Mobile Responsive */
+        @media(max-width: 768px) {
+            .article-container {
+                padding: 0 1rem;
+            }
+
+            .article-hero {
+                height: 280px;
+            }
+
+            .article-hero-overlay {
+                padding: 2rem 1.5rem;
+            }
+
+            .article-hero-title {
+                font-size: 1.8rem;
+            }
+
+            .article-author {
+                padding: 2rem 1.5rem;
+                gap: 1.2rem;
+            }
+
+            .author-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .author-info h2 {
+                font-size: 1.1rem;
+            }
+
+            .article-content {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.6rem;
+                margin: 2.5rem 0 1.2rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.3rem;
+                margin: 2rem 0 1rem;
+            }
+
+            .article-content p {
+                font-size: 1.05rem;
+            }
+
+            .article-content blockquote {
+                padding: 1.5rem;
+                font-size: 1.05rem;
+            }
+
+            .article-footer {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .article-hero {
+                height: 220px;
+            }
+
+            .article-hero-title {
+                font-size: 1.5rem;
+            }
+
+            .article-content {
+                padding: 2rem 1.2rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .article-content p,
+            .article-content li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-main">
+
+    <!-- UNIVERSAL HEADER -->
+    <header class="dv-header" id="dvHeader">
+        <div class="container dv-nav">
+            <a href="../index.html" class="dv-logo">
+                <div class="dv-logo-img"><img src="../images/Dentaverse Logo.jpeg" alt="Dentaverse"></div>
+                Dentaverse
+            </a>
+            <nav class="dv-nav-links">
+                <a href="../index.html">Home</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="products.html">Solutions</a>
+                <a href="about.html">About</a>
+                <a href="blog.html" class="active">Blog</a>
+            </nav>
+            <div class="dv-nav-right">
+                <a href="contact.html" class="dv-btn-book">Book Experience</a>
+                <button class="dv-hamburger" id="dvHamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="dv-mobile-menu" id="dvMobileMenu">
+            <a href="../index.html">Home</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="products.html">Solutions</a>
+            <a href="about.html">About</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="contact.html" class="dv-mobile-cta">Book Experience</a>
+        </div>
+    </header>
+
+    <main class="article-page">
+        <div class="article-container">
+            <a href="blog.html" class="article-back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Blog
+            </a>
+
+            <article class="article-card">
+                <div class="article-hero">
+                    <img id="heroImage" src="../images/1.png" alt="Article" class="article-hero-img">
+                    <div class="article-hero-overlay">
+                        <div class="article-meta">
+                            <span class="article-category" id="articleCategory">Clinical Research</span>
+                            <span class="article-date" id="articleDate">March 15, 2026</span>
+                            <span class="article-time" id="articleReadTime">8 min read</span>
+                        </div>
+                        <h1 class="article-hero-title" id="articleHeading">Article Title</h1>
+                    </div>
+                </div>
+
+                <div class="article-author">
+                    <div class="author-avatar" id="authorAvatar">D</div>
+                    <div class="author-info">
+                        <h2 id="authorName">Author Name</h2>
+                        <p id="authorRole">Role</p>
+                    </div>
+                </div>
+
+                <div class="article-content" id="articleBody">
+                    <!-- Article content loaded here -->
+                </div>
+
+                <div class="article-footer">
+                    <h3>Ready to Transform Your Practice?</h3>
+                    <p>Discover how Dentaverse VR therapy can help your patients overcome dental anxiety.</p>
+                    <a href="contact.html" class="btn btn-primary">Book a Demo →</a>
+                </div>
+            </article>
+
+            <div class="related-articles">
+                <h3>Related Articles</h3>
+                <div class="related-grid" id="relatedGrid">
+                    <!-- Related articles loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- UNIVERSAL FOOTER -->
+    <footer class="dv-footer">
+        <div class="container">
+            <div class="dv-footer-grid">
+                <div class="dv-footer-about">
+                    <div class="dv-footer-logo"><img src="../images/Dentaverse Logo.jpeg" alt="">Dentaverse</div>
+                    <p>Redefining dental care through immersive VR technology. Every visit becomes calm, cooperative,
+                        and positive.</p>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Explore</h5>
+                    <a href="../index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="products.html">Solutions</a>
+                    <a href="about.html">About</a>
+                    <a href="blog.html" class="active">Blog</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Connect</h5>
+                    <a href="contact.html">Book Experience</a>
+                    <a href="mailto:elitesupport@dentaverse.uk">elitesupport@dentaverse.uk</a>
+                    <a href="tel:+447887772083">+44 7887 772083</a>
+                </div>
+                <div class="dv-footer-col">
+                    <h5>Legal</h5>
+                    <a href="../documents/Dentaverse_Privacy_Policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                    <a href="../documents/Dentaverse_Terms_of_Service.pdf" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+                    <a href="../documents/Dentaverse_Cookie_Policy.pdf" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
+                </div>
+            </div>
+            <div class="dv-footer-divider"></div>
+            <div class="dv-footer-bottom">
+                <span>&copy; 2026 Dentaverse. All Rights Reserved.</span>
+                <span>Crafted with care in the UK</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../js/blog-data.js"></script>
+    <script src="../js/locale-formatter.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            // Navigation
+            var hbg = document.getElementById('dvHamburger');
+            var mob = document.getElementById('dvMobileMenu');
+            var hdr = document.getElementById('dvHeader');
+            if (hbg && mob) {
+                hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
+            }
+            window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+            // Simple fade-in on page load (no scroll-based animations)
+            setTimeout(function() {
+                document.body.style.opacity = '1';
+            }, 50);
+
+            // Get article ID from URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var articleId = parseInt(urlParams.get('id')) || 1;
+
+            // Load article
+            var articles = window.BLOG_ARTICLES || [];
+            var article = articles.find(function(a) { return a.id === articleId; });
+
+            if (article) {
+                // Update page title
+                document.getElementById('articleTitle').textContent = article.title + ' | Dentaverse Blog';
+                
+                // Update hero
+                document.getElementById('heroImage').src = article.image;
+                document.getElementById('articleCategory').textContent = article.category;
+                document.getElementById('articleDate').textContent = article.date;
+                document.getElementById('articleReadTime').textContent = article.readTime;
+                document.getElementById('articleHeading').textContent = article.title;
+
+                // Update author
+                var authorInitial = article.author.charAt(0);
+                document.getElementById('authorAvatar').textContent = authorInitial;
+                document.getElementById('authorName').textContent = article.author;
+                document.getElementById('authorRole').textContent = article.authorRole;
+
+                // Update content
+                document.getElementById('articleBody').innerHTML = article.content;
+
+                // Load related articles (same category, different article)
+                var relatedArticles = articles.filter(function(a) {
+                    return a.category === article.category && a.id !== article.id;
+                }).slice(0, 3);
+
+                // If not enough in same category, add others
+                if (relatedArticles.length < 3) {
+                    var others = articles.filter(function(a) {
+                        return a.id !== article.id && !relatedArticles.includes(a);
+                    });
+                    relatedArticles = relatedArticles.concat(others).slice(0, 3);
+                }
+
+                var relatedGrid = document.getElementById('relatedGrid');
+                relatedArticles.forEach(function(related) {
+                    var card = document.createElement('a');
+                    card.href = 'blog-article.html?id=' + related.id;
+                    card.className = 'related-card';
+                    card.innerHTML =
+                        '<div class="related-card-img"><img src="' + related.image + '" alt="' + related.title + '"></div>' +
+                        '<div class="related-card-body">' +
+                            '<h4>' + related.title + '</h4>' +
+                            '<p>' + related.category + ' • ' + related.readTime + '</p>' +
+                        '</div>';
+                    relatedGrid.appendChild(card);
+                });
+            } else {
+                // Article not found, redirect to blog
+                window.location.href = 'blog.html';
+            }
+
+            // Page transitions
+            document.querySelectorAll('a[href]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var href = link.getAttribute('href');
+                    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(function () { window.location.href = href; }, 250);
+                });
+            });
+        })();
+    </script>
+    <script src="../js/design-system.js"></script>
+</body>
+
+</html>
