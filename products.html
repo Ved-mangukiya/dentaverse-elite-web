@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/jpeg" href="Dentaverse Logo.jpeg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Solutions & Pricing | Dentaverse</title>
-    <meta name="description" content="Explore Dentaverse's VR solutions and flexible pricing plans. Purpose-built hardware and tailored library for dental clinics.">
+    <meta name="description"
+        content="Explore Dentaverse's VR solutions and flexible pricing plans. Purpose-built hardware and tailored library for dental clinics.">
     <link rel="stylesheet" href="theme.css">
     <style>
-        body { opacity: 0; transition: opacity 0.5s var(--ease); overflow-x: hidden; }
-        body.ready { opacity: 1; }
-        
+        body {
+            opacity: 0;
+            transition: opacity 0.5s var(--ease);
+            overflow-x: hidden;
+        }
+
+        body.ready {
+            opacity: 1;
+        }
+
         .products-hero {
             padding: calc(var(--nav-h, 72px) + 3.5rem) 0 3.5rem;
             text-align: center;
@@ -18,17 +27,39 @@
             position: relative;
             overflow: hidden;
         }
+
         .products-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,204,255,0.08) 0%, transparent 70%);
+            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0, 204, 255, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
-        .products-hero > * { position: relative; z-index: 1; }
-        .products-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--brand-dark); margin-bottom: 1.2rem; line-height: 1.1; }
-        .products-hero h1 em { font-style: italic; color: var(--brand-cyan); }
-        .products-hero p { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; line-height: 1.8; }
+
+        .products-hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .products-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--brand-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .products-hero h1 em {
+            font-style: italic;
+            color: var(--brand-cyan);
+        }
+
+        .products-hero p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
 
         /* Trust badges row */
         .trust-row {
@@ -38,6 +69,7 @@
             flex-wrap: wrap;
             margin-top: 2.5rem;
         }
+
         .trust-badge {
             display: flex;
             align-items: center;
@@ -49,9 +81,16 @@
             border: 1.5px solid var(--bg-deep);
             padding: 8px 18px;
             border-radius: 999px;
-            box-shadow: 0 2px 10px rgba(10,37,88,0.06);
+            box-shadow: 0 2px 10px rgba(10, 37, 88, 0.06);
         }
-        .trust-badge svg { width: 16px; height: 16px; stroke: var(--brand-cyan); fill: none; flex-shrink: 0; }
+
+        .trust-badge svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--brand-cyan);
+            fill: none;
+            flex-shrink: 0;
+        }
 
         /* Social proof bar */
         .proof-bar {
@@ -59,6 +98,7 @@
             padding: 1.4rem 0;
             overflow: hidden;
         }
+
         .proof-bar-inner {
             display: flex;
             justify-content: center;
@@ -66,21 +106,50 @@
             flex-wrap: wrap;
             align-items: center;
         }
+
         .proof-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 0.82rem;
             font-weight: 600;
         }
-        .proof-item svg { width: 16px; height: 16px; stroke: var(--brand-cyan); fill: none; }
-        .proof-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; }
+
+        .proof-item svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--brand-cyan);
+            fill: none;
+        }
+
+        .proof-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+        }
 
         /* Why section */
-        .why-sec { padding: 4rem 0; background: white; }
-        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2.5rem; perspective: 1200px; }
-        @media(max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+        .why-sec {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+            perspective: 1200px;
+        }
+
+        @media(max-width: 640px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .why-card {
             background: rgba(240, 246, 255, 0.4);
             backdrop-filter: blur(20px);
@@ -92,22 +161,63 @@
             overflow: hidden;
             transform-style: preserve-3d;
         }
+
         .why-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--brand-mid), var(--brand-cyan));
             transform: scaleX(0);
             transition: transform 0.5s var(--ease-spring);
             transform-origin: left;
         }
-        .why-card:hover { transform: translateY(-10px) rotateX(4deg) rotateY(2deg); border-color: rgba(0,204,255,0.4); box-shadow: 0 20px 48px rgba(10,37,88,0.12), inset 0 0 0 1px rgba(255,255,255,0.8); background: rgba(255,255,255,0.9); }
-        .why-card:hover::before { transform: scaleX(1); }
-        .why-icon { width: 52px; height: 52px; background: linear-gradient(135deg, rgba(0,102,204,0.1), rgba(0,204,255,0.07)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.3rem; border: 1px solid rgba(0,102,204,0.12); }
-        .why-icon svg { width: 24px; height: 24px; stroke: var(--brand-mid); fill: none; stroke-width: 2; }
-        .why-card h4 { font-size: 1.1rem; color: var(--brand-dark); margin-bottom: 0.6rem; }
-        .why-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin: 0; }
+
+        .why-card:hover {
+            transform: translateY(-10px) rotateX(4deg) rotateY(2deg);
+            border-color: rgba(0, 204, 255, 0.4);
+            box-shadow: 0 20px 48px rgba(10, 37, 88, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .why-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .why-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 204, 255, 0.07));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.3rem;
+            border: 1px solid rgba(0, 102, 204, 0.12);
+        }
+
+        .why-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--brand-mid);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .why-card h4 {
+            font-size: 1.1rem;
+            color: var(--brand-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .why-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin: 0;
+        }
 
         /* Urgency CTA strip */
         .urgency-strip {
@@ -117,16 +227,36 @@
             position: relative;
             overflow: hidden;
         }
+
         .urgency-strip::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(0,204,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(0, 204, 255, 0.1) 0%, transparent 70%);
         }
-        .urgency-strip > * { position: relative; z-index: 1; }
-        .urgency-strip p { color: rgba(255,255,255,0.9); font-size: 1.05rem; font-weight: 600; margin-bottom: 1.2rem; }
-        .urgency-strip p strong { color: var(--brand-cyan); }
-        .urgency-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .urgency-strip>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .urgency-strip p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .urgency-strip p strong {
+            color: var(--brand-cyan);
+        }
+
+        .urgency-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
         /* Final CTA */
         .final-cta {
@@ -134,6 +264,7 @@
             background: white;
             text-align: center;
         }
+
         .final-cta-box {
             background: linear-gradient(135deg, var(--brand-dark) 0%, #0d3070 100%);
             border-radius: 32px;
@@ -143,27 +274,90 @@
             max-width: 900px;
             margin: 0 auto;
         }
+
         .final-cta-box::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,204,255,0.12) 0%, transparent 70%);
+            background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0, 204, 255, 0.12) 0%, transparent 70%);
         }
-        .final-cta-box > * { position: relative; z-index: 1; }
-        .final-cta-box h2 { font-size: clamp(2rem, 4.5vw, 3rem); color: white; margin-bottom: 1rem; }
-        .final-cta-box h2 em { color: var(--brand-cyan); font-style: italic; }
-        .final-cta-box p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7; }
-        .final-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-white { background: white; color: var(--brand-dark); border: none; }
-        .btn-white:hover { background: var(--bg-soft); transform: translateY(-2px); }
-        .btn-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.35); }
-        .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
-        .sec { padding: 4.5rem 0; }
-        .sec-alt { background: var(--bg-soft); }
-        .sec-head { text-align: center; margin-bottom: 2.5rem; }
-        .sec-head h2 { font-size: 2.8rem; color: var(--brand-dark); margin-bottom: 1rem; }
-        .sec-head h2 em { font-style: italic; color: var(--brand-cyan); }
+        .final-cta-box>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta-box h2 {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta-box h2 em {
+            color: var(--brand-cyan);
+            font-style: italic;
+        }
+
+        .final-cta-box p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .final-cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--brand-dark);
+            border: none;
+        }
+
+        .btn-white:hover {
+            background: var(--bg-soft);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        .sec {
+            padding: 4.5rem 0;
+        }
+
+        .sec-alt {
+            background: var(--bg-soft);
+        }
+
+        .sec-head {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .sec-head h2 {
+            font-size: 2.8rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+        }
+
+        .sec-head h2 em {
+            font-style: italic;
+            color: var(--brand-cyan);
+        }
 
         .sec-subtitle {
             max-width: 760px;
@@ -171,10 +365,16 @@
             color: var(--muted);
             line-height: 1.75;
         }
-        
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; perspective: 1000px; }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            perspective: 1000px;
+        }
+
         .hw-card {
-            background: linear-gradient(165deg, rgba(255,255,255,0.9) 0%, rgba(240, 246, 255, 0.8) 100%);
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 246, 255, 0.8) 100%);
             border: 1px solid rgba(0, 102, 204, 0.15);
             backdrop-filter: blur(24px);
             border-radius: 32px;
@@ -185,6 +385,7 @@
             overflow: hidden;
             transform-style: preserve-3d;
         }
+
         .hw-card::after {
             content: '';
             position: absolute;
@@ -197,33 +398,155 @@
             pointer-events: none;
             transition: transform 0.6s var(--ease);
         }
-        .hw-card > * { position: relative; z-index: 1; transform: translateZ(20px); }
-        .hw-card:hover { transform: translateY(-12px) rotateY(-3deg) rotateX(2deg); box-shadow: 0 24px 56px rgba(0, 102, 204, 0.15), inset 0 0 0 1px rgba(255,255,255,0.9); border-color: rgba(0, 204, 255, 0.5); }
-        .hw-card:hover::after { transform: scale(1.2); }
-        .hw-icon { width: 72px; height: 72px; background: linear-gradient(135deg, white, var(--bg-soft)); border: 1.5px solid var(--bg-deep); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2.5rem; color: var(--brand-mid); box-shadow: var(--shadow-sm); transition: all 0.5s var(--ease-spring); }
-        .hw-card:hover .hw-icon { transform: translateZ(40px) scale(1.1) rotate(5deg); background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan)); color: white; border-color: transparent; box-shadow: var(--shadow-cyan); }
-        .hw-card h3 { font-size: 1.7rem; margin-bottom: 1.2rem; }
-        .hw-card ul { list-style: none; padding: 0; }
-        .hw-card ul li { padding: 0.5rem 0; color: var(--muted); display: flex; align-items: center; gap: 12px; }
-        .hw-card ul li::before { content: '→'; color: var(--brand-cyan); font-weight: 700; }
+
+        .hw-card>* {
+            position: relative;
+            z-index: 1;
+            transform: translateZ(20px);
+        }
+
+        .hw-card:hover {
+            transform: translateY(-12px) rotateY(-3deg) rotateX(2deg);
+            box-shadow: 0 24px 56px rgba(0, 102, 204, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+            border-color: rgba(0, 204, 255, 0.5);
+        }
+
+        .hw-card:hover::after {
+            transform: scale(1.2);
+        }
+
+        .hw-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, white, var(--bg-soft));
+            border: 1.5px solid var(--bg-deep);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            color: var(--brand-mid);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.5s var(--ease-spring);
+        }
+
+        .hw-card:hover .hw-icon {
+            transform: translateZ(40px) scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            color: white;
+            border-color: transparent;
+            box-shadow: var(--shadow-cyan);
+        }
+
+        .hw-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hw-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hw-card ul li {
+            padding: 0.5rem 0;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hw-card ul li::before {
+            content: '→';
+            color: var(--brand-cyan);
+            font-weight: 700;
+        }
 
         /* ── Pricing tabs ── */
-        .plan-tabs { display:flex; gap: 0; justify-content:center; margin: 0 auto 3.5rem; background: rgba(240, 246, 255, 0.8); backdrop-filter: blur(12px); border: 1.5px solid rgba(0, 102, 204, 0.1); border-radius: 999px; padding: 6px; width: max-content; box-shadow: 0 8px 24px rgba(10,37,88,0.04); position: relative; }
-        .plan-tab  { padding: 1rem 2.2rem; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
-                     letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: none;
-                     background: transparent; color: var(--muted); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; z-index: 2; }
-        .plan-tab:hover  { color: var(--brand-dark); }
-        .plan-tab.active { color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .plan-tab.active::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan)); border-radius: 999px; z-index: -1; box-shadow: var(--shadow-cyan); }
+        .plan-tabs {
+            display: flex;
+            gap: 0;
+            justify-content: center;
+            margin: 0 auto 3.5rem;
+            background: rgba(240, 246, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(0, 102, 204, 0.1);
+            border-radius: 999px;
+            padding: 6px;
+            width: max-content;
+            box-shadow: 0 8px 24px rgba(10, 37, 88, 0.04);
+            position: relative;
+        }
 
-        .plan-panel { display:none; }
-        .plan-panel.active { display:grid; animation: fadeSlideUp 0.6s var(--ease-spring) both; }
-        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .plan-tab {
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: var(--muted);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .plan-tab:hover {
+            color: var(--brand-dark);
+        }
+
+        .plan-tab.active {
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-tab.active::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            border-radius: 999px;
+            z-index: -1;
+            box-shadow: var(--shadow-cyan);
+        }
+
+        .plan-panel {
+            display: none;
+        }
+
+        .plan-panel.active {
+            display: grid;
+            animation: fadeSlideUp 0.6s var(--ease-spring) both;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* Monthly panel — 2 cols */
-        #panel-monthly { grid-template-columns: repeat(2, 1fr); gap:2rem; perspective: 1200px; }
+        #panel-monthly {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            perspective: 1200px;
+        }
+
         /* Annual panel — 2 cols */
-        #panel-annual  { grid-template-columns: repeat(2, 1fr); gap:2rem; perspective: 1200px; }
+        #panel-annual {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            perspective: 1200px;
+        }
 
         /* ── Add-On Horizontal Banner ── */
         .pc-addon {
@@ -241,40 +564,64 @@
             transition: all 0.5s var(--ease);
             transform-style: preserve-3d;
         }
+
         .pc-addon::before {
             content: '';
             position: absolute;
-            top: -60px; right: -60px;
-            width: 180px; height: 180px;
+            top: -60px;
+            right: -60px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,204,255,0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 204, 255, 0.12) 0%, transparent 70%);
             pointer-events: none;
         }
+
         .pc-addon::after {
             content: '';
             position: absolute;
-            bottom: -40px; left: -40px;
-            width: 140px; height: 140px;
+            bottom: -40px;
+            left: -40px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,102,204,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
+
         .pc-addon:hover {
             transform: translateY(-6px);
             border-color: var(--brand-cyan);
-            box-shadow: 0 16px 48px rgba(0,204,255,0.15);
+            box-shadow: 0 16px 48px rgba(0, 204, 255, 0.15);
         }
+
         .addon-icon-wrap {
-            width: 72px; height: 72px;
+            width: 72px;
+            height: 72px;
             border-radius: 20px;
             background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 24px rgba(0,102,204,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
             flex-shrink: 0;
-            position: relative; z-index: 1;
+            position: relative;
+            z-index: 1;
         }
-        .addon-icon-wrap svg { width: 32px; height: 32px; stroke: white; fill: none; stroke-width: 2; }
-        .addon-body { position: relative; z-index: 1; }
+
+        .addon-icon-wrap svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .addon-body {
+            position: relative;
+            z-index: 1;
+        }
+
         .addon-tag {
             display: inline-block;
             background: linear-gradient(135deg, #ff6b2c, #ff9147);
@@ -286,40 +633,108 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 6px;
-            box-shadow: 0 3px 10px rgba(255,107,44,0.3);
+            box-shadow: 0 3px 10px rgba(255, 107, 44, 0.3);
         }
-        .addon-body h4 { font-size: 1.25rem; color: var(--brand-dark); margin-bottom: 4px; }
-        .addon-body p { font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.6; }
-        .addon-body .addon-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--brand-dark); margin-top: 4px; }
-        .addon-cta-wrap { position: relative; z-index: 1; flex-shrink: 0; }
+
+        .addon-body h4 {
+            font-size: 1.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 4px;
+        }
+
+        .addon-body p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .addon-body .addon-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            margin-top: 4px;
+        }
+
+        .addon-cta-wrap {
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
         .addon-cta {
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 0.85rem 2rem;
             border-radius: 999px;
-            font-size: 0.8rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.07em;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
             background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
             color: white;
             text-decoration: none;
-            box-shadow: 0 6px 22px rgba(0,102,204,0.26);
+            box-shadow: 0 6px 22px rgba(0, 102, 204, 0.26);
             transition: all 0.3s var(--ease);
         }
-        .addon-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,102,204,0.36); }
+
+        .addon-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.36);
+        }
 
         @media(max-width: 768px) {
-            .pc-addon { grid-template-columns: 1fr; text-align: center; gap: 1.2rem; padding: 1.8rem; }
-            .addon-icon-wrap { margin: 0 auto; }
-            .addon-cta-wrap { margin: 0 auto; }
+            .pc-addon {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.2rem;
+                padding: 1.8rem;
+            }
+
+            .addon-icon-wrap {
+                margin: 0 auto;
+            }
+
+            .addon-cta-wrap {
+                margin: 0 auto;
+            }
         }
 
         /* Card base */
-        .pc { background:rgba(255,255,255,0.85); backdrop-filter: blur(20px); border:1px solid rgba(0, 102, 204, 0.15); border-radius:32px;
-              padding:2.8rem 2rem 2.2rem; position:relative; transition:all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-              box-shadow:0 8px 32px rgba(10,37,88,0.06); display:flex; flex-direction:column; transform-style: preserve-3d; }
-        .pc:hover { transform:translateY(-12px) rotateX(3deg); box-shadow:0 24px 56px rgba(10,37,88,0.12), inset 0 0 0 1px rgba(255,255,255,0.9); border-color:rgba(0,204,255,0.45); background: white; }
-        .pc.featured { border-color:rgba(0,204,255,0.4); background:linear-gradient(160deg,#fff 0%,#f0f8ff 100%);
-                       box-shadow:0 12px 40px rgba(0,102,204,0.12); transform:translateY(-8px); }
-        .pc.featured:hover { transform:translateY(-16px) rotateX(3deg); box-shadow: 0 30px 60px rgba(0,102,204,0.2), inset 0 0 0 1px rgba(255,255,255,0.9); }
+        .pc {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 102, 204, 0.15);
+            border-radius: 32px;
+            padding: 2.8rem 2rem 2.2rem;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 32px rgba(10, 37, 88, 0.06);
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+        }
+
+        .pc:hover {
+            transform: translateY(-12px) rotateX(3deg);
+            box-shadow: 0 24px 56px rgba(10, 37, 88, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+            border-color: rgba(0, 204, 255, 0.45);
+            background: white;
+        }
+
+        .pc.featured {
+            border-color: rgba(0, 204, 255, 0.4);
+            background: linear-gradient(160deg, #fff 0%, #f0f8ff 100%);
+            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.12);
+            transform: translateY(-8px);
+        }
+
+        .pc.featured:hover {
+            transform: translateY(-16px) rotateX(3deg);
+            box-shadow: 0 30px 60px rgba(0, 102, 204, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+        }
 
         .pc::before {
             content: '';
@@ -334,8 +749,11 @@
             opacity: 0;
             transition: opacity 0.25s var(--ease);
         }
+
         .pc:hover::before,
-        .pc.featured::before { opacity: 1; }
+        .pc.featured::before {
+            opacity: 1;
+        }
 
         .pricing-note {
             margin-top: 2rem;
@@ -344,72 +762,228 @@
             color: var(--muted);
         }
 
-        .pc-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-                    background:linear-gradient(135deg,var(--brand-mid),var(--brand-cyan));
-                    color:white; padding:4px 18px; border-radius:999px;
-                    font-size:0.68rem; font-weight:800; text-transform:uppercase; letter-spacing:0.07em;
-                    white-space:nowrap; box-shadow:0 4px 12px rgba(0,102,204,0.28); }
+        .pc-badge {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            color: white;
+            padding: 4px 18px;
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.28);
+        }
 
-        .pc-label { font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
-                    color:var(--brand-mid); margin-bottom:0.4rem; }
-        .pc-name  { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700;
-                    color:var(--brand-dark); margin-bottom:0.3rem; line-height:1.2; }
-        .pc-desc  { font-size:0.82rem; color:var(--muted); margin-bottom:1.4rem; line-height:1.5; }
+        .pc-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--brand-mid);
+            margin-bottom: 0.4rem;
+        }
 
-        .pc-price { display:flex; align-items:baseline; gap:3px; margin-bottom:0.25rem; }
-        .pc-currency { font-size:1.2rem; font-weight:700; color:var(--brand-dark); }
-        .pc-amount   { font-family:'Playfair Display',serif; font-size:3rem; font-weight:700;
-                       color:var(--brand-dark); line-height:1; }
-        .pc-amount.range { font-size:1.8rem; }
-        .pc-cadence  { font-size:0.85rem; color:var(--muted); }
-        .pc-period   { font-size:0.78rem; color:var(--muted); margin-bottom:1.6rem; }
+        .pc-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
 
-        .pc-divider { height:1px; background:linear-gradient(90deg,transparent,var(--bg-deep),transparent);
-                      margin-bottom:1.4rem; }
+        .pc-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 1.4rem;
+            line-height: 1.5;
+        }
 
-        .pc-features { list-style:none; padding:0; margin:0 0 1.8rem; flex:1; }
-        .pc-features li { display:flex; align-items:flex-start; gap:9px; padding:0.5rem 0;
-                          font-size:0.88rem; color:var(--text); border-bottom:1px solid var(--bg-soft); }
-        .pc-features li:last-child { border-bottom:none; }
-        .pc-features li .ck { flex-shrink:0; width:17px; height:17px; margin-top:1px;
-                               background:linear-gradient(135deg,var(--brand-mid),var(--brand-cyan));
-                               border-radius:50%; display:flex; align-items:center; justify-content:center; }
-        .pc-features li .ck svg { width:9px; height:9px; stroke:white; fill:none; stroke-width:2.5; }
+        .pc-price {
+            display: flex;
+            align-items: baseline;
+            gap: 3px;
+            margin-bottom: 0.25rem;
+        }
 
-        .pc-cta { display:flex; align-items:center; justify-content:center; width:100%;
-                  padding:0.9rem 1.2rem; border-radius:999px; font-size:0.8rem; font-weight:700;
-                  text-transform:uppercase; letter-spacing:0.07em; text-decoration:none;
-                  transition:all 0.3s var(--ease); cursor:pointer; border:none; }
-        .pc-cta.primary { background:linear-gradient(135deg,var(--brand-mid),var(--brand-cyan));
-                          color:white; box-shadow:0 6px 22px rgba(0,102,204,0.26); }
-        .pc-cta.primary:hover { background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));
-                                transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,102,204,0.36); }
-        .pc-cta.secondary { background:transparent; color:var(--brand-dark); border:2px solid var(--bg-deep); }
-        .pc-cta.secondary:hover { border-color:var(--brand-cyan); color:var(--brand-mid); background:var(--bg-soft); }
+        .pc-currency {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+        }
+
+        .pc-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            line-height: 1;
+        }
+
+        .pc-amount.range {
+            font-size: 1.8rem;
+        }
+
+        .pc-cadence {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .pc-period {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 1.6rem;
+        }
+
+        .pc-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--bg-deep), transparent);
+            margin-bottom: 1.4rem;
+        }
+
+        .pc-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.8rem;
+            flex: 1;
+        }
+
+        .pc-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            padding: 0.5rem 0;
+            font-size: 0.88rem;
+            color: var(--text);
+            border-bottom: 1px solid var(--bg-soft);
+        }
+
+        .pc-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pc-features li .ck {
+            flex-shrink: 0;
+            width: 17px;
+            height: 17px;
+            margin-top: 1px;
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pc-features li .ck svg {
+            width: 9px;
+            height: 9px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        .pc-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            cursor: pointer;
+            border: none;
+        }
+
+        .pc-cta.primary {
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            color: white;
+            box-shadow: 0 6px 22px rgba(0, 102, 204, 0.26);
+        }
+
+        .pc-cta.primary:hover {
+            background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.36);
+        }
+
+        .pc-cta.secondary {
+            background: transparent;
+            color: var(--brand-dark);
+            border: 2px solid var(--bg-deep);
+        }
+
+        .pc-cta.secondary:hover {
+            border-color: var(--brand-cyan);
+            color: var(--brand-mid);
+            background: var(--bg-soft);
+        }
 
         @media(max-width:768px) {
-            #panel-monthly, #panel-annual { grid-template-columns:1fr; }
-            .pc.featured { transform:none; }
-            .pc.featured:hover { transform:translateY(-8px); }
-            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+
+            #panel-monthly,
+            #panel-annual {
+                grid-template-columns: 1fr;
+            }
+
+            .pc.featured {
+                transform: none;
+            }
+
+            .pc.featured:hover {
+                transform: translateY(-8px);
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         /* ── 3D Card Animations ── */
         @keyframes float3d {
-            0%, 100% { transform: translateY(0) rotateX(0deg); }
-            50% { transform: translateY(-6px) rotateX(1.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotateX(0deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotateX(1.5deg);
+            }
         }
-        .why-card, .hw-card, .pc { animation: float3d 6s ease-in-out infinite; animation-play-state: paused; }
-        .why-card:hover, .hw-card:hover, .pc:hover { animation-play-state: running; }
+
+        .why-card,
+        .hw-card,
+        .pc {
+            animation: float3d 6s ease-in-out infinite;
+            animation-play-state: paused;
+        }
+
+        .why-card:hover,
+        .hw-card:hover,
+        .pc:hover {
+            animation-play-state: running;
+        }
     </style>
 </head>
+
 <body class="ready">
 
     <!-- UNIVERSAL HEADER -->
     <header class="dv-header" id="dvHeader">
         <div class="container dv-nav">
             <a href="index.html" class="dv-logo">
-                <div class="dv-logo-img"><img src="logo.png" alt="Dentaverse"></div>
+                <div class="dv-logo-img"><img src="Dentaverse Logo.jpeg" alt="Dentaverse"></div>
                 Dentaverse
             </a>
             <nav class="dv-nav-links">
@@ -443,12 +1017,23 @@
             <div class="container">
                 <span class="section-eyebrow reveal">VR Dental Solutions</span>
                 <h1 class="reveal" style="transition-delay:.05s">Stop Losing Patients<br>to <em>Dental Anxiety</em></h1>
-                <p class="reveal" style="transition-delay:.1s">Dentaverse provides clinically-certified VR headsets and curated therapeutic content that transform anxious patients into calm, cooperative ones — from the very first appointment.</p>
+                <p class="reveal" style="transition-delay:.1s">Dentaverse provides clinically-certified VR headsets and
+                    curated therapeutic content that transform anxious patients into calm, cooperative ones — from the
+                    very first appointment.</p>
                 <div class="trust-row reveal" style="transition-delay:.15s">
-                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>UK Medical Certified</div>
-                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>No Upfront Cost</div>
-                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Lifetime Warranty</div>
-                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Cancel Anytime</div>
+                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>UK Medical Certified</div>
+                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>No Upfront Cost</div>
+                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>Lifetime Warranty</div>
+                    <div class="trust-badge"><svg viewBox="0 0 24 24" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 8v4l3 3" />
+                        </svg>Cancel Anytime</div>
                 </div>
             </div>
         </section>
@@ -456,24 +1041,43 @@
         <!-- SOCIAL PROOF BAR -->
         <div class="proof-bar">
             <div class="container proof-bar-inner">
-                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span><span class="proof-num">60%</span> Anxiety Reduction</span></div>
-                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><span><span class="proof-num">40%</span> Shorter Procedures</span></div>
-                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span><span class="proof-num">5★</span> Clinic Rating</span></div>
-                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><span><span class="proof-num">50+</span> VR Environments</span></div>
+                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg><span><span class="proof-num">60%</span> Anxiety Reduction</span></div>
+                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4l3 3" />
+                    </svg><span><span class="proof-num">40%</span> Shorter Procedures</span></div>
+                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg><span><span class="proof-num">5★</span> Clinic Rating</span></div>
+                <div class="proof-item"><svg viewBox="0 0 24 24" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4l3 3" />
+                    </svg><span><span class="proof-num">50+</span> VR Environments</span></div>
             </div>
         </div>
 
         <!-- LIVE ANXIETY COUNTER -->
-        <div class="reveal" style="background:linear-gradient(135deg,rgba(0,102,204,0.03),rgba(0,204,255,0.05));border-top:1px solid rgba(0,204,255,0.2);border-bottom:1px solid rgba(0,204,255,0.2);padding:2.5rem 0;text-align:center;">
+        <div class="reveal"
+            style="background:linear-gradient(135deg,rgba(0,102,204,0.03),rgba(0,204,255,0.05));border-top:1px solid rgba(0,204,255,0.2);border-bottom:1px solid rgba(0,204,255,0.2);padding:2.5rem 0;text-align:center;">
             <div class="container" style="max-width:800px;">
-                <p style="display:inline-flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand-mid);margin-bottom:0.8rem;background:white;padding:4px 12px;border-radius:999px;box-shadow:0 2px 8px rgba(0,102,204,0.1);">
-                    <span style="display:inline-block;width:8px;height:8px;background:var(--brand-cyan);border-radius:50%;animation:dvPulse 2s infinite;"></span>
+                <p
+                    style="display:inline-flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand-mid);margin-bottom:0.8rem;background:white;padding:4px 12px;border-radius:999px;box-shadow:0 2px 8px rgba(0,102,204,0.1);">
+                    <span
+                        style="display:inline-block;width:8px;height:8px;background:var(--brand-cyan);border-radius:50%;animation:dvPulse 2s infinite;"></span>
                     Live Research Data
                 </p>
-                <p style="font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--brand-dark);font-family:'Playfair Display',serif;margin:0 0 1rem;line-height:1.4;">
-                    Right now, an estimated <strong style="color:var(--brand-mid);font-size:1.3em;" id="liveCounter">0</strong> people in the UK are <em style="color:var(--brand-cyan);">avoiding dental care</em> due to anxiety.
+                <p
+                    style="font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--brand-dark);font-family:'Playfair Display',serif;margin:0 0 1rem;line-height:1.4;">
+                    Right now, an estimated <strong style="color:var(--brand-mid);font-size:1.3em;"
+                        id="liveCounter">0</strong> people in the UK are <em style="color:var(--brand-cyan);">avoiding
+                        dental care</em> due to anxiety.
                 </p>
-                <p style="font-size:0.85rem;color:var(--muted);margin:0;line-height:1.6;">According to current NHS datasets, approximately 36% of UK adults experience dental anxiety; predictive models suggest this figure is trending upward.</p>
+                <p style="font-size:0.85rem;color:var(--muted);margin:0;line-height:1.6;">According to current NHS
+                    datasets, approximately 36% of UK adults experience dental anxiety; predictive models suggest this
+                    figure is trending upward.</p>
             </div>
         </div>
 
@@ -483,28 +1087,46 @@
                 <div class="section-header reveal">
                     <span class="section-eyebrow">Why It Works</span>
                     <h2 class="section-title">The <em>Dentaverse Difference</em></h2>
-                    <p class="section-subtitle">Four reasons why clinics that switch to VR distraction therapy never go back.</p>
+                    <p class="section-subtitle">Four reasons why clinics that switch to VR distraction therapy never go
+                        back.</p>
                 </div>
                 <div class="why-grid">
                     <div class="why-card reveal">
-                        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <div class="why-icon"><svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg></div>
                         <h4>Patients Stay Calm</h4>
-                        <p>Immersive VR environments block clinical sights, sounds, and smells — the primary anxiety triggers. Patients report procedures feeling 40% shorter.</p>
+                        <p>Immersive VR environments block clinical sights, sounds, and smells — the primary anxiety
+                            triggers. Patients report procedures feeling 40% shorter.</p>
                     </div>
                     <div class="why-card reveal" style="transition-delay:.1s">
-                        <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+                        <div class="why-icon"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4l3 3" />
+                            </svg></div>
                         <h4>Dentists Work Faster</h4>
-                        <p>Calm patients keep still naturally. Procedures that took 90 minutes with constant reassurance now run in under 60 — every time.</p>
+                        <p>Calm patients keep still naturally. Procedures that took 90 minutes with constant reassurance
+                            now run in under 60 — every time.</p>
                     </div>
                     <div class="why-card reveal" style="transition-delay:.2s">
-                        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <div class="why-icon"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg></div>
                         <h4>Clinics Get 5-Star Reviews</h4>
-                        <p>Patients who leave calm leave reviews. Practices using Dentaverse report a measurable increase in online ratings and referrals.</p>
+                        <p>Patients who leave calm leave reviews. Practices using Dentaverse report a measurable
+                            increase in online ratings and referrals.</p>
                     </div>
                     <div class="why-card reveal" style="transition-delay:.3s">
-                        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                        <div class="why-icon"><svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg></div>
                         <h4>Kids Love It Too</h4>
-                        <p>Paediatric patients respond exceptionally well. Cartoons and interactive VR worlds keep children calm, cooperative, and even excited for appointments.</p>
+                        <p>Paediatric patients respond exceptionally well. Cartoons and interactive VR worlds keep
+                            children calm, cooperative, and even excited for appointments.</p>
                     </div>
                 </div>
             </div>
@@ -513,7 +1135,8 @@
         <!-- URGENCY STRIP -->
         <div class="urgency-strip">
             <div class="container">
-                <p>🎯 <strong>30-Day Free Trial</strong> — Try the Full Library plan with zero commitment. Hardware delivered to your clinic, set up included.</p>
+                <p>🎯 <strong>30-Day Free Trial</strong> — Try the Full Library plan with zero commitment. Hardware
+                    delivered to your clinic, set up included.</p>
                 <div class="urgency-btns">
                     <a href="contact.html" class="btn btn-primary">Claim Your Free Trial</a>
                     <a href="#pricing" class="btn btn-outline-white btn">See All Plans ↓</a>
@@ -531,7 +1154,14 @@
                 <div class="grid-2">
                     <div class="hw-card reveal">
                         <div class="hw-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20l-2 10H4L2 7z"/><path d="M6 7v0"/><path d="M18 7v0"/><path d="M10 21v-4"/><path d="M14 21v-4"/></svg>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 7h20l-2 10H4L2 7z" />
+                                <path d="M6 7v0" />
+                                <path d="M18 7v0" />
+                                <path d="M10 21v-4" />
+                                <path d="M14 21v-4" />
+                            </svg>
                         </div>
                         <h3>Dentaverse V1 Headset</h3>
                         <ul>
@@ -543,7 +1173,11 @@
                     </div>
                     <div class="hw-card reveal" style="transition-delay:0.1s">
                         <div class="hw-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v20" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
                         </div>
                         <h3>Clinical Hub Station</h3>
                         <ul>
@@ -563,13 +1197,16 @@
                 <div class="sec-head reveal">
                     <span class="section-eyebrow">Transparent Pricing</span>
                     <h2 class="sec-title">Choose Your <em>Plan</em></h2>
-                    <p class="sec-subtitle">All plans include hardware with no upfront cost and a lifetime warranty. Switch or cancel anytime.</p>
+                    <p class="sec-subtitle">All plans include hardware with no upfront cost and a lifetime warranty.
+                        Switch or cancel anytime.</p>
                 </div>
 
                 <!-- Billing tabs -->
                 <div class="plan-tabs reveal">
                     <button class="plan-tab active" onclick="switchPlan('monthly')">Monthly</button>
-                    <button class="plan-tab" onclick="switchPlan('annual')">Annual <span style="font-size:0.65rem;background:rgba(0,204,255,0.15);color:var(--brand-mid);padding:2px 7px;border-radius:8px;margin-left:4px;">Save up to 17%</span></button>
+                    <button class="plan-tab" onclick="switchPlan('annual')">Annual <span
+                            style="font-size:0.65rem;background:rgba(0,204,255,0.15);color:var(--brand-mid);padding:2px 7px;border-radius:8px;margin-left:4px;">Save
+                            up to 17%</span></button>
                 </div>
 
                 <!-- ── MONTHLY PLANS ── -->
@@ -582,12 +1219,19 @@
                         <div class="pc-name">Full Library</div>
                         <div class="pc-desc">Kids &amp; Adult content — everything included.</div>
                         <div class="pc-divider"></div>
-                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">49</span><span class="pc-cadence">&thinsp;/month</span></div>
+                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">49</span><span
+                                class="pc-cadence">&thinsp;/month</span></div>
                         <div class="pc-period">Hardware included · No upfront cost</div>
                         <ul class="pc-features">
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Hardware Included (No Upfront)</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Lifetime Warranty</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Hardware Included (No Upfront)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Lifetime Warranty</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
                         </ul>
                         <a href="contact.html" class="pc-cta primary">Start Free Trial</a>
                     </div>
@@ -598,12 +1242,19 @@
                         <div class="pc-name">Adult Only</div>
                         <div class="pc-desc">Full adult content library for general practices.</div>
                         <div class="pc-divider"></div>
-                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">39</span><span class="pc-cadence">&thinsp;/month</span></div>
+                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">39</span><span
+                                class="pc-cadence">&thinsp;/month</span></div>
                         <div class="pc-period">Hardware included · No upfront cost</div>
                         <ul class="pc-features">
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Hardware Included (No Upfront)</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Lifetime Warranty</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full Adult Content Library</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Hardware Included (No Upfront)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Lifetime Warranty</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Full Adult Content Library</li>
                         </ul>
                         <a href="contact.html" class="pc-cta secondary">Get Started</a>
                     </div>
@@ -614,29 +1265,45 @@
                         <div class="pc-name">Kids Only</div>
                         <div class="pc-desc">Dedicated paediatric content for child-friendly practices.</div>
                         <div class="pc-divider"></div>
-                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">39</span><span class="pc-cadence">&thinsp;/month</span></div>
+                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">39</span><span
+                                class="pc-cadence">&thinsp;/month</span></div>
                         <div class="pc-period">Hardware included · No upfront cost</div>
                         <ul class="pc-features">
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Hardware Included (No Upfront)</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Lifetime Warranty</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full Kids Content Library</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Hardware Included (No Upfront)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Lifetime Warranty</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Full Kids Content Library</li>
                         </ul>
                         <a href="contact.html" class="pc-cta secondary">Get Started</a>
                     </div>
 
                     <!-- Group of 3 £139/mo -->
                     <div class="pc reveal" style="transition-delay:.3s">
-                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">Group Deal</div>
+                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">Group Deal
+                        </div>
                         <div class="pc-label">Plan 04</div>
                         <div class="pc-name">Group of 3</div>
-                        <div class="pc-desc">Three headsets, one subscription — ideal for busy multi-chair clinics.</div>
+                        <div class="pc-desc">Three headsets, one subscription — ideal for busy multi-chair clinics.
+                        </div>
                         <div class="pc-divider"></div>
-                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">139</span><span class="pc-cadence">&thinsp;/month</span></div>
+                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">139</span><span
+                                class="pc-cadence">&thinsp;/month</span></div>
                         <div class="pc-period">3 headsets · Hardware included · No upfront cost</div>
                         <ul class="pc-features">
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>3× Hardware Included (No Upfront)</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Lifetime Warranty on All Units</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>3× Hardware Included (No Upfront)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Lifetime Warranty on All Units</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
                         </ul>
                         <a href="contact.html" class="pc-cta secondary">Enquire Now</a>
                     </div>
@@ -645,17 +1312,20 @@
                     <div class="pc-addon reveal" style="transition-delay:.4s">
                         <div class="addon-icon-wrap">
                             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                                <line x1="12" y1="18" x2="12" y2="12"/>
-                                <line x1="9" y1="15" x2="15" y2="15"/>
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="12" y1="18" x2="12" y2="12" />
+                                <line x1="9" y1="15" x2="15" y2="15" />
                             </svg>
                         </div>
                         <div class="addon-body">
                             <span class="addon-tag">✦ Optional Add-On</span>
                             <h4>Content Only — Kids Video Library</h4>
-                            <p>Purchase exclusive kids content à la carte. No hardware or subscription required — works with any existing plan.</p>
-                            <div class="addon-price">£4.99 – £14.99 <span style="font-size:0.75rem;font-weight:400;color:var(--muted);font-family:Inter,sans-serif;">per content item</span></div>
+                            <p>Purchase exclusive kids content. No hardware or subscription required — works with any
+                                existing plan.</p>
+                            <div class="addon-price">£4.99 – £14.99 <span
+                                    style="font-size:0.75rem;font-weight:400;color:var(--muted);font-family:Inter,sans-serif;">per
+                                    content item</span></div>
                         </div>
                         <div class="addon-cta-wrap">
                             <a href="contact.html" class="addon-cta">Browse Content →</a>
@@ -674,36 +1344,52 @@
                         <div class="pc-name">Full Library</div>
                         <div class="pc-desc">Kids &amp; Adult — pay yearly and save vs monthly.</div>
                         <div class="pc-divider"></div>
-                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">579</span><span class="pc-cadence">&thinsp;/year</span></div>
+                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">579</span><span
+                                class="pc-cadence">&thinsp;/year</span></div>
                         <div class="pc-period">Equivalent to £48.25/mo · Hardware included</div>
                         <ul class="pc-features">
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Hardware Included (No Upfront)</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Lifetime Warranty</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Hardware Included (No Upfront)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Lifetime Warranty</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
                         </ul>
                         <a href="contact.html" class="pc-cta primary">Start Free Trial</a>
                     </div>
 
                     <!-- Group of 3 £1,759/yr -->
                     <div class="pc reveal" style="transition-delay:.1s">
-                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">Group Deal</div>
+                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">Group Deal
+                        </div>
                         <div class="pc-label">Annual 02</div>
                         <div class="pc-name">Group of 3</div>
                         <div class="pc-desc">Three headsets, one annual subscription — maximum savings.</div>
                         <div class="pc-divider"></div>
-                        <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">1,759</span><span class="pc-cadence">&thinsp;/year</span></div>
+                        <div class="pc-price"><span class="pc-currency">£</span><span
+                                class="pc-amount">1,759</span><span class="pc-cadence">&thinsp;/year</span></div>
                         <div class="pc-period">3 headsets · Equivalent to £146.58/mo · Hardware included</div>
                         <ul class="pc-features">
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>3× Hardware Included (No Upfront)</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Lifetime Warranty on All Units</li>
-                            <li><span class="ck"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>3× Hardware Included (No Upfront)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Lifetime Warranty on All Units</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
                         </ul>
                         <a href="contact.html" class="pc-cta secondary">Enquire Now</a>
                     </div>
 
                 </div><!-- /panel-annual -->
 
-                <p class="pricing-note reveal">All subscriptions include onboarding support, remote setup guidance, and access to new experience drops.</p>
+                <p class="pricing-note reveal">All subscriptions include onboarding support, remote setup guidance, and
+                    access to new experience drops.</p>
 
             </div>
         </section>
@@ -713,7 +1399,9 @@
             <div class="container">
                 <div class="final-cta-box reveal">
                     <h2>Still Thinking About It?<br><em>Don't.</em></h2>
-                    <p>Every day without VR distraction therapy is another patient leaving anxious, another appointment cancelled, another 5-star review you didn't get. The trial is free. The setup is included. The results are immediate.</p>
+                    <p>Every day without VR distraction therapy is another patient leaving anxious, another appointment
+                        cancelled, another 5-star review you didn't get. The trial is free. The setup is included. The
+                        results are immediate.</p>
                     <div class="final-cta-btns">
                         <a href="contact.html" class="btn btn-white">Book Free Demo Today</a>
                         <a href="contact.html" class="btn btn-ghost">Talk to Our Team →</a>
@@ -728,8 +1416,9 @@
         <div class="container">
             <div class="dv-footer-grid">
                 <div class="dv-footer-about">
-                    <div class="dv-footer-logo"><img src="logo.png" alt="">Dentaverse</div>
-                    <p>Redefining dental care through immersive VR technology. Every visit becomes calm, cooperative, and positive.</p>
+                    <div class="dv-footer-logo"><img src="Dentaverse Logo.jpeg" alt="">Dentaverse</div>
+                    <p>Redefining dental care through immersive VR technology. Every visit becomes calm, cooperative,
+                        and positive.</p>
                 </div>
                 <div class="dv-footer-col">
                     <h5>Explore</h5>
@@ -762,41 +1451,41 @@
 
     <script>
         document.body.classList.add('ready');
-        (function() {
+        (function () {
             var l = document.getElementById('loader');
-            if (l) setTimeout(function() { l.style.opacity='0'; l.style.visibility='hidden'; l.style.pointerEvents='none'; }, 1100);
+            if (l) setTimeout(function () { l.style.opacity = '0'; l.style.visibility = 'hidden'; l.style.pointerEvents = 'none'; }, 1100);
         })();
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var hbg = document.getElementById('dvHamburger');
             var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
-            if (hbg && mob) { hbg.addEventListener('click', function() { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
-            window.addEventListener('scroll', function() { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
+            if (hbg && mob) { hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
+            window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
                     if (e.isIntersecting) { e.target.classList.remove('exit'); e.target.classList.add('active'); }
                     else if (e.target.classList.contains('active')) { e.target.classList.remove('active'); e.target.classList.add('exit'); }
                 });
             }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) { obs.observe(el); });
-            document.querySelectorAll('a[href]').forEach(function(link) {
-                link.addEventListener('click', function(e) {
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function (el) { obs.observe(el); });
+            document.querySelectorAll('a[href]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
                     var href = link.getAttribute('href');
                     if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
                     e.preventDefault();
                     document.body.classList.add('fade-out');
-                    setTimeout(function() { window.location.href = href; }, 250);
+                    setTimeout(function () { window.location.href = href; }, 250);
                 });
             });
-            window.switchPlan = function(tab) {
-                document.querySelectorAll('.plan-tab').forEach(function(t) { t.classList.remove('active'); });
-                document.querySelectorAll('.plan-panel').forEach(function(p) { p.classList.remove('active'); });
+            window.switchPlan = function (tab) {
+                document.querySelectorAll('.plan-tab').forEach(function (t) { t.classList.remove('active'); });
+                document.querySelectorAll('.plan-panel').forEach(function (p) { p.classList.remove('active'); });
                 document.querySelector('.plan-tab[onclick*="' + tab + '"]').classList.add('active');
                 document.getElementById('panel-' + tab).classList.add('active');
             };
 
             /* Live anxiety counter — based on NHS stat: ~36% of 54M UK adults = ~19.4M */
-            (function() {
+            (function () {
                 var el = document.getElementById('liveCounter');
                 if (!el) return;
                 /* Simulate a "live" count that slowly ticks up — starts near 19.4M */
@@ -804,7 +1493,7 @@
                 var current = base + Math.floor(Math.random() * 50000);
                 function fmt(n) { return n.toLocaleString('en-GB'); }
                 el.textContent = fmt(current);
-                setInterval(function() {
+                setInterval(function () {
                     /* Tick up by 1-3 every 2 seconds to feel live */
                     current += Math.floor(Math.random() * 3) + 1;
                     el.textContent = fmt(current);
@@ -812,15 +1501,16 @@
             })();
 
             /* Easter eggs */
-            console.log('%c🦷 Dentaverse Solutions','font-size:20px;font-weight:bold;color:#0066CC;');
-            console.log('%cExplore our VR therapy plans.','font-size:11px;color:#5E6E85;');
+            console.log('%c🦷 Dentaverse Solutions', 'font-size:20px;font-weight:bold;color:#0066CC;');
+            console.log('%cExplore our VR therapy plans.', 'font-size:11px;color:#5E6E85;');
             var foot = document.querySelector('.dv-footer-bottom span:last-child');
             if (foot) {
-                foot.style.cursor='default'; foot.style.transition='all 0.4s';
-                foot.addEventListener('mouseenter', function(){ foot.style.color='#00CCFF'; foot.style.textShadow='0 0 12px rgba(0,204,255,0.5)'; foot.textContent='\u2728 Crafted with love in the UK \u2728'; });
-                foot.addEventListener('mouseleave', function(){ foot.style.color=''; foot.style.textShadow=''; foot.textContent='Crafted with care in the UK'; });
+                foot.style.cursor = 'default'; foot.style.transition = 'all 0.4s';
+                foot.addEventListener('mouseenter', function () { foot.style.color = '#00CCFF'; foot.style.textShadow = '0 0 12px rgba(0,204,255,0.5)'; foot.textContent = '\u2728 Crafted with love in the UK \u2728'; });
+                foot.addEventListener('mouseleave', function () { foot.style.color = ''; foot.style.textShadow = ''; foot.textContent = 'Crafted with care in the UK'; });
             }
         });
     </script>
 </body>
+
 </html>
