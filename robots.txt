@@ -1,0 +1,28 @@
+# Dentaverse Robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://dentaverse.uk/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow specific paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow specific important pages
+Allow: /index.html
+Allow: /pages/about.html
+Allow: /pages/how-it-works.html
+Allow: /pages/products.html
+Allow: /pages/contact.html
+Allow: /pages/blog.html
+
+# Allow CSS and JS for proper rendering
+Allow: /css/
+Allow: /js/
+Allow: /images/

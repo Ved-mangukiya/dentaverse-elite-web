@@ -2,15 +2,77 @@
 <html lang="en">
 
 <head>
+    <!-- Favicon - Multiple sizes for all devices -->
     <link rel="icon" type="image/jpeg" href="images/dentaverse-logo.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/dentaverse-logo.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="images/dentaverse-logo.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="images/dentaverse-logo.jpeg">
+    <link rel="shortcut icon" href="images/dentaverse-logo.jpeg">
+    
+    <!-- Primary Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Dentaverse | Premium VR Dental Care</title>
-    <meta name="description"
-        content="Dentaverse transforms dental anxiety into calm confidence using cutting-edge VR distraction therapy. Experience the future of dentistry.">
+    <title>Dentaverse | Premium VR Dental Care - Transform Patient Anxiety into Calm</title>
+    <meta name="description" content="Dentaverse transforms dental anxiety into calm confidence using cutting-edge VR distraction therapy. UK-based health-tech company providing premium VR solutions for dental clinics. Experience the future of dentistry.">
+    <meta name="keywords" content="dental VR, dental anxiety, VR therapy, dental technology, patient comfort, UK dental solutions, virtual reality dentistry, pain-free dentistry, dental innovation, Dentaverse">
+    <meta name="author" content="Dentaverse">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dentaverse.uk/">
+    <meta property="og:title" content="Dentaverse | Premium VR Dental Care">
+    <meta property="og:description" content="Transform dental anxiety into calm confidence using cutting-edge VR distraction therapy. UK-based premium VR solutions for dental clinics.">
+    <meta property="og:image" content="https://dentaverse.uk/images/dentaverse-logo.jpeg">
+    <meta property="og:site_name" content="Dentaverse">
+    <meta property="og:locale" content="en_GB">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://dentaverse.uk/">
+    <meta name="twitter:title" content="Dentaverse | Premium VR Dental Care">
+    <meta name="twitter:description" content="Transform dental anxiety into calm confidence using cutting-edge VR distraction therapy.">
+    <meta name="twitter:image" content="https://dentaverse.uk/images/dentaverse-logo.jpeg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dentaverse.uk/">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0066CC">
+    <meta name="msapplication-TileColor" content="#0066CC">
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="GB">
+    <meta name="geo.placename" content="United Kingdom">
+    
+    <!-- Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Dentaverse",
+      "description": "Premium VR distraction therapy solutions for dental clinics",
+      "url": "https://dentaverse.uk",
+      "logo": "https://dentaverse.uk/images/dentaverse-logo.jpeg",
+      "image": "https://dentaverse.uk/images/dentaverse-logo.jpeg",
+      "telephone": "+447887772083",
+      "email": "elitesupport@dentaverse.uk",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "GB",
+        "addressRegion": "United Kingdom"
+      },
+      "priceRange": "£££",
+      "areaServed": "GB",
+      "medicalSpecialty": "Dentistry"
+    }
+    </script>
+    
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/design-system.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -74,6 +136,8 @@
             padding: 0;
             overflow-x: hidden;
             overflow-y: hidden;
+            width: 100%;
+            max-width: 100vw;
         }
 
         body {
@@ -88,6 +152,9 @@
             overflow-x: hidden;
             overflow-y: auto;
             opacity: 1 !important;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
         }
 
         body:not(.ready):not(.fade-out) {
@@ -367,10 +434,10 @@
             }
         }
 
-        /* 3D Floating VR Headset */
+        /* 3D Floating VR Headset - OPTIMIZED FOR PERFORMANCE */
         .hero-vr-visual {
             flex: 1;
-            max-width: 400px;
+            max-width: 560px; /* Increased from 400px */
             display: flex;
             justify-content: center;
             position: relative;
@@ -379,35 +446,206 @@
 
         @media (min-width: 961px) {
             .hero-vr-visual {
-                max-width: 550px;
+                max-width: 770px; /* Increased from 550px */
                 justify-content: flex-end;
                 margin-top: 0;
             }
         }
 
-        .hero-vr-visual img {
-            width: 100%;
+        /* VR Headset Image - 40% Bigger with Better Floating */
+        .vr-headset-image {
+            width: 140%; /* Increased from 100% */
             max-width: none;
-            filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.12)) drop-shadow(0 10px 20px rgba(197, 160, 89, 0.1));
-            animation: vrFloat 6s ease-in-out infinite;
+            /* Simplified shadow - better performance */
+            filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.35)) 
+                    drop-shadow(0 20px 40px rgba(0, 102, 204, 0.25));
+            /* Enhanced floating animation with better positions */
+            animation: vrFloatEnhanced 5s ease-in-out infinite;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            will-change: transform;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hover Effect - Simplified */
+        .vr-headset-image:hover {
+            transform: translateY(-25px) scale(1.08) rotate(3deg);
+            filter: drop-shadow(0 50px 80px rgba(0, 0, 0, 0.4)) 
+                    drop-shadow(0 25px 50px rgba(0, 102, 204, 0.35))
+                    drop-shadow(0 0 30px rgba(0, 204, 255, 0.4));
+        }
+
+        /* Active/Click Effect */
+        .vr-headset-image:active {
+            transform: translateY(-15px) scale(1.05) rotate(1deg);
         }
 
         @media (min-width: 961px) {
-            .hero-vr-visual img {
-                width: 120%;
-                margin-right: -10%;
+            .vr-headset-image {
+                width: 168%; /* Increased from 120% (40% more) */
+                margin-right: -14%; /* Adjusted for bigger size */
             }
         }
 
-        @keyframes vrFloat {
-
-            0%,
+        /* Enhanced Floating Animation - Better Positions */
+        @keyframes vrFloatEnhanced {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) rotate(-2deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+            75% {
+                transform: translateY(-35px) rotate(-1deg);
+            }
             100% {
                 transform: translateY(0) rotate(0deg);
             }
+        }
 
+        /* Downside Shadow - Adjusted for Bigger Size */
+        .hero-vr-visual::before {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%; /* Increased for bigger image */
+            height: 25px;
+            background: radial-gradient(ellipse, 
+                rgba(0, 0, 0, 0.4) 0%, 
+                rgba(0, 0, 0, 0.2) 40%,
+                transparent 70%);
+            border-radius: 50%;
+            animation: shadowBounceEnhanced 5s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(10px);
+            will-change: transform, opacity;
+        }
+
+        /* Enhanced Shadow Animation - Synced with Float */
+        @keyframes shadowBounceEnhanced {
+            0% {
+                opacity: 0.6;
+                transform: translateX(-50%) scale(1);
+            }
+            25% {
+                opacity: 0.8;
+                transform: translateX(-50%) scale(0.85);
+            }
             50% {
-                transform: translateY(-20px) rotate(1.5deg);
+                opacity: 0.7;
+                transform: translateX(-50%) scale(0.9);
+            }
+            75% {
+                opacity: 0.75;
+                transform: translateX(-50%) scale(0.82);
+            }
+            100% {
+                opacity: 0.6;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        /* Subtle Glow - Bigger */
+        .hero-vr-visual::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%; /* Increased */
+            height: 120%; /* Increased */
+            background: radial-gradient(circle, 
+                rgba(0, 204, 255, 0.15) 0%, 
+                transparent 60%);
+            border-radius: 50%;
+            animation: glowSimple 5s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+            will-change: opacity;
+        }
+
+        @keyframes glowSimple {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Mobile Optimizations - 40% Bigger */
+        @media (max-width: 768px) {
+            .hero-vr-visual {
+                max-width: 560px; /* Increased from 400px */
+            }
+
+            .vr-headset-image {
+                width: 140%; /* 40% bigger than 100% */
+                filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.3)) 
+                        drop-shadow(0 15px 30px rgba(0, 102, 204, 0.2));
+                animation: vrFloatMobileEnhanced 5s ease-in-out infinite;
+            }
+
+            .vr-headset-image:hover {
+                transform: translateY(-20px) scale(1.05) rotate(2deg);
+            }
+
+            /* Enhanced Mobile Floating */
+            @keyframes vrFloatMobileEnhanced {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                25% {
+                    transform: translateY(-25px) rotate(-1.5deg);
+                }
+                50% {
+                    transform: translateY(-12px) rotate(1deg);
+                }
+                75% {
+                    transform: translateY(-28px) rotate(-1deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                }
+            }
+
+            .hero-vr-visual::before {
+                bottom: -35px;
+                height: 20px;
+                width: 80%;
+                filter: blur(8px);
+            }
+
+            /* Disable glow on mobile for performance */
+            .hero-vr-visual::after {
+                display: none;
+            }
+        }
+
+        /* Extra small mobile - Slightly smaller but still bigger than original */
+        @media (max-width: 480px) {
+            .hero-vr-visual {
+                max-width: 480px;
+            }
+
+            .vr-headset-image {
+                width: 130%; /* Still 30% bigger than original */
+            }
+        }
+
+        /* Reduce motion for accessibility and performance */
+        @media (prefers-reduced-motion: reduce) {
+            .vr-headset-image,
+            .hero-vr-visual::before,
+            .hero-vr-visual::after {
+                animation: none !important;
             }
         }
 
@@ -1654,7 +1892,7 @@
             </div>
 
             <div class="hero-vr-visual reveal" style="transition-delay: 0.2s;">
-                <img src="images/hero-vr.svg" alt="Premium VR Headset">
+                <img src="images/VR.png" alt="Premium VR Headset" class="vr-headset-image">
             </div>
         </div>
     </section>
@@ -2529,6 +2767,33 @@
 
     <script src="js/locale-formatter.js"></script>
     <script src="js/design-system.js"></script>
+
+    <!-- VR Headset Simple Animation Script - OPTIMIZED -->
+    <script>
+        (function() {
+            const vrHeadset = document.querySelector('.vr-headset-image');
+            if (!vrHeadset) return;
+
+            // Simple click bounce effect only
+            vrHeadset.addEventListener('click', function() {
+                this.style.transform = 'translateY(-25px) scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+
+            // Intersection Observer for entrance only
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        vrHeadset.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(vrHeadset);
+        })();
+    </script>
 </body>
 
 </html>

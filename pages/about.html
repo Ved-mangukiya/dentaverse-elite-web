@@ -2,9 +2,42 @@
 <html lang="en">
 
 <head>
+    <!-- Favicon - Multiple sizes for all devices -->
+    <link rel="icon" type="image/jpeg" href="../images/dentaverse-logo.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/dentaverse-logo.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="../images/dentaverse-logo.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="../images/dentaverse-logo.jpeg">
+    <link rel="shortcut icon" href="../images/dentaverse-logo.jpeg">
+    
+    <!-- Primary Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>About Us | Dentaverse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>About Us | Dentaverse - Meet Our Team & Mission</title>
+    <meta name="description" content="Meet the Dentaverse team - UK clinicians and technologists transforming dental care through VR therapy. Learn about our mission to eliminate dental anxiety.">
+    <meta name="keywords" content="Dentaverse team, dental VR company, UK health-tech, dental innovation team, VR therapy experts, dental anxiety solutions">
+    <meta name="author" content="Dentaverse">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dentaverse.uk/pages/about.html">
+    <meta property="og:title" content="About Us | Dentaverse - Meet Our Team">
+    <meta property="og:description" content="Meet the Dentaverse team - UK clinicians and technologists transforming dental care through VR therapy.">
+    <meta property="og:image" content="https://dentaverse.uk/images/dentaverse-logo.jpeg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://dentaverse.uk/pages/about.html">
+    <meta name="twitter:title" content="About Us | Dentaverse">
+    <meta name="twitter:description" content="Meet the Dentaverse team transforming dental care through VR therapy.">
+    <meta name="twitter:image" content="https://dentaverse.uk/images/dentaverse-logo.jpeg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dentaverse.uk/pages/about.html">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0066CC">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
@@ -38,6 +71,8 @@
 
         html {
             scroll-behavior: smooth;
+            overflow: hidden;
+            height: 100%;
         }
 
         body {
@@ -45,12 +80,21 @@
             background: #fff;
             color: var(--text);
             overflow-x: hidden;
+            overflow-y: auto;
+            max-width: 100%;
+            height: 100%;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         img {
@@ -1219,10 +1263,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.4s var(--ease), visibility 0.4s;
+            overflow: hidden;
         }
 
         .team-modal.active {
@@ -1232,15 +1277,18 @@
 
         .modal-content {
             background: white;
-            border-radius: 32px;
-            max-width: 700px;
+            border-radius: 24px;
+            max-width: 500px;
             width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
             position: relative;
             transform: scale(0.9) translateY(40px);
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 40px 120px rgba(0, 0, 0, 0.4);
+            margin: auto;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .team-modal.active .modal-content {
@@ -1249,12 +1297,12 @@
 
         .modal-close {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 40px;
-            height: 40px;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(10, 37, 88, 0.05);
+            background: rgba(255, 255, 255, 0.9);
             border: none;
             cursor: pointer;
             display: flex;
@@ -1262,16 +1310,17 @@
             justify-content: center;
             transition: all 0.3s;
             z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .modal-close:hover {
             background: var(--brand-dark);
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.1);
         }
 
         .modal-close svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             stroke: var(--brand-dark);
             transition: stroke 0.3s;
         }
@@ -1282,10 +1331,11 @@
 
         .modal-header {
             background: linear-gradient(145deg, var(--brand-dark) 0%, #0a1e4a 100%);
-            padding: 3rem 2.5rem 2.5rem;
+            padding: 2rem 1.5rem 1.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-radius: 24px 24px 0 0;
         }
 
         .modal-header::before {
@@ -1296,9 +1346,9 @@
         }
 
         .modal-avatar {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 1.5rem;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
             position: relative;
             z-index: 2;
         }
@@ -1306,10 +1356,10 @@
         .modal-avatar::before {
             content: '';
             position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
             border-radius: 50%;
             background: conic-gradient(
                 var(--brand-cyan) 0deg,
@@ -1323,10 +1373,10 @@
         .modal-avatar::after {
             content: '';
             position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
             border-radius: 50%;
             background: white;
         }
@@ -1346,26 +1396,26 @@
 
         .modal-name {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.4rem;
             color: white;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             position: relative;
             z-index: 2;
         }
 
         .modal-role {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--brand-cyan);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             position: relative;
             z-index: 2;
         }
 
         .modal-qual {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.7);
             font-family: 'DM Mono', monospace;
             position: relative;
@@ -1373,11 +1423,12 @@
         }
 
         .modal-body {
-            padding: 2.5rem;
+            padding: 1.5rem;
+            overflow: hidden;
         }
 
         .modal-section {
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
         }
 
         .modal-section:last-child {
@@ -1385,42 +1436,43 @@
         }
 
         .modal-section h4 {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--brand-mid);
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .modal-section h4 svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             stroke: var(--brand-cyan);
         }
 
         .modal-section p {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 0;
         }
 
         .modal-section ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .modal-section li {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--muted);
-            padding: 0.6rem 0;
-            padding-left: 1.8rem;
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
             position: relative;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .modal-section li::before {
@@ -1429,114 +1481,6 @@
             left: 0;
             color: var(--brand-cyan);
             font-weight: 700;
-        }
-
-        .modal-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .modal-stat {
-            background: var(--bg-soft);
-            border-radius: 16px;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            border: 1px solid var(--bg-deep);
-        }
-
-        .modal-stat-num {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--brand-dark);
-            margin-bottom: 0.3rem;
-        }
-
-        .modal-stat-label {
-            font-size: 0.7rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-        }
-
-        /* Scrollbar styling for modal */
-        .modal-content::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .modal-content::-webkit-scrollbar-track {
-            background: var(--bg-soft);
-        }
-
-        .modal-content::-webkit-scrollbar-thumb {
-            background: var(--brand-mid);
-            border-radius: 4px;
-        }
-
-        .modal-content::-webkit-scrollbar-thumb:hover {
-            background: var(--brand-cyan);
-        }
-
-        /* ═══════════════════════════════════════════
-       VALUES
-    ═══════════════════════════════════════════ */
-        .values-sec {
-            inset: 0;
-            z-index: 1;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--bg-deep), var(--bg-soft));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--brand-mid);
-        }
-
-        .tm-role {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--brand-cyan);
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .tm-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--brand-dark);
-            margin-bottom: 0.4rem;
-            line-height: 1.3;
-            position: relative;
-            z-index: 1;
-        }
-
-        .tm-qual {
-            font-size: 0.75rem;
-            color: var(--muted);
-            line-height: 1.5;
-            position: relative;
-            z-index: 1;
-            font-family: 'DM Mono', monospace;
-        }
-
-        /* Card number */
-        .tm-number {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.65rem;
-            color: rgba(10, 37, 88, 0.12);
-            font-weight: 500;
         }
 
         /* ═══════════════════════════════════════════
@@ -1887,17 +1831,506 @@
        RESPONSIVE TWEAKS
     ═══════════════════════════════════════════ */
         @media(max-width: 640px) {
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                overflow: hidden;
+                width: 100%;
+                max-width: 100vw;
+                height: 100%;
+            }
+
+            body {
+                overflow-x: hidden;
+                overflow-y: auto;
+                width: 100%;
+                max-width: 100vw;
+                height: 100%;
+                position: relative;
+            }
+
+            .container {
+                padding: 0 1rem;
+                width: 100%;
+                max-width: 100%;
+            }
+
             .dv-nav-links {
                 display: none;
             }
 
+            /* Hero stats - 2 columns on mobile */
+            .hero-stats {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0;
+            }
+
             .hero-stat {
-                min-width: 120px;
+                min-width: auto;
+                border-right: 1px solid var(--bg-deep);
+                border-bottom: 1px solid var(--bg-deep);
+                padding: 1rem 0.8rem;
+            }
+
+            .hero-stat:nth-child(2n) {
+                border-right: none;
+            }
+
+            .hero-stat:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+
+            .stat-num {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.6rem;
+            }
+
+            /* Story section - stack on mobile */
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            /* Mission/Vision - 2 columns on mobile */
+            .mv-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .mv-card {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .mv-card h3 {
+                font-size: 0.9rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .mv-card p {
+                font-size: 0.7rem;
+                line-height: 1.5;
+            }
+
+            .mv-icon {
+                width: 36px;
+                height: 36px;
+                margin-bottom: 0.8rem;
+            }
+
+            .mv-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .mv-num {
+                font-size: 4rem;
+                top: -0.3rem;
+                right: 0.3rem;
+            }
+
+            /* Team grid - 2 columns on mobile */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .team-card {
+                padding: 1rem 0.6rem;
+            }
+
+            .team-card:nth-child(5) {
+                grid-column: 1 / 2;
+                max-width: none;
+                margin: 0;
+            }
+
+            .team-card:nth-child(6) {
+                grid-column: 2 / 3;
+            }
+
+            .tm-avatar-wrap {
+                width: 65px;
+                height: 65px;
+                margin-bottom: 0.7rem;
+            }
+
+            .tm-name {
+                font-size: 0.75rem;
+                line-height: 1.2;
+                margin-bottom: 0.3rem;
+            }
+
+            .tm-qual {
+                font-size: 0.58rem;
+                line-height: 1.3;
+            }
+
+            .tm-role {
+                font-size: 0.52rem;
+                margin-bottom: 0.3rem;
+                letter-spacing: 0.1em;
+            }
+
+            .tm-number {
+                font-size: 0.55rem;
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+
+            .tm-click-hint {
+                font-size: 0.55rem;
+                bottom: 0.6rem;
+            }
+
+            .tm-click-hint svg {
+                width: 9px;
+                height: 9px;
+            }
+
+            /* Values - 2 columns on mobile */
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
             }
 
             .val-card {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.7rem;
+                padding: 1rem 0.8rem;
+            }
+
+            .val-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .val-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .val-body strong {
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .val-body p {
+                font-size: 0.68rem;
+                line-height: 1.5;
+            }
+
+            /* Modal */
+            .team-modal {
+                padding: 0.5rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-width: 95%;
+                border-radius: 16px;
+                max-height: 85vh;
+            }
+
+            .modal-header {
+                padding: 1.2rem 1rem 1rem;
+                border-radius: 16px 16px 0 0;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .modal-avatar {
+                width: 65px;
+                height: 65px;
+                margin-bottom: 0.7rem;
+            }
+
+            .modal-close {
+                width: 30px;
+                height: 30px;
+                top: 0.7rem;
+                right: 0.7rem;
+            }
+
+            .modal-close svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .modal-name {
+                font-size: 0.95rem;
+            }
+
+            .modal-role {
+                font-size: 0.6rem;
+            }
+
+            .modal-qual {
+                font-size: 0.65rem;
+            }
+
+            .modal-section h4 {
+                font-size: 0.6rem;
+            }
+
+            .modal-section h4 svg {
+                width: 11px;
+                height: 11px;
+            }
+
+            .modal-section p {
+                font-size: 0.7rem;
+                line-height: 1.5;
+            }
+
+            .modal-section li {
+                font-size: 0.65rem;
+                padding: 0.25rem 0;
+                padding-left: 0.9rem;
+            }
+
+            .modal-section {
+                margin-bottom: 0.8rem;
+            }
+
+            /* Mobile font size adjustments */
+            .about-hero {
+                padding: calc(var(--nav-h) + 2.5rem) 0 3rem;
+            }
+
+            .about-hero h1 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+                margin-bottom: 0.8rem;
+            }
+
+            .about-hero p {
+                font-size: 0.78rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+
+            .eyebrow {
+                font-size: 0.58rem;
+                padding: 0.28rem 0.65rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .sec-header {
+                margin-bottom: 2rem;
+            }
+
+            .sec-header h2 {
+                font-size: 1.4rem;
+                margin: 0.5rem 0;
+            }
+
+            .sec-header p {
+                font-size: 0.78rem;
+                line-height: 1.6;
+            }
+
+            .story-sec {
+                padding: 4rem 0;
+            }
+
+            .story-text h2 {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .story-text p {
+                font-size: 0.75rem;
+                line-height: 1.7;
+                margin-bottom: 0.9rem;
+            }
+
+            .story-visual {
+                padding: 1.8rem 1.3rem;
+                border-radius: 20px;
+            }
+
+            .story-quote {
+                font-size: 1.2rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .quote-mark {
+                font-size: 4.5rem;
+            }
+
+            .story-badge {
+                font-size: 0.6rem;
+                padding: 0.28rem 0.7rem;
+                top: -10px;
+                right: 14px;
+            }
+
+            .story-attr {
+                font-size: 0.65rem;
+                padding-top: 1rem;
+            }
+
+            .story-attr strong {
+                font-size: 0.75rem;
+                margin-top: 0.25rem;
+            }
+
+            .highlight-pill {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.7rem;
+            }
+
+            .mv-sec, .team-sec, .values-sec {
+                padding: 4rem 0;
+            }
+
+            .about-cta {
+                padding: 4.5rem 0;
+            }
+
+            .about-cta h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .about-cta p {
+                font-size: 0.82rem;
+                line-height: 1.6;
+                margin-bottom: 1.8rem;
+            }
+
+            .cta-btns {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.7rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.75rem 1.3rem;
+                font-size: 0.82rem;
+            }
+
+            /* Footer adjustments */
+            .dv-footer {
+                padding: 2.5rem 0 1.8rem;
+            }
+
+            .dv-footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .dv-footer-about {
+                grid-column: 1 / -1;
+            }
+
+            .dv-footer-logo {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .dv-footer-logo img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .dv-footer-about p {
+                font-size: 0.8rem;
+                line-height: 1.6;
+            }
+
+            .dv-footer-col h5 {
+                font-size: 0.68rem;
+                margin-bottom: 0.9rem;
+            }
+
+            .dv-footer-col a {
+                font-size: 0.8rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .dv-footer-bottom {
+                font-size: 0.72rem;
+                gap: 0.8rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media(max-width: 400px) {
+            .about-hero h1 {
+                font-size: 1.3rem;
+            }
+
+            .about-hero p {
+                font-size: 0.72rem;
+            }
+
+            .hero-stat {
+                padding: 0.8rem 0.6rem;
+            }
+
+            .stat-num {
+                font-size: 1.6rem;
+            }
+
+            .stat-label {
+                font-size: 0.55rem;
+            }
+
+            .mv-card {
+                padding: 1rem 0.6rem;
+            }
+
+            .mv-card h3 {
+                font-size: 0.82rem;
+            }
+
+            .mv-card p {
+                font-size: 0.65rem;
+            }
+
+            .team-card {
+                padding: 0.8rem 0.5rem;
+            }
+
+            .tm-avatar-wrap {
+                width: 55px;
+                height: 55px;
+            }
+
+            .tm-name {
+                font-size: 0.7rem;
+            }
+
+            .tm-qual {
+                font-size: 0.54rem;
+            }
+
+            .tm-role {
+                font-size: 0.5rem;
+            }
+
+            .val-card {
+                padding: 0.8rem 0.6rem;
+            }
+
+            .val-body strong {
+                font-size: 0.75rem;
+            }
+
+            .val-body p {
+                font-size: 0.64rem;
             }
         }
 
@@ -2491,12 +2924,10 @@
 
                 document.getElementById('modalBody').innerHTML = bodyHTML;
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
             }
 
             function closeModal() {
                 modal.classList.remove('active');
-                document.body.style.overflow = '';
             }
 
             teamCards.forEach(function(card) {
