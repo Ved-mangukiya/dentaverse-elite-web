@@ -5,6 +5,9 @@
     <link rel="icon" type="image/jpeg" href="images/dentaverse-logo.jpeg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Dentaverse | Premium VR Dental Care</title>
     <meta name="description"
         content="Dentaverse transforms dental anxiety into calm confidence using cutting-edge VR distraction therapy. Experience the future of dentistry.">
@@ -84,18 +87,20 @@
             padding: 0;
             overflow-x: hidden;
             overflow-y: auto;
-            opacity: 1;
+            opacity: 1 !important;
         }
 
-        body:not(.ready) {
+        body:not(.ready):not(.fade-out) {
             opacity: 0;
         }
 
         body.ready {
+            opacity: 1 !important;
             animation: fadeIn 0.5s var(--ease) forwards;
         }
 
         body.fade-out {
+            opacity: 0 !important;
             animation: fadeOut 0.28s var(--ease-out) forwards;
         }
 
@@ -1571,6 +1576,14 @@
 </head>
 
 <body>
+    <!-- IMMEDIATE FIX: Force body visible before anything else loads -->
+    <script>
+        (function() {
+            document.body.style.opacity = '1';
+            document.body.classList.add('ready');
+            document.body.classList.remove('fade-out');
+        })();
+    </script>
 
     <!-- ======================= LOADER ======================= -->
     <div id="loader">
@@ -2339,6 +2352,14 @@
         });
 
         // Fix back/forward button navigation - remove fade-out class
+        // This runs IMMEDIATELY without waiting for any event
+        (function() {
+            document.body.classList.remove('fade-out');
+            document.body.classList.add('ready');
+            document.body.style.opacity = '1';
+            document.body.style.animation = 'none';
+        })();
+
         window.addEventListener('pageshow', (event) => {
             document.body.classList.remove('fade-out');
             document.body.classList.add('ready');
@@ -2348,6 +2369,13 @@
 
         // Also fix on load
         window.addEventListener('load', () => {
+            document.body.classList.remove('fade-out');
+            document.body.classList.add('ready');
+            document.body.style.opacity = '1';
+        });
+
+        // Fix on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('fade-out');
             document.body.classList.add('ready');
             document.body.style.opacity = '1';
