@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="styles/design-system.css">
     <style>
         /* ═══════════════════════════════════════════
        CSS VARIABLES & RESET
@@ -1373,21 +1374,6 @@
             }
         }
 
-        /* Cursor glow for desktop */
-        @media (pointer: fine) {
-            .cursor-glow {
-                position: fixed;
-                width: 24px;
-                height: 24px;
-                border: 1.5px solid rgba(0, 204, 255, 0.5);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9999;
-                transform: translate(-50%, -50%);
-                transition: width 0.3s, height 0.3s, opacity 0.3s, border-color 0.3s;
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 
@@ -1395,9 +1381,6 @@
 
     <!-- Scroll progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Cursor glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- NAV -->
     <header class="dv-header" id="dvHeader">
@@ -1809,36 +1792,6 @@
         });
         revealEls.forEach(el => revealObserver.observe(el));
 
-        // ── Cursor glow (desktop only) ──
-        const glow = document.getElementById('cursorGlow');
-        if (glow && window.matchMedia('(pointer: fine)').matches) {
-            let mx = 0, my = 0, cx = 0, cy = 0;
-            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; glow.style.opacity = '1'; });
-            document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-            // Check if hovering interactive element
-            document.querySelectorAll('.team-card, .mv-card, .val-card, .btn, a').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    glow.style.width = '48px';
-                    glow.style.height = '48px';
-                    glow.style.borderColor = 'rgba(0,204,255,0.8)';
-                });
-                el.addEventListener('mouseleave', () => {
-                    glow.style.width = '24px';
-                    glow.style.height = '24px';
-                    glow.style.borderColor = 'rgba(0,204,255,0.5)';
-                });
-            });
-            function animateCursor() {
-                cx += (mx - cx) * 0.15;
-                cy += (my - cy) * 0.15;
-                glow.style.left = cx + 'px';
-                glow.style.top = cy + 'px';
-                requestAnimationFrame(animateCursor);
-            }
-            animateCursor();
-        }
-
-
         // ── Stat number count-up ──
         function countUp(el, target, suffix, duration = 1200) {
             const start = performance.now();
@@ -1884,6 +1837,7 @@
             });
         });
     </script>
+    <script src="styles/design-system.js"></script>
 
 </body>
 
