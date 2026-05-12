@@ -1595,8 +1595,11 @@
             <div class="dv-nav-right">
 
                 <a href="pages/contact.html" class="dv-btn-book">Book Experience</a>
-                <button class="dv-hamburger" id="dvHamburger"
-                    aria-label="Menu"><span></span><span></span><span></span></button>
+                <button type="button" class="dv-hamburger" id="dvHamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
         <div class="dv-mobile-menu" id="dvMobileMenu">
@@ -2271,15 +2274,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('dvHamburger');
             const mobileMenu = document.getElementById('dvMobileMenu');
-            if (!hamburger || !mobileMenu) return;
+            
+            console.log('Hamburger element:', hamburger);
+            console.log('Mobile menu element:', mobileMenu);
+            
+            if (!hamburger || !mobileMenu) {
+                console.error('Hamburger or mobile menu not found!');
+                return;
+            }
 
             hamburger.setAttribute('aria-expanded', 'false');
+            
             hamburger.addEventListener('click', (e) => {
+                console.log('Hamburger clicked!');
                 e.preventDefault();
                 e.stopPropagation();
                 const isOpen = mobileMenu.classList.toggle('open');
                 hamburger.classList.toggle('open', isOpen);
                 hamburger.setAttribute('aria-expanded', String(isOpen));
+                console.log('Menu is now:', isOpen ? 'open' : 'closed');
             });
 
             mobileMenu.querySelectorAll('a').forEach((link) => {

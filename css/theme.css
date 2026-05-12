@@ -390,7 +390,12 @@ img {
 .dv-hamburger {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
     background: none;
     border: none;
     cursor: pointer;
@@ -981,12 +986,6 @@ img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
 
 /* ── Touch targets ── */
 button, a { -webkit-tap-highlight-color: transparent; }
-.dv-hamburger {
-    min-width: 44px; min-height: 44px;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 8px;
-}
 
 /* ── Loader bar ── */
 .dv-loader-bar {

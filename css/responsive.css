@@ -56,6 +56,32 @@
         padding-top: 1.5rem !important;
     }
 
+    .dv-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dv-nav-links {
+        display: none;
+    }
+
+    .dv-hamburger {
+        display: flex !important;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .dv-nav-right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .dv-nav-right .dv-btn-book {
+        display: none;
+    }
+
     .dv-logo {
         font-size: 0.9rem;
         gap: 6px;
@@ -82,6 +108,17 @@
     .btn {
         padding: 0.9rem 1rem;
         font-size: 0.85rem;
+    }
+
+    /* Mobile Menu */
+    .dv-mobile-menu {
+        padding: 1rem 1rem 1.5rem;
+    }
+
+    .dv-mobile-menu a {
+        font-size: 0.95rem;
+        padding: 0.9rem 0;
+        min-height: 48px;
     }
 
     /* Footer - Better Mobile Layout */
