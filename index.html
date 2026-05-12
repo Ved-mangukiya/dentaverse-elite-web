@@ -160,12 +160,14 @@
             align-items: center;
             justify-content: center;
             transition: opacity 0.6s var(--ease), visibility 0.6s;
+            pointer-events: auto;
         }
 
         #loader.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
+            display: none;
         }
 
         .loader-inner {
@@ -2285,16 +2287,26 @@
 
             hamburger.setAttribute('aria-expanded', 'false');
             
-            hamburger.addEventListener('click', (e) => {
+            // Add click handler
+            hamburger.addEventListener('click', function(e) {
                 console.log('Hamburger clicked!');
-                e.preventDefault();
-                e.stopPropagation();
                 const isOpen = mobileMenu.classList.toggle('open');
                 hamburger.classList.toggle('open', isOpen);
                 hamburger.setAttribute('aria-expanded', String(isOpen));
                 console.log('Menu is now:', isOpen ? 'open' : 'closed');
-            });
+            }, false);
 
+            // Also try with touchstart for mobile
+            hamburger.addEventListener('touchstart', function(e) {
+                console.log('Hamburger touched!');
+                e.preventDefault();
+                const isOpen = mobileMenu.classList.toggle('open');
+                hamburger.classList.toggle('open', isOpen);
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+                console.log('Menu is now:', isOpen ? 'open' : 'closed');
+            }, { passive: false });
+
+            // Close menu when clicking links
             mobileMenu.querySelectorAll('a').forEach((link) => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.remove('open');

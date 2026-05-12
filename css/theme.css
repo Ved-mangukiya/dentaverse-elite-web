@@ -262,9 +262,10 @@ img {
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     border-bottom: 1px solid var(--glass-border);
-    z-index: 2000;
+    z-index: 10000;
     transition: height 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s var(--ease);
     animation: navSlideDown 0.5s var(--ease) both;
+    pointer-events: auto;
 }
 
 @keyframes navSlideDown {
@@ -356,6 +357,11 @@ img {
     position: relative;
     z-index: 2002;
     justify-self: end;
+    pointer-events: auto;
+}
+
+.dv-nav-right > * {
+    pointer-events: auto;
 }
 
 .dv-btn-book {
@@ -395,14 +401,29 @@ img {
     gap: 5px;
     min-width: 44px;
     min-height: 44px;
+    width: 44px;
+    height: 44px;
     padding: 8px;
-    background: none;
-    border: none;
+    background: rgba(0, 204, 255, 0.05);
+    border: 2px solid rgba(0, 102, 204, 0.2);
+    border-radius: 8px;
     cursor: pointer;
     position: relative;
-    z-index: 2003;
-    pointer-events: auto;
+    z-index: 99999;
+    pointer-events: auto !important;
     touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 204, 255, 0.3);
+}
+
+.dv-hamburger:hover {
+    background: rgba(0, 204, 255, 0.1);
+    border-color: rgba(0, 102, 204, 0.4);
+}
+
+.dv-hamburger:active {
+    background: rgba(0, 204, 255, 0.2);
+    border-radius: 8px;
+    transform: scale(0.95);
 }
 
 .dv-hamburger span {
@@ -412,6 +433,8 @@ img {
     border-radius: 2px;
     transition: transform 0.35s var(--ease), opacity 0.25s var(--ease), background 0.25s;
     transform-origin: center;
+    pointer-events: none;
+    display: block;
 }
 
 /* Hamburger → X morph */
