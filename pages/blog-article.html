@@ -624,6 +624,8 @@
 
             // Remove fade-out class on page load (fixes back button issue)
             document.body.classList.remove('fade-out');
+            document.body.classList.add('ready');
+            document.body.style.opacity = '1';
 
             // Page transitions
             document.querySelectorAll('a[href]').forEach(function (link) {
@@ -638,10 +640,17 @@
 
             // Fix back/forward button navigation
             window.addEventListener('pageshow', function(event) {
-                if (event.persisted || (performance.getEntriesByType('navigation')[0] && performance.getEntriesByType('navigation')[0].type === 'back_forward')) {
-                    document.body.classList.remove('fade-out');
-                    document.body.classList.add('ready');
-                }
+                document.body.classList.remove('fade-out');
+                document.body.classList.add('ready');
+                document.body.style.opacity = '1';
+                document.body.style.animation = 'none';
+            });
+
+            // Also fix on load
+            window.addEventListener('load', function() {
+                document.body.classList.remove('fade-out');
+                document.body.classList.add('ready');
+                document.body.style.opacity = '1';
             });
         })();
     </script>
