@@ -240,7 +240,7 @@
     }
 
     .dv-hamburger {
-        display: flex;
+        display: flex !important;
         min-width: 44px;
         min-height: 44px;
     }
