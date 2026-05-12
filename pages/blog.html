@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,6 +9,7 @@
     <meta name="description" content="Insights, clinical research, and stories from the frontier of VR dental care.">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         /* ── Blog Specific Styles ── */
         .blog-hero {
@@ -319,6 +320,152 @@
             border-color: var(--brand-cyan);
         }
 
+        /* Subscribe Button States */
+        .news-form button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .news-form button:not(.loading):not(.success):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 204, 255, 0.4);
+        }
+
+        .news-form button:not(.loading):not(.success):active {
+            transform: translateY(0);
+        }
+
+        .news-form button.loading {
+            pointer-events: none;
+        }
+
+        .news-form button.loading .btn-text {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .news-form button.success {
+            background: #10B981 !important;
+            border-color: #10B981 !important;
+            transform: scale(1.05);
+        }
+
+        .news-form button.success .btn-text {
+            opacity: 0;
+        }
+
+        .btn-text {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        /* Loading Spinner */
+        .btn-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .news-form button.loading .btn-spinner {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Success Checkmark */
+        .btn-checkmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .news-form button.success .btn-checkmark {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke: white;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.4s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            margin-top: 1rem;
+            color: #10B981;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.4s ease;
+            white-space: nowrap;
+        }
+
+        .news-form.submitted .success-message {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--brand-cyan);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px) rotate(360deg);
+            }
+        }
+
         /* Lazy loading placeholder */
         .img-loading {
             background: linear-gradient(90deg, var(--bg-soft) 0%, var(--bg-deep) 50%, var(--bg-soft) 100%);
@@ -409,9 +556,17 @@
                 <h2>Clinical Updates</h2>
                 <p>Receive the latest research and product news directly to your inbox. No spam, just science and
                     stories.</p>
-                <form class="news-form" onsubmit="return false">
-                    <input type="email" class="news-input" placeholder="Enter your email address">
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                <form class="news-form" id="newsletterForm" style="position: relative;">
+                    <input type="email" class="news-input" id="newsletterEmail" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary" id="subscribeBtn">
+                        <span class="btn-text">Subscribe</span>
+                        <span class="btn-spinner"></span>
+                        <svg class="btn-checkmark" width="24" height="24" viewBox="0 0 52 52">
+                            <circle class="checkmark-circle" cx="26" cy="26" r="25"/>
+                            <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </button>
+                    <div class="success-message">✓ Successfully subscribed!</div>
                 </form>
             </div>
         </div>
@@ -617,6 +772,83 @@
 
             // Initial render
             renderGrid();
+            
+            // Newsletter subscription with cool animations
+            var newsletterForm = document.getElementById('newsletterForm');
+            var subscribeBtn = document.getElementById('subscribeBtn');
+            var emailInput = document.getElementById('newsletterEmail');
+
+            if (newsletterForm && subscribeBtn) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validate email
+                    if (!emailInput.value || !emailInput.validity.valid) {
+                        emailInput.focus();
+                        return;
+                    }
+
+                    // Disable form
+                    emailInput.disabled = true;
+                    subscribeBtn.disabled = true;
+
+                    // Loading state
+                    subscribeBtn.classList.add('loading');
+
+                    // Simulate API call (replace with actual API call)
+                    setTimeout(function() {
+                        // Remove loading, add success
+                        subscribeBtn.classList.remove('loading');
+                        subscribeBtn.classList.add('success');
+                        newsletterForm.classList.add('submitted');
+
+                        // Create confetti effect
+                        createConfetti(subscribeBtn);
+
+                        // Reset after 3 seconds
+                        setTimeout(function() {
+                            subscribeBtn.classList.remove('success');
+                            newsletterForm.classList.remove('submitted');
+                            emailInput.value = '';
+                            emailInput.disabled = false;
+                            subscribeBtn.disabled = false;
+                        }, 3000);
+                    }, 1500);
+                });
+            }
+
+            // Confetti animation
+            function createConfetti(button) {
+                var colors = ['#00CCFF', '#0066CC', '#10B981', '#FFFFFF'];
+                var buttonRect = button.getBoundingClientRect();
+                
+                for (var i = 0; i < 20; i++) {
+                    (function(index) {
+                        setTimeout(function() {
+                            var confetti = document.createElement('div');
+                            confetti.className = 'confetti';
+                            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                            confetti.style.left = (buttonRect.left + buttonRect.width / 2) + 'px';
+                            confetti.style.top = (buttonRect.top + buttonRect.height / 2) + 'px';
+                            confetti.style.position = 'fixed';
+                            
+                            var angle = (Math.random() * 360) * Math.PI / 180;
+                            var velocity = 50 + Math.random() * 50;
+                            var tx = Math.cos(angle) * velocity;
+                            var ty = Math.sin(angle) * velocity;
+                            
+                            confetti.style.animation = 'confetti-fall 1s ease-out forwards';
+                            confetti.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
+                            
+                            document.body.appendChild(confetti);
+                            
+                            setTimeout(function() {
+                                confetti.remove();
+                            }, 1000);
+                        }, index * 30);
+                    })(i);
+                }
+            }
             
             // Debug: Log that blog is initialized
             console.log('%c📰 Blog initialized with ' + articles.length + ' articles', 'color: #0066CC; font-weight: bold;');

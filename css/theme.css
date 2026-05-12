@@ -1012,19 +1012,26 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 767px) {
     :root { --nav-h: 60px; }
 
-    /* Keep header in normal flow on mobile to prevent overlap */
+    /* Header - Fixed with proper spacing */
     .dv-header {
-        position: sticky;
+        position: fixed;
         top: 0;
-        overflow: visible;
+        left: 0;
+        right: 0;
+        z-index: 2000;
+    }
+
+    /* Add padding to body to prevent overlap */
+    body:not(.no-header-padding) {
+        padding-top: var(--nav-h);
     }
 
     .dv-mobile-menu {
-        position: absolute;
-        top: calc(100% - 1px);
+        position: fixed;
+        top: var(--nav-h);
         left: 0;
         right: 0;
-        max-height: calc(100dvh - var(--nav-h));
+        max-height: calc(100vh - var(--nav-h));
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
@@ -1098,6 +1105,54 @@ button, a { -webkit-tap-highlight-color: transparent; }
     .hero-stats { flex-direction: column; border-radius: 16px; }
     .hero-stat { border-right: none !important; border-bottom: 1px solid var(--bg-deep); }
     .hero-stat:last-child { border-bottom: none; }
+
+    /* Footer - Better mobile layout */
+    .dv-footer {
+        padding: 3rem 1rem 2rem;
+        background: #060f22;
+    }
+
+    .dv-footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center;
+    }
+
+    .dv-footer-about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dv-footer-logo {
+        justify-content: center;
+        font-size: 1.3rem;
+    }
+
+    .dv-footer-about p {
+        text-align: center;
+        max-width: 100%;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .dv-footer-social {
+        justify-content: center;
+    }
+
+    .dv-footer-col {
+        text-align: center;
+        padding: 1.5rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .dv-footer-col:first-of-type {
+        border-top: none;
+    }
+
+    .dv-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 
     /* Trust / proof */
     .trust-row { gap: 0.6rem; }
