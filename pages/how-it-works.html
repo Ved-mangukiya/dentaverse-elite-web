@@ -711,6 +711,9 @@
             }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
             document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function (el) { obs.observe(el); });
 
+            // Remove fade-out class on page load (fixes back button issue)
+            document.body.classList.remove('fade-out');
+
             document.querySelectorAll('a[href]').forEach(function (link) {
                 link.addEventListener('click', function (e) {
                     var href = link.getAttribute('href');
@@ -719,6 +722,14 @@
                     document.body.classList.add('fade-out');
                     setTimeout(function () { window.location.href = href; }, 250);
                 });
+            });
+
+            // Fix back/forward button navigation
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (performance.getEntriesByType('navigation')[0] && performance.getEntriesByType('navigation')[0].type === 'back_forward')) {
+                    document.body.classList.remove('fade-out');
+                    document.body.classList.add('ready');
+                }
             });
         })();
     </script>

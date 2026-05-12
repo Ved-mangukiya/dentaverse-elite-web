@@ -2318,6 +2318,9 @@
 
         /* ---- Page transitions ---- */
         document.addEventListener('DOMContentLoaded', () => {
+            // Remove fade-out class on page load (fixes back button issue)
+            document.body.classList.remove('fade-out');
+            
             document.querySelectorAll('a[href]').forEach(link => {
                 link.addEventListener('click', e => {
                     const href = link.getAttribute('href');
@@ -2327,6 +2330,14 @@
                     setTimeout(() => { window.location.href = href; }, 280);
                 });
             });
+        });
+
+        // Fix back/forward button navigation - remove fade-out class
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted || performance.getEntriesByType('navigation')[0]?.type === 'back_forward') {
+                document.body.classList.remove('fade-out');
+                document.body.classList.add('ready');
+            }
         });
 
         /* ---- Scroll Reveal (bidirectional — enter + exit) ---- */
