@@ -9,7 +9,7 @@
       loader.id = "loader";
       loader.innerHTML = `
         <div class="dv-loader">
-          <div class="dv-loader-icon"><img src="Dentaverse Logo.jpeg" alt="Dentaverse"></div>
+          <div class="dv-loader-icon"><img src="dentaverse-logo.jpeg" alt="Dentaverse"></div>
           <div class="dv-loader-brand">Dentaverse</div>
           <div class="dv-loader-bar"></div>
         </div>
