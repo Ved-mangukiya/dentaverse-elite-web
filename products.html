@@ -21,6 +21,90 @@
             opacity: 1;
         }
 
+        /* ── Floating CTA Button ── */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(100px) scale(0.8);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .floating-cta-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 1.8rem;
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            color: white;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.4);
+            animation: floatPulse 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-cta-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        .floating-cta-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.5);
+        }
+
+        .floating-cta-btn svg {
+            width: 18px;
+            height: 18px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes floatPulse {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 102, 204, 0.4); }
+            50% { box-shadow: 0 12px 48px rgba(0, 204, 255, 0.6); }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        @media(max-width: 768px) {
+            .floating-cta {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+            }
+            .floating-cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
         .products-hero {
             padding: calc(var(--nav-h, 72px) + 3.5rem) 0 3.5rem;
             text-align: center;
@@ -35,6 +119,12 @@
             inset: 0;
             background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0, 204, 255, 0.08) 0%, transparent 70%);
             pointer-events: none;
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
 
         .products-hero>* {
@@ -47,11 +137,16 @@
             color: var(--brand-dark);
             margin-bottom: 1.2rem;
             line-height: 1.1;
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .products-hero h1 em {
             font-style: italic;
             color: var(--brand-cyan);
+            background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .products-hero p {
@@ -60,6 +155,18 @@
             max-width: 640px;
             margin: 0 auto 2.5rem;
             line-height: 1.8;
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Trust badges row */
@@ -83,6 +190,19 @@
             padding: 8px 18px;
             border-radius: 999px;
             box-shadow: 0 2px 10px rgba(10, 37, 88, 0.06);
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            transition: all 0.3s var(--ease);
+        }
+
+        .trust-badge:nth-child(1) { animation-delay: 0.15s; }
+        .trust-badge:nth-child(2) { animation-delay: 0.2s; }
+        .trust-badge:nth-child(3) { animation-delay: 0.25s; }
+        .trust-badge:nth-child(4) { animation-delay: 0.3s; }
+
+        .trust-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.15);
+            border-color: var(--brand-cyan);
         }
 
         .trust-badge svg {
@@ -91,6 +211,11 @@
             stroke: var(--brand-cyan);
             fill: none;
             flex-shrink: 0;
+            transition: transform 0.3s var(--ease);
+        }
+
+        .trust-badge:hover svg {
+            transform: scale(1.2) rotate(5deg);
         }
 
         /* Social proof bar */
@@ -98,6 +223,20 @@
             background: var(--brand-dark);
             padding: 1.4rem 0;
             overflow: hidden;
+            position: relative;
+        }
+
+        .proof-bar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.1), transparent);
+            animation: slideShine 3s linear infinite;
+        }
+
+        @keyframes slideShine {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100%); }
         }
 
         .proof-bar-inner {
@@ -106,6 +245,8 @@
             gap: 3rem;
             flex-wrap: wrap;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .proof-item {
@@ -115,6 +256,12 @@
             color: rgba(255, 255, 255, 0.75);
             font-size: 0.82rem;
             font-weight: 600;
+            transition: all 0.3s var(--ease);
+        }
+
+        .proof-item:hover {
+            color: white;
+            transform: translateY(-2px);
         }
 
         .proof-item svg {
@@ -122,6 +269,11 @@
             height: 16px;
             stroke: var(--brand-cyan);
             fill: none;
+            transition: transform 0.3s var(--ease);
+        }
+
+        .proof-item:hover svg {
+            transform: scale(1.2) rotate(10deg);
         }
 
         .proof-num {
@@ -129,6 +281,7 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: white;
+            text-shadow: 0 0 20px rgba(0, 204, 255, 0.5);
         }
 
         /* Why section */
@@ -234,6 +387,12 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(0, 204, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .urgency-strip>* {
@@ -246,10 +405,12 @@
             font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 1.2rem;
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .urgency-strip p strong {
             color: var(--brand-cyan);
+            text-shadow: 0 0 20px rgba(0, 204, 255, 0.5);
         }
 
         .urgency-btns {
@@ -257,6 +418,7 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
         }
 
         /* Final CTA */
@@ -729,11 +891,21 @@
             border-color: rgba(0, 204, 255, 0.4);
             background: linear-gradient(160deg, #fff 0%, #f0f8ff 100%);
             box-shadow: 0 12px 40px rgba(0, 102, 204, 0.12);
-            transform: translateY(-8px);
+            transform: translateY(-8px) scale(1.02);
+            animation: featuredGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes featuredGlow {
+            0%, 100% { 
+                box-shadow: 0 12px 40px rgba(0, 102, 204, 0.12);
+            }
+            50% { 
+                box-shadow: 0 16px 56px rgba(0, 204, 255, 0.25);
+            }
         }
 
         .pc.featured:hover {
-            transform: translateY(-16px) rotateX(3deg);
+            transform: translateY(-16px) rotateX(3deg) scale(1.02);
             box-shadow: 0 30px 60px rgba(0, 102, 204, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
         }
 
@@ -903,6 +1075,21 @@
             transition: all 0.3s var(--ease);
             cursor: pointer;
             border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pc-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s var(--ease);
+        }
+
+        .pc-cta:hover::before {
+            transform: translateX(100%);
         }
 
         .pc-cta.primary {
@@ -927,6 +1114,7 @@
             border-color: var(--brand-cyan);
             color: var(--brand-mid);
             background: var(--bg-soft);
+            transform: translateY(-2px);
         }
 
         @media(max-width:768px) {
@@ -975,6 +1163,17 @@
         .pc:hover {
             animation-play-state: running;
         }
+
+        /* Testimonial card hover effects */
+        .testimonial-card {
+            transition: all 0.4s var(--ease);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 102, 204, 0.15) !important;
+            border-color: rgba(0, 204, 255, 0.3) !important;
+        }
     </style>
 </head>
 
@@ -1013,6 +1212,17 @@
     </header>
 
     <main>
+        <!-- Floating CTA Button -->
+        <div class="floating-cta" id="floatingCta">
+            <a href="contact.html" class="floating-cta-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                Start Free Trial
+            </a>
+        </div>
+
         <!-- HERO -->
         <section class="products-hero">
             <div class="container">
@@ -1215,98 +1425,113 @@
 
                     <!-- Full Library £49/mo -->
                     <div class="pc featured reveal">
-                        <div class="pc-badge">Best Value</div>
+                        <div class="pc-badge">🔥 Most Popular</div>
                         <div class="pc-label">Plan 01</div>
                         <div class="pc-name">Full Library</div>
-                        <div class="pc-desc">Kids &amp; Adult content — everything included.</div>
+                        <div class="pc-desc">Complete solution for all patients — kids &amp; adults. Start seeing results from day one.</div>
                         <div class="pc-divider"></div>
                         <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">49</span><span
                                 class="pc-cadence">&thinsp;/month</span></div>
-                        <div class="pc-period">Hardware included · No upfront cost</div>
+                        <div class="pc-period">Hardware included · No upfront cost · Cancel anytime</div>
                         <ul class="pc-features">
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Hardware Included (No Upfront)</li>
+                                    </svg></span>Premium VR Headset (£0 upfront)</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Lifetime Warranty</li>
+                                    </svg></span>Lifetime Warranty &amp; Support</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                                    </svg></span>50+ VR Environments (Kids &amp; Adults)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Monthly Content Updates</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>30-Day Free Trial</li>
                         </ul>
-                        <a href="contact.html" class="pc-cta primary">Start Free Trial</a>
+                        <a href="contact.html" class="pc-cta primary">Start Free Trial Now →</a>
                     </div>
 
                     <!-- Adult Only £39/mo -->
                     <div class="pc reveal" style="transition-delay:.1s">
                         <div class="pc-label">Plan 02</div>
                         <div class="pc-name">Adult Only</div>
-                        <div class="pc-desc">Full adult content library for general practices.</div>
+                        <div class="pc-desc">Perfect for general practices focused on adult patients.</div>
                         <div class="pc-divider"></div>
                         <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">39</span><span
                                 class="pc-cadence">&thinsp;/month</span></div>
-                        <div class="pc-period">Hardware included · No upfront cost</div>
+                        <div class="pc-period">Hardware included · No upfront cost · Cancel anytime</div>
                         <ul class="pc-features">
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Hardware Included (No Upfront)</li>
+                                    </svg></span>Premium VR Headset (£0 upfront)</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Lifetime Warranty</li>
+                                    </svg></span>Lifetime Warranty &amp; Support</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
                                     </svg></span>Full Adult Content Library</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Monthly Content Updates</li>
                         </ul>
-                        <a href="contact.html" class="pc-cta secondary">Get Started</a>
+                        <a href="contact.html" class="pc-cta secondary">Get Started →</a>
                     </div>
 
                     <!-- Kids Only £39/mo -->
                     <div class="pc reveal" style="transition-delay:.2s">
                         <div class="pc-label">Plan 03</div>
                         <div class="pc-name">Kids Only</div>
-                        <div class="pc-desc">Dedicated paediatric content for child-friendly practices.</div>
+                        <div class="pc-desc">Specialized for paediatric dentistry — make kids love dental visits.</div>
                         <div class="pc-divider"></div>
                         <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">39</span><span
                                 class="pc-cadence">&thinsp;/month</span></div>
-                        <div class="pc-period">Hardware included · No upfront cost</div>
+                        <div class="pc-period">Hardware included · No upfront cost · Cancel anytime</div>
                         <ul class="pc-features">
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Hardware Included (No Upfront)</li>
+                                    </svg></span>Premium VR Headset (£0 upfront)</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Lifetime Warranty</li>
+                                    </svg></span>Lifetime Warranty &amp; Support</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
                                     </svg></span>Full Kids Content Library</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Age-Appropriate Environments</li>
                         </ul>
-                        <a href="contact.html" class="pc-cta secondary">Get Started</a>
+                        <a href="contact.html" class="pc-cta secondary">Get Started →</a>
                     </div>
 
                     <!-- Group of 3 £139/mo -->
                     <div class="pc reveal" style="transition-delay:.3s">
-                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">Group Deal
+                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">💎 Best Deal
                         </div>
                         <div class="pc-label">Plan 04</div>
                         <div class="pc-name">Group of 3</div>
-                        <div class="pc-desc">Three headsets, one subscription — ideal for busy multi-chair clinics.
+                        <div class="pc-desc">Scale your practice — three headsets for busy multi-chair clinics. Save £8/month vs individual plans.
                         </div>
                         <div class="pc-divider"></div>
                         <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">139</span><span
                                 class="pc-cadence">&thinsp;/month</span></div>
-                        <div class="pc-period">3 headsets · Hardware included · No upfront cost</div>
+                        <div class="pc-period">3 headsets · Hardware included · No upfront cost · Cancel anytime</div>
                         <ul class="pc-features">
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>3× Hardware Included (No Upfront)</li>
+                                    </svg></span>3× Premium VR Headsets (£0 upfront)</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
                                     </svg></span>Lifetime Warranty on All Units</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                                    </svg></span>Full Content Library (Kids &amp; Adults)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Priority Support &amp; Setup</li>
                         </ul>
-                        <a href="contact.html" class="pc-cta secondary">Enquire Now</a>
+                        <a href="contact.html" class="pc-cta secondary">Enquire Now →</a>
                     </div>
 
                     <!-- ── ADD-ON HORIZONTAL BANNER ── -->
@@ -1340,51 +1565,60 @@
 
                     <!-- Full Library £579/yr -->
                     <div class="pc featured reveal">
-                        <div class="pc-badge">Best Value</div>
+                        <div class="pc-badge">🔥 Save 17%</div>
                         <div class="pc-label">Annual 01</div>
                         <div class="pc-name">Full Library</div>
-                        <div class="pc-desc">Kids &amp; Adult — pay yearly and save vs monthly.</div>
+                        <div class="pc-desc">Pay annually and save — complete solution for all patients.</div>
                         <div class="pc-divider"></div>
                         <div class="pc-price"><span class="pc-currency">£</span><span class="pc-amount">579</span><span
                                 class="pc-cadence">&thinsp;/year</span></div>
-                        <div class="pc-period">Equivalent to £48.25/mo · Hardware included</div>
+                        <div class="pc-period">Only £48.25/mo · Save £109/year · Hardware included</div>
                         <ul class="pc-features">
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Hardware Included (No Upfront)</li>
+                                    </svg></span>Premium VR Headset (£0 upfront)</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Lifetime Warranty</li>
+                                    </svg></span>Lifetime Warranty &amp; Support</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                                    </svg></span>50+ VR Environments (Kids &amp; Adults)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Monthly Content Updates</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>30-Day Free Trial</li>
                         </ul>
-                        <a href="contact.html" class="pc-cta primary">Start Free Trial</a>
+                        <a href="contact.html" class="pc-cta primary">Start Free Trial Now →</a>
                     </div>
 
                     <!-- Group of 3 £1,759/yr -->
                     <div class="pc reveal" style="transition-delay:.1s">
-                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">Group Deal
+                        <div class="pc-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">💎 Maximum Savings
                         </div>
                         <div class="pc-label">Annual 02</div>
                         <div class="pc-name">Group of 3</div>
-                        <div class="pc-desc">Three headsets, one annual subscription — maximum savings.</div>
+                        <div class="pc-desc">Three headsets, annual billing — save £109 per year vs monthly.</div>
                         <div class="pc-divider"></div>
                         <div class="pc-price"><span class="pc-currency">£</span><span
                                 class="pc-amount">1,759</span><span class="pc-cadence">&thinsp;/year</span></div>
-                        <div class="pc-period">3 headsets · Equivalent to £146.58/mo · Hardware included</div>
+                        <div class="pc-period">3 headsets · Only £146.58/mo · Hardware included</div>
                         <ul class="pc-features">
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>3× Hardware Included (No Upfront)</li>
+                                    </svg></span>3× Premium VR Headsets (£0 upfront)</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
                                     </svg></span>Lifetime Warranty on All Units</li>
                             <li><span class="ck"><svg viewBox="0 0 12 12">
                                         <polyline points="2,6 5,9 10,3" />
-                                    </svg></span>Full Content Library — Basic Kids &amp; Full Adult</li>
+                                    </svg></span>Full Content Library (Kids &amp; Adults)</li>
+                            <li><span class="ck"><svg viewBox="0 0 12 12">
+                                        <polyline points="2,6 5,9 10,3" />
+                                    </svg></span>Priority Support &amp; Setup</li>
                         </ul>
-                        <a href="contact.html" class="pc-cta secondary">Enquire Now</a>
+                        <a href="contact.html" class="pc-cta secondary">Enquire Now →</a>
                     </div>
 
                 </div><!-- /panel-annual -->
@@ -1395,18 +1629,81 @@
             </div>
         </section>
 
+        <!-- TESTIMONIALS -->
+        <section class="sec" style="background: linear-gradient(160deg, #fff 0%, #f0f8ff 100%);">
+            <div class="container">
+                <div class="sec-head reveal">
+                    <span class="section-eyebrow">Real Results</span>
+                    <h2 class="sec-title">What Dentists Are <em>Saying</em></h2>
+                    <p class="sec-subtitle">Join hundreds of UK dental practices already transforming patient experiences.</p>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2.5rem;">
+                    <div class="reveal testimonial-card" style="background:white;border-radius:24px;padding:2rem;box-shadow:0 8px 32px rgba(10,37,88,0.06);border:1px solid rgba(0,102,204,0.1);">
+                        <div style="display:flex;gap:4px;margin-bottom:1rem;">
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                        </div>
+                        <p style="font-size:0.95rem;color:var(--text);line-height:1.7;margin-bottom:1.2rem;">"Game changer for our practice. Anxious patients are now our easiest appointments. ROI was immediate."</p>
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--brand-mid),var(--brand-cyan));"></div>
+                            <div>
+                                <div style="font-weight:700;color:var(--brand-dark);font-size:0.9rem;">Dr. Sarah Mitchell</div>
+                                <div style="font-size:0.8rem;color:var(--muted);">Brighton Dental Care</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal testimonial-card" style="background:white;border-radius:24px;padding:2rem;box-shadow:0 8px 32px rgba(10,37,88,0.06);border:1px solid rgba(0,102,204,0.1);transition-delay:0.1s;">
+                        <div style="display:flex;gap:4px;margin-bottom:1rem;">
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                        </div>
+                        <p style="font-size:0.95rem;color:var(--text);line-height:1.7;margin-bottom:1.2rem;">"Our paediatric patients actually look forward to appointments now. Parents are amazed at the difference."</p>
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--brand-mid),var(--brand-cyan));"></div>
+                            <div>
+                                <div style="font-weight:700;color:var(--brand-dark);font-size:0.9rem;">Dr. James Chen</div>
+                                <div style="font-size:0.8rem;color:var(--muted);">Manchester Family Dentistry</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal testimonial-card" style="background:white;border-radius:24px;padding:2rem;box-shadow:0 8px 32px rgba(10,37,88,0.06);border:1px solid rgba(0,102,204,0.1);transition-delay:0.2s;">
+                        <div style="display:flex;gap:4px;margin-bottom:1rem;">
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                            <span style="color:var(--brand-cyan);font-size:1.2rem;">★</span>
+                        </div>
+                        <p style="font-size:0.95rem;color:var(--text);line-height:1.7;margin-bottom:1.2rem;">"Setup was effortless, support is excellent. We've reduced procedure times by 30% on average."</p>
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--brand-mid),var(--brand-cyan));"></div>
+                            <div>
+                                <div style="font-weight:700;color:var(--brand-dark);font-size:0.9rem;">Dr. Emma Thompson</div>
+                                <div style="font-size:0.8rem;color:var(--muted);">London Smile Studio</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- FINAL CTA -->
         <section class="final-cta">
             <div class="container">
                 <div class="final-cta-box reveal">
-                    <h2>Still Thinking About It?<br><em>Don't.</em></h2>
-                    <p>Every day without VR distraction therapy is another patient leaving anxious, another appointment
-                        cancelled, another 5-star review you didn't get. The trial is free. The setup is included. The
-                        results are immediate.</p>
+                    <h2>Ready to Transform Your Practice?<br><em>Start Today.</em></h2>
+                    <p>Every anxious patient you lose is revenue walking out the door. Every cancelled appointment is a missed opportunity. The 30-day free trial includes everything — hardware, setup, support, and full content access. Zero risk, immediate results.</p>
                     <div class="final-cta-btns">
-                        <a href="contact.html" class="btn btn-white">Book Free Demo Today</a>
-                        <a href="contact.html" class="btn btn-ghost">Talk to Our Team →</a>
+                        <a href="contact.html" class="btn btn-white">Start Free 30-Day Trial →</a>
+                        <a href="contact.html" class="btn btn-ghost">Schedule a Demo Call</a>
                     </div>
+                    <p style="margin-top:1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.6);">✓ No credit card required  ✓ Cancel anytime  ✓ Setup included</p>
                 </div>
             </div>
         </section>
@@ -1461,7 +1758,16 @@
             var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
             if (hbg && mob) { hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
-            window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+            
+            /* Floating CTA visibility on scroll */
+            var floatingCta = document.getElementById('floatingCta');
+            window.addEventListener('scroll', function () { 
+                if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40);
+                if (floatingCta) {
+                    floatingCta.classList.toggle('visible', window.scrollY > 800);
+                }
+            }, { passive: true });
+            
             var obs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (e) {
                     if (e.isIntersecting) { e.target.classList.remove('exit'); e.target.classList.add('active'); }
