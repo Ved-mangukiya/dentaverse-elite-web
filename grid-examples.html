@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Grid Examples | Dentaverse</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        body {
+            padding: 40px 20px;
+            background: var(--bg-soft, #F0F6FF);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--brand-dark, #0A2558);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            color: var(--muted, #5E6E85);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        /* Demo content styling */
+        .demo-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            font-weight: 600;
+            color: var(--brand-mid, #0066CC);
+            text-align: center;
+        }
+
+        .demo-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-cyan, #00CCFF);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        
+        <h1 style="text-align: center; color: var(--brand-dark); margin-bottom: 50px;">
+            📐 Responsive Grid Examples
+        </h1>
+
+        <!-- EXAMPLE 1: Equal Size Grid (2x3) -->
+        <div class="section">
+            <h2 class="section-title">1️⃣ Equal Size Grid (2 Columns × 3 Rows)</h2>
+            <p class="section-desc">Perfect for feature cards, product listings, or service boxes. Stacks to 1 column on mobile.</p>
+            
+            <div class="grid-container">
+                <div class="grid-box">
+                    <h3>Premium VR Hardware</h3>
+                    <p>Purpose-built VR headsets designed specifically for dental clinics with medical-grade hygiene standards.</p>
+                    <p class="hide-mobile">Additional details that only show on desktop to keep mobile boxes compact and clean.</p>
+                </div>
+                <div class="grid-box">
+                    <h3>50+ Calming Worlds</h3>
+                    <p>Immersive environments from peaceful oceans to serene forests, regularly updated with new content.</p>
+                    <p class="hide-mobile">Extra information hidden on mobile for better layout and smaller box sizes.</p>
+                </div>
+                <div class="grid-box">
+                    <h3>Clinic Dashboard</h3>
+                    <p>Easy-to-use control panel for managing sessions, tracking patient comfort, and monitoring usage.</p>
+                    <p class="hide-mobile">Desktop users see more details while mobile stays compact.</p>
+                </div>
+                <div class="grid-box">
+                    <h3>24/7 UK Support</h3>
+                    <p>Dedicated support team available around the clock to help with any technical issues or questions.</p>
+                    <p class="hide-mobile">Mobile version shows only essential info for better UX.</p>
+                </div>
+                <div class="grid-box">
+                    <h3>Regular Updates</h3>
+                    <p>Continuous content additions and software improvements to enhance patient experience over time.</p>
+                    <p class="hide-mobile">Less text on mobile = smaller boxes = better layout!</p>
+                </div>
+                <div class="grid-box">
+                    <h3>Easy Integration</h3>
+                    <p>Simple setup process that works with your existing clinic workflow without disruption.</p>
+                    <p class="hide-mobile">Mobile users get the key points without overwhelming text.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE 2: Bento Grid (Mixed Sizes) -->
+        <div class="section">
+            <h2 class="section-title">2️⃣ Bento Grid (Mixed Sizes)</h2>
+            <p class="section-desc">Modern layout with varied box sizes. Great for dashboards or feature showcases.</p>
+            
+            <div class="bento-wrapper">
+                <!-- Left Group -->
+                <div class="left-group">
+                    <div class="bento-box">
+                        <div class="demo-content">Small 1</div>
+                    </div>
+                    <div class="bento-box">
+                        <div class="demo-content">Small 2</div>
+                    </div>
+                    <div class="bento-box">
+                        <div class="demo-content">Small 3</div>
+                    </div>
+                    <div class="bento-box">
+                        <div class="demo-content">Small 4</div>
+                    </div>
+                    <div class="bento-box bento-wide">
+                        <div class="demo-content">Wide Box (Spans 2 Columns)</div>
+                    </div>
+                </div>
+
+                <!-- Right Group -->
+                <div class="right-group">
+                    <div class="bento-box">
+                        <div class="demo-content">Small 1</div>
+                    </div>
+                    <div class="bento-box">
+                        <div class="demo-content">Small 2</div>
+                    </div>
+                    <div class="bento-box bento-wide">
+                        <div class="demo-content">Wide Box (Spans 2 Columns)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE 3: 3 Column Grid -->
+        <div class="section">
+            <h2 class="section-title">3️⃣ Three Column Grid</h2>
+            <p class="section-desc">Responsive 3-column layout. Becomes 2 columns on tablet, 1 column on mobile.</p>
+            
+            <div class="grid-3-col">
+                <div class="card card-bordered">
+                    <div class="demo-content">Column 1</div>
+                </div>
+                <div class="card card-bordered">
+                    <div class="demo-content">Column 2</div>
+                </div>
+                <div class="card card-bordered">
+                    <div class="demo-content">Column 3</div>
+                </div>
+                <div class="card card-bordered">
+                    <div class="demo-content">Column 4</div>
+                </div>
+                <div class="card card-bordered">
+                    <div class="demo-content">Column 5</div>
+                </div>
+                <div class="card card-bordered">
+                    <div class="demo-content">Column 6</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE 4: 4 Column Grid -->
+        <div class="section">
+            <h2 class="section-title">4️⃣ Four Column Grid</h2>
+            <p class="section-desc">4 columns on desktop, 3 on laptop, 2 on tablet, 1 on mobile.</p>
+            
+            <div class="grid-4-col">
+                <div class="card card-shadow">
+                    <div class="demo-content">Item 1</div>
+                </div>
+                <div class="card card-shadow">
+                    <div class="demo-content">Item 2</div>
+                </div>
+                <div class="card card-shadow">
+                    <div class="demo-content">Item 3</div>
+                </div>
+                <div class="card card-shadow">
+                    <div class="demo-content">Item 4</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE 5: Auto-fit Grid -->
+        <div class="section">
+            <h2 class="section-title">5️⃣ Auto-Fit Grid</h2>
+            <p class="section-desc">Automatically adjusts columns based on available space (min 250px per item).</p>
+            
+            <div class="grid-auto">
+                <div class="card">
+                    <div class="demo-content">Auto 1</div>
+                </div>
+                <div class="card">
+                    <div class="demo-content">Auto 2</div>
+                </div>
+                <div class="card">
+                    <div class="demo-content">Auto 3</div>
+                </div>
+                <div class="card">
+                    <div class="demo-content">Auto 4</div>
+                </div>
+                <div class="card">
+                    <div class="demo-content">Auto 5</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE 6: Advanced Bento with Tall Boxes -->
+        <div class="section">
+            <h2 class="section-title">6️⃣ Advanced Bento (With Tall Boxes)</h2>
+            <p class="section-desc">Mix of wide and tall boxes for complex layouts.</p>
+            
+            <div class="bento-group">
+                <div class="bento-box bento-tall">
+                    <div class="demo-content">Tall Box<br>(2 Rows)</div>
+                </div>
+                <div class="bento-box">
+                    <div class="demo-content">Small 1</div>
+                </div>
+                <div class="bento-box">
+                    <div class="demo-content">Small 2</div>
+                </div>
+                <div class="bento-box bento-wide">
+                    <div class="demo-content">Wide Box (2 Columns)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE 7: Using Span Utilities -->
+        <div class="section">
+            <h2 class="section-title">7️⃣ Span Utilities</h2>
+            <p class="section-desc">Use span classes to control box sizes in any grid.</p>
+            
+            <div class="grid-4-col">
+                <div class="card span-2">
+                    <div class="demo-content">Spans 2 Columns</div>
+                </div>
+                <div class="card">
+                    <div class="demo-content">Normal</div>
+                </div>
+                <div class="card">
+                    <div class="demo-content">Normal</div>
+                </div>
+                <div class="card span-full">
+                    <div class="demo-content">Spans Full Width</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guide -->
+        <div class="section" style="background: white; padding: 30px; border-radius: 16px; border: 2px solid var(--brand-mid);">
+            <h2 class="section-title">📚 How to Control Text on Mobile</h2>
+            
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">✅ Hide Extra Text on Mobile</h3>
+            <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto;"><code>&lt;div class="grid-box"&gt;
+  &lt;h3&gt;Feature Title&lt;/h3&gt;
+  &lt;p&gt;Main description - shows on all devices&lt;/p&gt;
+  &lt;p class="hide-mobile"&gt;Extra details - HIDDEN on mobile!&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">✅ Show Different Text for Mobile</h3>
+            <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto;"><code>&lt;div class="grid-box"&gt;
+  &lt;h3&gt;Feature Title&lt;/h3&gt;
+  &lt;p class="hide-mobile"&gt;Long detailed description for desktop users with lots of information.&lt;/p&gt;
+  &lt;p class="show-mobile"&gt;Short version for mobile.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">✅ Truncate Long Text</h3>
+            <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto;"><code>&lt;div class="grid-box"&gt;
+  &lt;h3&gt;Feature Title&lt;/h3&gt;
+  &lt;p class="mobile-truncate"&gt;This text will be cut off with ... on mobile&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">Available Mobile Text Classes:</h3>
+            <ul style="line-height: 2; color: var(--muted);">
+                <li><code>.hide-mobile</code> - Hides element on mobile (&lt;768px)</li>
+                <li><code>.show-mobile</code> - Shows only on mobile, hidden on desktop</li>
+                <li><code>.mobile-truncate</code> - Cuts text with ellipsis (...) on mobile</li>
+                <li><code>.mobile-short</code> - Limits text to ~2 lines on mobile</li>
+                <li><code>.mobile-compact</code> - Reduces spacing on mobile</li>
+            </ul>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">Automatic Mobile Optimizations:</h3>
+            <ul style="line-height: 2; color: var(--muted);">
+                <li>✅ Headings automatically smaller on mobile</li>
+                <li>✅ Paragraphs limited to 2 lines by default</li>
+                <li>✅ Reduced padding and margins</li>
+                <li>✅ Smaller font sizes (0.85rem)</li>
+                <li>✅ Compact spacing between elements</li>
+            </ul>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">📱 Result on Mobile:</h3>
+            <div style="background: #e8f4ff; padding: 20px; border-radius: 8px; margin-top: 10px;">
+                <p style="margin: 0; color: var(--brand-dark); font-weight: 600;">
+                    ✨ Boxes stay small and compact<br>
+                    ✨ Only essential text shows<br>
+                    ✨ Better layout and readability<br>
+                    ✨ Faster loading and scrolling<br>
+                    ✨ Professional mobile experience
+                </p>
+            </div>
+        </div>
+
+        <!-- Real Example with Mobile Text Control -->
+        <div class="section">
+            <h2 class="section-title">8️⃣ Real Example: Mobile Text Control</h2>
+            <p class="section-desc">Resize your browser to see how text adapts! Desktop shows full content, mobile shows less.</p>
+            
+            <div class="grid-container">
+                <div class="grid-box">
+                    <h3>VR Headsets</h3>
+                    <p>Premium medical-grade VR hardware for dental clinics.</p>
+                    <p class="hide-mobile">Our headsets feature advanced optics, comfortable ergonomics, and easy-to-clean surfaces that meet medical hygiene standards. Perfect for extended use in clinical environments.</p>
+                    <p class="show-mobile" style="color: var(--brand-cyan); font-weight: 600;">📱 Mobile: Compact view</p>
+                </div>
+                
+                <div class="grid-box">
+                    <h3>Content Library</h3>
+                    <p>50+ immersive calming environments and educational videos.</p>
+                    <p class="hide-mobile">From peaceful ocean scenes to serene mountain landscapes, our library includes diverse content suitable for all ages. Regular updates ensure fresh experiences for returning patients.</p>
+                    <p class="show-mobile" style="color: var(--brand-cyan); font-weight: 600;">📱 Mobile: Less text = smaller box</p>
+                </div>
+                
+                <div class="grid-box">
+                    <h3>Easy Setup</h3>
+                    <p>Quick integration with your existing clinic workflow.</p>
+                    <p class="hide-mobile">Our team handles the complete installation process, trains your staff, and provides ongoing support. Most clinics are up and running within 24 hours of delivery.</p>
+                    <p class="show-mobile" style="color: var(--brand-cyan); font-weight: 600;">📱 Mobile: Key info only</p>
+                </div>
+                
+                <div class="grid-box">
+                    <h3>UK Support</h3>
+                    <p>24/7 dedicated support team based in the United Kingdom.</p>
+                    <p class="hide-mobile">Our support specialists are available around the clock to assist with technical issues, content questions, or usage guidance. Average response time under 2 hours.</p>
+                    <p class="show-mobile" style="color: var(--brand-cyan); font-weight: 600;">📱 Mobile: Essentials shown</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guide -->
+        <div class="section" style="background: white; padding: 30px; border-radius: 16px; border: 2px solid var(--brand-mid);">
+            <h2 class="section-title">📚 How to Use These Grids</h2>
+            
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">1. Equal Size Grid (2×3)</h3>
+            <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto;"><code>&lt;div class="grid-container"&gt;
+  &lt;div class="grid-box"&gt;Content 1&lt;/div&gt;
+  &lt;div class="grid-box"&gt;Content 2&lt;/div&gt;
+  &lt;div class="grid-box"&gt;Content 3&lt;/div&gt;
+  &lt;div class="grid-box"&gt;Content 4&lt;/div&gt;
+  &lt;div class="grid-box"&gt;Content 5&lt;/div&gt;
+  &lt;div class="grid-box"&gt;Content 6&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">2. Bento Grid</h3>
+            <pre style="background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto;"><code>&lt;div class="bento-wrapper"&gt;
+  &lt;div class="left-group"&gt;
+    &lt;div class="bento-box"&gt;Small 1&lt;/div&gt;
+    &lt;div class="bento-box"&gt;Small 2&lt;/div&gt;
+    &lt;div class="bento-box bento-wide"&gt;Wide Box&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="right-group"&gt;
+    &lt;div class="bento-box"&gt;Small 1&lt;/div&gt;
+    &lt;div class="bento-box bento-wide"&gt;Wide Box&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">Available Classes:</h3>
+            <ul style="line-height: 2; color: var(--muted);">
+                <li><code>.grid-container</code> - 2 column equal grid</li>
+                <li><code>.grid-3-col</code> - 3 column grid</li>
+                <li><code>.grid-4-col</code> - 4 column grid</li>
+                <li><code>.grid-auto</code> - Auto-fit responsive grid</li>
+                <li><code>.bento-wrapper</code> - Bento grid container</li>
+                <li><code>.bento-wide</code> or <code>.wide</code> - Spans 2 columns</li>
+                <li><code>.bento-tall</code> or <code>.tall</code> - Spans 2 rows</li>
+                <li><code>.span-2, .span-3, .span-4</code> - Column span utilities</li>
+                <li><code>.card</code> - Card styling with hover effects</li>
+            </ul>
+
+            <h3 style="color: var(--brand-mid); margin-top: 20px;">Mobile Behavior:</h3>
+            <ul style="line-height: 2; color: var(--muted);">
+                <li>✅ All grids automatically stack to 1 column on mobile (&lt;640px)</li>
+                <li>✅ Bento grids become single column on mobile (&lt;480px)</li>
+                <li>✅ Gaps and padding reduce on smaller screens</li>
+                <li>✅ Span utilities reset to normal on mobile</li>
+                <li>✅ 100% responsive - no horizontal scroll!</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>

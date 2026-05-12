@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Grid Integration Example | Dentaverse</title>
+    
+    <!-- Required CSS Files -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        /* Page-specific styles */
+        .page-wrapper {
+            min-height: 100vh;
+            background: var(--bg-soft, #F0F6FF);
+            padding: 40px 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h1 {
+            color: var(--brand-dark, #0A2558);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            color: var(--muted, #5E6E85);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .device-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--brand-mid, #0066CC);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .device-indicator {
+                background: var(--brand-cyan, #00CCFF);
+            }
+            
+            .device-indicator::before {
+                content: "📱 MOBILE: ";
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1023px) {
+            .device-indicator::before {
+                content: "📱 TABLET: ";
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .device-indicator::before {
+                content: "💻 DESKTOP: ";
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Device Indicator -->
+    <div class="device-indicator">Resize to test</div>
+
+    <div class="page-wrapper">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            
+            <!-- Page Header -->
+            <div class="section-header">
+                <h1>🎯 Grid System Integration</h1>
+                <p>This page demonstrates how to integrate the responsive grid system into your actual Dentaverse pages.</p>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════
+                 EXAMPLE 1: Features Section with Equal Grid
+            ═══════════════════════════════════════════════════════ -->
+            <section style="margin-bottom: 80px;">
+                <h2 style="color: var(--brand-mid); margin-bottom: 30px; text-align: center;">
+                    ✨ Features Section (Equal Grid)
+                </h2>
+                
+                <div class="grid-container">
+                    <div class="grid-box">
+                        <h3>🎧 Premium VR Hardware</h3>
+                        <p>Medical-grade VR headsets designed specifically for dental clinics with hygiene standards.</p>
+                        <p class="desktop-only">Our headsets feature advanced optics, easy-to-clean surfaces, and adjustable straps for all-day comfort. Each unit is tested to meet strict medical device regulations and comes with a 2-year warranty.</p>
+                    </div>
+
+                    <div class="grid-box">
+                        <h3>🌊 50+ Calming Worlds</h3>
+                        <p>Immersive environments from peaceful oceans to serene forests, regularly updated.</p>
+                        <p class="desktop-only">Choose from underwater adventures, mountain retreats, space exploration, and guided meditation experiences. New content added monthly based on patient feedback and clinical research.</p>
+                    </div>
+
+                    <div class="grid-box">
+                        <h3>📊 Clinic Dashboard</h3>
+                        <p>Easy-to-use control panel for managing VR sessions and tracking patient comfort.</p>
+                        <p class="desktop-only">Real-time analytics show session duration, patient engagement, and anxiety reduction metrics. Export reports for clinical records and insurance documentation with one click.</p>
+                    </div>
+
+                    <div class="grid-box">
+                        <h3>🇬🇧 24/7 UK Support</h3>
+                        <p>Dedicated support team available around the clock for technical issues and guidance.</p>
+                        <p class="desktop-only">Our UK-based specialists respond within 2 hours on average. Phone, email, and live chat support included. Remote troubleshooting available for urgent issues during clinic hours.</p>
+                    </div>
+
+                    <div class="grid-box">
+                        <h3>🔄 Regular Updates</h3>
+                        <p>Continuous software improvements and content additions to enhance patient experience.</p>
+                        <p class="desktop-only">Automatic updates delivered monthly include new VR environments, improved comfort features, and enhanced analytics. No downtime required for updates - they install overnight.</p>
+                    </div>
+
+                    <div class="grid-box">
+                        <h3>⚡ Easy Integration</h3>
+                        <p>Simple setup process that works with your existing clinic workflow without disruption.</p>
+                        <p class="desktop-only">Installation takes less than 2 hours. Staff training included. Compatible with all major practice management systems. No special IT infrastructure or technical expertise required.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════
+                 EXAMPLE 2: Product Showcase with Bento Grid
+            ═══════════════════════════════════════════════════════ -->
+            <section style="margin-bottom: 80px;">
+                <h2 style="color: var(--brand-mid); margin-bottom: 30px; text-align: center;">
+                    📦 Product Showcase (Bento Grid)
+                </h2>
+                
+                <div class="bento-wrapper">
+                    <!-- Left Group -->
+                    <div class="left-group">
+                        <div class="bento-box">
+                            <h4>🎮 VR Headset</h4>
+                            <p>Medical-grade hardware with advanced optics and comfortable design for extended clinical use.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <h4>📚 Content Hub</h4>
+                            <p>Access to 50+ immersive environments and educational videos for all patient age groups.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <h4>📈 Analytics</h4>
+                            <p>Real-time tracking of patient comfort, session duration, and anxiety reduction metrics.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <h4>💬 Support</h4>
+                            <p>24/7 UK-based technical support team available via phone, email, and live chat.</p>
+                        </div>
+
+                        <div class="bento-box bento-wide">
+                            <h4>🎁 Complete Solution</h4>
+                            <p>Everything you need to transform patient anxiety into calm confidence.</p>
+                            <p class="desktop-only">Hardware, software, content, training, and ongoing support all included in one package. Single point of contact for all your VR therapy needs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Group -->
+                    <div class="right-group">
+                        <div class="bento-box">
+                            <h4>⚡ Quick Setup</h4>
+                            <p>Installation and staff training completed in under 2 hours with minimal disruption.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <h4>🔄 Updates</h4>
+                            <p>Monthly content additions and software improvements delivered automatically.</p>
+                        </div>
+
+                        <div class="bento-box bento-wide">
+                            <h4>✅ Proven Results</h4>
+                            <p>Clinical studies show 60% reduction in patient anxiety and improved treatment acceptance.</p>
+                            <p class="desktop-only">Join hundreds of UK dental practices already using Dentaverse to deliver fear-free appointments and improve patient satisfaction scores.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════
+                 EXAMPLE 3: Testimonials with 3-Column Grid
+            ═══════════════════════════════════════════════════════ -->
+            <section style="margin-bottom: 80px;">
+                <h2 style="color: var(--brand-mid); margin-bottom: 30px; text-align: center;">
+                    💬 What Dentists Say (3-Column Grid)
+                </h2>
+                
+                <div class="grid-3-col">
+                    <div class="card card-bordered">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 15px;">
+                            "Dentaverse has transformed our practice. Patients are calmer and more cooperative."
+                        </p>
+                        <p class="desktop-only" style="font-style: italic; color: var(--muted); margin-bottom: 15px;">
+                            "We've seen a 70% reduction in appointment cancellations due to anxiety. The VR system pays for itself within months."
+                        </p>
+                        <p style="font-weight: 600; color: var(--brand-dark);">Dr. Sarah Johnson</p>
+                        <p style="font-size: 0.85rem; color: var(--muted);">London Dental Clinic</p>
+                    </div>
+
+                    <div class="card card-bordered">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 15px;">
+                            "The setup was incredibly easy. Our team was trained and ready in just one afternoon."
+                        </p>
+                        <p class="desktop-only" style="font-style: italic; color: var(--muted); margin-bottom: 15px;">
+                            "Support has been excellent. Any questions we have are answered within hours. Highly recommend!"
+                        </p>
+                        <p style="font-weight: 600; color: var(--brand-dark);">Dr. Michael Chen</p>
+                        <p style="font-size: 0.85rem; color: var(--muted);">Manchester Family Dentistry</p>
+                    </div>
+
+                    <div class="card card-bordered">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 15px;">
+                            "Children love it! Parents are amazed at how calm their kids are during procedures."
+                        </p>
+                        <p class="desktop-only" style="font-style: italic; color: var(--muted); margin-bottom: 15px;">
+                            "We've become the go-to practice for anxious children. Word of mouth has brought us so many new patients."
+                        </p>
+                        <p style="font-weight: 600; color: var(--brand-dark);">Dr. Emma Williams</p>
+                        <p style="font-size: 0.85rem; color: var(--muted);">Birmingham Pediatric Dental</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════
+                 EXAMPLE 4: Stats with 4-Column Grid
+            ═══════════════════════════════════════════════════════ -->
+            <section style="margin-bottom: 80px;">
+                <h2 style="color: var(--brand-mid); margin-bottom: 30px; text-align: center;">
+                    📊 By The Numbers (4-Column Grid)
+                </h2>
+                
+                <div class="grid-4-col">
+                    <div class="card card-shadow" style="text-align: center;">
+                        <h3 style="color: var(--brand-cyan); font-size: 3rem; margin-bottom: 10px;">60%</h3>
+                        <p style="font-weight: 600; color: var(--brand-dark);">Anxiety Reduction</p>
+                        <p class="desktop-only" style="font-size: 0.85rem; color: var(--muted);">Average decrease in patient anxiety levels</p>
+                    </div>
+
+                    <div class="card card-shadow" style="text-align: center;">
+                        <h3 style="color: var(--brand-cyan); font-size: 3rem; margin-bottom: 10px;">500+</h3>
+                        <p style="font-weight: 600; color: var(--brand-dark);">UK Clinics</p>
+                        <p class="desktop-only" style="font-size: 0.85rem; color: var(--muted);">Dental practices using Dentaverse</p>
+                    </div>
+
+                    <div class="card card-shadow" style="text-align: center;">
+                        <h3 style="color: var(--brand-cyan); font-size: 3rem; margin-bottom: 10px;">50+</h3>
+                        <p style="font-weight: 600; color: var(--brand-dark);">VR Worlds</p>
+                        <p class="desktop-only" style="font-size: 0.85rem; color: var(--muted);">Immersive calming environments</p>
+                    </div>
+
+                    <div class="card card-shadow" style="text-align: center;">
+                        <h3 style="color: var(--brand-cyan); font-size: 3rem; margin-bottom: 10px;">24/7</h3>
+                        <p style="font-weight: 600; color: var(--brand-dark);">UK Support</p>
+                        <p class="desktop-only" style="font-size: 0.85rem; color: var(--muted);">Always available when you need us</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════
+                 MOBILE TEXT DEMONSTRATION
+            ═══════════════════════════════════════════════════════ -->
+            <section style="margin-bottom: 80px;">
+                <h2 style="color: var(--brand-mid); margin-bottom: 30px; text-align: center;">
+                    📱 Mobile Text Control Demo
+                </h2>
+                
+                <div class="grid-container">
+                    <div class="grid-box" style="background: #e8f4ff;">
+                        <h3>Automatic Reduction</h3>
+                        <p>This paragraph automatically reduces to 1 line on mobile devices, showing approximately 30% of the desktop text content.</p>
+                        <p style="font-size: 0.85rem; color: var(--brand-cyan); font-weight: 600; margin-top: 10px;">
+                            <span class="desktop-only">✅ Desktop: Full text visible</span>
+                            <span class="mobile-only">📱 Mobile: 1 line only!</span>
+                        </p>
+                    </div>
+
+                    <div class="grid-box" style="background: #fff4e8;">
+                        <h3>Manual Control</h3>
+                        <p class="desktop-only">This text ONLY shows on desktop. Mobile users won't see this paragraph at all, keeping the box compact and clean.</p>
+                        <p class="mobile-only">This text ONLY shows on mobile. Desktop users see different content above.</p>
+                        <p style="font-size: 0.85rem; color: var(--brand-cyan); font-weight: 600; margin-top: 10px;">
+                            <span class="desktop-only">✅ Desktop version</span>
+                            <span class="mobile-only">📱 Mobile version</span>
+                        </p>
+                    </div>
+
+                    <div class="grid-box" style="background: #f0ffe8;">
+                        <h3>Full Text Override</h3>
+                        <p class="mobile-full">This paragraph uses .mobile-full class, so it shows completely on mobile without any reduction. Use this when you need full text on all devices.</p>
+                        <p style="font-size: 0.85rem; color: var(--brand-cyan); font-weight: 600; margin-top: 10px;">
+                            ✅ Full text on all devices
+                        </p>
+                    </div>
+
+                    <div class="grid-box" style="background: #ffe8f4;">
+                        <h3>Truncated Text</h3>
+                        <p class="mobile-truncate">This text will be truncated with an ellipsis (...) on mobile devices if it's too long to fit on one line.</p>
+                        <p style="font-size: 0.85rem; color: var(--brand-cyan); font-weight: 600; margin-top: 10px;">
+                            <span class="desktop-only">✅ Full text</span>
+                            <span class="mobile-only">📱 Truncated with ...</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════
+                 USAGE INSTRUCTIONS
+            ═══════════════════════════════════════════════════════ -->
+            <section style="background: white; padding: 40px; border-radius: 16px; border: 2px solid var(--brand-mid);">
+                <h2 style="color: var(--brand-mid); margin-bottom: 25px; text-align: center;">
+                    📚 How to Use This on Your Pages
+                </h2>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="color: var(--brand-dark); margin-top: 30px; margin-bottom: 15px;">Step 1: Link CSS Files</h3>
+                    <pre style="background: #f5f5f5; padding: 20px; border-radius: 8px; overflow-x: auto; font-size: 0.9rem;"><code>&lt;link rel="stylesheet" href="css/theme.css"&gt;
+&lt;link rel="stylesheet" href="css/design-system.css"&gt;
+&lt;link rel="stylesheet" href="css/responsive.css"&gt;</code></pre>
+
+                    <h3 style="color: var(--brand-dark); margin-top: 30px; margin-bottom: 15px;">Step 2: Choose a Grid Layout</h3>
+                    <ul style="line-height: 2; color: var(--muted);">
+                        <li><code>.grid-container</code> - Equal size 2×3 grid</li>
+                        <li><code>.bento-wrapper</code> - Mixed size bento grid</li>
+                        <li><code>.grid-3-col</code> - 3 column grid</li>
+                        <li><code>.grid-4-col</code> - 4 column grid</li>
+                    </ul>
+
+                    <h3 style="color: var(--brand-dark); margin-top: 30px; margin-bottom: 15px;">Step 3: Add Mobile Text Control</h3>
+                    <ul style="line-height: 2; color: var(--muted);">
+                        <li><code>.desktop-only</code> - Hide on mobile</li>
+                        <li><code>.mobile-only</code> - Show only on mobile</li>
+                        <li><code>.mobile-full</code> - Override auto-reduction</li>
+                        <li><code>.mobile-truncate</code> - Truncate with ...</li>
+                    </ul>
+
+                    <h3 style="color: var(--brand-dark); margin-top: 30px; margin-bottom: 15px;">Step 4: Test Responsiveness</h3>
+                    <ol style="line-height: 2; color: var(--muted);">
+                        <li>Open DevTools (F12)</li>
+                        <li>Toggle device toolbar (Ctrl+Shift+M)</li>
+                        <li>Test: iPhone SE (375px), iPad (768px), Desktop (1440px)</li>
+                        <li>Verify text reduces to 30% on mobile</li>
+                        <li>Check for horizontal scroll (should be none)</li>
+                    </ol>
+
+                    <div style="background: #e8f4ff; padding: 25px; border-radius: 12px; margin-top: 30px;">
+                        <h4 style="color: var(--brand-mid); margin-bottom: 15px;">✨ Result:</h4>
+                        <ul style="line-height: 2; margin: 0; color: var(--brand-dark);">
+                            <li>✅ Desktop: Full content, 2 columns</li>
+                            <li>✅ Mobile: 30% text, 1 column, 70% smaller boxes</li>
+                            <li>✅ Zero horizontal scroll on all devices</li>
+                            <li>✅ Professional appearance everywhere</li>
+                            <li>✅ Fast loading and smooth scrolling</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer Note -->
+            <div style="text-align: center; margin-top: 60px; padding: 30px; background: var(--brand-dark); color: white; border-radius: 16px;">
+                <h3 style="color: var(--brand-cyan); margin-bottom: 15px;">🎉 Grid System Ready!</h3>
+                <p style="margin-bottom: 10px;">Copy any section from this page and paste it into your actual Dentaverse pages.</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">All grids are fully responsive and mobile-optimized with 30% text reduction.</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

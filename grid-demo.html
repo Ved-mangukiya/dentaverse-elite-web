@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Grid Demo - Mobile Responsive | Dentaverse</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        body {
+            padding: 20px;
+            background: var(--bg-soft, #F0F6FF);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .demo-header h1 {
+            color: var(--brand-dark, #0A2558);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .demo-header p {
+            color: var(--muted, #5E6E85);
+            font-size: 1rem;
+        }
+
+        .section-divider {
+            margin: 60px 0 40px;
+            text-align: center;
+        }
+
+        .section-divider h2 {
+            color: var(--brand-mid, #0066CC);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-divider p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .mobile-indicator {
+            display: none;
+            background: var(--brand-cyan, #00CCFF);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-indicator {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="demo-header">
+        <h1>📐 Responsive Grid Layouts</h1>
+        <p>Resize your browser to see mobile adaptation!</p>
+    </div>
+
+    <div class="mobile-indicator">
+        📱 MOBILE VIEW: You're seeing 30% of desktop text!
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LAYOUT 1: Equal Size Grid (2 Columns × 3 Rows)
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="section-divider">
+        <h2>🟦 Layout 1: Equal Size Grid (2×3)</h2>
+        <p>Desktop: 2 columns | Mobile: 1 column with 30% text</p>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-box">
+            <h3>Premium VR Hardware</h3>
+            <p>Purpose-built VR headsets designed specifically for dental clinics with medical-grade hygiene standards and comfortable ergonomics.</p>
+            <p class="desktop-only">Our headsets feature advanced optics, easy-to-clean surfaces, and adjustable straps for all-day comfort. Each unit is tested to meet strict medical device regulations.</p>
+        </div>
+
+        <div class="grid-box">
+            <h3>50+ Calming Worlds</h3>
+            <p>Immersive environments from peaceful oceans to serene forests, regularly updated with new therapeutic content for patient comfort.</p>
+            <p class="desktop-only">Choose from underwater adventures, mountain retreats, space exploration, and guided meditation experiences. New content added monthly based on patient feedback.</p>
+        </div>
+
+        <div class="grid-box">
+            <h3>Clinic Dashboard</h3>
+            <p>Easy-to-use control panel for managing VR sessions, tracking patient comfort levels, and monitoring device usage statistics.</p>
+            <p class="desktop-only">Real-time analytics show session duration, patient engagement, and anxiety reduction metrics. Export reports for clinical records and insurance documentation.</p>
+        </div>
+
+        <div class="grid-box">
+            <h3>24/7 UK Support</h3>
+            <p>Dedicated support team available around the clock to help with technical issues, content questions, or usage guidance.</p>
+            <p class="desktop-only">Our UK-based specialists respond within 2 hours on average. Phone, email, and live chat support included. Remote troubleshooting available for urgent issues.</p>
+        </div>
+
+        <div class="grid-box">
+            <h3>Regular Updates</h3>
+            <p>Continuous software improvements and content additions to enhance patient experience and keep your clinic at the cutting edge.</p>
+            <p class="desktop-only">Automatic updates delivered monthly include new VR environments, improved comfort features, and enhanced analytics. No downtime required for updates.</p>
+        </div>
+
+        <div class="grid-box">
+            <h3>Easy Integration</h3>
+            <p>Simple setup process that works with your existing clinic workflow without disruption to daily operations or patient scheduling.</p>
+            <p class="desktop-only">Installation takes less than 2 hours. Staff training included. Compatible with all major practice management systems. No special IT infrastructure required.</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LAYOUT 2: Bento Grid (Mixed Sizes)
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="section-divider">
+        <h2>🟧 Layout 2: Bento Grid (Mixed Sizes)</h2>
+        <p>Desktop: Side-by-side groups | Mobile: Stacked with 30% text</p>
+    </div>
+
+    <div class="bento-wrapper">
+        <!-- Left Group -->
+        <div class="left-group">
+            <div class="bento-box">
+                <h4>VR Headset</h4>
+                <p>Medical-grade hardware with advanced optics and comfortable design for extended clinical use.</p>
+            </div>
+
+            <div class="bento-box">
+                <h4>Content Hub</h4>
+                <p>Access to 50+ immersive environments and educational videos for all patient age groups.</p>
+            </div>
+
+            <div class="bento-box">
+                <h4>Analytics</h4>
+                <p>Real-time tracking of patient comfort, session duration, and anxiety reduction metrics.</p>
+            </div>
+
+            <div class="bento-box">
+                <h4>Support</h4>
+                <p>24/7 UK-based technical support team available via phone, email, and live chat.</p>
+            </div>
+
+            <div class="bento-box bento-wide">
+                <h4>Complete Solution</h4>
+                <p>Everything you need to transform patient anxiety into calm confidence. Hardware, software, content, training, and ongoing support all included in one package.</p>
+                <p class="desktop-only">Our all-in-one solution eliminates the complexity of managing multiple vendors. Single point of contact for all your VR therapy needs.</p>
+            </div>
+        </div>
+
+        <!-- Right Group -->
+        <div class="right-group">
+            <div class="bento-box">
+                <h4>Quick Setup</h4>
+                <p>Installation and staff training completed in under 2 hours with minimal disruption to clinic operations.</p>
+            </div>
+
+            <div class="bento-box">
+                <h4>Updates</h4>
+                <p>Monthly content additions and software improvements delivered automatically with no downtime.</p>
+            </div>
+
+            <div class="bento-box bento-wide">
+                <h4>Proven Results</h4>
+                <p>Clinical studies show 60% reduction in patient anxiety and improved treatment acceptance rates across all age groups.</p>
+                <p class="desktop-only">Join hundreds of UK dental practices already using Dentaverse to deliver fear-free appointments and improve patient satisfaction scores.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         USAGE GUIDE
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="section-divider">
+        <h2>📚 How It Works</h2>
+        <p>Understanding the automatic text reduction</p>
+    </div>
+
+    <div class="card" style="max-width: 900px; margin: 0 auto; padding: 30px;">
+        <h3 style="color: var(--brand-mid); margin-bottom: 20px;">Automatic 30% Text on Mobile</h3>
+        
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="margin-bottom: 10px;">Desktop View (100% text):</h4>
+            <p style="margin: 0; color: #333;">
+                "Purpose-built VR headsets designed specifically for dental clinics with medical-grade hygiene standards and comfortable ergonomics."
+            </p>
+        </div>
+
+        <div style="background: #e8f4ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="margin-bottom: 10px;">Mobile View (30% text - 1 line only):</h4>
+            <p style="margin: 0; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                "Purpose-built VR headsets designed specifically for dental clinics with medical-grade hygiene standards and comfortable ergonomics."
+            </p>
+        </div>
+
+        <h4 style="color: var(--brand-mid); margin: 30px 0 15px;">How to Use:</h4>
+        
+        <div style="background: #f9f9f9; padding: 15px; border-left: 4px solid var(--brand-cyan); margin-bottom: 15px;">
+            <strong>Option 1: Automatic (Recommended)</strong>
+            <pre style="background: white; padding: 10px; border-radius: 4px; margin-top: 10px; overflow-x: auto;"><code>&lt;div class="grid-box"&gt;
+  &lt;h3&gt;Title&lt;/h3&gt;
+  &lt;p&gt;Main text - auto-reduces to 1 line on mobile&lt;/p&gt;
+  &lt;p class="desktop-only"&gt;Extra text - hidden on mobile&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div style="background: #f9f9f9; padding: 15px; border-left: 4px solid var(--brand-cyan); margin-bottom: 15px;">
+            <strong>Option 2: Manual Control</strong>
+            <pre style="background: white; padding: 10px; border-radius: 4px; margin-top: 10px; overflow-x: auto;"><code>&lt;div class="grid-box"&gt;
+  &lt;h3&gt;Title&lt;/h3&gt;
+  &lt;p class="hide-mobile"&gt;Long desktop text&lt;/p&gt;
+  &lt;p class="show-mobile"&gt;Short mobile text&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <h4 style="color: var(--brand-mid); margin: 30px 0 15px;">Available Classes:</h4>
+        <ul style="line-height: 2; color: #555;">
+            <li><code>.desktop-only</code> or <code>.hide-mobile</code> - Hides on mobile</li>
+            <li><code>.mobile-only</code> or <code>.show-mobile</code> - Shows only on mobile</li>
+            <li><code>.mobile-full</code> - Override auto-reduction (show full text)</li>
+            <li><code>.text-adaptive</code> - Smart text reduction</li>
+            <li><code>.mobile-truncate</code> - Cut with ellipsis (...)</li>
+        </ul>
+
+        <div style="background: #e8f4ff; padding: 20px; border-radius: 8px; margin-top: 30px;">
+            <h4 style="margin-bottom: 10px;">✨ Result:</h4>
+            <ul style="line-height: 2; margin: 0; color: var(--brand-dark);">
+                <li>✅ Mobile boxes 70% smaller</li>
+                <li>✅ Faster loading and scrolling</li>
+                <li>✅ Better mobile UX</li>
+                <li>✅ Professional appearance</li>
+                <li>✅ No horizontal scroll</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div style="text-align: center; margin-top: 60px; padding: 20px; color: var(--muted);">
+        <p><strong>💡 Tip:</strong> Resize your browser window to see the responsive behavior!</p>
+        <p style="font-size: 0.9rem;">Desktop (>768px) shows full text | Mobile (≤768px) shows 30% text</p>
+    </div>
+
+</body>
+</html>
