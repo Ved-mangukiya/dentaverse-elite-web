@@ -350,7 +350,6 @@
 
             .timeline-section { padding: 1.5rem 0 3rem; }
             .timeline { margin-top: 1.5rem; }
-            .timeline::before { left: 20px; }
 
             .tl-item {
                 grid-template-columns: 44px 1fr !important;
@@ -360,12 +359,12 @@
             .tl-node {
                 width: 40px !important;
                 height: 40px !important;
-                border-radius: 12px !important;
+                border-radius: 50% !important;
             }
             .tl-node-num { font-size: 0.95rem !important; }
             .tl-card {
                 padding: 1rem 0.9rem !important;
-                border-radius: 16px !important;
+                border-radius: 14px !important;
                 margin-left: 0.6rem !important;
             }
             .tl-card h3 { font-size: 0.95rem !important; margin-bottom: 0.4rem !important; }
@@ -374,7 +373,7 @@
                 font-size: 0.78rem !important;
                 line-height: 1.5 !important;
                 display: -webkit-box !important;
-                -webkit-line-clamp: 2 !important;
+                -webkit-line-clamp: 3 !important;
                 -webkit-box-orient: vertical !important;
                 overflow: hidden !important;
             }
@@ -387,10 +386,6 @@
             .science-text h2 { font-size: 1.4rem !important; }
             .science-text p {
                 font-size: 0.82rem !important;
-                display: -webkit-box !important;
-                -webkit-line-clamp: 3 !important;
-                -webkit-box-orient: vertical !important;
-                overflow: hidden !important;
             }
             .fact-card {
                 padding: 1rem !important;
@@ -406,13 +401,7 @@
             }
             .fact-icon svg { width: 20px !important; height: 20px !important; }
             .fact-body h4 { font-size: 0.9rem !important; margin-bottom: 0.3rem !important; }
-            .fact-body p {
-                font-size: 0.78rem !important;
-                display: -webkit-box !important;
-                -webkit-line-clamp: 2 !important;
-                -webkit-box-orient: vertical !important;
-                overflow: hidden !important;
-            }
+            .fact-body p { font-size: 0.78rem !important; }
 
             .cta-section { padding: 2rem 0 !important; }
             .cta-box {
@@ -421,6 +410,384 @@
             }
             .cta-box h2 { font-size: 1.5rem !important; margin-bottom: 0.8rem !important; }
             .cta-box p { font-size: 0.85rem !important; margin-bottom: 1.5rem !important; }
+        }
+
+        /* ══════════════════════════════════════════════════════
+           VINTAGE TIMELINE REDESIGN
+           Same brand colors — antique newspaper / journal feel
+        ══════════════════════════════════════════════════════ */
+
+        /* Vintage paper background for timeline section */
+        .timeline-section {
+            background: linear-gradient(180deg, #fafbff 0%, #f4f8ff 100%);
+            position: relative;
+        }
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(0,102,204,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0,204,255,0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Section header for timeline */
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .timeline-header .vintage-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--brand-mid);
+            margin-bottom: 1rem;
+        }
+        .timeline-header .vintage-label::before,
+        .timeline-header .vintage-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--brand-mid));
+        }
+        .timeline-header .vintage-label::after {
+            background: linear-gradient(90deg, var(--brand-mid), transparent);
+        }
+        .timeline-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--brand-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .timeline-header h2 em {
+            color: var(--brand-cyan);
+            font-style: italic;
+        }
+        .timeline-header p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* The vertical spine */
+        .vtl {
+            position: relative;
+            max-width: 860px;
+            margin: 3rem auto 0;
+            padding: 0 1rem;
+        }
+
+        /* Central line — vintage double-rule style */
+        .vtl::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg,
+                transparent 0%,
+                var(--brand-mid) 5%,
+                var(--brand-mid) 95%,
+                transparent 100%);
+            opacity: 0.25;
+        }
+        .vtl::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            transform: translateX(3px);
+            background: linear-gradient(180deg,
+                transparent 0%,
+                var(--brand-cyan) 5%,
+                var(--brand-cyan) 95%,
+                transparent 100%);
+            opacity: 0.15;
+        }
+
+        /* Each step row */
+        .vtl-step {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 0;
+            margin-bottom: 3.5rem;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Left card */
+        .vtl-left {
+            padding-right: 2rem;
+            text-align: right;
+        }
+
+        /* Right card */
+        .vtl-right {
+            padding-left: 2rem;
+            text-align: left;
+        }
+
+        /* Empty side */
+        .vtl-empty {
+            display: block;
+        }
+
+        /* Center node — vintage stamp / seal */
+        .vtl-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .vtl-seal {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--brand-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 0 0 5px rgba(0,102,204,0.08),
+                0 8px 24px rgba(0,102,204,0.2);
+            position: relative;
+            transition: all 0.4s var(--ease);
+        }
+
+        /* Outer decorative ring */
+        .vtl-seal::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px dashed rgba(0,102,204,0.3);
+            animation: vtlSpin 20s linear infinite;
+        }
+
+        @keyframes vtlSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        .vtl-step:hover .vtl-seal {
+            background: var(--brand-mid);
+            border-color: var(--brand-cyan);
+            box-shadow:
+                0 0 0 6px rgba(0,204,255,0.15),
+                0 12px 32px rgba(0,102,204,0.35);
+            transform: scale(1.1);
+        }
+
+        .vtl-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brand-mid);
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .vtl-step:hover .vtl-num {
+            color: white;
+        }
+
+        /* Connector lines from seal to card */
+        .vtl-left::after,
+        .vtl-right::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,102,204,0.2));
+            margin-top: -1px;
+        }
+
+        /* The vintage card */
+        .vtl-card {
+            background: white;
+            border: 1px solid rgba(0,102,204,0.12);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            box-shadow: 0 4px 20px rgba(10,37,88,0.06);
+        }
+
+        /* Vintage top accent bar */
+        .vtl-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.5rem;
+            right: 1.5rem;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-mid), var(--brand-cyan));
+            border-radius: 0 0 3px 3px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .vtl-step:hover .vtl-card {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0,102,204,0.14);
+            border-color: rgba(0,204,255,0.35);
+        }
+
+        .vtl-step:hover .vtl-card::before {
+            opacity: 1;
+        }
+
+        /* Phase label — vintage stamp style */
+        .vtl-phase {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--brand-mid);
+            background: rgba(0,102,204,0.07);
+            border: 1px solid rgba(0,102,204,0.15);
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+            margin-bottom: 0.8rem;
+        }
+
+        .vtl-phase::before {
+            content: '◆';
+            font-size: 0.4rem;
+            color: var(--brand-cyan);
+        }
+
+        .vtl-card h3 {
+            font-size: 1.2rem;
+            color: var(--brand-dark);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .vtl-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Connector arrow pointing to center */
+        .vtl-left .vtl-card::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid white;
+            filter: drop-shadow(2px 0 2px rgba(0,102,204,0.1));
+        }
+
+        .vtl-right .vtl-card::after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid white;
+            filter: drop-shadow(-2px 0 2px rgba(0,102,204,0.1));
+        }
+
+        /* ── MOBILE: single column left-aligned timeline ── */
+        @media (max-width: 850px) {
+            .vtl::before {
+                left: 28px;
+                transform: none;
+            }
+            .vtl::after {
+                left: 31px;
+                transform: none;
+            }
+
+            .vtl-step {
+                grid-template-columns: 56px 1fr;
+                grid-template-rows: auto;
+                gap: 0;
+                margin-bottom: 2rem;
+            }
+
+            .vtl-node {
+                grid-column: 1;
+                grid-row: 1;
+                align-self: flex-start;
+                padding-top: 0.2rem;
+            }
+
+            .vtl-left,
+            .vtl-right {
+                grid-column: 2;
+                grid-row: 1;
+                padding-left: 1rem;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .vtl-empty { display: none; }
+
+            .vtl-left .vtl-card::after,
+            .vtl-right .vtl-card::after {
+                display: none;
+            }
+
+            .vtl-seal {
+                width: 44px;
+                height: 44px;
+            }
+            .vtl-num { font-size: 1rem; }
+
+            .vtl-card {
+                padding: 1.1rem 1.2rem;
+                border-radius: 12px;
+            }
+            .vtl-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+            .vtl-card p { font-size: 0.8rem; line-height: 1.55; }
+            .vtl-phase { font-size: 0.6rem; margin-bottom: 0.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .vtl { padding: 0 0.5rem; }
+            .vtl::before { left: 22px; }
+            .vtl::after { left: 25px; }
+            .vtl-step { grid-template-columns: 46px 1fr; }
+            .vtl-seal { width: 38px; height: 38px; }
+            .vtl-num { font-size: 0.9rem; }
+            .vtl-card { padding: 0.9rem 1rem; }
+            .vtl-card h3 { font-size: 0.9rem; }
+            .vtl-card p {
+                font-size: 0.75rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
         }
     </style>
 </head>
@@ -641,86 +1008,115 @@
         <!-- TIMELINE -->
         <section class="timeline-section">
             <div class="container">
-                <div class="timeline">
 
-                    <div class="tl-item">
-                        <div class="tl-content">
-                            <div class="tl-card reveal">
-                                <span class="tl-tag">Phase 01</span>
+                <!-- Vintage header -->
+                <div class="timeline-header reveal">
+                    <div class="vintage-label">The Dentaverse Method</div>
+                    <h2>A Journey of <em>Six Phases</em></h2>
+                    <p>From first contact to post-treatment calm — every step is designed with the patient's mind in focus.</p>
+                </div>
+
+                <!-- Vintage alternating timeline -->
+                <div class="vtl">
+
+                    <!-- Step 1 — LEFT -->
+                    <div class="vtl-step">
+                        <div class="vtl-left">
+                            <div class="vtl-card reveal">
+                                <div class="vtl-phase">Phase 01</div>
                                 <h3>Pre-treatment Education</h3>
-                                <p>Introduction to the VR experience. We familiarize the patient with the equipment and
-                                    the virtual concept, setting the stage for total relaxation before they even enter
-                                    the clinic chair.</p>
+                                <p>We familiarize the patient with the VR equipment and virtual concept, setting the stage for total relaxation before they even enter the clinic chair.</p>
                             </div>
                         </div>
-                        <div class="tl-node reveal-scale"><span class="tl-node-num">1</span></div>
-                        <div class="tl-empty"></div>
+                        <div class="vtl-node">
+                            <div class="vtl-seal reveal-scale">
+                                <span class="vtl-num">1</span>
+                            </div>
+                        </div>
+                        <div class="vtl-empty"></div>
                     </div>
 
-                    <div class="tl-item">
-                        <div class="tl-empty"></div>
-                        <div class="tl-node reveal-scale"><span class="tl-node-num">2</span></div>
-                        <div class="tl-content">
-                            <div class="tl-card reveal">
-                                <span class="tl-tag">Phase 02</span>
+                    <!-- Step 2 — RIGHT -->
+                    <div class="vtl-step">
+                        <div class="vtl-empty"></div>
+                        <div class="vtl-node">
+                            <div class="vtl-seal reveal-scale">
+                                <span class="vtl-num">2</span>
+                            </div>
+                        </div>
+                        <div class="vtl-right">
+                            <div class="vtl-card reveal">
+                                <div class="vtl-phase">Phase 02</div>
                                 <h3>Cognitive Consultation</h3>
-                                <p>Clinicians identify patient triggers and preferences. This allows for a curated
-                                    environmental selection tailored to the individual's psychological comfort zone.</p>
+                                <p>Clinicians identify patient triggers and preferences, allowing for a curated environmental selection tailored to the individual's psychological comfort zone.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tl-item">
-                        <div class="tl-content">
-                            <div class="tl-card reveal">
-                                <span class="tl-tag">Phase 03</span>
+                    <!-- Step 3 — LEFT -->
+                    <div class="vtl-step">
+                        <div class="vtl-left">
+                            <div class="vtl-card reveal">
+                                <div class="vtl-phase">Phase 03</div>
                                 <h3>Environment Selection</h3>
-                                <p>Patients choose from a library of 50+ hyper-realistic 8K environments. From
-                                    bioluminescent forests to tranquil deep-sea explorations, each world is engineered
-                                    for maximum immersion.</p>
+                                <p>Patients choose from 50+ hyper-realistic 8K environments — from bioluminescent forests to tranquil deep-sea explorations, each engineered for maximum immersion.</p>
                             </div>
                         </div>
-                        <div class="tl-node reveal-scale"><span class="tl-node-num">3</span></div>
-                        <div class="tl-empty"></div>
+                        <div class="vtl-node">
+                            <div class="vtl-seal reveal-scale">
+                                <span class="vtl-num">3</span>
+                            </div>
+                        </div>
+                        <div class="vtl-empty"></div>
                     </div>
 
-                    <div class="tl-item">
-                        <div class="tl-empty"></div>
-                        <div class="tl-node reveal-scale"><span class="tl-node-num">4</span></div>
-                        <div class="tl-content">
-                            <div class="tl-card reveal">
-                                <span class="tl-tag">Phase 04</span>
+                    <!-- Step 4 — RIGHT -->
+                    <div class="vtl-step">
+                        <div class="vtl-empty"></div>
+                        <div class="vtl-node">
+                            <div class="vtl-seal reveal-scale">
+                                <span class="vtl-num">4</span>
+                            </div>
+                        </div>
+                        <div class="vtl-right">
+                            <div class="vtl-card reveal">
+                                <div class="vtl-phase">Phase 04</div>
                                 <h3>Seamless Integration</h3>
-                                <p>Our custom hardware is fitted with surgical precision. Designed not to obstruct the
-                                    clinician's workspace, the headset creates a private sanctuary for the patient.</p>
+                                <p>Our custom hardware is fitted with surgical precision. Designed not to obstruct the clinician's workspace, the headset creates a private sanctuary for the patient.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tl-item">
-                        <div class="tl-content">
-                            <div class="tl-card reveal">
-                                <span class="tl-tag">Phase 05</span>
+                    <!-- Step 5 — LEFT -->
+                    <div class="vtl-step">
+                        <div class="vtl-left">
+                            <div class="vtl-card reveal">
+                                <div class="vtl-phase">Phase 05</div>
                                 <h3>Deep Immersion</h3>
-                                <p>As clinical sounds are replaced by spatial audio and bright lights are substituted
-                                    with serene vistas, the patient's heart rate lowers and "time compression" begins.
-                                </p>
+                                <p>Clinical sounds are replaced by spatial audio, bright lights by serene vistas. The patient's heart rate lowers and "time compression" begins — procedures feel shorter.</p>
                             </div>
                         </div>
-                        <div class="tl-node reveal-scale"><span class="tl-node-num">5</span></div>
-                        <div class="tl-empty"></div>
+                        <div class="vtl-node">
+                            <div class="vtl-seal reveal-scale">
+                                <span class="vtl-num">5</span>
+                            </div>
+                        </div>
+                        <div class="vtl-empty"></div>
                     </div>
 
-                    <div class="tl-item">
-                        <div class="tl-empty"></div>
-                        <div class="tl-node reveal-scale"><span class="tl-node-num">6</span></div>
-                        <div class="tl-content">
-                            <div class="tl-card reveal">
-                                <span class="tl-tag">Phase 06</span>
+                    <!-- Step 6 — RIGHT -->
+                    <div class="vtl-step">
+                        <div class="vtl-empty"></div>
+                        <div class="vtl-node">
+                            <div class="vtl-seal reveal-scale">
+                                <span class="vtl-num">6</span>
+                            </div>
+                        </div>
+                        <div class="vtl-right">
+                            <div class="vtl-card reveal">
+                                <div class="vtl-phase">Phase 06</div>
                                 <h3>Post-treatment Guidance</h3>
-                                <p>A gentle transition back to the physical world. Patients are provided with guided
-                                    relaxation and recovery videos to maintain their sense of calm as they complete
-                                    their visit.</p>
+                                <p>A gentle transition back to the physical world. Patients receive guided relaxation and recovery videos to maintain their sense of calm as they complete their visit.</p>
                             </div>
                         </div>
                     </div>
