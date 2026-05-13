@@ -1810,6 +1810,37 @@
             border-radius: 2px;
             margin: 0 auto 1.8rem;
         }
+
+        /* ── Mobile grid overrides ── */
+        @media (max-width: 640px) {
+            /* Features: 2 columns on mobile */
+            .features .grid-3-col {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+            .features .card {
+                padding: 1.2rem 1rem !important;
+                border-radius: 16px !important;
+            }
+            .features .card h4 {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            .features .card p {
+                font-size: 0.78rem !important;
+                line-height: 1.5 !important;
+            }
+            .features .feature-icon {
+                width: 44px !important;
+                height: 44px !important;
+                border-radius: 12px !important;
+                margin-bottom: 0.9rem !important;
+            }
+            .features .feature-icon svg {
+                width: 22px !important;
+                height: 22px !important;
+            }
+        }
     </style>
 </head>
 
@@ -1900,76 +1931,249 @@
     <!-- ======================= WHO WE ARE STRIP ======================= -->
     <div class="about-strip">
         <div class="container">
-            <!-- Using grid-4-col for 4 boxes -->
-            <div class="grid-4-col gap-lg">
+            <style>
+                /* ── Who We Are Grid ── */
+                .wwa-grid {
+                    display: grid;
+                    gap: 1.8rem;
+                    max-width: 1100px;
+                    margin: 0 auto;
+                    /* Desktop: 6 equal columns so we can do 3-1 centred */
+                    grid-template-columns: repeat(6, 1fr);
+                }
 
-                <div class="card card-bordered reveal">
-                    <div class="asc-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="4" />
-                            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                /* Row 1: 3 cards each span 2 of 6 cols */
+                .wwa-card:nth-child(1) { grid-column: 1 / 3; }
+                .wwa-card:nth-child(2) { grid-column: 3 / 5; }
+                .wwa-card:nth-child(3) { grid-column: 5 / 7; }
+
+                /* Row 2: 1 card centred — spans cols 2-5 (width of 2 cards + gap) */
+                .wwa-card:nth-child(4) { grid-column: 2 / 6; }
+
+                /* Tablet: 2 columns, 4th spans both */
+                @media (max-width: 900px) {
+                    .wwa-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                    .wwa-card:nth-child(1),
+                    .wwa-card:nth-child(2),
+                    .wwa-card:nth-child(3) { grid-column: auto; }
+                    .wwa-card:nth-child(4) { grid-column: 1 / -1; }
+                }
+
+                /* Mobile: 2 columns, 4th spans both */
+                @media (max-width: 600px) {
+                    .wwa-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 1rem;
+                    }
+                    .wwa-card:nth-child(1),
+                    .wwa-card:nth-child(2),
+                    .wwa-card:nth-child(3) { grid-column: auto; }
+                    .wwa-card:nth-child(4) { grid-column: 1 / -1; }
+                    .wwa-card { padding: 1.2rem 1rem; }
+                    .wwa-card h3 { font-size: 0.95rem; }
+                    .wwa-card p { font-size: 0.8rem; }
+                    .wwa-icon { width: 40px; height: 40px; margin-bottom: 0.8rem; }
+                    .wwa-tag { font-size: 0.62rem; margin-bottom: 0.6rem; }
+                }
+
+                .wwa-card {
+                    background: white;
+                    border: 2px solid #e0eaf8;
+                    border-radius: 20px;
+                    padding: 2rem 1.8rem;
+                    position: relative;
+                    overflow: hidden;
+                    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                                box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
+                                border-color 0.3s;
+                }
+                .wwa-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 20px 50px rgba(0,102,204,0.13);
+                    border-color: #00CCFF;
+                }
+                .wwa-card.blue  { background: linear-gradient(135deg,#0066CC,#0052a3); border-color: transparent; }
+                .wwa-card.cyan  { background: linear-gradient(135deg,#00CCFF,#0099cc); border-color: transparent; }
+
+                .wwa-icon {
+                    width: 52px; height: 52px;
+                    border-radius: 14px;
+                    display: flex; align-items: center; justify-content: center;
+                    margin-bottom: 1.2rem;
+                    transition: transform 0.3s;
+                }
+                .wwa-card:hover .wwa-icon { transform: scale(1.1) rotate(5deg); }
+                .wwa-card:not(.blue):not(.cyan) .wwa-icon {
+                    background: linear-gradient(135deg,rgba(0,102,204,0.12),rgba(0,204,255,0.1));
+                }
+                .wwa-card.blue .wwa-icon,
+                .wwa-card.cyan .wwa-icon {
+                    background: rgba(255,255,255,0.2);
+                    border: 1px solid rgba(255,255,255,0.3);
+                }
+
+                .wwa-tag {
+                    display: inline-block;
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 20px;
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    margin-bottom: 0.9rem;
+                }
+                .wwa-card:not(.blue):not(.cyan) .wwa-tag {
+                    background: rgba(0,102,204,0.1); color: #0066CC;
+                }
+                .wwa-card.blue .wwa-tag,
+                .wwa-card.cyan .wwa-tag {
+                    background: rgba(255,255,255,0.25); color: white;
+                    border: 1px solid rgba(255,255,255,0.3);
+                }
+
+                .wwa-card h3 {
+                    font-size: 1.15rem; font-weight: 700;
+                    line-height: 1.35; margin-bottom: 0.8rem;
+                    color: #0A2558;
+                }
+                .wwa-card.blue h3,
+                .wwa-card.cyan h3 { color: white; }
+
+                .wwa-card p {
+                    font-size: 0.88rem; line-height: 1.7;
+                    color: #5E6E85; margin-bottom: 0.6rem;
+                }
+                .wwa-card.blue p,
+                .wwa-card.cyan p { color: rgba(255,255,255,0.88); }
+
+                .wwa-list {
+                    list-style: none; padding: 0; margin: 0.5rem 0 1.2rem;
+                }
+                .wwa-list li {
+                    font-size: 0.83rem; line-height: 1.6;
+                    padding: 0.35rem 0 0.35rem 1.6rem;
+                    position: relative;
+                    color: rgba(255,255,255,0.85);
+                }
+                .wwa-list li::before {
+                    content: '';
+                    position: absolute; left: 0; top: 0.65rem;
+                    width: 14px; height: 14px;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300CCFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+                    background-size: contain; background-repeat: no-repeat;
+                }
+                .wwa-card.cyan .wwa-list li::before {
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+                }
+
+                .wwa-link {
+                    display: inline-flex; align-items: center; gap: 0.4rem;
+                    font-size: 0.85rem; font-weight: 600;
+                    text-decoration: none; transition: all 0.3s;
+                    color: #0066CC;
+                }
+                .wwa-link:hover { gap: 0.7rem; }
+                .wwa-card.blue .wwa-link,
+                .wwa-card.cyan .wwa-link { color: white; }
+
+                .wwa-btn {
+                    display: inline-block;
+                    padding: 0.75rem 1.6rem;
+                    border-radius: 10px;
+                    font-size: 0.85rem; font-weight: 600;
+                    text-decoration: none; transition: all 0.3s;
+                    margin-top: 0.5rem;
+                }
+                .wwa-btn-white {
+                    background: white; color: #0066CC;
+                    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+                }
+                .wwa-btn-white:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.25); transform: translateY(-2px); }
+                .wwa-btn-glass {
+                    background: rgba(255,255,255,0.2);
+                    color: white; border: 2px solid rgba(255,255,255,0.4);
+                    backdrop-filter: blur(8px);
+                }
+                .wwa-btn-glass:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+
+                /* Decorative orb */
+                .wwa-orb {
+                    position: absolute; border-radius: 50%; pointer-events: none;
+                }
+            </style>
+
+            <div class="wwa-grid">
+
+                <!-- Card 1: Who We Are (white) -->
+                <div class="wwa-card reveal">
+                    <div class="wwa-orb" style="top:-20px;right:-20px;width:90px;height:90px;background:radial-gradient(circle,rgba(0,102,204,0.08) 0%,transparent 70%);"></div>
+                    <div class="wwa-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
                         </svg>
                     </div>
-                    <div class="asc-tag">Who We Are</div>
+                    <div class="wwa-tag">Who We Are</div>
                     <h3>A UK health-tech company on a mission</h3>
-                    <p>Dentaverse was founded by dental professionals who experienced patient anxiety first-hand.</p>
+                    <p>Founded by dental professionals who experienced patient anxiety first-hand.</p>
                     <p class="desktop-only">We build premium VR therapy systems that transform how clinics deliver care.</p>
-                    <a href="pages/about.html" class="asc-link">Our story →</a>
+                    <a href="pages/about.html" class="wwa-link">Our story <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
 
-                <div class="card card-bordered offer-card reveal" style="transition-delay:.1s">
-                    <div class="asc-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="7" width="20" height="13" rx="2" />
-                            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                            <line x1="12" y1="12" x2="12" y2="16" />
-                            <line x1="10" y1="14" x2="14" y2="14" />
+                <!-- Card 2: What We Do (blue) -->
+                <div class="wwa-card blue reveal" style="transition-delay:.1s">
+                    <div class="wwa-orb" style="top:-30px;right:-30px;width:130px;height:130px;background:radial-gradient(circle,rgba(255,255,255,0.15) 0%,transparent 70%);"></div>
+                    <div class="wwa-orb" style="bottom:-40px;left:-40px;width:150px;height:150px;background:radial-gradient(circle,rgba(0,204,255,0.2) 0%,transparent 70%);"></div>
+                    <div class="wwa-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
                         </svg>
                     </div>
-                    <div class="asc-tag">What We Do</div>
+                    <div class="wwa-tag">What We Do</div>
                     <h3>VR headsets that make procedures feel effortless</h3>
-                    <p>We supply clinics with our VR headsets, 50+ immersive environments, and a clinical management dashboard.</p>
-                    <ul class="offer-list desktop-only">
+                    <p>We supply clinics with VR headsets, 50+ immersive environments, and a clinical dashboard.</p>
+                    <ul class="wwa-list desktop-only">
                         <li>Premium VR hardware ready for chairside use</li>
                         <li>50+ calming worlds with regular content updates</li>
                         <li>Clinic dashboard for session and patient controls</li>
                     </ul>
-                    <a href="pages/products.html" class="asc-link offer-cta offer-cta-primary">See Products</a>
+                    <a href="pages/products.html" class="wwa-btn wwa-btn-white">See Products</a>
                 </div>
 
-                <div class="card card-bordered offer-card reveal" style="transition-delay:.2s">
-                    <div class="asc-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                            <polyline points="9 22 9 12 15 12 15 22" />
+                <!-- Card 3: Who It's For (cyan) -->
+                <div class="wwa-card cyan reveal" style="transition-delay:.2s">
+                    <div class="wwa-orb" style="top:-30px;left:-30px;width:130px;height:130px;background:radial-gradient(circle,rgba(255,255,255,0.2) 0%,transparent 70%);"></div>
+                    <div class="wwa-orb" style="bottom:-50px;right:-50px;width:170px;height:170px;background:radial-gradient(circle,rgba(0,102,204,0.3) 0%,transparent 70%);"></div>
+                    <div class="wwa-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
                         </svg>
                     </div>
-                    <div class="asc-tag">Who It's For</div>
+                    <div class="wwa-tag">Who It's For</div>
                     <h3>Independent practices to large dental groups</h3>
                     <p>Whether you have one chair or fifty, our plans scale with you.</p>
-                    <ul class="offer-list desktop-only">
+                    <ul class="wwa-list desktop-only">
                         <li>Starter setup for single-chair clinics</li>
                         <li>Growth plans for multi-location practices</li>
                         <li>Enterprise onboarding and support options</li>
                     </ul>
-                    <a href="pages/contact.html" class="asc-link offer-cta offer-cta-outline">View Subscription Options</a>
+                    <a href="pages/contact.html" class="wwa-btn wwa-btn-glass">View Options</a>
                 </div>
 
-                <div class="card card-bordered reveal" style="transition-delay:.3s">
-                    <div class="asc-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="1.7"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <!-- Card 4: Why Us (white, centred row 2) -->
+                <div class="wwa-card reveal" style="transition-delay:.3s">
+                    <div class="wwa-orb" style="bottom:-20px;left:-20px;width:90px;height:90px;background:radial-gradient(circle,rgba(0,204,255,0.1) 0%,transparent 70%);"></div>
+                    <div class="wwa-icon" style="background:linear-gradient(135deg,rgba(0,204,255,0.15),rgba(0,102,204,0.1));">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00CCFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
                     </div>
-                    <div class="asc-tag">Why Us</div>
+                    <div class="wwa-tag" style="background:rgba(0,204,255,0.12);color:#00CCFF;">Why Us</div>
                     <h3>UK medical certified, clinician-founded</h3>
-                    <p>Built by dental professionals who've sat in the chair themselves.</p>
-                    <p class="desktop-only">Every headset meets UK medical standards with lifetime warranty and dedicated technical support.</p>
-                    <a href="pages/about.html" class="asc-link">Meet our team →</a>
+                    <p>Built by dental professionals who've sat in the chair themselves. Every headset meets UK medical standards.</p>
+                    <p class="desktop-only">Lifetime warranty and dedicated technical support included with every plan.</p>
+                    <a href="pages/about.html" class="wwa-link" style="color:#00CCFF;">Meet our team <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
 
             </div>
@@ -1986,72 +2190,84 @@
                 <p class="section-subtitle reveal">We combine clinical-grade VR hardware with a bespoke patient
                     experience platform that integrates seamlessly into your workflow.</p>
             </div>
-            <!-- Using grid-3-col for 6 features (2 rows of 3) -->
-            <div class="grid-3-col gap-lg">
-                <div class="card card-bordered reveal">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" stroke-width="1.5">
+            <!-- Beautiful 3-column grid with enhanced styling -->
+            <div class="grid-3-col" style="max-width: 1200px; margin: 0 auto; gap: 2rem; --mobile-cols: 2;">
+                
+                <div class="card reveal" style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div class="feature-icon" style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC" fill="none">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
                     </div>
-                    <h4>Total Relaxation</h4>
-                    <p>Completely block out clinical sights, bright lights, and intimidating sounds.</p>
-                    <p class="desktop-only">Immersive VR environments create a calming sanctuary during dental procedures.</p>
+                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Total Relaxation</h4>
+                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Completely block out clinical sights, bright lights, and intimidating sounds.</p>
+                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Immersive VR environments create a calming sanctuary during dental procedures.</p>
                 </div>
-                <div class="card card-bordered reveal" style="transition-delay:.08s">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" stroke-width="1.5">
+
+                <div class="card reveal" style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.08s">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div class="feature-icon" style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF" fill="none">
                             <rect x="2" y="7" width="20" height="10" rx="2" />
                             <path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2" />
                             <line x1="8" y1="12" x2="16" y2="12" />
                         </svg>
                     </div>
-                    <h4>Personalised Care</h4>
-                    <p>Curated experiences tailored to each patient's age and interests.</p>
-                    <p class="desktop-only">From ocean adventures to forest walks, choose the perfect environment for every patient.</p>
+                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Personalised Care</h4>
+                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Curated experiences tailored to each patient's age and interests.</p>
+                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">From ocean adventures to forest walks, choose the perfect environment for every patient.</p>
                 </div>
-                <div class="card card-bordered reveal" style="transition-delay:.16s">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" stroke-width="1.5">
+
+                <div class="card reveal" style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.16s">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div class="feature-icon" style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC" fill="none">
                             <circle cx="12" cy="12" r="10" />
                             <path d="M12 8v4l3 3" />
                         </svg>
                     </div>
-                    <h4>Active Distraction</h4>
-                    <p>Engaging therapeutic content that keeps the mind comfortably focused.</p>
-                    <p class="desktop-only">Interactive experiences actively distract from the dental procedure.</p>
+                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Active Distraction</h4>
+                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Engaging therapeutic content that keeps the mind comfortably focused.</p>
+                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Interactive experiences actively distract from the dental procedure.</p>
                 </div>
-                <div class="card card-bordered reveal" style="transition-delay:.04s">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" stroke-width="1.5">
+
+                <div class="card reveal" style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.04s">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div class="feature-icon" style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF" fill="none">
                             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                         </svg>
                     </div>
-                    <h4>Real-Time Monitoring</h4>
-                    <p>Live biometric awareness allows clinicians to adapt the VR experience.</p>
-                    <p class="desktop-only">Monitor patient comfort levels and adjust settings in real-time for optimal care.</p>
+                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Real-Time Monitoring</h4>
+                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Live biometric awareness allows clinicians to adapt the VR experience.</p>
+                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Monitor patient comfort levels and adjust settings in real-time for optimal care.</p>
                 </div>
-                <div class="card card-bordered reveal" style="transition-delay:.12s">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" stroke-width="1.5">
+
+                <div class="card reveal" style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.12s">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div class="feature-icon" style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC" fill="none">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
-                    <h4>Extensive Library</h4>
-                    <p>Over 50+ premium therapeutic environments curated by experts.</p>
-                    <p class="desktop-only">Regularly updated content library designed by psychologists and relaxation specialists.</p>
+                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Extensive Library</h4>
+                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Over 50+ premium therapeutic environments curated by experts.</p>
+                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Regularly updated content library designed by psychologists and relaxation specialists.</p>
                 </div>
-                <div class="card card-bordered reveal" style="transition-delay:.20s">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" stroke-width="1.5">
-                            <path
-                                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+
+                <div class="card reveal" style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.20s">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div class="feature-icon" style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF" fill="none">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                         </svg>
                     </div>
-                    <h4>Patient Feedback</h4>
-                    <p>Post-session wellness reports empower clinics with insight.</p>
-                    <p class="desktop-only">Continuously improve patient experience with detailed feedback and analytics.</p>
+                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Patient Feedback</h4>
+                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Post-session wellness reports empower clinics with insight.</p>
+                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Continuously improve patient experience with detailed feedback and analytics.</p>
                 </div>
+
             </div>
         </div>
     </section>

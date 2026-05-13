@@ -1561,3 +1561,708 @@ p, h1, h2, h3, h4, h5, h6, span, a {
         display: block !important;
     }
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   ENHANCED GRID HOVER EFFECTS & ANIMATIONS
+   ══════════════════════════════════════════════════════════ */
+
+/* Beautiful hover effects for grid boxes */
+.grid-box:hover,
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 102, 204, 0.15);
+    border-color: var(--brand-cyan, #00CCFF);
+}
+
+/* Smooth transitions */
+.grid-box,
+.card,
+.bento-box {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Icon hover animations */
+.feature-icon,
+.asc-icon {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-box:hover .feature-icon,
+.card:hover .feature-icon,
+.grid-box:hover .asc-icon,
+.card:hover .asc-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Link hover effects */
+.asc-link:hover {
+    transform: translateX(5px);
+    color: var(--brand-cyan, #00CCFF) !important;
+}
+
+/* Button hover effects */
+.offer-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+}
+
+/* Gradient animation on hover for colored boxes */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.grid-box:hover[style*="gradient"],
+.card:hover[style*="gradient"] {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* Subtle scale animation for decorative circles */
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Mobile: Reduce hover effects */
+@media (max-width: 768px) {
+    .grid-box:hover,
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0, 102, 204, 0.12);
+    }
+    
+    .grid-box:hover .feature-icon,
+    .card:hover .feature-icon,
+    .grid-box:hover .asc-icon,
+    .card:hover .asc-icon {
+        transform: scale(1.05);
+    }
+}
+
+/* Touch devices: Tap feedback */
+@media (hover: none) and (pointer: coarse) {
+    .grid-box:active,
+    .card:active {
+        transform: scale(0.98);
+    }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   DENTAVERSE — GLOBAL MOBILE POLISH
+   Clean, minimal, easy-to-read on all phones
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+
+    /* ── TYPOGRAPHY ─────────────────────────────────────── */
+    h1 { font-size: 1.75rem !important; line-height: 1.2 !important; }
+    h2 { font-size: 1.4rem  !important; line-height: 1.25 !important; }
+    h3 { font-size: 1.1rem  !important; line-height: 1.3 !important; }
+    h4 { font-size: 0.95rem !important; line-height: 1.3 !important; }
+
+    .section-title    { font-size: 1.5rem !important; margin-bottom: 0.6rem !important; }
+    .section-subtitle { font-size: 0.85rem !important; margin-bottom: 1.5rem !important; line-height: 1.6 !important; }
+    .section-eyebrow  { font-size: 0.68rem !important; }
+
+    /* ── LIMIT ALL BODY TEXT TO 2 LINES ON MOBILE ───────── */
+    /* Cards, grids, strips — keep it scannable */
+    .wwa-card p,
+    .feature-card p,
+    .card p,
+    .grid-box p,
+    .bento-box p,
+    .about-strip-card p,
+    .mv-card p,
+    .why-card p,
+    .glass-card p,
+    .tl-card p,
+    .post-card p,
+    .fact-card p,
+    .step-content p {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        font-size: 0.8rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Hide secondary paragraphs in cards entirely */
+    .wwa-card p + p,
+    .card p + p,
+    .grid-box p + p,
+    .mv-card p + p,
+    .why-card p + p,
+    .tl-card p + p {
+        display: none !important;
+    }
+
+    /* Headings inside cards — compact */
+    .wwa-card h3,
+    .card h4,
+    .grid-box h3,
+    .grid-box h4,
+    .bento-box h3,
+    .bento-box h4,
+    .mv-card h3,
+    .why-card h3,
+    .tl-card h3,
+    .feature-card h4 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.4rem !important;
+        line-height: 1.25 !important;
+    }
+
+    /* ── CARD PADDING & SPACING ─────────────────────────── */
+    .wwa-card,
+    .card,
+    .grid-box,
+    .bento-box,
+    .mv-card,
+    .why-card,
+    .glass-card,
+    .glass-card-gold,
+    .tl-card,
+    .feature-card,
+    .about-strip-card {
+        padding: 1rem 0.9rem !important;
+        border-radius: 14px !important;
+    }
+
+    /* ── GRID GAPS ──────────────────────────────────────── */
+    .wwa-grid,
+    .grid-container,
+    .grid-3-col,
+    .grid-4-col,
+    .grid-auto,
+    .bento-wrapper,
+    .mv-grid,
+    .why-grid,
+    .features-grid,
+    .features .grid-3-col {
+        gap: 0.75rem !important;
+        padding: 0 !important;
+    }
+
+    /* ── ICONS — SMALLER ON MOBILE ──────────────────────── */
+    .wwa-icon,
+    .feature-icon,
+    .mv-icon,
+    .asc-icon {
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 10px !important;
+        margin-bottom: 0.7rem !important;
+    }
+    .wwa-icon svg,
+    .feature-icon svg,
+    .mv-icon svg,
+    .asc-icon svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* ── TAGS / BADGES ──────────────────────────────────── */
+    .wwa-tag,
+    .asc-tag,
+    .section-eyebrow,
+    .eyebrow {
+        font-size: 0.62rem !important;
+        padding: 0.25rem 0.6rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* ── HIDE LISTS INSIDE CARDS ON MOBILE ──────────────── */
+    .wwa-list,
+    .offer-list,
+    .pc-features,
+    .hw-features {
+        display: none !important;
+    }
+
+    /* ── BUTTONS ────────────────────────────────────────── */
+    .wwa-btn,
+    .btn,
+    .dv-btn-book {
+        padding: 0.65rem 1.2rem !important;
+        font-size: 0.8rem !important;
+        border-radius: 10px !important;
+    }
+
+    /* ── SECTION PADDING ────────────────────────────────── */
+    section,
+    .about-strip,
+    .team-sec,
+    .story-sec,
+    .mv-sec,
+    .features,
+    .how-it-works,
+    .stats,
+    .testimonials,
+    .newsletter {
+        padding: 2.5rem 0 !important;
+    }
+
+    /* ── HERO SECTION ───────────────────────────────────── */
+    .hero {
+        padding-top: calc(var(--nav-h, 60px) + 1.5rem) !important;
+        padding-bottom: 2rem !important;
+        min-height: auto !important;
+    }
+    .hero h1 {
+        font-size: 1.9rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    .hero-desc {
+        font-size: 0.88rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.5rem !important;
+        /* Limit hero description to 3 lines */
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .hero-badge {
+        font-size: 0.68rem !important;
+        padding: 4px 12px !important;
+        margin-bottom: 1rem !important;
+    }
+    .hero-actions {
+        gap: 0.6rem !important;
+    }
+    .hero-actions .btn {
+        padding: 0.75rem 1.4rem !important;
+        font-size: 0.82rem !important;
+    }
+
+    /* ── PAGE HEROES (about, products, etc.) ────────────── */
+    .about-hero,
+    .page-hero,
+    .products-hero,
+    .blog-hero,
+    .contact-hero {
+        padding: calc(var(--nav-h, 60px) + 1.5rem) 0 2rem !important;
+    }
+    .about-hero h1,
+    .page-hero h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    .about-hero p,
+    .page-hero p {
+        font-size: 0.85rem !important;
+        line-height: 1.6 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* ── STATS BAR ──────────────────────────────────────── */
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+        border-radius: 16px !important;
+    }
+    .hero-stat {
+        padding: 1rem 0.75rem !important;
+    }
+    .stat-num {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .stat-label {
+        font-size: 0.6rem !important;
+    }
+
+    /* ── WHO WE ARE STRIP (index.html) ──────────────────── */
+    .wwa-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    .wwa-card:nth-child(1),
+    .wwa-card:nth-child(2),
+    .wwa-card:nth-child(3) { grid-column: auto !important; }
+    .wwa-card:nth-child(4) { grid-column: 1 / -1 !important; }
+
+    /* ── FEATURES GRID (index.html) ─────────────────────── */
+    .features .grid-3-col {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+
+    /* ── HOW IT WORKS STEPS ─────────────────────────────── */
+    .steps-wrapper {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    .step-item {
+        gap: 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    .step-num {
+        font-size: 1rem !important;
+        width: 36px !important;
+        height: 36px !important;
+    }
+    .step-content h4 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    /* ── STORY SECTION (about.html) ─────────────────────── */
+    .story-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    .story-visual {
+        padding: 1.5rem !important;
+        border-radius: 20px !important;
+    }
+    .story-quote {
+        font-size: 1.1rem !important;
+    }
+    .story-text p {
+        font-size: 0.85rem !important;
+        line-height: 1.65 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* ── MISSION / VISION (about.html) ──────────────────── */
+    .mv-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+    .mv-card {
+        padding: 1.2rem 1rem !important;
+        border-radius: 16px !important;
+    }
+    .mv-card h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .mv-num {
+        font-size: 4rem !important;
+    }
+
+    /* ── TEAM GRID (about.html) ─────────────────────────── */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    .team-card:nth-child(1),
+    .team-card:nth-child(2),
+    .team-card:nth-child(3),
+    .team-card:nth-child(4) { grid-column: auto !important; }
+    .team-card:nth-child(5) {
+        grid-column: 1 / -1 !important;
+        max-width: 220px !important;
+        margin: 0 auto !important;
+    }
+    .team-card {
+        padding: 1rem 0.6rem !important;
+        border-radius: 18px !important;
+    }
+    .tm-avatar-wrap {
+        width: 64px !important;
+        height: 64px !important;
+        margin-bottom: 0.6rem !important;
+    }
+    .tm-name {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .tm-role {
+        font-size: 0.62rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .tm-qual {
+        font-size: 0.58rem !important;
+        line-height: 1.3 !important;
+    }
+    .tm-number {
+        font-size: 0.65rem !important;
+    }
+    .tm-click-hint {
+        display: none !important;
+    }
+
+    /* ── PRODUCTS / PRICING (products.html) ─────────────── */
+    .pricing-grid,
+    .pc-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+    .pc {
+        padding: 1.2rem 1rem !important;
+        border-radius: 16px !important;
+    }
+    .pc h3 {
+        font-size: 1rem !important;
+    }
+    .pc-price {
+        font-size: 1.8rem !important;
+    }
+    /* Show only first 3 features on mobile */
+    .pc ul li:nth-child(n+4) {
+        display: none !important;
+    }
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    .hw-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    /* ── BLOG GRID (blog.html) ──────────────────────────── */
+    .blog-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+    .featured-card {
+        grid-template-columns: 1fr !important;
+    }
+    .post-card {
+        border-radius: 14px !important;
+    }
+    .post-card h3 {
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .post-card p,
+    .post-excerpt {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        font-size: 0.78rem !important;
+    }
+    .cat-bar {
+        gap: 0.4rem !important;
+        padding: 0 !important;
+    }
+    .cat-pill {
+        font-size: 0.72rem !important;
+        padding: 0.35rem 0.8rem !important;
+    }
+
+    /* ── CONTACT PAGE (contact.html) ────────────────────── */
+    .contact-grid,
+    .cg {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .contact-highlights {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+    }
+    .highlight-chip {
+        padding: 0.7rem 0.8rem !important;
+        border-radius: 12px !important;
+    }
+    .highlight-chip p,
+    .highlight-chip span {
+        font-size: 0.75rem !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 1 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* ── NEWSLETTER ─────────────────────────────────────── */
+    .news-box,
+    .newsletter-box {
+        padding: 1.5rem 1rem !important;
+        border-radius: 16px !important;
+    }
+    .news-box h2,
+    .newsletter-box h2 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .news-box p,
+    .newsletter-box p {
+        font-size: 0.82rem !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .news-form,
+    .newsletter-form {
+        flex-direction: column !important;
+        gap: 0.6rem !important;
+    }
+    .news-form input,
+    .newsletter-form input {
+        width: 100% !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    .dv-footer {
+        padding: 2rem 1rem 1.5rem !important;
+    }
+    .dv-footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem !important;
+        text-align: center !important;
+    }
+    .dv-footer-logo {
+        justify-content: center !important;
+        font-size: 1.1rem !important;
+    }
+    .dv-footer-about p {
+        font-size: 0.8rem !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .dv-footer-col h5 {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+    .dv-footer-col a {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .dv-footer-social {
+        justify-content: center !important;
+        gap: 0.6rem !important;
+    }
+    .dv-footer-social a {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 0.9rem !important;
+    }
+    .dv-footer-bottom {
+        font-size: 0.72rem !important;
+        flex-direction: column !important;
+        gap: 0.4rem !important;
+        text-align: center !important;
+    }
+
+    /* ── TESTIMONIALS ───────────────────────────────────── */
+    .testi-panel,
+    .testimonial-card {
+        padding: 1.2rem 1rem !important;
+        border-radius: 14px !important;
+    }
+    .testi-text,
+    .testimonial-text {
+        font-size: 0.85rem !important;
+        line-height: 1.6 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 4 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .testi-name,
+    .testimonial-name {
+        font-size: 0.85rem !important;
+    }
+    .testi-role,
+    .testimonial-role {
+        font-size: 0.72rem !important;
+    }
+
+    /* ── TIMELINE (how-it-works.html) ───────────────────── */
+    .timeline {
+        padding-left: 1.2rem !important;
+    }
+    .tl-item {
+        margin-bottom: 1.2rem !important;
+    }
+    .tl-card {
+        padding: 1rem 0.9rem !important;
+        border-radius: 14px !important;
+    }
+    .tl-card h3 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    /* ── GENERAL CONTAINER PADDING ──────────────────────── */
+    .container {
+        padding: 0 1rem !important;
+    }
+
+    /* ── DIVIDERS & DECORATIVE ELEMENTS ─────────────────── */
+    .divider-brand {
+        margin: 0 auto 1rem !important;
+    }
+    .section-header {
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* ── HIDE DECORATIVE ELEMENTS ON MOBILE ─────────────── */
+    .hero-float-card,
+    .story-badge,
+    .how-img-badge,
+    .mv-num {
+        display: none !important;
+    }
+
+    /* ── HOW IT WORKS IMAGE ─────────────────────────────── */
+    .how-img-wrap {
+        border-radius: 16px !important;
+        overflow: hidden !important;
+    }
+    .how-img-wrap img {
+        border-radius: 16px !important;
+    }
+
+}
+
+/* ── EXTRA SMALL PHONES (≤374px) ────────────────────────── */
+@media (max-width: 374px) {
+    h1 { font-size: 1.5rem !important; }
+    h2 { font-size: 1.25rem !important; }
+    h3 { font-size: 0.95rem !important; }
+
+    .wwa-card,
+    .card,
+    .grid-box,
+    .team-card,
+    .mv-card {
+        padding: 0.8rem 0.7rem !important;
+    }
+
+    .wwa-icon,
+    .feature-icon,
+    .mv-icon {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .tm-avatar-wrap {
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem !important;
+    }
+
+    .stat-num {
+        font-size: 1.4rem !important;
+    }
+}

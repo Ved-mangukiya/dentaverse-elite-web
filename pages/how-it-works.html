@@ -339,6 +339,89 @@
             margin-bottom: 2.5rem;
             font-size: 1.1rem;
         }
+
+        /* ── Mobile Overrides ── */
+        @media (max-width: 640px) {
+            .page-hero {
+                padding: calc(var(--nav-h, 60px) + 1.5rem) 0 2rem;
+            }
+            .page-hero h1 { font-size: 1.8rem !important; }
+            .page-hero-desc { font-size: 0.88rem !important; }
+
+            .timeline-section { padding: 1.5rem 0 3rem; }
+            .timeline { margin-top: 1.5rem; }
+            .timeline::before { left: 20px; }
+
+            .tl-item {
+                grid-template-columns: 44px 1fr !important;
+                gap: 0 !important;
+                margin-bottom: 1.5rem !important;
+            }
+            .tl-node {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 12px !important;
+            }
+            .tl-node-num { font-size: 0.95rem !important; }
+            .tl-card {
+                padding: 1rem 0.9rem !important;
+                border-radius: 16px !important;
+                margin-left: 0.6rem !important;
+            }
+            .tl-card h3 { font-size: 0.95rem !important; margin-bottom: 0.4rem !important; }
+            .tl-tag { font-size: 0.65rem !important; margin-bottom: 0.3rem !important; }
+            .tl-card p {
+                font-size: 0.78rem !important;
+                line-height: 1.5 !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+            }
+            .tl-empty { display: none !important; }
+
+            .science-section {
+                padding: 2.5rem 0 !important;
+                border-radius: 24px 24px 0 0 !important;
+            }
+            .science-text h2 { font-size: 1.4rem !important; }
+            .science-text p {
+                font-size: 0.82rem !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 3 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+            }
+            .fact-card {
+                padding: 1rem !important;
+                gap: 0.8rem !important;
+                border-radius: 14px !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .fact-icon {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 10px !important;
+                flex-shrink: 0 !important;
+            }
+            .fact-icon svg { width: 20px !important; height: 20px !important; }
+            .fact-body h4 { font-size: 0.9rem !important; margin-bottom: 0.3rem !important; }
+            .fact-body p {
+                font-size: 0.78rem !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+            }
+
+            .cta-section { padding: 2rem 0 !important; }
+            .cta-box {
+                padding: 2.5rem 1.5rem !important;
+                border-radius: 24px !important;
+            }
+            .cta-box h2 { font-size: 1.5rem !important; margin-bottom: 0.8rem !important; }
+            .cta-box p { font-size: 0.85rem !important; margin-bottom: 1.5rem !important; }
+        }
     </style>
 </head>
 
@@ -468,14 +551,46 @@
             .segments-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                gap: 1.2rem;
                 margin-top: 3rem;
                 perspective: 1200px;
             }
 
             @media(max-width: 640px) {
                 .segments-grid {
-                    grid-template-columns: 1fr;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.8rem;
+                }
+                .segments-section {
+                    border-radius: 24px;
+                    margin: 1rem 0.5rem;
+                    padding: 2rem 0;
+                }
+                .segment-card {
+                    padding: 1.2rem 1rem !important;
+                    border-radius: 16px !important;
+                }
+                .segment-card h3 {
+                    font-size: 0.9rem !important;
+                    margin-bottom: 0.4rem !important;
+                }
+                .segment-card p {
+                    font-size: 0.75rem !important;
+                    line-height: 1.5 !important;
+                    display: -webkit-box !important;
+                    -webkit-line-clamp: 2 !important;
+                    -webkit-box-orient: vertical !important;
+                    overflow: hidden !important;
+                }
+                .segment-icon {
+                    width: 40px !important;
+                    height: 40px !important;
+                    border-radius: 10px !important;
+                    margin-bottom: 0.8rem !important;
+                }
+                .segment-icon svg {
+                    width: 20px !important;
+                    height: 20px !important;
                 }
             }
 
