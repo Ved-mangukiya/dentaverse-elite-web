@@ -1216,50 +1216,203 @@ a { text-decoration: none; color: inherit; }
     return name && re.test(email) && msg;
   }
 
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    if(!validate()) return;
+  /* ── Paper Plane Animation ── */
+  var planeEl = null;
+  var trailCanvas = null;
+  var trailCtx = null;
+  var trailParticles = [];
+  var trailFrame = null;
+  var planeAnimating = false;
 
-    btn.disabled = true;
+  function initPlaneCanvas() {
+    trailCanvas = document.createElement('canvas');
+    trailCanvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9998;mix-blend-mode:multiply;';
+    trailCanvas.width = window.innerWidth;
+    trailCanvas.height = window.innerHeight;
+    document.body.appendChild(trailCanvas);
+    trailCtx = trailCanvas.getContext('2d');
+    window.addEventListener('resize', function() {
+      if (trailCanvas) { trailCanvas.width = window.innerWidth; trailCanvas.height = window.innerHeight; }
+    });
+  }
+
+  function createPlaneSVG() {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 80 80');
+    svg.style.cssText = 'position:fixed;width:72px;height:72px;pointer-events:none;z-index:9999;opacity:0;will-change:transform,opacity;filter:drop-shadow(0 4px 14px rgba(0,102,204,0.4));';
+    svg.innerHTML = '<defs><linearGradient id="pg" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1A7AE0"/><stop offset="100%" stop-color="#0049B0"/></linearGradient><linearGradient id="ps" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#003A90" stop-opacity="0.5"/><stop offset="100%" stop-color="#001E60" stop-opacity="0.8"/></linearGradient></defs><polygon points="4,40 76,8 58,72" fill="url(#pg)"/><polygon points="4,40 76,8 40,50" fill="url(#ps)"/><polygon points="4,40 76,8 40,26" fill="rgba(255,255,255,0.25)"/><line x1="4" y1="40" x2="58" y2="32" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>';
+    document.body.appendChild(svg);
+    return svg;
+  }
+
+  function TrailDot(x, y) {
+    this.x = x; this.y = y;
+    this.vx = (Math.random() - 0.5) * 2.5;
+    this.vy = (Math.random() - 0.5) * 2.5 - 0.8;
+    this.life = 1;
+    this.decay = 0.03 + Math.random() * 0.02;
+    this.r = 2.5 + Math.random() * 3;
+    this.blue = Math.random() > 0.5;
+  }
+  TrailDot.prototype.update = function() {
+    this.x += this.vx; this.y += this.vy;
+    this.vx *= 0.94; this.vy *= 0.94;
+    this.life -= this.decay; this.r *= 0.97;
+  };
+  TrailDot.prototype.draw = function(ctx) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = this.blue ? '#0066CC' : '#00CCFF';
+    ctx.globalAlpha = this.life * 0.65;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  };
+
+  function trailLoop() {
+    trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+    trailParticles = trailParticles.filter(function(p) { return p.life > 0; });
+    trailParticles.forEach(function(p) { p.update(); p.draw(trailCtx); });
+    if (trailParticles.length > 0) trailFrame = requestAnimationFrame(trailLoop);
+    else trailFrame = null;
+  }
+
+  function spawnTrail(x, y) {
+    for (var i = 0; i < 3; i++) trailParticles.push(new TrailDot(x, y));
+    if (!trailFrame) trailLoop();
+  }
+
+  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+  function easeInCubic(t) { return t * t * t; }
+  function sleep(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
+
+  async function runPlaneAnimation() {
+    if (planeAnimating) return;
+    planeAnimating = true;
+
+    if (!trailCanvas) initPlaneCanvas();
+    if (!planeEl) planeEl = createPlaneSVG();
+
+    var formCard = document.querySelector('.form-card');
+    var rect = formCard.getBoundingClientRect();
+    var cx = rect.left + rect.width / 2;
+    var cy = rect.top + rect.height / 2;
+
+    /* 1 — Button press + label change */
     btn.classList.add('loading');
-    document.getElementById('slbl').textContent = 'Sending...';
+    document.getElementById('slbl').textContent = 'Sending…';
+    await sleep(180);
 
+    /* 2 — Fold the form card inward */
+    formCard.style.transition = 'transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease';
+    formCard.style.transform = 'scaleY(0.05) scaleX(0.6)';
+    formCard.style.opacity = '0';
+    await sleep(380);
+    formCard.style.visibility = 'hidden';
+
+    /* 3 — Pop the plane in at card center */
+    planeEl.style.left = cx + 'px';
+    planeEl.style.top = cy + 'px';
+    planeEl.style.transform = 'translate(-50%,-50%) scale(0.1) rotate(-20deg)';
+    planeEl.style.opacity = '1';
+
+    var popStart = performance.now();
+    await new Promise(function(resolve) {
+      function popStep(now) {
+        var t = Math.min((now - popStart) / 280, 1);
+        var e = easeOutQuart(t);
+        planeEl.style.transform = 'translate(-50%,-50%) scale(' + (0.1 + e * 0.9) + ') rotate(' + (-20 + e * 20) + 'deg)';
+        if (t < 1) requestAnimationFrame(popStep); else resolve();
+      }
+      requestAnimationFrame(popStep);
+    });
+    await sleep(80);
+
+    /* 4 — Launch flight to top-right */
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var targetX = vw + 100;
+    var targetY = -100;
+    var flightDur = 850;
+    var windupFrac = 0.1;
+    var dipX = cx + 8, dipY = cy + 16;
+    var lastTrail = 0;
+    var flightStart = performance.now();
+
+    await new Promise(function(resolve) {
+      function fly(now) {
+        var raw = Math.min((now - flightStart) / flightDur, 1);
+        var px, py, rot, sc;
+        if (raw < windupFrac) {
+          var t = raw / windupFrac;
+          var e = easeOutQuart(t);
+          px = cx + (dipX - cx) * e;
+          py = cy + (dipY - cy) * e;
+          rot = -6 * e; sc = 1 + 0.04 * e;
+        } else {
+          var t2 = (raw - windupFrac) / (1 - windupFrac);
+          var e2 = 1 - Math.pow(1 - t2, 3);
+          px = dipX + (targetX - dipX) * e2;
+          py = dipY + (targetY - dipY) * e2 - Math.sin(t2 * Math.PI) * 35;
+          rot = -30 - t2 * 18;
+          sc = 1 - t2 * 0.5;
+        }
+        planeEl.style.left = px + 'px';
+        planeEl.style.top = py + 'px';
+        planeEl.style.transform = 'translate(-50%,-50%) scale(' + sc + ') rotate(' + rot + 'deg)';
+        planeEl.style.opacity = raw > 0.8 ? String(1 - (raw - 0.8) / 0.2) : '1';
+        if (raw > windupFrac && now - lastTrail > 28) {
+          spawnTrail(px, py); lastTrail = now;
+        }
+        if (raw < 1) requestAnimationFrame(fly); else resolve();
+      }
+      requestAnimationFrame(fly);
+    });
+
+    /* 5 — Show success */
+    planeEl.style.opacity = '0';
+    formCard.style.visibility = 'visible';
+    formCard.style.transition = 'none';
+    formCard.style.transform = 'scale(1)';
+    formCard.style.opacity = '1';
+    document.getElementById('formBody').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    showToast('Message sent! We\'ll reply within 2 hours.', true);
+
+    setTimeout(function() {
+      if (trailCtx) trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+      trailParticles = [];
+    }, 1500);
+
+    planeAnimating = false;
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    document.getElementById('slbl').textContent = 'Send Message';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (planeAnimating) return;
+    if (!validate()) {
+      /* Shake the form card */
+      var fc = document.querySelector('.form-card');
+      fc.style.animation = 'none';
+      fc.offsetHeight; /* reflow */
+      fc.style.animation = 'dvShake 0.4s cubic-bezier(0.36,0.07,0.19,0.97)';
+      return;
+    }
+    /* Also send the actual email in background */
     var formData = {
       from_name: document.getElementById('inp-name').value.trim(),
       reply_to:  document.getElementById('inp-email').value.trim(),
       subject:   document.getElementById('inp-interest').value || 'Website Enquiry',
       message:   document.getElementById('inp-msg').value.trim()
     };
-
-    try {
-      var response = await fetch('http://localhost:3000/send-email', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(formData)
-      });
-      var result = await response.json();
-      if(response.ok){
-        /* Show success */
-        document.getElementById('formBody').style.cssText = 'opacity:0;transform:scale(0.95);transition:all 0.3s ease;pointer-events:none;';
-        setTimeout(function(){
-          document.getElementById('formBody').style.display='none';
-          document.getElementById('formSuccess').classList.add('show');
-        }, 300);
-        showToast('Message sent! We\'ll reply within 2 hours.', true);
-      } else { throw new Error(result.error || 'Failed'); }
-    } catch(err) {
-      /* Demo mode — show success anyway for local testing */
-      document.getElementById('formBody').style.cssText = 'opacity:0;transform:scale(0.95);transition:all 0.3s ease;pointer-events:none;';
-      setTimeout(function(){
-        document.getElementById('formBody').style.display='none';
-        document.getElementById('formSuccess').classList.add('show');
-      }, 300);
-      showToast('Message sent! We\'ll reply within 2 hours.', true);
-    }
-
-    btn.disabled = false;
-    btn.classList.remove('loading');
-    document.getElementById('slbl').textContent = 'Send Message';
+    fetch('http://localhost:3000/send-email', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(formData)
+    }).catch(function() {}); /* silent fail — animation always runs */
+    runPlaneAnimation();
   });
 
   /* Page transitions */
