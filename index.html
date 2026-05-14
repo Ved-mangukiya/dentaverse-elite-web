@@ -224,104 +224,7 @@
             max-width: 100%;
         }
 
-        /* =========================================================
-           LOADER
-           ========================================================= */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-soft);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s var(--ease), visibility 0.6s;
-            pointer-events: auto;
-        }
 
-        #loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            display: none;
-        }
-
-        .loader-inner {
-            text-align: center;
-        }
-
-        .loader-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.2rem;
-            box-shadow: 0 0 0 0 var(--gold-glow);
-            animation: loaderPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes loaderPulse {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 var(--gold-glow);
-                transform: scale(1);
-            }
-
-            50% {
-                box-shadow: 0 0 0 16px transparent;
-                transform: scale(1.06);
-            }
-        }
-
-        .loader-icon svg {
-            width: 34px;
-            height: 34px;
-            stroke: var(--gold);
-        }
-
-        .loader-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.7rem;
-            letter-spacing: 0.04em;
-            color: var(--text);
-        }
-
-        .loader-brand span {
-            color: var(--gold);
-        }
-
-        .loader-bar {
-            width: 160px;
-            height: 2px;
-            background: var(--ivory-dark);
-            border-radius: 2px;
-            margin: 1.2rem auto 0;
-            overflow: hidden;
-        }
-
-        .loader-bar::after {
-            content: '';
-            display: block;
-            height: 100%;
-            width: 40%;
-            background: var(--gold);
-            border-radius: 2px;
-            animation: loaderBar 2.5s ease-in-out infinite;
-        }
-
-        @keyframes loaderBar {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(350%);
-            }
-        }
 
         /* =========================================================
            HERO SECTION
@@ -2196,25 +2099,7 @@
 </head>
 
 <body>
-    <!-- IMMEDIATE FIX: Force body visible before anything else loads -->
-    <script>
-        (function() {
-            document.body.style.opacity = '1';
-            document.body.classList.add('ready');
-            document.body.classList.remove('fade-out');
-        })();
-    </script>
 
-    <!-- ======================= LOADER ======================= -->
-    <div id="loader">
-        <div class="dv-loader">
-            <div class="dv-loader-icon">
-                <img src="images/dentaverse-logo.jpeg" alt="Dentaverse">
-            </div>
-            <div class="dv-loader-brand">Dentaverse</div>
-            <div class="dv-loader-bar"></div>
-        </div>
-    </div>
 
     <!-- ======================= HEADER ======================= -->
     <header class="dv-header" id="dvHeader">

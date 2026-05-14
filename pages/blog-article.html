@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -671,31 +671,7 @@
             document.body.classList.add('ready');
             document.body.style.opacity = '1';
 
-            // Page transitions
-            document.querySelectorAll('a[href]').forEach(function (link) {
-                link.addEventListener('click', function (e) {
-                    var href = link.getAttribute('href');
-                    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(function () { window.location.href = href; }, 250);
-                });
-            });
 
-            // Fix back/forward button navigation
-            window.addEventListener('pageshow', function(event) {
-                document.body.classList.remove('fade-out');
-                document.body.classList.add('ready');
-                document.body.style.opacity = '1';
-                document.body.style.animation = 'none';
-            });
-
-            // Also fix on load
-            window.addEventListener('load', function() {
-                document.body.classList.remove('fade-out');
-                document.body.classList.add('ready');
-                document.body.style.opacity = '1';
-            });
         })();
     </script>
     <script src="../js/design-system.js"></script>

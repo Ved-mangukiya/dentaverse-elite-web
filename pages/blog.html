@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -568,22 +568,7 @@
 
     <script>document.documentElement.style.opacity = '1'; document.documentElement.style.visibility = 'visible';</script>
 
-    <!-- LOADER -->
-    <div id="loader" style="position:fixed;inset:0;z-index:9999;background:#F0F6FF;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s;">
-        <div class="dv-loader">
-            <div class="dv-loader-icon" style="width:72px;height:72px;margin:0 auto 1.2rem;border-radius:50%;overflow:hidden;box-shadow:0 0 0 8px rgba(0,204,255,0.12);animation:dvPulse 2s ease-in-out infinite;">
-                <img src="../images/dentaverse-logo.jpeg" alt="Dentaverse logo" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div class="dv-loader-brand" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#0A2558;letter-spacing:0.04em;">Dentaverse</div>
-            <div class="dv-loader-bar" style="width:140px;height:2px;background:#E0EAF8;border-radius:2px;margin:1rem auto 0;overflow:hidden;">
-                <div style="height:100%;width:40%;background:linear-gradient(90deg,#0066CC,#00CCFF);border-radius:2px;animation:loaderSweep 2s ease-in-out infinite;"></div>
-            </div>
-        </div>
-    </div>
-    <style>
-        @keyframes dvPulse { 0%,100%{box-shadow:0 0 0 8px rgba(0,204,255,0.12);transform:scale(1)} 50%{box-shadow:0 0 0 16px rgba(0,204,255,0);transform:scale(1.06)} }
-        @keyframes loaderSweep { 0%{transform:translateX(-200%)} 100%{transform:translateX(400%)} }
-    </style>
+
 
     <!-- UNIVERSAL HEADER -->
     <header class="dv-header" id="dvHeader">
@@ -643,24 +628,7 @@
             <!-- GRID -->
             <div class="blog-grid" id="blogGrid"></div>
 
-            <!-- NEWSLETTER -->
-            <div class="news-box reveal">
-                <h2>Clinical Updates</h2>
-                <p>Receive the latest research and product news directly to your inbox. No spam, just science and
-                    stories.</p>
-                <form class="news-form" id="newsletterForm" style="position: relative;">
-                    <input type="email" class="news-input" id="newsletterEmail" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary" id="subscribeBtn">
-                        <span class="btn-text">Subscribe</span>
-                        <span class="btn-spinner"></span>
-                        <svg class="btn-checkmark" width="24" height="24" viewBox="0 0 52 52">
-                            <circle class="checkmark-circle" cx="26" cy="26" r="25"/>
-                            <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                        </svg>
-                    </button>
-                    <div class="success-message">✓ Successfully subscribed!</div>
-                </form>
-            </div>
+
         </div>
     </main>
 
@@ -711,12 +679,7 @@
         (function () {
             'use strict';
 
-            // Initialize
-            document.body.classList.add('ready');
-            setTimeout(function () {
-                var l = document.getElementById('loader');
-                if (l) { l.style.opacity = '0'; l.style.visibility = 'hidden'; l.style.pointerEvents = 'none'; }
-            }, 2800);
+
 
             // Navigation
             var hbg = document.getElementById('dvHamburger');
@@ -766,11 +729,16 @@
             }
 
             function openArticle(articleId) {
-                // Navigate to article page with smooth transition
-                document.body.classList.add('fade-out');
+                // Show global loader
+                var loader = document.getElementById('loader');
+                if (loader) {
+                    loader.classList.remove('is-hidden');
+                }
+                document.body.classList.add('is-loading');
+                
                 setTimeout(function() {
                     window.location.href = 'blog-article.html?id=' + articleId;
-                }, 250);
+                }, 350);
             }
 
             function renderFeatured(pool) {
@@ -865,82 +833,9 @@
             // Initial render
             renderGrid();
             
-            // Newsletter subscription with cool animations
-            var newsletterForm = document.getElementById('newsletterForm');
-            var subscribeBtn = document.getElementById('subscribeBtn');
-            var emailInput = document.getElementById('newsletterEmail');
 
-            if (newsletterForm && subscribeBtn) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Validate email
-                    if (!emailInput.value || !emailInput.validity.valid) {
-                        emailInput.focus();
-                        return;
-                    }
 
-                    // Disable form
-                    emailInput.disabled = true;
-                    subscribeBtn.disabled = true;
 
-                    // Loading state
-                    subscribeBtn.classList.add('loading');
-
-                    // Simulate API call (replace with actual API call)
-                    setTimeout(function() {
-                        // Remove loading, add success
-                        subscribeBtn.classList.remove('loading');
-                        subscribeBtn.classList.add('success');
-                        newsletterForm.classList.add('submitted');
-
-                        // Create confetti effect
-                        createConfetti(subscribeBtn);
-
-                        // Reset after 3 seconds
-                        setTimeout(function() {
-                            subscribeBtn.classList.remove('success');
-                            newsletterForm.classList.remove('submitted');
-                            emailInput.value = '';
-                            emailInput.disabled = false;
-                            subscribeBtn.disabled = false;
-                        }, 3000);
-                    }, 1500);
-                });
-            }
-
-            // Confetti animation
-            function createConfetti(button) {
-                var colors = ['#00CCFF', '#0066CC', '#10B981', '#FFFFFF'];
-                var buttonRect = button.getBoundingClientRect();
-                
-                for (var i = 0; i < 20; i++) {
-                    (function(index) {
-                        setTimeout(function() {
-                            var confetti = document.createElement('div');
-                            confetti.className = 'confetti';
-                            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                            confetti.style.left = (buttonRect.left + buttonRect.width / 2) + 'px';
-                            confetti.style.top = (buttonRect.top + buttonRect.height / 2) + 'px';
-                            confetti.style.position = 'fixed';
-                            
-                            var angle = (Math.random() * 360) * Math.PI / 180;
-                            var velocity = 50 + Math.random() * 50;
-                            var tx = Math.cos(angle) * velocity;
-                            var ty = Math.sin(angle) * velocity;
-                            
-                            confetti.style.animation = 'confetti-fall 1s ease-out forwards';
-                            confetti.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
-                            
-                            document.body.appendChild(confetti);
-                            
-                            setTimeout(function() {
-                                confetti.remove();
-                            }, 1000);
-                        }, index * 30);
-                    })(i);
-                }
-            }
             
             // Debug: Log that blog is initialized
             console.log('%c📰 Blog initialized with ' + articles.length + ' articles', 'color: #0066CC; font-weight: bold;');
@@ -952,16 +847,7 @@
             document.body.classList.add('ready');
             document.body.style.opacity = '1';
 
-            // Page transitions
-            document.querySelectorAll('a[href]').forEach(function (link) {
-                link.addEventListener('click', function (e) {
-                    var href = link.getAttribute('href');
-                    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(function () { window.location.href = href; }, 250);
-                });
-            });
+
 
             // Fix back/forward button navigation
             window.addEventListener('pageshow', function(event) {

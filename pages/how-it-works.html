@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -794,14 +794,7 @@
 
 <body class="how-page">
 
-    <!-- LOADER -->
-    <div id="loader">
-        <div class="dv-loader">
-            <div class="dv-loader-icon"><img src="../images/dentaverse-logo.jpeg" alt="Dentaverse"></div>
-            <div class="dv-loader-brand">Dentaverse</div>
-            <div class="dv-loader-bar"></div>
-        </div>
-    </div>
+
 
     <!-- UNIVERSAL HEADER -->
     <header class="dv-header" id="dvHeader">
@@ -1248,10 +1241,7 @@
 
             var hbg = document.getElementById('dvHamburger');
             document.body.classList.add('ready');
-            setTimeout(function () {
-                var l = document.getElementById('loader');
-                if (l) { l.style.opacity = '0'; l.style.visibility = 'hidden'; l.style.pointerEvents = 'none'; }
-            }, 2800);
+
 
             var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
@@ -1268,35 +1258,7 @@
             }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
             document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function (el) { obs.observe(el); });
 
-            // Remove fade-out class on page load (fixes back button issue)
-            document.body.classList.remove('fade-out');
-            document.body.classList.add('ready');
-            document.body.style.opacity = '1';
 
-            document.querySelectorAll('a[href]').forEach(function (link) {
-                link.addEventListener('click', function (e) {
-                    var href = link.getAttribute('href');
-                    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
-                    e.preventDefault();
-                    document.body.classList.add('fade-out');
-                    setTimeout(function () { window.location.href = href; }, 250);
-                });
-            });
-
-            // Fix back/forward button navigation
-            window.addEventListener('pageshow', function(event) {
-                document.body.classList.remove('fade-out');
-                document.body.classList.add('ready');
-                document.body.style.opacity = '1';
-                document.body.style.animation = 'none';
-            });
-
-            // Also fix on load
-            window.addEventListener('load', function() {
-                document.body.classList.remove('fade-out');
-                document.body.classList.add('ready');
-                document.body.style.opacity = '1';
-            });
         })();
     </script>
     <script src="../js/locale-formatter.js"></script>

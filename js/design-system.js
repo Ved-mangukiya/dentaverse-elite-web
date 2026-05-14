@@ -2,6 +2,12 @@
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const body = document.body;
 
+  // Determine logo path based on current directory depth
+  const getLogoPath = () => {
+    const isSubPage = window.location.pathname.includes('/pages/');
+    return isSubPage ? '../images/dentaverse-logo.jpeg' : 'images/dentaverse-logo.jpeg';
+  };
+
   const ensureLoader = () => {
     let loader = document.getElementById("loader");
     if (!loader) {
@@ -9,7 +15,7 @@
       loader.id = "loader";
       loader.innerHTML = `
         <div class="dv-loader">
-          <div class="dv-loader-icon"><img src="dentaverse-logo.jpeg" alt="Dentaverse"></div>
+          <div class="dv-loader-icon"><img src="${getLogoPath()}" alt="Dentaverse"></div>
           <div class="dv-loader-brand">Dentaverse</div>
           <div class="dv-loader-bar"></div>
         </div>
@@ -42,7 +48,7 @@
   const start = performance.now();
   const hideLoader = () => {
     const elapsed = performance.now() - start;
-    const minVisibleMs = 650;
+    const minVisibleMs = 800; // Slightly longer for more "premium" feel
     const wait = Math.max(0, minVisibleMs - elapsed);
     window.setTimeout(() => {
       loader.classList.add("is-hidden");
@@ -55,12 +61,43 @@
     hideLoader();
   } else {
     window.addEventListener("load", hideLoader, { once: true });
-    window.setTimeout(hideLoader, 4500);
+    window.setTimeout(hideLoader, 4500); // Fallback
   }
 
-  // Remove cursor-circle effects everywhere.
-  const cursorGlow = document.getElementById("cursorGlow");
-  if (cursorGlow) cursorGlow.remove();
+  // Intercept links for smooth page transitions with loader
+  const setupLinkInterception = () => {
+    document.querySelectorAll('a').forEach(link => {
+      const href = link.getAttribute('href');
+      const target = link.getAttribute('target');
+      
+      // Only intercept internal links that aren't anchors or downloads
+      if (href && 
+          !href.startsWith('#') && 
+          !href.startsWith('mailto:') && 
+          !href.startsWith('tel:') &&
+          !href.includes('javascript:') &&
+          (!target || target === '_self') &&
+          !link.hasAttribute('download') &&
+          !link.classList.contains('no-loader')) {
+        
+        link.addEventListener('click', (e) => {
+          // Don't intercept if modifier keys are pressed (open in new tab)
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          
+          e.preventDefault();
+          loader.classList.remove("is-hidden");
+          body.classList.add("is-loading");
+          body.classList.remove("ready");
+          
+          setTimeout(() => {
+            window.location.href = href;
+          }, 350); // Small delay for the loader to fade in
+        });
+      }
+    });
+  };
+
+  setupLinkInterception();
 
   // Mobile nav toggles (single handler for all pages).
   const hamburger = document.getElementById("dvHamburger");
@@ -93,14 +130,11 @@
         if (entry.isIntersecting) {
           el.classList.remove("is-exiting", "exit");
           el.classList.add("is-visible", "active");
-        } else if (el.classList.contains("is-visible") || el.classList.contains("active")) {
-          el.classList.remove("is-visible", "active");
-          el.classList.add("is-exiting", "exit");
         }
       });
     }, {
-      threshold: 0.15,
-      rootMargin: "0px 0px -60px 0px"
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
     });
 
     revealElements.forEach((el) => revealObserver.observe(el));
@@ -110,3 +144,4 @@
     });
   }
 })();
+
