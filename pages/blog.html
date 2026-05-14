@@ -569,13 +569,21 @@
     <script>document.documentElement.style.opacity = '1'; document.documentElement.style.visibility = 'visible';</script>
 
     <!-- LOADER -->
-    <div id="loader">
+    <div id="loader" style="position:fixed;inset:0;z-index:9999;background:#F0F6FF;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s;">
         <div class="dv-loader">
-            <div class="dv-loader-icon"><img src="../images/dentaverse-logo.jpeg" alt="Dentaverse"></div>
-            <div class="dv-loader-brand">Dentaverse</div>
-            <div class="dv-loader-bar"></div>
+            <div class="dv-loader-icon" style="width:72px;height:72px;margin:0 auto 1.2rem;border-radius:50%;overflow:hidden;box-shadow:0 0 0 8px rgba(0,204,255,0.12);animation:dvPulse 2s ease-in-out infinite;">
+                <img src="../images/dentaverse-logo.jpeg" alt="Dentaverse logo" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="dv-loader-brand" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#0A2558;letter-spacing:0.04em;">Dentaverse</div>
+            <div class="dv-loader-bar" style="width:140px;height:2px;background:#E0EAF8;border-radius:2px;margin:1rem auto 0;overflow:hidden;">
+                <div style="height:100%;width:40%;background:linear-gradient(90deg,#0066CC,#00CCFF);border-radius:2px;animation:loaderSweep 2s ease-in-out infinite;"></div>
+            </div>
         </div>
     </div>
+    <style>
+        @keyframes dvPulse { 0%,100%{box-shadow:0 0 0 8px rgba(0,204,255,0.12);transform:scale(1)} 50%{box-shadow:0 0 0 16px rgba(0,204,255,0);transform:scale(1.06)} }
+        @keyframes loaderSweep { 0%{transform:translateX(-200%)} 100%{transform:translateX(400%)} }
+    </style>
 
     <!-- UNIVERSAL HEADER -->
     <header class="dv-header" id="dvHeader">
