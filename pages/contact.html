@@ -1545,6 +1545,61 @@
       color: rgba(255, 255, 255, 0.35);
     }
 
+    .avail-info-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .status-badge-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(10, 37, 88, 0.03);
+      border: 1px solid rgba(10, 37, 88, 0.05);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      width: fit-content;
+      margin-top: 4px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #94a3b8;
+    }
+
+    .status-badge-inline.online {
+      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #15803d;
+    }
+
+    .status-badge-inline.online .status-dot {
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+      animation: statusPulse 2s infinite;
+    }
+
+    .status-badge-inline.offline {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: rgba(245, 158, 11, 0.2);
+      color: #b45309;
+    }
+
+    .status-badge-inline.offline .status-dot {
+      background: #f59e0b;
+    }
+
+    @keyframes statusPulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
     /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
@@ -1853,9 +1908,13 @@
                   <circle cx="12" cy="12" r="10" />
                   <path d="M12 6v6l4 2" />
                 </svg></div>
-              <div>
+              <div class="avail-info-wrap">
                 <div class="i-lbl">Availability</div>
-                <div class="i-val">Mon–Fri &nbsp; 9 am – 6 pm GMT</div>
+                <div class="i-val">Mon–Fri · 9am – 6pm GMT</div>
+                <div id="dynamicStatus" class="status-badge-inline">
+                  <span class="status-dot"></span>
+                  <span class="status-text">Checking...</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1882,10 +1941,7 @@
             </a>
           </div>
 
-          <div class="avail-badge">
-            <div class="avail-dot"></div>
-            <div class="avail-text"><strong>Online now</strong> — Mon–Fri, 9am – 6pm GMT</div>
-          </div>
+
         </div>
 
       </div><!-- /cg -->
@@ -2190,6 +2246,55 @@
 
         runPlaneAnimation();
       });
+
+      /* Availability Logic */
+      function updateAvailability() {
+        const el = document.getElementById('dynamicStatus');
+        if (!el) return;
+        const dot = el.querySelector('.status-dot');
+        const txt = el.querySelector('.status-text');
+
+        // Get UK time
+        const now = new Date();
+        const londonTime = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/London',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false,
+          weekday: 'long'
+        }).formatToParts(now);
+
+        const parts = {};
+        londonTime.forEach(p => parts[p.type] = p.value);
+
+        const day = parts.weekday;
+        const hour = parseInt(parts.hour);
+        const min = parseInt(parts.minute);
+        
+        const isWeekday = !['Saturday', 'Sunday'].includes(day);
+        const isOpen = isWeekday && hour >= 9 && hour < 18;
+
+        if (isOpen) {
+          el.className = 'status-badge-inline online';
+          txt.innerHTML = '<strong>Online now</strong>';
+        } else {
+          el.className = 'status-badge-inline offline';
+          
+          // Calculate wait
+          let waitStr = "";
+          if (!isWeekday) {
+             waitStr = "Back on Monday";
+          } else if (hour < 9) {
+             const h = 9 - hour - (min > 0 ? 1 : 0);
+             waitStr = `Back in ${h > 0 ? h + 'h' : ''}${min > 0 ? (60 - min) + 'm' : ''}`;
+          } else {
+             waitStr = "Back tomorrow";
+          }
+          txt.innerHTML = `Offline · ${waitStr}`;
+        }
+      }
+      updateAvailability();
+      setInterval(updateAvailability, 60000);
 
       /* Initial state */
       document.body.style.opacity = '1';
