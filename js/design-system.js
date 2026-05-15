@@ -69,26 +69,26 @@
     document.querySelectorAll('a').forEach(link => {
       const href = link.getAttribute('href');
       const target = link.getAttribute('target');
-      
+
       // Only intercept internal links that aren't anchors or downloads
-      if (href && 
-          !href.startsWith('#') && 
-          !href.startsWith('mailto:') && 
-          !href.startsWith('tel:') &&
-          !href.includes('javascript:') &&
-          (!target || target === '_self') &&
-          !link.hasAttribute('download') &&
-          !link.classList.contains('no-loader')) {
-        
+      if (href &&
+        !href.startsWith('#') &&
+        !href.startsWith('mailto:') &&
+        !href.startsWith('tel:') &&
+        !href.includes('javascript:') &&
+        (!target || target === '_self') &&
+        !link.hasAttribute('download') &&
+        !link.classList.contains('no-loader')) {
+
         link.addEventListener('click', (e) => {
           // Don't intercept if modifier keys are pressed (open in new tab)
           if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-          
+
           e.preventDefault();
           loader.classList.remove("is-hidden");
           body.classList.add("is-loading");
           body.classList.remove("ready");
-          
+
           setTimeout(() => {
             window.location.href = href;
           }, 350); // Small delay for the loader to fade in
@@ -147,7 +147,7 @@
   // ========================================================
   // SECURITY DETERRENTS - Protect Assets & Code
   // ========================================================
-  
+
   // 1. Disable Right-Click Context Menu
   document.addEventListener('contextmenu', (e) => e.preventDefault());
 
