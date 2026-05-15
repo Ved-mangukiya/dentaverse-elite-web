@@ -109,9 +109,20 @@
         rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/theme.css">
-    <link rel="stylesheet" href="../css/design-system.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        :root { --brand-dark: #0A2558; --brand-mid: #0066CC; --brand-cyan: #00CCFF; --bg: #FFFFFF; --text: #333333; --muted: #5E6E85; --nav-h: 72px; }
+        .dv-header { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
+        .products-hero { padding: calc(var(--nav-h) + 3.5rem) 0 3.5rem; text-align: center; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    </style>
+    <link rel="preload" href="../css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="../css/design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="../css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="../css/theme.css">
+        <link rel="stylesheet" href="../css/design-system.css">
+        <link rel="stylesheet" href="../css/responsive.css">
+    </noscript>
 
     <style>
         html {
@@ -1487,7 +1498,7 @@
                         <div class="why-icon"><svg viewBox="0 0 24 24">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg></div>
-                        <h4>Patients Stay Calm</h4>
+                        <h3>Patients Stay Calm</h3>
                         <p>Immersive VR environments block clinical sights, sounds, and smells — the primary anxiety
                             triggers. Patients report procedures feeling 40% shorter.</p>
                     </div>
@@ -1496,7 +1507,7 @@
                                 <circle cx="12" cy="12" r="10" />
                                 <path d="M12 8v4l3 3" />
                             </svg></div>
-                        <h4>Dentists Work Faster</h4>
+                        <h3>Dentists Work Faster</h3>
                         <p>Calm patients keep still naturally. Procedures that took 90 minutes with constant reassurance
                             now run in under 60 — every time.</p>
                     </div>
@@ -1505,7 +1516,7 @@
                                 <path
                                     d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                             </svg></div>
-                        <h4>Clinics Get 5-Star Reviews</h4>
+                        <h3>Clinics Get 5-Star Reviews</h3>
                         <p>Patients who leave calm leave reviews. Practices using Dentaverse report a measurable
                             increase in online ratings and referrals.</p>
                     </div>
@@ -1516,7 +1527,7 @@
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg></div>
-                        <h4>Kids Love It Too</h4>
+                        <h3>Kids Love It Too</h3>
                         <p>Paediatric patients respond exceptionally well. Cartoons and interactive VR worlds keep
                             children calm, cooperative, and even excited for appointments.</p>
                     </div>
@@ -2053,8 +2064,8 @@
             }
         });
     </script>
-    <script src="../js/locale-formatter.js"></script>
-    <script src="../js/design-system.js"></script>
+    <script src="../js/locale-formatter.js" defer></script>
+    <script src="../js/design-system.js" defer></script>
 </body>
 
 </html>

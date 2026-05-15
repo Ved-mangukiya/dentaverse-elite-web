@@ -8,13 +8,13 @@ Allow: /
 Sitemap: https://dentaverse.co.uk/sitemap.xml
 
 # Allow specific important pages
-Allow: /index.html
-Allow: /pages/about.html
-Allow: /pages/how-it-works.html
-Allow: /pages/products.html
-Allow: /pages/contact.html
-Allow: /pages/blog.html
-Allow: /pages/blog-article.html
+Allow: /index
+Allow: /pages/about
+Allow: /pages/how-it-works
+Allow: /pages/products
+Allow: /pages/contact
+Allow: /pages/blog
+Allow: /pages/blog-article
 
 # Allow CSS, JS and Images for proper rendering and indexing
 Allow: /css/

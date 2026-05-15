@@ -203,10 +203,71 @@
     </script>
 
     <link rel="preload" href="css/theme.css" as="style">
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/design-system.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preload"
+        href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2"
+        as="font" type="font/woff2" crossorigin>
+    <style>
+        :root {
+            --brand-dark: #0A2558;
+            --brand-mid: #0066CC;
+            --brand-cyan: #00CCFF;
+            --bg: #FFFFFF;
+            --text: #333333;
+            --muted: #5E6E85;
+            --white: #FFFFFF;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --nav-h: 72px;
+        }
+
+        .dv-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero {
+            padding: calc(var(--nav-h) + 2rem) 0 4rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .vr-headset-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            aspect-ratio: 4/3;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: calc(var(--nav-h) + 1rem);
+            }
+        }
+    </style>
+    <link rel="preload" href="css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/design-system.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -2402,1019 +2463,1060 @@
     </header>
     <main>
 
-    <!-- ======================= HERO ======================= -->
-    <section class="hero" id="home">
-        <canvas id="hero-canvas"></canvas>
-        <div class="orb-1 hero-orb"></div>
-        <div class="orb-2 hero-orb"></div>
-        <div class="orb-3 hero-orb"></div>
+        <!-- ======================= HERO ======================= -->
+        <section class="hero" id="home">
+            <canvas id="hero-canvas"></canvas>
+            <div class="orb-1 hero-orb"></div>
+            <div class="orb-2 hero-orb"></div>
+            <div class="orb-3 hero-orb"></div>
 
-        <div class="container hero-container" style="position:relative;z-index:2;width:100%;">
-            <div class="hero-content reveal">
-                <div class="hero-badge">VR Distraction Therapy · UK</div>
-                <h1>Dental Anxiety?<br><em>Not Anymore.</em></h1>
-                <p class="hero-desc">Dentaverse puts patients inside a calming VR world — oceans, forests,
-                    galaxies — so they feel nothing but peace while treatment happens. Simple, proven, life-changing.
-                </p>
-                <div class="hero-actions reveal" style="transition-delay: 0.1s;">
-                    <a href="pages/contact.html" class="btn btn-primary">Book Demo <svg viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
-                    <a href="pages/products.html" class="btn btn-outline">Explore Products</a>
+            <div class="container hero-container" style="position:relative;z-index:2;width:100%;">
+                <div class="hero-content reveal">
+                    <div class="hero-badge">VR Distraction Therapy · UK</div>
+                    <h1>Dental Anxiety?<br><em>Not Anymore.</em></h1>
+                    <p class="hero-desc">Dentaverse puts patients inside a calming VR world — oceans, forests,
+                        galaxies — so they feel nothing but peace while treatment happens. Simple, proven,
+                        life-changing.
+                    </p>
+                    <div class="hero-actions reveal" style="transition-delay: 0.1s;">
+                        <a href="pages/contact.html" class="btn btn-primary">Book Demo <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                        <a href="pages/products.html" class="btn btn-outline">Explore Products</a>
+                    </div>
+                </div>
+
+                <div class="hero-vr-visual">
+                    <picture>
+                        <source srcset="images/VR.webp" type="image/webp">
+                        <img src="images/VR.webp" alt="Premium VR Headset for Dental Clinics" class="vr-headset-image"
+                            fetchpriority="high" width="800" height="600" decoding="async">
+                    </picture>
                 </div>
             </div>
+        </section>
 
-            <div class="hero-vr-visual reveal" style="transition-delay: 0.2s;">
-                <img src="images/VR.png" alt="Premium VR Headset" class="vr-headset-image" 
-                     fetchpriority="high" width="800" height="600" decoding="async">
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= WHO WE ARE STRIP ======================= -->
-    <div class="about-strip">
-        <div class="container">
-            <style>
-                /* WHO WE ARE — Clean Blue Grid */
-                .wwa-section {
-                    max-width: 1100px;
-                    margin: 0 auto;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 14px;
-                }
-
-                .wwa-top {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 14px;
-                    align-items: stretch;
-                }
-
-                .wc {
-                    border-radius: 16px;
-                    padding: 24px;
-                    display: flex;
-                    flex-direction: column;
-                    transition: transform .28s cubic-bezier(.16, 1, .3, 1), box-shadow .28s cubic-bezier(.16, 1, .3, 1);
-                }
-
-                .wc:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 12px 32px rgba(30, 58, 138, .14);
-                }
-
-                .wc-white {
-                    background: #fff;
-                    border: 1.5px solid #bfdbfe;
-                }
-
-                .wc-navy {
-                    background: #1e3a8a;
-                    border: none;
-                }
-
-                .wc-blue {
-                    background: #1d4ed8;
-                    border: none;
-                }
-
-                .wc-icon {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 10px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-bottom: 16px;
-                    flex-shrink: 0;
-                }
-
-                .wc-white .wc-icon {
-                    background: #eff6ff;
-                    border: 1px solid #bfdbfe;
-                }
-
-                .wc-navy .wc-icon,
-                .wc-blue .wc-icon {
-                    background: rgba(255, 255, 255, .12);
-                    border: 1px solid rgba(255, 255, 255, .2);
-                }
-
-                .wc-icon svg {
-                    width: 20px;
-                    height: 20px;
-                    stroke-width: 1.75;
-                    fill: none;
-                    stroke-linecap: round;
-                    stroke-linejoin: round;
-                }
-
-                .wc-white .wc-icon svg {
-                    stroke: #1d4ed8;
-                }
-
-                .wc-navy .wc-icon svg,
-                .wc-blue .wc-icon svg {
-                    stroke: #93c5fd;
-                }
-
-                .wc-label {
-                    font-size: 11px;
-                    font-weight: 700;
-                    letter-spacing: .1em;
-                    text-transform: uppercase;
-                    margin-bottom: 10px;
-                }
-
-                .wc-white .wc-label {
-                    color: #1d4ed8;
-                }
-
-                .wc-navy .wc-label,
-                .wc-blue .wc-label {
-                    color: #93c5fd;
-                }
-
-                .wc h3 {
-                    font-size: 18px;
-                    font-weight: 700;
-                    line-height: 1.3;
-                    margin-bottom: 10px;
-                    font-family: 'Playfair Display', serif;
-                }
-
-                .wc-white h3 {
-                    color: #0f172a;
-                }
-
-                .wc-navy h3,
-                .wc-blue h3 {
-                    color: #fff;
-                }
-
-                .wc p {
-                    font-size: 13px;
-                    line-height: 1.65;
-                    margin-bottom: 0;
-                }
-
-                .wc-white p {
-                    color: #475569;
-                }
-
-                .wc-navy p,
-                .wc-blue p {
-                    color: rgba(255, 255, 255, .75);
-                }
-
-                .wc-list {
-                    list-style: none;
-                    padding: 0;
-                    margin: 12px 0 16px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 7px;
-                }
-
-                .wc-list li {
-                    font-size: 13px;
-                    line-height: 1.5;
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 8px;
-                    color: rgba(255, 255, 255, .82);
-                }
-
-                .wc-list li::before {
-                    content: '✓';
-                    font-size: 12px;
-                    font-weight: 700;
-                    flex-shrink: 0;
-                    margin-top: 1px;
-                }
-
-                .wc-navy .wc-list li::before {
-                    color: #60a5fa;
-                }
-
-                .wc-blue .wc-list li::before {
-                    color: #93c5fd;
-                }
-
-                .wc-white .wc-list li::before {
-                    color: #1d4ed8;
-                }
-
-                .wc-white .wc-list li {
-                    color: #475569;
-                }
-
-                .wc-btn {
-                    display: inline-block;
-                    padding: 10px 20px;
-                    border-radius: 10px;
-                    font-size: 13px;
-                    font-weight: 600;
-                    text-decoration: none;
-                    border: 1.5px solid rgba(255, 255, 255, .55);
-                    color: #fff;
-                    background: transparent;
-                    transition: background .2s, border-color .2s;
-                    align-self: flex-start;
-                    margin-top: auto;
-                }
-
-                .wc-btn:hover {
-                    background: rgba(255, 255, 255, .12);
-                    border-color: rgba(255, 255, 255, .8);
-                }
-
-                .wc-link {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    font-size: 13px;
-                    font-weight: 600;
-                    color: #1d4ed8;
-                    text-decoration: none;
-                    margin-top: auto;
-                    padding-top: 16px;
-                    transition: gap .2s;
-                }
-
-                .wc-link:hover {
-                    gap: 10px;
-                }
-
-                .wc-link svg {
-                    width: 14px;
-                    height: 14px;
-                    stroke: currentColor;
-                    stroke-width: 2.5;
-                    fill: none;
-                }
-
-                .wc-spacer {
-                    flex: 1;
-                }
-
-                /* Bottom strip */
-                .wwa-strip {
-                    background: #eff6ff;
-                    border: 1.5px solid #bfdbfe;
-                    border-radius: 16px;
-                    padding: 22px 28px;
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    transition: transform .28s cubic-bezier(.16, 1, .3, 1), box-shadow .28s cubic-bezier(.16, 1, .3, 1);
-                }
-
-                .wwa-strip:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 10px 28px rgba(30, 58, 138, .1);
-                }
-
-                .wwa-strip-icon {
-                    width: 44px;
-                    height: 44px;
-                    border-radius: 11px;
-                    background: #dbeafe;
-                    border: 1px solid #bfdbfe;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-shrink: 0;
-                }
-
-                .wwa-strip-icon svg {
-                    width: 22px;
-                    height: 22px;
-                    stroke: #1d4ed8;
-                    stroke-width: 1.75;
-                    fill: none;
-                    stroke-linecap: round;
-                    stroke-linejoin: round;
-                }
-
-                .wwa-strip-body {
-                    flex: 1;
-                    min-width: 0;
-                }
-
-                .wwa-strip-label {
-                    font-size: 11px;
-                    font-weight: 700;
-                    letter-spacing: .1em;
-                    text-transform: uppercase;
-                    color: #1d4ed8;
-                    margin-bottom: 4px;
-                }
-
-                .wwa-strip-body h3 {
-                    font-size: 18px;
-                    font-weight: 700;
-                    color: #0f172a;
-                    margin-bottom: 6px;
-                    font-family: 'Playfair Display', serif;
-                    line-height: 1.25;
-                }
-
-                .wwa-strip-body p {
-                    font-size: 13px;
-                    color: #475569;
-                    line-height: 1.6;
-                    margin: 0;
-                }
-
-                .wwa-strip-link {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    font-size: 13px;
-                    font-weight: 600;
-                    color: #1d4ed8;
-                    text-decoration: none;
-                    white-space: nowrap;
-                    flex-shrink: 0;
-                    transition: gap .2s;
-                }
-
-                .wwa-strip-link:hover {
-                    gap: 10px;
-                }
-
-                .wwa-strip-link svg {
-                    width: 14px;
-                    height: 14px;
-                    stroke: currentColor;
-                    stroke-width: 2.5;
-                    fill: none;
-                }
-
-                /* Mobile */
-                @media (max-width:767px) {
+        <!-- ======================= WHO WE ARE STRIP ======================= -->
+        <div class="about-strip">
+            <div class="container">
+                <style>
+                    /* WHO WE ARE — Clean Blue Grid */
                     .wwa-section {
-                        gap: 10px;
-                    }
-
-                    .wwa-top {
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 10px;
-                    }
-
-                    .wwa-top .wc:nth-child(3) {
-                        grid-column: 1/-1;
-                    }
-
-                    .wc {
-                        padding: 18px 16px;
-                    }
-
-                    .wc-icon {
-                        width: 36px;
-                        height: 36px;
-                        margin-bottom: 12px;
-                    }
-
-                    .wc-icon svg {
-                        width: 18px;
-                        height: 18px;
-                    }
-
-                    .wc h3 {
-                        font-size: 15px;
-                    }
-
-                    .wc p,
-                    .wc-list li {
-                        font-size: 12px;
-                    }
-
-                    .wc-btn {
-                        font-size: 12px;
-                        padding: 8px 16px;
-                    }
-
-                    .wwa-strip {
+                        max-width: 1100px;
+                        margin: 0 auto;
+                        display: flex;
                         flex-direction: column;
-                        align-items: flex-start;
-                        padding: 18px 16px;
                         gap: 14px;
                     }
 
-                    .wwa-strip-link {
+                    .wwa-top {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 14px;
+                        align-items: stretch;
+                    }
+
+                    .wc {
+                        border-radius: 16px;
+                        padding: 24px;
+                        display: flex;
+                        flex-direction: column;
+                        transition: transform .28s cubic-bezier(.16, 1, .3, 1), box-shadow .28s cubic-bezier(.16, 1, .3, 1);
+                    }
+
+                    .wc:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 12px 32px rgba(30, 58, 138, .14);
+                    }
+
+                    .wc-white {
+                        background: #fff;
+                        border: 1.5px solid #bfdbfe;
+                    }
+
+                    .wc-navy {
+                        background: #1e3a8a;
+                        border: none;
+                    }
+
+                    .wc-blue {
+                        background: #1d4ed8;
+                        border: none;
+                    }
+
+                    .wc-icon {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 16px;
+                        flex-shrink: 0;
+                    }
+
+                    .wc-white .wc-icon {
+                        background: #eff6ff;
+                        border: 1px solid #bfdbfe;
+                    }
+
+                    .wc-navy .wc-icon,
+                    .wc-blue .wc-icon {
+                        background: rgba(255, 255, 255, .12);
+                        border: 1px solid rgba(255, 255, 255, .2);
+                    }
+
+                    .wc-icon svg {
+                        width: 20px;
+                        height: 20px;
+                        stroke-width: 1.75;
+                        fill: none;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                    }
+
+                    .wc-white .wc-icon svg {
+                        stroke: #1d4ed8;
+                    }
+
+                    .wc-navy .wc-icon svg,
+                    .wc-blue .wc-icon svg {
+                        stroke: #93c5fd;
+                    }
+
+                    .wc-label {
+                        font-size: 11px;
+                        font-weight: 700;
+                        letter-spacing: .1em;
+                        text-transform: uppercase;
+                        margin-bottom: 10px;
+                    }
+
+                    .wc-white .wc-label {
+                        color: #1d4ed8;
+                    }
+
+                    .wc-navy .wc-label,
+                    .wc-blue .wc-label {
+                        color: #93c5fd;
+                    }
+
+                    .wc h3 {
+                        font-size: 18px;
+                        font-weight: 700;
+                        line-height: 1.3;
+                        margin-bottom: 10px;
+                        font-family: 'Playfair Display', serif;
+                    }
+
+                    .wc-white h3 {
+                        color: #0f172a;
+                    }
+
+                    .wc-navy h3,
+                    .wc-blue h3 {
+                        color: #fff;
+                    }
+
+                    .wc p {
+                        font-size: 13px;
+                        line-height: 1.65;
+                        margin-bottom: 0;
+                    }
+
+                    .wc-white p {
+                        color: #475569;
+                    }
+
+                    .wc-navy p,
+                    .wc-blue p {
+                        color: rgba(255, 255, 255, .75);
+                    }
+
+                    .wc-list {
+                        list-style: none;
+                        padding: 0;
+                        margin: 12px 0 16px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 7px;
+                    }
+
+                    .wc-list li {
+                        font-size: 13px;
+                        line-height: 1.5;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 8px;
+                        color: rgba(255, 255, 255, .82);
+                    }
+
+                    .wc-list li::before {
+                        content: '✓';
+                        font-size: 12px;
+                        font-weight: 700;
+                        flex-shrink: 0;
+                        margin-top: 1px;
+                    }
+
+                    .wc-navy .wc-list li::before {
+                        color: #60a5fa;
+                    }
+
+                    .wc-blue .wc-list li::before {
+                        color: #93c5fd;
+                    }
+
+                    .wc-white .wc-list li::before {
+                        color: #1d4ed8;
+                    }
+
+                    .wc-white .wc-list li {
+                        color: #475569;
+                    }
+
+                    .wc-btn {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        border-radius: 10px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        border: 1.5px solid rgba(255, 255, 255, .55);
+                        color: #fff;
+                        background: transparent;
+                        transition: background .2s, border-color .2s;
                         align-self: flex-start;
+                        margin-top: auto;
+                    }
+
+                    .wc-btn:hover {
+                        background: rgba(255, 255, 255, .12);
+                        border-color: rgba(255, 255, 255, .8);
+                    }
+
+                    .wc-link {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: #1d4ed8;
+                        text-decoration: none;
+                        margin-top: auto;
+                        padding-top: 16px;
+                        transition: gap .2s;
+                    }
+
+                    .wc-link:hover {
+                        gap: 10px;
+                    }
+
+                    .wc-link svg {
+                        width: 14px;
+                        height: 14px;
+                        stroke: currentColor;
+                        stroke-width: 2.5;
+                        fill: none;
+                    }
+
+                    .wc-spacer {
+                        flex: 1;
+                    }
+
+                    /* Bottom strip */
+                    .wwa-strip {
+                        background: #eff6ff;
+                        border: 1.5px solid #bfdbfe;
+                        border-radius: 16px;
+                        padding: 22px 28px;
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+                        transition: transform .28s cubic-bezier(.16, 1, .3, 1), box-shadow .28s cubic-bezier(.16, 1, .3, 1);
+                    }
+
+                    .wwa-strip:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 10px 28px rgba(30, 58, 138, .1);
+                    }
+
+                    .wwa-strip-icon {
+                        width: 44px;
+                        height: 44px;
+                        border-radius: 11px;
+                        background: #dbeafe;
+                        border: 1px solid #bfdbfe;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-shrink: 0;
+                    }
+
+                    .wwa-strip-icon svg {
+                        width: 22px;
+                        height: 22px;
+                        stroke: #1d4ed8;
+                        stroke-width: 1.75;
+                        fill: none;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                    }
+
+                    .wwa-strip-body {
+                        flex: 1;
+                        min-width: 0;
+                    }
+
+                    .wwa-strip-label {
+                        font-size: 11px;
+                        font-weight: 700;
+                        letter-spacing: .1em;
+                        text-transform: uppercase;
+                        color: #1d4ed8;
+                        margin-bottom: 4px;
                     }
 
                     .wwa-strip-body h3 {
-                        font-size: 16px;
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: #0f172a;
+                        margin-bottom: 6px;
+                        font-family: 'Playfair Display', serif;
+                        line-height: 1.25;
                     }
-                }
 
-                @media (max-width:400px) {
-                    .wwa-top {
-                        grid-template-columns: 1fr;
+                    .wwa-strip-body p {
+                        font-size: 13px;
+                        color: #475569;
+                        line-height: 1.6;
+                        margin: 0;
                     }
 
-                    .wwa-top .wc:nth-child(3) {
-                        grid-column: auto;
+                    .wwa-strip-link {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: #1d4ed8;
+                        text-decoration: none;
+                        white-space: nowrap;
+                        flex-shrink: 0;
+                        transition: gap .2s;
                     }
-                }
-            </style>
 
-            <div class="wwa-section">
-                <div class="wwa-top">
-                    <!-- Card 1: Who We Are — dark navy -->
-                    <div class="wc wc-navy reveal">
-                        <div class="wc-icon"><svg viewBox="0 0 24 24">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    .wwa-strip-link:hover {
+                        gap: 10px;
+                    }
+
+                    .wwa-strip-link svg {
+                        width: 14px;
+                        height: 14px;
+                        stroke: currentColor;
+                        stroke-width: 2.5;
+                        fill: none;
+                    }
+
+                    /* Mobile */
+                    @media (max-width:767px) {
+                        .wwa-section {
+                            gap: 10px;
+                        }
+
+                        .wwa-top {
+                            grid-template-columns: repeat(2, 1fr);
+                            gap: 10px;
+                        }
+
+                        .wwa-top .wc:nth-child(3) {
+                            grid-column: 1/-1;
+                        }
+
+                        .wc {
+                            padding: 18px 16px;
+                        }
+
+                        .wc-icon {
+                            width: 36px;
+                            height: 36px;
+                            margin-bottom: 12px;
+                        }
+
+                        .wc-icon svg {
+                            width: 18px;
+                            height: 18px;
+                        }
+
+                        .wc h3 {
+                            font-size: 15px;
+                        }
+
+                        .wc p,
+                        .wc-list li {
+                            font-size: 12px;
+                        }
+
+                        .wc-btn {
+                            font-size: 12px;
+                            padding: 8px 16px;
+                        }
+
+                        .wwa-strip {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            padding: 18px 16px;
+                            gap: 14px;
+                        }
+
+                        .wwa-strip-link {
+                            align-self: flex-start;
+                        }
+
+                        .wwa-strip-body h3 {
+                            font-size: 16px;
+                        }
+                    }
+
+                    @media (max-width:400px) {
+                        .wwa-top {
+                            grid-template-columns: 1fr;
+                        }
+
+                        .wwa-top .wc:nth-child(3) {
+                            grid-column: auto;
+                        }
+                    }
+                </style>
+
+                <div class="wwa-section">
+                    <div class="wwa-top">
+                        <!-- Card 1: Who We Are — dark navy -->
+                        <div class="wc wc-navy reveal">
+                            <div class="wc-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg></div>
+                            <h2 class="wc-label" style="font-size:0.7rem;margin-bottom:0.4rem;">Who We Are</h2>
+                            <h3>A UK health-tech company on a mission</h3>
+                            <p>Founded by dental professionals who experienced patient anxiety first-hand. We build
+                                premium
+                                VR therapy systems that transform how clinics deliver care.</p>
+                            <div class="wc-spacer"></div>
+                            <a href="pages/about.html" class="wc-link"
+                                style="color:rgba(255,255,255,0.85);padding-top:16px;">Our story <svg
+                                    viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg></a>
+                        </div>
+                        <!-- Card 2: What We Do — medium blue -->
+                        <div class="wc wc-blue reveal" style="transition-delay:.08s">
+                            <div class="wc-icon"><svg viewBox="0 0 24 24">
+                                    <rect x="2" y="7" width="20" height="13" rx="2" />
+                                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                                    <line x1="12" y1="12" x2="12" y2="16" />
+                                    <line x1="10" y1="14" x2="14" y2="14" />
+                                </svg></div>
+                            <h2 class="wc-label" style="font-size:0.7rem;margin-bottom:0.4rem;">What We Do</h2>
+                            <h3>Eliminating dental anxiety with VR</h3>
+                            <p>We supply clinics with VR headsets, 50+ immersive environments, and a clinical dashboard.
+                            </p>
+                            <ul class="wc-list">
+                                <li>Premium VR hardware ready for chairside use</li>
+                                <li>50+ calming worlds with regular content updates</li>
+                                <li>Clinic dashboard for session and patient controls</li>
+                            </ul>
+                            <a href="pages/products.html" class="wc-btn">See Products</a>
+                        </div>
+                        <!-- Card 3: Who It's For — white -->
+                        <div class="wc wc-white reveal" style="transition-delay:.16s">
+                            <div class="wc-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg></div>
+                            <div class="wc-label">Who It's For</div>
+                            <h3>Independent practices to large dental groups</h3>
+                            <p>Whether you have one chair or fifty, our plans scale with you.</p>
+                            <ul class="wc-list" style="color:#475569;">
+                                <li style="color:#475569;">Starter setup for single-chair clinics</li>
+                                <li style="color:#475569;">Growth plans for multi-location practices</li>
+                                <li style="color:#475569;">Enterprise onboarding and support options</li>
+                            </ul>
+                            <a href="pages/contact.html" class="wc-btn"
+                                style="border-color:#bfdbfe;color:#1d4ed8;background:transparent;">View Options</a>
+                        </div>
+                    </div>
+                    <!-- Bottom strip: Why Us -->
+                    <div class="wwa-strip reveal" style="transition-delay:.24s">
+                        <div class="wwa-strip-icon"><svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg></div>
-                        <div class="wc-label">Who We Are</div>
-                        <h3>A UK health-tech company on a mission</h3>
-                        <p>Founded by dental professionals who experienced patient anxiety first-hand. We build premium
-                            VR therapy systems that transform how clinics deliver care.</p>
-                        <div class="wc-spacer"></div>
-                        <a href="pages/about.html" class="wc-link"
-                            style="color:rgba(255,255,255,0.85);padding-top:16px;">Our story <svg viewBox="0 0 24 24">
+                        <div class="wwa-strip-body">
+                            <div class="wwa-strip-label">Why Us</div>
+                            <h3>UK medical certified, clinician-founded</h3>
+                            <p>Built by dental professionals who've sat in the chair themselves. Every headset meets UK
+                                medical standards. Lifetime warranty and dedicated technical support included with every
+                                plan.</p>
+                        </div>
+                        <a href="pages/about.html" class="wwa-strip-link">Meet our team <svg viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg></a>
                     </div>
-                    <!-- Card 2: What We Do — medium blue -->
-                    <div class="wc wc-blue reveal" style="transition-delay:.08s">
-                        <div class="wc-icon"><svg viewBox="0 0 24 24">
-                                <rect x="2" y="7" width="20" height="13" rx="2" />
-                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                                <line x1="12" y1="12" x2="12" y2="16" />
-                                <line x1="10" y1="14" x2="14" y2="14" />
-                            </svg></div>
-                        <div class="wc-label">What We Do</div>
-                        <h3>VR headsets that make procedures feel effortless</h3>
-                        <p>We supply clinics with VR headsets, 50+ immersive environments, and a clinical dashboard.</p>
-                        <ul class="wc-list">
-                            <li>Premium VR hardware ready for chairside use</li>
-                            <li>50+ calming worlds with regular content updates</li>
-                            <li>Clinic dashboard for session and patient controls</li>
-                        </ul>
-                        <a href="pages/products.html" class="wc-btn">See Products</a>
-                    </div>
-                    <!-- Card 3: Who It's For — white -->
-                    <div class="wc wc-white reveal" style="transition-delay:.16s">
-                        <div class="wc-icon"><svg viewBox="0 0 24 24">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                <polyline points="9 22 9 12 15 12 15 22" />
-                            </svg></div>
-                        <div class="wc-label">Who It's For</div>
-                        <h3>Independent practices to large dental groups</h3>
-                        <p>Whether you have one chair or fifty, our plans scale with you.</p>
-                        <ul class="wc-list" style="color:#475569;">
-                            <li style="color:#475569;">Starter setup for single-chair clinics</li>
-                            <li style="color:#475569;">Growth plans for multi-location practices</li>
-                            <li style="color:#475569;">Enterprise onboarding and support options</li>
-                        </ul>
-                        <a href="pages/contact.html" class="wc-btn"
-                            style="border-color:#bfdbfe;color:#1d4ed8;background:transparent;">View Options</a>
-                    </div>
-                </div>
-                <!-- Bottom strip: Why Us -->
-                <div class="wwa-strip reveal" style="transition-delay:.24s">
-                    <div class="wwa-strip-icon"><svg viewBox="0 0 24 24">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg></div>
-                    <div class="wwa-strip-body">
-                        <div class="wwa-strip-label">Why Us</div>
-                        <h3>UK medical certified, clinician-founded</h3>
-                        <p>Built by dental professionals who've sat in the chair themselves. Every headset meets UK
-                            medical standards. Lifetime warranty and dedicated technical support included with every
-                            plan.</p>
-                    </div>
-                    <a href="pages/about.html" class="wwa-strip-link">Meet our team <svg viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ======================= FEATURES ======================= -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow reveal">The Dentaverse Difference</span>
-                <h2 class="section-title reveal">Why Clinics Choose <em>Dentaverse</em></h2>
-                <div class="divider-brand reveal"></div>
-                <p class="section-subtitle reveal">We combine clinical-grade VR hardware with a bespoke patient
-                    experience platform that integrates seamlessly into your workflow.</p>
-            </div>
-            <!-- Beautiful 3-column grid with enhanced styling -->
-            <div class="grid-3-col" style="max-width: 1200px; margin: 0 auto; gap: 2rem; --mobile-cols: 2;">
-
-                <div class="card reveal"
-                    style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;">
-                    <div
-                        style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
-                    </div>
-                    <div class="feature-icon"
-                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
-                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC" fill="none">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                    </div>
-                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Total
-                        Relaxation</h4>
-                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Completely block out clinical sights,
-                        bright lights, and intimidating sounds.</p>
-                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Immersive VR
-                        environments create a calming sanctuary during dental procedures.</p>
+        <!-- ======================= FEATURES ======================= -->
+        <section class="features" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow reveal">The Dentaverse Difference</span>
+                    <h2 class="section-title reveal">Why Clinics Choose <em>Dentaverse</em></h2>
+                    <div class="divider-brand reveal"></div>
+                    <p class="section-subtitle reveal">We combine clinical-grade VR hardware with a bespoke patient
+                        experience platform that integrates seamlessly into your workflow.</p>
                 </div>
+                <!-- Beautiful 3-column grid with enhanced styling -->
+                <div class="grid-3-col" style="max-width: 1200px; margin: 0 auto; gap: 2rem; --mobile-cols: 2;">
 
-                <div class="card reveal"
-                    style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.08s">
-                    <div
-                        style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
-                    </div>
-                    <div class="feature-icon"
-                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
-                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF" fill="none">
-                            <rect x="2" y="7" width="20" height="10" rx="2" />
-                            <path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2" />
-                            <line x1="8" y1="12" x2="16" y2="12" />
-                        </svg>
-                    </div>
-                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">
-                        Personalised Care</h4>
-                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Curated experiences tailored to each
-                        patient's age and interests.</p>
-                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">From ocean
-                        adventures to forest walks, choose the perfect environment for every patient.</p>
-                </div>
-
-                <div class="card reveal"
-                    style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.16s">
-                    <div
-                        style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
-                    </div>
-                    <div class="feature-icon"
-                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
-                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC" fill="none">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 8v4l3 3" />
-                        </svg>
-                    </div>
-                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Active
-                        Distraction</h4>
-                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Engaging therapeutic content that
-                        keeps the mind comfortably focused.</p>
-                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Interactive
-                        experiences actively distract from the dental procedure.</p>
-                </div>
-
-                <div class="card reveal"
-                    style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.04s">
-                    <div
-                        style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
-                    </div>
-                    <div class="feature-icon"
-                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
-                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF" fill="none">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                        </svg>
-                    </div>
-                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Real-Time
-                        Monitoring</h4>
-                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Live biometric awareness allows
-                        clinicians to adapt the VR experience.</p>
-                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Monitor
-                        patient comfort levels and adjust settings in real-time for optimal care.</p>
-                </div>
-
-                <div class="card reveal"
-                    style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.12s">
-                    <div
-                        style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
-                    </div>
-                    <div class="feature-icon"
-                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
-                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC" fill="none">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
-                    </div>
-                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Extensive
-                        Library</h4>
-                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Over 50+ premium therapeutic
-                        environments curated by experts.</p>
-                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Regularly
-                        updated content library designed by psychologists and relaxation specialists.</p>
-                </div>
-
-                <div class="card reveal"
-                    style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.20s">
-                    <div
-                        style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
-                    </div>
-                    <div class="feature-icon"
-                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
-                        <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF" fill="none">
-                            <path
-                                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                        </svg>
-                    </div>
-                    <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Patient
-                        Feedback</h4>
-                    <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Post-session wellness reports empower
-                        clinics with insight.</p>
-                    <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Continuously
-                        improve patient experience with detailed feedback and analytics.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= HOW IT WORKS ======================= -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container steps-wrapper">
-            <div class="reveal-left">
-                <span class="section-eyebrow">The Process</span>
-                <h2 class="section-title" style="text-align:left">How Dentaverse Works</h2>
-                <p style="color:var(--muted);margin-bottom:2.5rem;max-width:440px">A seamless, stress-free process
-                    designed for patient comfort from start to finish.</p>
-
-                <div class="step-item">
-                    <div class="step-num-wrap"><span class="step-num">01</span></div>
-                    <div class="step-content">
-                        <h3>Choose Your Experience</h3>
-                        <p>The patient selects a relaxing VR environment — beach, forest, galaxy, or interactive scene.
-                        </p>
-                    </div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num-wrap"><span class="step-num">02</span></div>
-                    <div class="step-content">
-                        <h3>Wear the VR Headset</h3>
-                        <p>Fitted with our hygienic, lightweight VR headset before the dental procedure begins.</p>
-                    </div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num-wrap"><span class="step-num">03</span></div>
-                    <div class="step-content">
-                        <h3>Immersive Relaxation</h3>
-                        <p>Calming visuals and spatial audio instantly lower stress levels and heart rate.</p>
-                    </div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num-wrap"><span class="step-num">04</span></div>
-                    <div class="step-content">
-                        <h3>Comfortable Treatment</h3>
-                        <p>Dentists work smoothly while patients enjoy a completely stress-free digital experience.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="how-img-wrap reveal-right">
-                <img src="images/overview.png" alt="Patient relaxing with VR headset during dental treatment" 
-                     loading="lazy" decoding="async" width="1000" height="800">
-                <div class="how-img-badge">
-                    <div class="badge-title">✦ Proven Comfort</div>
-                    <div class="badge-sub">Clinically validated distraction therapy</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= TESTIMONIALS ======================= -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow reveal">Real Voices</span>
-                <h2 class="section-title reveal">What Patients &amp; Doctors Say</h2>
-                <div class="divider-gold reveal"></div>
-                <p class="section-subtitle reveal">Stories from those who've experienced the Dentaverse difference
-                    first-hand — both in the chair and behind it.</p>
-            </div>
-
-            <!-- Tab pills -->
-            <div class="testi-tabs reveal" role="tablist">
-                <button class="testi-tab active" id="tab-patients" onclick="switchTestiTab('patients')"
-                    role="tab" aria-selected="true" aria-controls="panel-patients">🧑‍⚕️ Patient Reviews</button>
-                <button class="testi-tab" id="tab-doctors" onclick="switchTestiTab('doctors')"
-                    role="tab" aria-selected="false" aria-controls="panel-doctors">👨‍⚕️ Doctor Reviews</button>
-            </div>
-
-            <!-- PATIENT REVIEWS panel -->
-            <div class="testi-panel active" id="panel-patients" role="tabpanel" aria-labelledby="tab-patients">
-
-                <div class="testi-card reveal">
-                    <span class="testi-badge patient">Patient</span>
-                    <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-                    <blockquote>"The VR headset transported me to a peaceful beach. I completely forgot I was in a
-                        dental chair."</blockquote>
-                    <div class="testi-author">
-                        <div class="testi-avatar">S</div>
-                        <div>
-                            <div class="testi-name">Sarah M.</div>
-                            <div class="testi-role">Patient — London</div>
+                    <div class="card reveal"
+                        style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
                         </div>
-                    </div>
-                </div>
-
-                <div class="testi-card reveal" style="transition-delay:.1s">
-                    <span class="testi-badge patient">Patient</span>
-                    <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-                    <blockquote>"My son has autism and dental visits were a nightmare. With Dentaverse he was calm
-                        throughout."
-                    </blockquote>
-                    <div class="testi-author">
-                        <div class="testi-avatar">P</div>
-                        <div>
-                            <div class="testi-name">Priya K.</div>
-                            <div class="testi-role">Parent — Manchester</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card reveal" style="transition-delay:.2s">
-                    <span class="testi-badge patient">Patient</span>
-                    <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-                    <blockquote>"The VR world kept me so calm I barely noticed the procedure was finished."</blockquote>
-                    <div class="testi-author">
-                        <div class="testi-avatar">R</div>
-                        <div>
-                            <div class="testi-name">Rohan T.</div>
-                            <div class="testi-role">Patient — Birmingham</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- DOCTOR REVIEWS panel -->
-            <div class="testi-panel" id="panel-doctors">
-
-                <div class="testi-card reveal">
-                    <span class="testi-badge doctor">Doctor</span>
-                    <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-                    <blockquote>"Watching my patients relax and smile after appointments has been transformative for my
-                        practice."</blockquote>
-                    <div class="testi-author">
-                        <div class="testi-avatar">J</div>
-                        <div>
-                            <div class="testi-name">Dr. James A.</div>
-                            <div class="testi-role">Dentist — Edinburgh</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card reveal" style="transition-delay:.1s">
-                    <span class="testi-badge doctor">Doctor</span>
-                    <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-                    <blockquote>"Procedures now run smoothly in under 60 minutes. Patients keep still naturally when
-                        immersed in VR."</blockquote>
-                    <div class="testi-author">
-                        <div class="testi-avatar">F</div>
-                        <div>
-                            <div class="testi-name">Dr. Fatima R.</div>
-                            <div class="testi-role">Oral Surgeon — Leeds</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card reveal" style="transition-delay:.2s">
-                    <span class="testi-badge doctor">Doctor</span>
-                    <div class="testi-stars" aria-label="5 stars">★★★★★</div>
-                    <blockquote>"My trainees can observe expert procedures in VR. It's a genuine educational leap for
-                        dental training."</blockquote>
-                    <div class="testi-author">
-                        <div class="testi-avatar">N</div>
-                        <div>
-                            <div class="testi-name">Dr. Nikhil P.</div>
-                            <div class="testi-role">Dental Trainer — Bristol</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================= FAQ ======================= -->
-    <section class="faq-section" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow reveal">FAQ</span>
-                <h2 class="section-title reveal">Everything You Need to Know</h2>
-                <div class="divider-gold reveal"></div>
-                <p class="section-subtitle reveal">Have questions? We've answered the most common ones below. Still
-                    unsure? Reach out to us anytime.</p>
-            </div>
-            <div class="faq-grid" id="faqGrid">
-
-                <!-- 1 -->
-                <div class="faq-item reveal">
-                    <div class="faq-question">
-                        <h3>What is Dentaverse?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
+                        <div class="feature-icon"
+                            style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                            <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC"
+                                fill="none">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg>
                         </div>
+                        <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Total
+                            Relaxation</h4>
+                        <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Completely block out clinical
+                            sights,
+                            bright lights, and intimidating sounds.</p>
+                        <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Immersive
+                            VR
+                            environments create a calming sanctuary during dental procedures.</p>
                     </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Dentaverse is a premium VR distraction therapy system
-                            designed specifically for dental clinics. Patients wear a lightweight VR headset during
-                            their appointment and are transported to calming virtual environments, making the entire
-                            experience stress-free and comfortable.</div>
-                    </div>
-                </div>
 
-                <!-- 2 -->
-                <div class="faq-item reveal" style="transition-delay:.05s">
-                    <div class="faq-question">
-                        <h3>Is the VR equipment hygienic and safe?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
+                    <div class="card reveal"
+                        style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.08s">
+                        <div
+                            style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
+                        </div>
+                        <div class="feature-icon"
+                            style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                            <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF"
+                                fill="none">
+                                <rect x="2" y="7" width="20" height="10" rx="2" />
+                                <path d="M16 17v2a2 2 0 01-2 2H10a2 2 0 01-2-2v-2" />
+                                <line x1="8" y1="12" x2="16" y2="12" />
                             </svg>
                         </div>
+                        <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">
+                            Personalised Care</h4>
+                        <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Curated experiences tailored to
+                            each
+                            patient's age and interests.</p>
+                        <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">From ocean
+                            adventures to forest walks, choose the perfect environment for every patient.</p>
                     </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Absolutely. All headsets are fitted with disposable, medical-grade
-                            hygiene covers that are changed between every patient. The hardware meets UK medical device
-                            standards and is designed with clinical environments in mind.</div>
-                    </div>
-                </div>
 
-                <!-- 3 -->
-                <div class="faq-item reveal" style="transition-delay:.1s">
-                    <div class="faq-question">
-                        <h3>Does VR distraction therapy actually work for anxiety?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
+                    <div class="card reveal"
+                        style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.16s">
+                        <div
+                            style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
+                        </div>
+                        <div class="feature-icon"
+                            style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                            <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC"
+                                fill="none">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4l3 3" />
                             </svg>
                         </div>
+                        <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Active
+                            Distraction</h4>
+                        <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Engaging therapeutic content that
+                            keeps the mind comfortably focused.</p>
+                        <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">
+                            Interactive
+                            experiences actively distract from the dental procedure.</p>
                     </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Yes. VR distraction therapy for dental anxiety is backed by
-                            peer-reviewed clinical studies. Research shows significant reductions in perceived pain and
-                            anxiety. Many patients report their appointment feeling far shorter than it actually was — a
-                            sign the brain was genuinely engaged elsewhere.</div>
-                    </div>
-                </div>
 
-                <!-- 4 -->
-                <div class="faq-item reveal" style="transition-delay:.15s">
-                    <div class="faq-question">
-                        <h3>Can children use Dentaverse?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
+                    <div class="card reveal"
+                        style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.04s">
+                        <div
+                            style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
+                        </div>
+                        <div class="feature-icon"
+                            style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                            <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF"
+                                fill="none">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                             </svg>
                         </div>
+                        <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">
+                            Real-Time
+                            Monitoring</h4>
+                        <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Live biometric awareness allows
+                            clinicians to adapt the VR experience.</p>
+                        <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Monitor
+                            patient comfort levels and adjust settings in real-time for optimal care.</p>
                     </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Yes! We offer age-appropriate content for children from age 6
-                            upward. The environments are safe, engaging and designed to capture young imaginations —
-                            think magical forests, underwater kingdoms, and space adventures — making dental visits a
-                            treat rather than a fear.</div>
-                    </div>
-                </div>
 
-                <!-- 5 -->
-                <div class="faq-item reveal" style="transition-delay:.2s">
-                    <div class="faq-question">
-                        <h3>How do I get Dentaverse in my dental clinic?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
+                    <div class="card reveal"
+                        style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.12s">
+                        <div
+                            style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
+                        </div>
+                        <div class="feature-icon"
+                            style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(0,204,255,0.1) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                            <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#0066CC"
+                                fill="none">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                             </svg>
                         </div>
+                        <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">
+                            Extensive
+                            Library</h4>
+                        <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Over 50+ premium therapeutic
+                            environments curated by experts.</p>
+                        <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">Regularly
+                            updated content library designed by psychologists and relaxation specialists.</p>
                     </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Get in touch via our Contact page to arrange a free demonstration
-                            and consultation. We handle full end-to-end installation, staff training, and ongoing
-                            technical support so your team can focus entirely on patient care from day one.</div>
-                    </div>
-                </div>
 
-                <!-- 6 -->
-                <div class="faq-item reveal" style="transition-delay:.25s">
-                    <div class="faq-question">
-                        <h3>Does it interfere with dental procedures?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
+                    <div class="card reveal"
+                        style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.20s">
+                        <div
+                            style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
+                        </div>
+                        <div class="feature-icon"
+                            style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0,204,255,0.12) 0%, rgba(0,102,204,0.08) 100%); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                            <svg viewBox="0 0 24 24" stroke-width="2" width="32" height="32" stroke="#00CCFF"
+                                fill="none">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                             </svg>
                         </div>
+                        <h4 style="color: #0A2558; font-size: 1.25rem; margin-bottom: 0.8rem; font-weight: 600;">Patient
+                            Feedback</h4>
+                        <p style="color: #5E6E85; line-height: 1.7; margin-bottom: 0;">Post-session wellness reports
+                            empower
+                            clinics with insight.</p>
+                        <p class="desktop-only" style="color: #5E6E85; line-height: 1.7; margin-top: 0.8rem;">
+                            Continuously
+                            improve patient experience with detailed feedback and analytics.</p>
                     </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Not at all. The headset is designed to allow full clinical access
-                            to the mouth and jaw areas. Dentists have reported that procedures often run more smoothly
-                            as patients keep still naturally when immersed in a VR environment.</div>
-                    </div>
-                </div>
 
-                <!-- 7 -->
-                <div class="faq-item reveal" style="transition-delay:.3s">
-                    <div class="faq-question">
-                        <h3>What types of VR environments are available?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Our library includes 50+ environments: serene beaches, tropical
-                            forests, stargazing experiences, interactive nature scenes, guided meditation journeys, and
-                            more. New environments are added regularly based on patient feedback and psychological
-                            research.</div>
-                    </div>
                 </div>
-
-                <!-- 8 -->
-                <div class="faq-item reveal" style="transition-delay:.35s">
-                    <div class="faq-question">
-                        <h3>Is there ongoing support after installation?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Yes. Every Dentaverse installation includes an ongoing
-                            support package — hardware maintenance, software updates, new content drops, and a dedicated
-                            UK-based support line. We're with you every step of the way.</div>
-                    </div>
-                </div>
-
-                <!-- 9 -->
-                <div class="faq-item reveal" style="transition-delay:.4s">
-                    <div class="faq-question">
-                        <h3>Can patients with claustrophobia use VR?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">For most patients with claustrophobia, the open, expansive VR
-                            environments actually help by replacing the confined clinical space with wide-open virtual
-                            vistas. We recommend a brief acclimatisation during the initial fitting to ensure every
-                            patient is comfortable before the procedure begins.</div>
-                    </div>
-                </div>
-
-                <!-- 10 -->
-                <div class="faq-item reveal" style="transition-delay:.45s">
-                    <div class="faq-question">
-                        <h3>Does Dentaverse work for all dental procedures?</h3>
-                        <div class="faq-icon">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="5" x2="12" y2="19" />
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Yes. From simple check-ups and fillings to root canals,
-                            extractions, and implant procedures — Dentaverse is effective across the full spectrum
-                            of dental work. Longer procedures often benefit the most, as deeper immersion builds
-                            progressively over time.</div>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ======================= CTA ======================= -->
-    <section class="cta-section reveal">
-        <div class="container" style="position:relative;z-index:2">
-            <h2>Ready to Experience the<br>Future of Dentistry?</h2>
-            <p>Transform your clinic or book your first VR dental appointment today.</p>
-            <div class="cta-btns">
-                <a href="pages/contact.html" class="btn btn-primary">Contact Us Today</a>
-                <a href="pages/how-it-works.html" class="btn btn-outline-white btn">Learn More →</a>
+        <!-- ======================= HOW IT WORKS ======================= -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="container steps-wrapper">
+                <div class="reveal-left">
+                    <span class="section-eyebrow">The Process</span>
+                    <h2 class="section-title" style="text-align:left">How Dentaverse Works</h2>
+                    <p style="color:var(--muted);margin-bottom:2.5rem;max-width:440px">A seamless, stress-free process
+                        designed for patient comfort from start to finish.</p>
+
+                    <div class="step-item">
+                        <div class="step-num-wrap"><span class="step-num">01</span></div>
+                        <div class="step-content">
+                            <h3>Choose Your Experience</h3>
+                            <p>The patient selects a relaxing VR environment — beach, forest, galaxy, or interactive
+                                scene.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num-wrap"><span class="step-num">02</span></div>
+                        <div class="step-content">
+                            <h3>Wear the VR Headset</h3>
+                            <p>Fitted with our hygienic, lightweight VR headset before the dental procedure begins.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num-wrap"><span class="step-num">03</span></div>
+                        <div class="step-content">
+                            <h3>Immersive Relaxation</h3>
+                            <p>Calming visuals and spatial audio instantly lower stress levels and heart rate.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num-wrap"><span class="step-num">04</span></div>
+                        <div class="step-content">
+                            <h3>Comfortable Treatment</h3>
+                            <p>Dentists work smoothly while patients enjoy a completely stress-free digital experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="how-img-wrap reveal-right">
+                    <picture>
+                        <source srcset="images/overview.webp" type="image/webp">
+                        <img src="images/overview.png" alt="Patient relaxing with VR headset during dental treatment"
+                            loading="lazy" decoding="async" width="1000" height="800">
+                    </picture>
+                    <div class="how-img-badge">
+                        <div class="badge-title">✦ Proven Comfort</div>
+                        <div class="badge-sub">Clinically validated distraction therapy</div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-    <!-- UNIVERSAL FOOTER -->
+        </section>
+
+        <!-- ======================= TESTIMONIALS ======================= -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow reveal">Real Voices</span>
+                    <h2 class="section-title reveal">What Patients &amp; Doctors Say</h2>
+                    <div class="divider-gold reveal"></div>
+                    <p class="section-subtitle reveal">Stories from those who've experienced the Dentaverse difference
+                        first-hand — both in the chair and behind it.</p>
+                </div>
+
+                <!-- Tab pills -->
+                <div class="testi-tabs reveal" role="tablist">
+                    <button class="testi-tab active" id="tab-patients" onclick="switchTestiTab('patients')" role="tab"
+                        aria-selected="true" aria-controls="panel-patients">🧑‍⚕️ Patient Reviews</button>
+                    <button class="testi-tab" id="tab-doctors" onclick="switchTestiTab('doctors')" role="tab"
+                        aria-selected="false" aria-controls="panel-doctors">👨‍⚕️ Doctor Reviews</button>
+                </div>
+
+                <!-- PATIENT REVIEWS panel -->
+                <div class="testi-panel active" id="panel-patients" role="tabpanel" aria-labelledby="tab-patients">
+
+                    <div class="testi-card reveal">
+                        <span class="testi-badge patient">Patient</span>
+                        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                        <blockquote>"The VR headset transported me to a peaceful beach. I completely forgot I was in a
+                            dental chair."</blockquote>
+                        <div class="testi-author">
+                            <div class="testi-avatar">S</div>
+                            <div>
+                                <div class="testi-name">Sarah M.</div>
+                                <div class="testi-role">Patient — London</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-card reveal" style="transition-delay:.1s">
+                        <span class="testi-badge patient">Patient</span>
+                        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                        <blockquote>"My son has autism and dental visits were a nightmare. With Dentaverse he was calm
+                            throughout."
+                        </blockquote>
+                        <div class="testi-author">
+                            <div class="testi-avatar">P</div>
+                            <div>
+                                <div class="testi-name">Priya K.</div>
+                                <div class="testi-role">Parent — Manchester</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-card reveal" style="transition-delay:.2s">
+                        <span class="testi-badge patient">Patient</span>
+                        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                        <blockquote>"The VR world kept me so calm I barely noticed the procedure was finished."
+                        </blockquote>
+                        <div class="testi-author">
+                            <div class="testi-avatar">R</div>
+                            <div>
+                                <div class="testi-name">Rohan T.</div>
+                                <div class="testi-role">Patient — Birmingham</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- DOCTOR REVIEWS panel -->
+                <div class="testi-panel" id="panel-doctors">
+
+                    <div class="testi-card reveal">
+                        <span class="testi-badge doctor">Doctor</span>
+                        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                        <blockquote>"Watching my patients relax and smile after appointments has been transformative for
+                            my
+                            practice."</blockquote>
+                        <div class="testi-author">
+                            <div class="testi-avatar">J</div>
+                            <div>
+                                <div class="testi-name">Dr. James A.</div>
+                                <div class="testi-role">Dentist — Edinburgh</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-card reveal" style="transition-delay:.1s">
+                        <span class="testi-badge doctor">Doctor</span>
+                        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                        <blockquote>"Procedures now run smoothly in under 60 minutes. Patients keep still naturally when
+                            immersed in VR."</blockquote>
+                        <div class="testi-author">
+                            <div class="testi-avatar">F</div>
+                            <div>
+                                <div class="testi-name">Dr. Fatima R.</div>
+                                <div class="testi-role">Oral Surgeon — Leeds</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-card reveal" style="transition-delay:.2s">
+                        <span class="testi-badge doctor">Doctor</span>
+                        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+                        <blockquote>"My trainees can observe expert procedures in VR. It's a genuine educational leap
+                            for
+                            dental training."</blockquote>
+                        <div class="testi-author">
+                            <div class="testi-avatar">N</div>
+                            <div>
+                                <div class="testi-name">Dr. Nikhil P.</div>
+                                <div class="testi-role">Dental Trainer — Bristol</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= FAQ ======================= -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow reveal">FAQ</span>
+                    <h2 class="section-title reveal">Everything You Need to Know</h2>
+                    <div class="divider-gold reveal"></div>
+                    <p class="section-subtitle reveal">Have questions? We've answered the most common ones below. Still
+                        unsure? Reach out to us anytime.</p>
+                </div>
+                <div class="faq-grid" id="faqGrid">
+
+                    <!-- 1 -->
+                    <div class="faq-item reveal">
+                        <div class="faq-question">
+                            <h3>What is Dentaverse?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Dentaverse is a premium VR distraction therapy system
+                                designed specifically for dental clinics. Patients wear a lightweight VR headset during
+                                their appointment and are transported to calming virtual environments, making the entire
+                                experience stress-free and comfortable.</div>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="faq-item reveal" style="transition-delay:.05s">
+                        <div class="faq-question">
+                            <h3>Is the VR equipment hygienic and safe?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Absolutely. All headsets are fitted with disposable,
+                                medical-grade
+                                hygiene covers that are changed between every patient. The hardware meets UK medical
+                                device
+                                standards and is designed with clinical environments in mind.</div>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="faq-item reveal" style="transition-delay:.1s">
+                        <div class="faq-question">
+                            <h3>Does VR distraction therapy actually work for anxiety?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Yes. VR distraction therapy for dental anxiety is backed by
+                                peer-reviewed clinical studies. Research shows significant reductions in perceived pain
+                                and
+                                anxiety. Many patients report their appointment feeling far shorter than it actually was
+                                — a
+                                sign the brain was genuinely engaged elsewhere.</div>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="faq-item reveal" style="transition-delay:.15s">
+                        <div class="faq-question">
+                            <h3>Can children use Dentaverse?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Yes! We offer age-appropriate content for children from age 6
+                                upward. The environments are safe, engaging and designed to capture young imaginations —
+                                think magical forests, underwater kingdoms, and space adventures — making dental visits
+                                a
+                                treat rather than a fear.</div>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="faq-item reveal" style="transition-delay:.2s">
+                        <div class="faq-question">
+                            <h3>How do I get Dentaverse in my dental clinic?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Get in touch via our Contact page to arrange a free
+                                demonstration
+                                and consultation. We handle full end-to-end installation, staff training, and ongoing
+                                technical support so your team can focus entirely on patient care from day one.</div>
+                        </div>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="faq-item reveal" style="transition-delay:.25s">
+                        <div class="faq-question">
+                            <h3>Does it interfere with dental procedures?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Not at all. The headset is designed to allow full clinical
+                                access
+                                to the mouth and jaw areas. Dentists have reported that procedures often run more
+                                smoothly
+                                as patients keep still naturally when immersed in a VR environment.</div>
+                        </div>
+                    </div>
+
+                    <!-- 7 -->
+                    <div class="faq-item reveal" style="transition-delay:.3s">
+                        <div class="faq-question">
+                            <h3>What types of VR environments are available?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Our library includes 50+ environments: serene beaches,
+                                tropical
+                                forests, stargazing experiences, interactive nature scenes, guided meditation journeys,
+                                and
+                                more. New environments are added regularly based on patient feedback and psychological
+                                research.</div>
+                        </div>
+                    </div>
+
+                    <!-- 8 -->
+                    <div class="faq-item reveal" style="transition-delay:.35s">
+                        <div class="faq-question">
+                            <h3>Is there ongoing support after installation?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Yes. Every Dentaverse installation includes an ongoing
+                                support package — hardware maintenance, software updates, new content drops, and a
+                                dedicated
+                                UK-based support line. We're with you every step of the way.</div>
+                        </div>
+                    </div>
+
+                    <!-- 9 -->
+                    <div class="faq-item reveal" style="transition-delay:.4s">
+                        <div class="faq-question">
+                            <h3>Can patients with claustrophobia use VR?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">For most patients with claustrophobia, the open, expansive VR
+                                environments actually help by replacing the confined clinical space with wide-open
+                                virtual
+                                vistas. We recommend a brief acclimatisation during the initial fitting to ensure every
+                                patient is comfortable before the procedure begins.</div>
+                        </div>
+                    </div>
+
+                    <!-- 10 -->
+                    <div class="faq-item reveal" style="transition-delay:.45s">
+                        <div class="faq-question">
+                            <h3>Does Dentaverse work for all dental procedures?</h3>
+                            <div class="faq-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Yes. From simple check-ups and fillings to root canals,
+                                extractions, and implant procedures — Dentaverse is effective across the full spectrum
+                                of dental work. Longer procedures often benefit the most, as deeper immersion builds
+                                progressively over time.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= CTA ======================= -->
+        <section class="cta-section reveal">
+            <div class="container" style="position:relative;z-index:2">
+                <h2>Ready to Experience the<br>Future of Dentistry?</h2>
+                <p>Transform your clinic or book your first VR dental appointment today.</p>
+                <div class="cta-btns">
+                    <a href="pages/contact.html" class="btn btn-primary">Contact Us Today</a>
+                    <a href="pages/how-it-works.html" class="btn btn-outline-white btn">Learn More →</a>
+                </div>
+            </div>
+        </section>
+        <!-- UNIVERSAL FOOTER -->
     </main>
     <footer class="dv-footer">
         <div class="container">
@@ -3673,10 +3775,13 @@
                 requestAnimationFrame(drawParticles);
             }
 
-            resize();
-            initParticles();
-            drawParticles();
-            window.addEventListener('resize', () => { resize(); initParticles(); }, { passive: true });
+            // Delay heavy canvas work to lower TBT
+            setTimeout(() => {
+                resize();
+                initParticles();
+                drawParticles();
+                window.addEventListener('resize', () => { resize(); initParticles(); }, { passive: true });
+            }, 1000);
         });
 
         /* ============================================================
@@ -3760,6 +3865,8 @@
             observer.observe(vrHeadset);
         })();
     </script>
+    <script src="js/locale-formatter.js" defer></script>
+    <script src="js/design-system.js" defer></script>
 </body>
 
 </html>
