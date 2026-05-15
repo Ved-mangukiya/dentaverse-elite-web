@@ -12,7 +12,7 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://dentaverse.co.uk/images/dentaverse-logo.jpeg</image:loc>
+            <image:loc>https://dentaverse.co.uk/images/web-app-manifest-512x512.png</image:loc>
             <image:title>Dentaverse - VR Dental Anxiety Treatment Logo</image:title>
             <image:caption>Dentaverse is the UK's leading VR distraction therapy provider for dental clinics.</image:caption>
         </image:image>
@@ -25,7 +25,7 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://dentaverse.co.uk/images/dentaverse-logo.jpeg</image:loc>
+            <image:loc>https://dentaverse.co.uk/images/web-app-manifest-512x512.png</image:loc>
             <image:title>Dentaverse Team - UK VR Dental Anxiety Technology</image:title>
         </image:image>
     </url>
@@ -37,7 +37,7 @@
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>
-            <image:loc>https://dentaverse.co.uk/images/dentaverse-logo.jpeg</image:loc>
+            <image:loc>https://dentaverse.co.uk/images/web-app-manifest-512x512.png</image:loc>
             <image:title>How Dentaverse VR Dental Distraction Therapy Works</image:title>
         </image:image>
     </url>
@@ -49,7 +49,7 @@
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <image:image>
-            <image:loc>https://dentaverse.co.uk/images/dentaverse-logo.jpeg</image:loc>
+            <image:loc>https://dentaverse.co.uk/images/web-app-manifest-512x512.png</image:loc>
             <image:title>Dentaverse VR Dental Solutions and Pricing Plans UK</image:title>
         </image:image>
     </url>
@@ -69,7 +69,7 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://dentaverse.co.uk/images/dentaverse-logo.jpeg</image:loc>
+            <image:loc>https://dentaverse.co.uk/images/web-app-manifest-512x512.png</image:loc>
             <image:title>Dentaverse Blog - VR Dental Technology Insights</image:title>
         </image:image>
     </url>
