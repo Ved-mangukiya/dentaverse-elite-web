@@ -639,7 +639,7 @@
                     card.href = 'blog-article.html?id=' + related.id;
                     card.className = 'related-card';
                     card.innerHTML =
-                        '<div class="related-card-img"><img src="' + related.image + '" alt="' + related.title + '"></div>' +
+                        '<div class="related-card-img"><img src="' + related.image + '" alt="' + related.title + '" loading="lazy" decoding="async"></div>' +
                         '<div class="related-card-body">' +
                             '<h4>' + related.title + '</h4>' +
                             '<p>' + related.category + ' • ' + related.readTime + '</p>' +
