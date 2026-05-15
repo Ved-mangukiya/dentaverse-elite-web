@@ -34,7 +34,7 @@ app.post('/send-email', async (req, res) => {
     const mailOptions = {
         from: `"${from_name}" <${process.env.EMAIL_USER}>`, // Sender address (must be authenticated user)
         replyTo: reply_to,                                   // User's email address
-        to: process.env.RECEIVER_EMAIL || 'elitesupport@dentaverse.uk', // Where you want to receive the email
+        to: process.env.RECEIVER_EMAIL || 'ask@dentaverse.co.uk', // Where you want to receive the email
         subject: `New Contact Form Submission: ${subject || 'Website Enquiry'}`,
         text: `You have received a new message from ${from_name} (${reply_to}).\n\nMessage:\n${message}`,
         html: `

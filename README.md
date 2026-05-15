@@ -262,7 +262,7 @@ All documents available in `/documents/` folder.
 Healthcare Technology Solutions
 
 - **Website**: dentaverse.uk
-- **Email**: elitesupport@dentaverse.uk
+- **Email**: ask@dentaverse.co.uk
 - **Phone**: +44 7887 772083
 - **Support**: Available for partner clinics
 
@@ -290,7 +290,7 @@ This is proprietary commercial software for business use.
 - **Brand Assets**: Trademarked - Unauthorized use prohibited
 - **Clinical Content**: Protected intellectual property
 
-For licensing inquiries: elitesupport@dentaverse.uk
+For licensing inquiries: ask@dentaverse.co.uk
 
 ---
 
@@ -339,7 +339,7 @@ For licensing inquiries: elitesupport@dentaverse.uk
 This is a **private commercial project**. 
 
 For business inquiries, partnership opportunities, or technical support:
-- Email: elitesupport@dentaverse.uk
+- Email: ask@dentaverse.co.uk
 - Phone: +44 7887 772083
 
 ---

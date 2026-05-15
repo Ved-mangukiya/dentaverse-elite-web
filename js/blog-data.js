@@ -260,7 +260,7 @@ window.BLOG_ARTICLES = [
             <strong>Week of Mar 11:</strong> New content library (automatic)<br>
             <strong>April 2026:</strong> Biofeedback beta programme (invitation only)</p>
 
-            <p>Contact your dedicated Practice Success Manager or email <a href="mailto:support@dentaverse.uk">support@dentaverse.uk</a> with any questions.</p>
+            <p>Contact your dedicated Practice Success Manager or email <a href="mailto:ask@dentaverse.co.uk">ask@dentaverse.co.uk</a> with any questions.</p>
         `
     },
     {
