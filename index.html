@@ -18,6 +18,31 @@
     <title>Dentaverse | VR Dental Anxiety Treatment & Distraction Therapy UK</title>
     <meta name="description"
         content="Dentaverse is the UK's leading VR distraction therapy provider for dental clinics. We eliminate dental anxiety with immersive virtual reality — helping patients stay calm and dentists work more efficiently. Book a free demo today.">
+    <link rel="canonical" href="https://dentaverse.co.uk/">
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Dentaverse",
+      "url": "https://dentaverse.co.uk/",
+      "logo": "https://dentaverse.co.uk/favicon-512x512.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+447887772083",
+        "contactType": "customer service",
+        "email": "ask@dentaverse.co.uk",
+        "areaServed": "GB",
+        "availableLanguage": "en"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dentaverse-uk",
+        "https://twitter.com/dentaverse_uk",
+        "https://www.instagram.com/dentaverse.uk"
+      ]
+    }
+    </script>
     <meta name="keywords"
         content="Dentaverse, dental VR UK, VR dental anxiety treatment, virtual reality distraction therapy for dentists, dental anxiety solution UK, VR headset dental clinic, reduce dental fear, pain-free dentistry technology, dental patient comfort, immersive dental care, UK dental tech company, VR therapy dentistry, dental phobia treatment, anxiety-free dental appointment">
     <meta name="author" content="Dentaverse">
@@ -177,6 +202,8 @@
     }
     </script>
 
+    <link rel="preload" href="css/theme.css" as="style">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/design-system.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -2344,7 +2371,7 @@
         <div class="container dv-nav">
             <a href="index.html" class="dv-logo">
                 <div class="dv-logo-img"><img src="images/dentaverse-logo.jpeg"
-                        alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution"></div>
+                        alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution" width="70" height="70"></div>
                 Dentaverse
             </a>
             <nav class="dv-nav-links">
@@ -2373,6 +2400,7 @@
             <a href="pages/contact.html" class="dv-mobile-cta">Book Experience</a>
         </div>
     </header>
+    <main>
 
     <!-- ======================= HERO ======================= -->
     <section class="hero" id="home">
@@ -2397,7 +2425,8 @@
             </div>
 
             <div class="hero-vr-visual reveal" style="transition-delay: 0.2s;">
-                <img src="images/VR.png" alt="Premium VR Headset" class="vr-headset-image">
+                <img src="images/VR.png" alt="Premium VR Headset" class="vr-headset-image" 
+                     fetchpriority="high" width="800" height="600" decoding="async">
             </div>
         </div>
     </section>
@@ -3018,7 +3047,7 @@
                 <div class="step-item">
                     <div class="step-num-wrap"><span class="step-num">01</span></div>
                     <div class="step-content">
-                        <h4>Choose Your Experience</h4>
+                        <h3>Choose Your Experience</h3>
                         <p>The patient selects a relaxing VR environment — beach, forest, galaxy, or interactive scene.
                         </p>
                     </div>
@@ -3026,28 +3055,29 @@
                 <div class="step-item">
                     <div class="step-num-wrap"><span class="step-num">02</span></div>
                     <div class="step-content">
-                        <h4>Wear the VR Headset</h4>
+                        <h3>Wear the VR Headset</h3>
                         <p>Fitted with our hygienic, lightweight VR headset before the dental procedure begins.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-num-wrap"><span class="step-num">03</span></div>
                     <div class="step-content">
-                        <h4>Immersive Relaxation</h4>
+                        <h3>Immersive Relaxation</h3>
                         <p>Calming visuals and spatial audio instantly lower stress levels and heart rate.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-num-wrap"><span class="step-num">04</span></div>
                     <div class="step-content">
-                        <h4>Comfortable Treatment</h4>
+                        <h3>Comfortable Treatment</h3>
                         <p>Dentists work smoothly while patients enjoy a completely stress-free digital experience.</p>
                     </div>
                 </div>
             </div>
 
             <div class="how-img-wrap reveal-right">
-                <img src="images/overview.png" alt="Patient relaxing with VR headset during dental treatment" loading="lazy" decoding="async">
+                <img src="images/overview.png" alt="Patient relaxing with VR headset during dental treatment" 
+                     loading="lazy" decoding="async" width="1000" height="800">
                 <div class="how-img-badge">
                     <div class="badge-title">✦ Proven Comfort</div>
                     <div class="badge-sub">Clinically validated distraction therapy</div>
@@ -3068,15 +3098,15 @@
             </div>
 
             <!-- Tab pills -->
-            <div class="testi-tabs reveal">
+            <div class="testi-tabs reveal" role="tablist">
                 <button class="testi-tab active" id="tab-patients" onclick="switchTestiTab('patients')"
-                    aria-selected="true">🧑‍⚕️ Patient Reviews</button>
+                    role="tab" aria-selected="true" aria-controls="panel-patients">🧑‍⚕️ Patient Reviews</button>
                 <button class="testi-tab" id="tab-doctors" onclick="switchTestiTab('doctors')"
-                    aria-selected="false">👨‍⚕️ Doctor Reviews</button>
+                    role="tab" aria-selected="false" aria-controls="panel-doctors">👨‍⚕️ Doctor Reviews</button>
             </div>
 
             <!-- PATIENT REVIEWS panel -->
-            <div class="testi-panel active" id="panel-patients">
+            <div class="testi-panel active" id="panel-patients" role="tabpanel" aria-labelledby="tab-patients">
 
                 <div class="testi-card reveal">
                     <span class="testi-badge patient">Patient</span>
@@ -3186,7 +3216,7 @@
                 <!-- 1 -->
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h4>What is Dentaverse?</h4>
+                        <h3>What is Dentaverse?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3205,7 +3235,7 @@
                 <!-- 2 -->
                 <div class="faq-item reveal" style="transition-delay:.05s">
                     <div class="faq-question">
-                        <h4>Is the VR equipment hygienic and safe?</h4>
+                        <h3>Is the VR equipment hygienic and safe?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3223,7 +3253,7 @@
                 <!-- 3 -->
                 <div class="faq-item reveal" style="transition-delay:.1s">
                     <div class="faq-question">
-                        <h4>Does VR distraction therapy actually work for anxiety?</h4>
+                        <h3>Does VR distraction therapy actually work for anxiety?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3242,7 +3272,7 @@
                 <!-- 4 -->
                 <div class="faq-item reveal" style="transition-delay:.15s">
                     <div class="faq-question">
-                        <h4>Can children use Dentaverse?</h4>
+                        <h3>Can children use Dentaverse?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3261,7 +3291,7 @@
                 <!-- 5 -->
                 <div class="faq-item reveal" style="transition-delay:.2s">
                     <div class="faq-question">
-                        <h4>How do I get Dentaverse in my dental clinic?</h4>
+                        <h3>How do I get Dentaverse in my dental clinic?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3279,7 +3309,7 @@
                 <!-- 6 -->
                 <div class="faq-item reveal" style="transition-delay:.25s">
                     <div class="faq-question">
-                        <h4>Does it interfere with dental procedures?</h4>
+                        <h3>Does it interfere with dental procedures?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3297,7 +3327,7 @@
                 <!-- 7 -->
                 <div class="faq-item reveal" style="transition-delay:.3s">
                     <div class="faq-question">
-                        <h4>What types of VR environments are available?</h4>
+                        <h3>What types of VR environments are available?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3316,7 +3346,7 @@
                 <!-- 8 -->
                 <div class="faq-item reveal" style="transition-delay:.35s">
                     <div class="faq-question">
-                        <h4>Is there ongoing support after installation?</h4>
+                        <h3>Is there ongoing support after installation?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3334,7 +3364,7 @@
                 <!-- 9 -->
                 <div class="faq-item reveal" style="transition-delay:.4s">
                     <div class="faq-question">
-                        <h4>Can patients with claustrophobia use VR?</h4>
+                        <h3>Can patients with claustrophobia use VR?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3353,7 +3383,7 @@
                 <!-- 10 -->
                 <div class="faq-item reveal" style="transition-delay:.45s">
                     <div class="faq-question">
-                        <h4>Does Dentaverse work for all dental procedures?</h4>
+                        <h3>Does Dentaverse work for all dental procedures?</h3>
                         <div class="faq-icon">
                             <svg viewBox="0 0 24 24">
                                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -3384,8 +3414,8 @@
             </div>
         </div>
     </section>
-
     <!-- UNIVERSAL FOOTER -->
+    </main>
     <footer class="dv-footer">
         <div class="container">
             <div class="dv-footer-grid">
