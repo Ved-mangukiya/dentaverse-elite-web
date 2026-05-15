@@ -46,6 +46,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "QF7fvFkKBQDLTit88",
+      });
+    })();
+  </script>
   <link rel="stylesheet" href="../css/responsive.css">
 
   <style>
@@ -1753,17 +1761,17 @@
 
               <form id="cf" novalidate>
                 <div class="f" id="w-name">
-                  <input type="text" id="inp-name" placeholder=" " required autocomplete="name">
+                  <input type="text" id="inp-name" name="name" placeholder=" " required autocomplete="name">
                   <label for="inp-name">Full Name</label>
                   <div class="ferr">Please enter your name</div>
                 </div>
                 <div class="f" id="w-email">
-                  <input type="email" id="inp-email" placeholder=" " required autocomplete="email">
+                  <input type="email" id="inp-email" name="email" placeholder=" " required autocomplete="email">
                   <label for="inp-email">Email Address</label>
                   <div class="ferr">Please enter a valid email</div>
                 </div>
                 <div class="f" id="w-interest">
-                  <select id="inp-interest">
+                  <select id="inp-interest" name="interest" onchange="document.getElementById('inp-title').value = this.options[this.selectedIndex].text">
                     <option value="" disabled selected></option>
                     <option value="demo">Book a Clinic Demo</option>
                     <option value="pricing">Pricing &amp; Plans</option>
@@ -1771,10 +1779,11 @@
                     <option value="support">Technical Support</option>
                     <option value="other">Something Else</option>
                   </select>
+                  <input type="hidden" name="title" id="inp-title" value="Website Enquiry">
                   <label for="inp-interest">Interested In</label>
                 </div>
                 <div class="f" id="w-msg">
-                  <textarea id="inp-msg" placeholder=" " required></textarea>
+                  <textarea id="inp-msg" name="message" placeholder=" " required></textarea>
                   <label for="inp-msg">Your Message</label>
                   <div class="ferr">Please enter your message</div>
                 </div>
@@ -2171,18 +2180,14 @@
           fc.style.animation = 'dvShake 0.4s cubic-bezier(0.36,0.07,0.19,0.97)';
           return;
         }
-        /* Also send the actual email in background */
-        var formData = {
-          from_name: document.getElementById('inp-name').value.trim(),
-          reply_to: document.getElementById('inp-email').value.trim(),
-          subject: document.getElementById('inp-interest').value || 'Website Enquiry',
-          message: document.getElementById('inp-msg').value.trim()
-        };
-        fetch('http://localhost:3000/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        }).catch(function () { }); /* silent fail — animation always runs */
+        /* EmailJS Send with Real IDs */
+        emailjs.sendForm('service_4gc3om9', 'template_4xtk27q', this)
+          .then(function() {
+            console.log('Email sent successfully!');
+          }, function(error) {
+            console.error('Email failed to send...', error);
+          });
+
         runPlaneAnimation();
       });
 
