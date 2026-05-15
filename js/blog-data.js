@@ -13,7 +13,7 @@ window.BLOG_ARTICLES = [
         author: "Dr. Sarah Mitchell",
         authorRole: "Clinical Research Director",
         excerpt: "A landmark review of clinical studies confirming how immersive VR distraction therapy minimises cortisol levels and improves patient cooperation during complex procedures.",
-        image: "../images/1.png",
+        image: "../images/1.webp",
         featured: true,
         content: `
             <h2>The Real Science Behind VR Anxiety Reduction</h2>
@@ -70,7 +70,7 @@ window.BLOG_ARTICLES = [
         author: "Alex Kumar",
         authorRole: "Head of Product Engineering",
         excerpt: "How our rebuilt 3D spatial audio engine creates an acoustic cocoon that masks drill noise and deepens immersion during chair-side treatment.",
-        image: "../images/2.png",
+        image: "../images/2.webp",
         content: `
             <h2>The Power of Spatial Audio in VR Therapy</h2>
             <p>Sound is often the overlooked element of VR immersion, yet it plays a crucial role in creating believable virtual environments — and in masking the sounds that trigger dental phobia. With Dentaverse 3.0, we've completely rebuilt our audio engine to deliver true 3D spatial audio that adapts to patient movement and environmental conditions.</p>
@@ -124,7 +124,7 @@ window.BLOG_ARTICLES = [
         author: "Lisa Chen",
         authorRole: "Practice Success Manager",
         excerpt: "A practical onboarding framework for clinics introducing VR into daily workflows — including the 3-Minute Fit protocol that prevents scheduling bottlenecks.",
-        image: "../images/3.png",
+        image: "../images/3.webp",
         content: `
             <h2>Seamless VR Integration for Your Practice</h2>
             <p>Introducing new technology to your dental practice doesn't have to be disruptive. Research into "Industry 4.0 in Dentistry" (2025) shows that the biggest barrier to VR adoption isn't the technology itself — it's the "Chair-side Onboarding." With the right framework, VR therapy integrates into existing workflows without adding a single minute to appointment times.</p>
@@ -175,7 +175,7 @@ window.BLOG_ARTICLES = [
         author: "Patient Story",
         authorRole: "As told to Dentaverse",
         excerpt: "A real-world story of how guided VR — and the science of Virtual Reality Induced Hypnosis — helped a highly anxious patient complete long-delayed treatment.",
-        image: "../images/4.png",
+        image: "../images/4.webp",
         content: `
             <h2>The Science of Overcoming Long-Term Dental Phobia</h2>
             <p>NYU College of Dentistry (September 2025) released a landmark study showing that 72.6% of adults report some dental fear, often rooted in childhood "memory salience" — the way emotionally charged memories are encoded more vividly and recalled more easily than neutral ones. For patients who've avoided the dentist for a decade, this creates a self-reinforcing cycle of avoidance and worsening oral health.</p>
@@ -219,7 +219,7 @@ window.BLOG_ARTICLES = [
         author: "Dentaverse Team",
         authorRole: "Product Announcements",
         excerpt: "Latest dashboard improvements, headset firmware notes, biofeedback beta programme, and rollout timelines for clinic partners.",
-        image: "../images/5.png",
+        image: "../images/5.webp",
         content: `
             <h2>Q1 2026 Product Updates</h2>
             <p>We're excited to share the latest improvements to the Dentaverse platform. These updates are rolling out automatically to all partner clinics over the next two weeks.</p>
@@ -272,7 +272,7 @@ window.BLOG_ARTICLES = [
         author: "Dr. James Chen",
         authorRole: "Clinical Efficiency Researcher",
         excerpt: "New comparative data on appointment completion times, patient interruption rates, and the ROI of VR distraction therapy across 847 procedures.",
-        image: "../images/6.png",
+        image: "../images/6.webp",
         content: `
             <h2>The Hidden Cost of Patient Anxiety</h2>
             <p>Every dental practice knows that anxious patients take longer to treat. Clinical data from 2025 indicates that "Digital Labs" combined with VR distraction reduce "in-mouth adjustment" time by 30–40%. But the real efficiency gain comes from a variable that's rarely measured: patient stillness.</p>
