@@ -2853,49 +2853,24 @@
             }
         });
 
-        /* ---- Mobile Nav Toggle ---- */
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburger = document.getElementById('dvHamburger');
-            const mobileMenu = document.getElementById('dvMobileMenu');
-            
-            console.log('Hamburger element:', hamburger);
-            console.log('Mobile menu element:', mobileMenu);
-            
-            if (!hamburger || !mobileMenu) {
-                console.error('Hamburger or mobile menu not found!');
-                return;
-            }
-
-            hamburger.setAttribute('aria-expanded', 'false');
-            
-            // Add click handler
-            hamburger.addEventListener('click', function(e) {
-                console.log('Hamburger clicked!');
-                const isOpen = mobileMenu.classList.toggle('open');
-                hamburger.classList.toggle('open', isOpen);
-                hamburger.setAttribute('aria-expanded', String(isOpen));
-                console.log('Menu is now:', isOpen ? 'open' : 'closed');
-            }, false);
-
-            // Also try with touchstart for mobile
-            hamburger.addEventListener('touchstart', function(e) {
-                console.log('Hamburger touched!');
-                e.preventDefault();
-                const isOpen = mobileMenu.classList.toggle('open');
-                hamburger.classList.toggle('open', isOpen);
-                hamburger.setAttribute('aria-expanded', String(isOpen));
-                console.log('Menu is now:', isOpen ? 'open' : 'closed');
-            }, { passive: false });
-
-            // Close menu when clicking links
-            mobileMenu.querySelectorAll('a').forEach((link) => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('open');
-                    hamburger.classList.remove('open');
-                    hamburger.setAttribute('aria-expanded', 'false');
+        /* ---- Mobile Nav ---- */
+        (function() {
+            var btn = document.getElementById('dvHamburger');
+            var menu = document.getElementById('dvMobileMenu');
+            if (!btn || !menu) return;
+            btn.addEventListener('click', function() {
+                var open = menu.classList.toggle('open');
+                btn.classList.toggle('open', open);
+                btn.setAttribute('aria-expanded', String(open));
+            });
+            menu.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    menu.classList.remove('open');
+                    btn.classList.remove('open');
+                    btn.setAttribute('aria-expanded', 'false');
                 });
             });
-        });
+        })();
 
         /* ---- Page transitions ---- */
         document.addEventListener('DOMContentLoaded', () => {

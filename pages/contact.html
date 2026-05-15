@@ -882,6 +882,23 @@ a { text-decoration: none; color: inherit; }
 </head>
 <body>
 
+<!-- LOADER -->
+<div id="loader" style="position:fixed;inset:0;z-index:9999;background:#fff;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s;">
+  <div style="text-align:center;">
+    <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;margin:0 auto 1rem;box-shadow:0 0 0 8px rgba(0,204,255,0.1);animation:ctPulse 2s ease-in-out infinite;">
+      <img src="../images/dentaverse-logo.jpeg" alt="Dentaverse" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#0A2558;letter-spacing:0.04em;margin-bottom:0.8rem;">Dentaverse</div>
+    <div style="width:120px;height:2px;background:#E0EAF8;border-radius:2px;margin:0 auto;overflow:hidden;">
+      <div style="height:100%;width:40%;background:linear-gradient(90deg,#0066CC,#00CCFF);border-radius:2px;animation:ctBar 2s ease-in-out infinite;"></div>
+    </div>
+  </div>
+</div>
+<style>
+  @keyframes ctPulse{0%,100%{box-shadow:0 0 0 8px rgba(0,204,255,0.1);transform:scale(1)}50%{box-shadow:0 0 0 16px rgba(0,204,255,0);transform:scale(1.05)}}
+  @keyframes ctBar{0%{transform:translateX(-200%)}100%{transform:translateX(400%)}}
+  #loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+</style>
 
 <!-- HEADER -->
 <header class="dv-header" id="dvHeader">
