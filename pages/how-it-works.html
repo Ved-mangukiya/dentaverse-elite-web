@@ -719,16 +719,22 @@
         /* ── MOBILE: single column left-aligned timeline ── */
         @media (max-width: 850px) {
             .vtl::before {
-                left: 28px;
+                content: '';
+                position: absolute;
+                left: 22px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
                 transform: none;
+                background: linear-gradient(180deg, transparent 0%, var(--brand-mid) 5%, var(--brand-mid) 95%, transparent 100%);
+                opacity: 0.2;
             }
             .vtl::after {
-                left: 31px;
-                transform: none;
+                display: none;
             }
 
             .vtl-step {
-                grid-template-columns: 56px 1fr;
+                grid-template-columns: 46px 1fr;
                 grid-template-rows: auto;
                 gap: 0;
                 margin-bottom: 2rem;
@@ -738,7 +744,9 @@
                 grid-column: 1;
                 grid-row: 1;
                 align-self: flex-start;
-                padding-top: 0.2rem;
+                padding-top: 0.15rem;
+                display: flex;
+                justify-content: center;
             }
 
             .vtl-left,
@@ -760,6 +768,10 @@
             .vtl-seal {
                 width: 44px;
                 height: 44px;
+                flex-shrink: 0;
+            }
+            .vtl-seal::before {
+                display: none;
             }
             .vtl-num { font-size: 1rem; }
 
@@ -768,23 +780,23 @@
                 border-radius: 12px;
             }
             .vtl-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-            .vtl-card p { font-size: 0.8rem; line-height: 1.55; }
+            .vtl-card p { font-size: 0.82rem; line-height: 1.55; }
             .vtl-phase { font-size: 0.6rem; margin-bottom: 0.5rem; }
         }
 
         @media (max-width: 480px) {
-            .vtl { padding: 0 0.5rem; }
-            .vtl::before { left: 22px; }
-            .vtl::after { left: 25px; }
-            .vtl-step { grid-template-columns: 46px 1fr; }
+            .vtl { padding: 0 0.25rem; }
+            .vtl::before { left: 19px; }
+            .vtl-step { grid-template-columns: 40px 1fr; }
             .vtl-seal { width: 38px; height: 38px; }
-            .vtl-num { font-size: 0.9rem; }
+            .vtl-num { font-size: 0.85rem; }
             .vtl-card { padding: 0.9rem 1rem; }
             .vtl-card h3 { font-size: 0.9rem; }
             .vtl-card p {
-                font-size: 0.75rem;
+                font-size: 0.78rem;
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
+                line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
