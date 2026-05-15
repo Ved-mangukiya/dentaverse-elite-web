@@ -79,7 +79,7 @@ dentaverse-web/
 
 ### Hosting & Deployment
 - **GitHub Pages** - Static site hosting
-- **Custom Domain** - dentaverse.uk (configured via DNS)
+- **Custom Domain** - dentaverse.co.uk (configured via DNS)
 - **SSL/TLS** - Automatic HTTPS encryption
 - **CDN** - Global content delivery
 
@@ -212,7 +212,7 @@ git push origin main
 ```
 
 ### Custom Domain Setup
-1. Add CNAME file with domain: `dentaverse.uk`
+1. Add CNAME file with domain: `dentaverse.co.uk`
 2. Configure DNS A records to GitHub Pages IPs
 3. Enable HTTPS in GitHub Pages settings
 
@@ -261,7 +261,7 @@ All documents available in `/documents/` folder.
 **Dentaverse Ltd.**  
 Healthcare Technology Solutions
 
-- **Website**: dentaverse.uk
+- **Website**: dentaverse.co.uk
 - **Email**: ask@dentaverse.co.uk
 - **Phone**: +44 7887 772083
 - **Support**: Available for partner clinics
