@@ -263,7 +263,7 @@ img {
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     border-bottom: 1px solid var(--glass-border);
     z-index: 10000;
-    transition: height 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease), opacity 0.4s var(--ease);
     animation: navSlideDown 0.5s var(--ease) both;
     pointer-events: auto;
 }
@@ -673,15 +673,15 @@ img {
     gap: 14px;
     transform: translateY(22px);
     opacity: 0;
-    visibility: hidden;
-    transition: transform 0.28s var(--ease), opacity 0.28s var(--ease), visibility 0.28s;
+    pointer-events: none;
+    transition: transform 0.28s var(--ease), opacity 0.28s var(--ease);
     box-shadow: 0 14px 38px rgba(6, 20, 46, 0.45);
 }
 
 .cookie-consent.show {
     transform: translateY(0);
     opacity: 1;
-    visibility: visible;
+    pointer-events: auto;
 }
 
 .cookie-consent.fade-out {
