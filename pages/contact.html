@@ -1538,81 +1538,6 @@
     }
 
     /* ═══════════════════════════════════════════
-   COOKIE
-═══════════════════════════════════════════ */
-    .cookie-consent {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 40px);
-      max-width: 600px;
-      background: white;
-      border-radius: 20px;
-      padding: 18px 20px;
-      display: none;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      box-shadow: 0 16px 48px rgba(10, 37, 88, 0.15);
-      z-index: 9000;
-      border: 1px solid var(--border);
-      animation: slideUp 0.5s var(--ease-spring) both;
-    }
-
-    .cookie-consent.show {
-      display: flex;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(20px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0)
-      }
-    }
-
-    .cookie-text {
-      flex: 1;
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
-      min-width: 180px;
-    }
-
-    .cookie-btns {
-      display: flex;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .cookie-btn {
-      padding: 8px 14px;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1.5px solid var(--border);
-      background: white;
-      color: var(--brand-dark);
-      transition: all 0.2s;
-    }
-
-    .cookie-btn:hover {
-      border-color: var(--brand-cyan);
-    }
-
-    .cb-accept {
-      background: linear-gradient(135deg, var(--brand-mid), var(--brand-cyan));
-      color: white;
-      border-color: transparent;
-    }
-
-    /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
     @media(max-width:900px) {
@@ -2001,35 +1926,12 @@
     </div>
   </footer>
 
-  <!-- COOKIE -->
-  <div class="cookie-consent" id="cookieConsent">
-    <div class="cookie-text">We use cookies to enhance your experience and analyze our traffic. By clicking 'Accept
-      All', you consent to our use of cookies.</div>
-    <div class="cookie-btns">
-      <button class="cookie-btn" id="cookieManage">Manage</button>
-      <button class="cookie-btn" id="cookieDeny">Reject All</button>
-      <button class="cookie-btn cb-accept" id="cookieAccept">Accept All</button>
-    </div>
-  </div>
-
   <script>
     (function () {
       /* Loader */
       setTimeout(function () {
         document.getElementById('loader').classList.add('hide');
       }, 2400);
-
-      /* Cookie */
-      var box = document.getElementById('cookieConsent');
-      if (!localStorage.getItem('dv_cookie') && box) {
-        setTimeout(function () { box.classList.add('show'); }, 2800);
-      }
-      function hideCookie() {
-        if (box) { box.style.display = 'none'; }
-      }
-      document.getElementById('cookieAccept').onclick = function () { localStorage.setItem('dv_cookie', 'accepted'); hideCookie(); };
-      document.getElementById('cookieDeny').onclick = function () { localStorage.setItem('dv_cookie', 'denied'); hideCookie(); };
-      document.getElementById('cookieManage').onclick = function () { localStorage.setItem('dv_cookie', 'managed'); hideCookie(); };
 
       /* Nav scroll */
       var hdr = document.getElementById('dvHeader');
