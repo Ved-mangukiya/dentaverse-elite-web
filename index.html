@@ -208,15 +208,74 @@
         as="font" type="font/woff2" crossorigin>
     <style>
         /* CRITICAL CSS - Above the fold */
-        :root { --brand-dark: #0A2558; --brand-mid: #0066CC; --brand-cyan: #00CCFF; --bg: #FFFFFF; --text: #333333; --muted: #5E6E85; --nav-h: 72px; --ease: cubic-bezier(0.16, 1, 0.3, 1); }
-        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); opacity: 0; }
-        body.ready { opacity: 1; transition: opacity 0.4s var(--ease); }
-        .dv-header { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(0,102,204,0.1); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
-        .hero { padding: calc(var(--nav-h) + 2rem) 0 4rem; display: flex; align-items: center; min-height: 85vh; overflow: hidden; }
-        .hero-vr-visual { position: relative; width: 100%; max-width: 560px; margin: 0 auto; }
-        .vr-headset-image { width: 100%; height: auto; display: block; border-radius: 20px; }
-    </style>
+        :root {
+            --brand-dark: #0A2558;
+            --brand-mid: #0066CC;
+            --brand-cyan: #00CCFF;
+            --bg: #FFFFFF;
+            --text: #333333;
+            --muted: #5E6E85;
+            --nav-h: 72px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            opacity: 0;
+        }
+
+        body.ready {
+            opacity: 1;
+            transition: opacity 0.4s var(--ease);
+        }
+
+        .dv-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero {
+            padding: calc(var(--nav-h) + 2rem) 0 4rem;
+            display: flex;
+            align-items: center;
+            min-height: 85vh;
+            overflow: hidden;
+        }
+
+        .hero-vr-visual {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .vr-headset-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .hero-vr-visual picture img {
             max-width: 800px;
             height: auto;
             aspect-ratio: 4/3;
@@ -520,7 +579,9 @@
 
         /* VR Headset Image - 40% Bigger with Better Floating */
         .vr-headset-image {
-            width: 140%;
+            width: 110%;
+            margin-left: -5%;
+            /* Shift slightly left */
             /* Increased from 100% */
             max-width: none;
             /* Simplified shadow - better performance */
@@ -547,10 +608,9 @@
 
         @media (min-width: 961px) {
             .vr-headset-image {
-                width: 168%;
-                /* Increased from 120% (40% more) */
-                margin-right: -14%;
-                /* Adjusted for bigger size */
+                width: 135%;
+                margin-right: 5%;
+                /* Shift left by increasing right margin from negative to positive */
             }
         }
 
@@ -2395,9 +2455,11 @@
 
 <body>
     <!-- LOADER -->
-    <div id="loader" style="position:fixed;inset:0;z-index:9999;background:#fff;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s;">
+    <div id="loader"
+        style="position:fixed;inset:0;z-index:9999;background:#fff;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s;">
         <div class="dv-loader">
-            <div class="dv-loader-icon"><img src="images/dentaverse-logo.jpeg" alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution" width="72" height="72"></div>
+            <div class="dv-loader-icon"><img src="images/dentaverse-logo.jpeg"
+                    alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution" width="72" height="72"></div>
             <div class="dv-loader-brand">Dentaverse</div>
             <div class="dv-loader-bar"></div>
         </div>
@@ -2467,7 +2529,7 @@
                     <picture>
                         <source srcset="images/VR.webp" type="image/webp">
                         <img src="images/VR.webp" alt="Premium VR Headset for Dental Clinics" class="vr-headset-image"
-                            fetchpriority="high" width="560" height="373" decoding="async">
+                            fetchpriority="high" width="450" height="300" decoding="async">
                     </picture>
                 </div>
             </div>
@@ -3497,7 +3559,8 @@
             <div class="dv-footer-grid">
                 <div class="dv-footer-about">
                     <div class="dv-footer-logo"><img src="images/dentaverse-logo.jpeg"
-                            alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution" width="32" height="32">Dentaverse</div>
+                            alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution" width="32"
+                            height="32">Dentaverse</div>
                     <p>Redefining dental care through immersive VR technology. Every visit becomes calm, cooperative,
                         and positive.</p>
                 </div>
