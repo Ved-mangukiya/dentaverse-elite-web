@@ -2870,15 +2870,7 @@
                 if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40);
             }, { passive: true });
 
-            // ── Hamburger ──
-            var hbg = document.getElementById('dvHamburger');
-            var mob = document.getElementById('dvMobileMenu');
-            if (hbg && mob) {
-                hbg.addEventListener('click', function () {
-                    hbg.classList.toggle('open');
-                    mob.classList.toggle('open');
-                });
-            }
+
 
             // ── Scroll reveal ──
             var obs = new IntersectionObserver(function (entries) {

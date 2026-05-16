@@ -1297,25 +1297,9 @@
 
     <script>
         (function () {
-            var hbg = document.getElementById('dvHamburger');
             document.body.classList.add('ready');
 
-            var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
-            if (hbg && mob) {
-                hbg.addEventListener('click', function() {
-                    var open = mob.classList.toggle('open');
-                    hbg.classList.toggle('open', open);
-                    hbg.setAttribute('aria-expanded', String(open));
-                });
-                mob.querySelectorAll('a').forEach(function(a) {
-                    a.addEventListener('click', function() {
-                        mob.classList.remove('open');
-                        hbg.classList.remove('open');
-                        hbg.setAttribute('aria-expanded', 'false');
-                    });
-                });
-            }
             window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
             var obs = new IntersectionObserver(function (entries) {

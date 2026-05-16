@@ -3657,24 +3657,7 @@
             }
         });
 
-        /* ---- Mobile Nav ---- */
-        (function () {
-            var btn = document.getElementById('dvHamburger');
-            var menu = document.getElementById('dvMobileMenu');
-            if (!btn || !menu) return;
-            btn.addEventListener('click', function () {
-                var open = menu.classList.toggle('open');
-                btn.classList.toggle('open', open);
-                btn.setAttribute('aria-expanded', String(open));
-            });
-            menu.querySelectorAll('a').forEach(function (a) {
-                a.addEventListener('click', function () {
-                    menu.classList.remove('open');
-                    btn.classList.remove('open');
-                    btn.setAttribute('aria-expanded', 'false');
-                });
-            });
-        })();
+
 
         /* ---- Page transitions ---- */
         document.addEventListener('DOMContentLoaded', () => {
@@ -3902,8 +3885,7 @@
             observer.observe(vrHeadset);
         })();
     </script>
-    <script src="js/locale-formatter.js" defer></script>
-    <script src="js/design-system.js" defer></script>
+
 </body>
 
 </html>

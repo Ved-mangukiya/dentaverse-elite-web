@@ -584,12 +584,7 @@
             'use strict';
 
             // Navigation
-            var hbg = document.getElementById('dvHamburger');
-            var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
-            if (hbg && mob) {
-                hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
-            }
             window.addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
             // Get article ID from URL

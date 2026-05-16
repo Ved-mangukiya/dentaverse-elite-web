@@ -2067,18 +2067,7 @@
       var hdr = document.getElementById('dvHeader');
       window.addEventListener('scroll', function () { hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
-      /* Hamburger */
-      var hbg = document.getElementById('dvHamburger');
-      var mob = document.getElementById('dvMobileMenu');
-      hbg.addEventListener('click', function () {
-        hbg.classList.toggle('open');
-        if (mob.classList.contains('open')) {
-          mob.style.transform = ''; mob.style.opacity = ''; mob.style.pointerEvents = 'none';
-          mob.classList.remove('open');
-        } else {
-          mob.classList.add('open');
-        }
-      });
+
 
       /* Reveal on scroll */
       var obs = new IntersectionObserver(function (entries) {

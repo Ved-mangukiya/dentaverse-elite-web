@@ -1975,10 +1975,7 @@
             if (l) setTimeout(function () { l.style.opacity = '0'; l.style.visibility = 'hidden'; l.style.pointerEvents = 'none'; }, 2800);
         })();
         document.addEventListener('DOMContentLoaded', function () {
-            var hbg = document.getElementById('dvHamburger');
-            var mob = document.getElementById('dvMobileMenu');
             var hdr = document.getElementById('dvHeader');
-            if (hbg && mob) { hbg.addEventListener('click', function () { hbg.classList.toggle('open'); mob.classList.toggle('open'); }); }
 
             /* Floating CTA visibility on scroll */
             var floatingCta = document.getElementById('floatingCta');
