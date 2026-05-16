@@ -1,4 +1,14 @@
 RewriteEngine On
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\.dentaverse\.co\.uk$ [NC]
-RewriteRule ^(.*)$ https://dentaverse.co.uk/$1 [L,R=301]
+
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect WWW to Non-WWW
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Optional: Add HSTS header to force modern browsers to only use HTTPS
+<IfModule mod_headers.c>
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
