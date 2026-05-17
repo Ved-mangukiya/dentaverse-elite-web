@@ -1337,8 +1337,13 @@
     }
 
     @keyframes mapZoomPan {
-      0% { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.15) translate(-15px, -8px); }
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+
+      100% {
+        transform: scale(1.15) translate(-15px, -8px);
+      }
     }
 
     .map-box:hover {
@@ -1509,9 +1514,20 @@
     }
 
     @keyframes dotPulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.2); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(1.2);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .avail-text strong {
@@ -1683,9 +1699,20 @@
     }
 
     @keyframes statusPulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.1); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     /* ═══════════════════════════════════════════
@@ -1914,7 +1941,8 @@
                   <div class="ferr">Please enter a valid email</div>
                 </div>
                 <div class="f" id="w-interest">
-                  <select id="inp-interest" name="interest" onchange="document.getElementById('inp-title').value = this.options[this.selectedIndex].text">
+                  <select id="inp-interest" name="interest"
+                    onchange="document.getElementById('inp-title').value = this.options[this.selectedIndex].text">
                     <option value="" disabled selected></option>
                     <option value="demo">Book a Clinic Demo</option>
                     <option value="pricing">Pricing &amp; Plans</option>
@@ -2315,9 +2343,9 @@
         }
         /* EmailJS Send with Real IDs */
         emailjs.sendForm('service_4gc3om9', 'template_m5eg5nh', this)
-          .then(function() {
+          .then(function () {
             console.log('Email sent successfully!');
-          }, function(error) {
+          }, function (error) {
             console.error('Email failed to send...', error);
           });
 
@@ -2347,7 +2375,7 @@
         const day = parts.weekday;
         const hour = parseInt(parts.hour);
         const min = parseInt(parts.minute);
-        
+
         const isWeekday = !['Saturday', 'Sunday'].includes(day);
         const isOpen = isWeekday && hour >= 9 && hour < 18;
 
@@ -2356,16 +2384,16 @@
           txt.innerHTML = '<strong>Online now</strong>';
         } else {
           el.className = 'status-badge-inline offline';
-          
+
           // Calculate wait
           let waitStr = "";
           if (!isWeekday) {
-             waitStr = "Back on Monday";
+            waitStr = "Back on Monday";
           } else if (hour < 9) {
-             const h = 9 - hour - (min > 0 ? 1 : 0);
-             waitStr = `Back in ${h > 0 ? h + 'h' : ''}${min > 0 ? (60 - min) + 'm' : ''}`;
+            const h = 9 - hour - (min > 0 ? 1 : 0);
+            waitStr = `Back in ${h > 0 ? h + 'h' : ''}${min > 0 ? (60 - min) + 'm' : ''}`;
           } else {
-             waitStr = "Back tomorrow";
+            waitStr = "Back tomorrow";
           }
           txt.innerHTML = `Offline · ${waitStr} — <span style="color: var(--brand-mid); opacity: 0.85;">We\'ll reply as soon as we\'re <span style="color: var(--brand-mid); font-weight: 700; text-decoration: underline rgba(0,102,204,0.15);">online</span>.</span>`;
         }
