@@ -110,10 +110,38 @@
 
     <!-- CSS -->
     <style>
-        :root { --brand-dark: #0A2558; --brand-mid: #0066CC; --brand-cyan: #00CCFF; --bg: #FFFFFF; --text: #333333; --muted: #5E6E85; --nav-h: 72px; }
-        .dv-header { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
-        .products-hero { padding: calc(var(--nav-h) + 3.5rem) 0 3.5rem; text-align: center; }
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        :root {
+            --brand-dark: #0A2558;
+            --brand-mid: #0066CC;
+            --brand-cyan: #00CCFF;
+            --bg: #FFFFFF;
+            --text: #333333;
+            --muted: #5E6E85;
+            --nav-h: 72px;
+        }
+
+        .dv-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .products-hero {
+            padding: calc(var(--nav-h) + 3.5rem) 0 3.5rem;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
     </style>
     <link rel="preload" href="../css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="../css/design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1932,7 +1960,8 @@
             <div class="dv-footer-grid">
                 <div class="dv-footer-about">
                     <div class="dv-footer-logo"><img src="../images/dentaverse-logo.jpeg"
-                            alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution" width="32" height="32">Dentaverse</div>
+                            alt="Dentaverse VR Therapy Logo - Premium Dental Anxiety Solution" width="32"
+                            height="32">Dentaverse</div>
                     <p>Redefining dental care through immersive VR technology. Every visit becomes calm, cooperative,
                         and positive.</p>
                 </div>
