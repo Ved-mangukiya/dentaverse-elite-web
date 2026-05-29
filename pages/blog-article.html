@@ -606,6 +606,43 @@
                 // Update page title
                 document.getElementById('articleTitle').textContent = article.title + ' | Dentaverse Blog';
 
+                // Update SEO Meta Tags dynamically
+                var fullUrl = 'https://dentaverse.co.uk/pages/blog-article.html?id=' + article.id;
+                
+                // Canonical link
+                var canonicalLink = document.querySelector('link[rel="canonical"]');
+                if (canonicalLink) canonicalLink.setAttribute('href', fullUrl);
+                
+                // Open Graph & Twitter URL
+                var ogUrl = document.querySelector('meta[property="og:url"]');
+                if (ogUrl) ogUrl.setAttribute('content', fullUrl);
+                var twitterUrl = document.querySelector('meta[name="twitter:url"]');
+                if (twitterUrl) twitterUrl.setAttribute('content', fullUrl);
+
+                // Title tags for social
+                var ogTitle = document.querySelector('meta[property="og:title"]');
+                if (ogTitle) ogTitle.setAttribute('content', article.title + ' | Dentaverse Blog');
+                var twitterTitle = document.querySelector('meta[name="twitter:title"]');
+                if (twitterTitle) twitterTitle.setAttribute('content', article.title + ' | Dentaverse Blog');
+
+                // Description tags for SEO and social
+                var cleanExcerpt = article.excerpt || '';
+                var metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.setAttribute('content', cleanExcerpt);
+                var ogDesc = document.querySelector('meta[property="og:description"]');
+                if (ogDesc) ogDesc.setAttribute('content', cleanExcerpt);
+                var twitterDesc = document.querySelector('meta[name="twitter:description"]');
+                if (twitterDesc) twitterDesc.setAttribute('content', cleanExcerpt);
+
+                // Image tags for social cards
+                if (article.image) {
+                    var fullImgUrl = article.image.replace('../', 'https://dentaverse.co.uk/');
+                    var ogImg = document.querySelector('meta[property="og:image"]');
+                    if (ogImg) ogImg.setAttribute('content', fullImgUrl);
+                    var twitterImg = document.querySelector('meta[name="twitter:image"]');
+                    if (twitterImg) twitterImg.setAttribute('content', fullImgUrl);
+                }
+
                 // Update hero
                 document.getElementById('heroImage').src = article.image;
                 document.getElementById('articleCategory').textContent = article.category;

@@ -74,4 +74,86 @@
         </image:image>
     </url>
 
+    <!-- Blog Articles (Dynamic routes added for crawler discovery) -->
+    <url>
+        <loc>https://dentaverse.co.uk/pages/blog-article.html?id=1</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://dentaverse.co.uk/images/1.webp</image:loc>
+            <image:title>How VR Reduces Dental Procedural Anxiety by Up to 60%</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://dentaverse.co.uk/pages/blog-article.html?id=2</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://dentaverse.co.uk/images/2.webp</image:loc>
+            <image:title>Dentaverse 3.0: Spatial Audio Updates</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://dentaverse.co.uk/pages/blog-article.html?id=3</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://dentaverse.co.uk/images/3.webp</image:loc>
+            <image:title>5 Ways to Introduce VR to Your Dental Team</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://dentaverse.co.uk/pages/blog-article.html?id=4</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://dentaverse.co.uk/images/4.webp</image:loc>
+            <image:title>Overcoming 10 Years of Dental Phobia</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://dentaverse.co.uk/pages/blog-article.html?id=5</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://dentaverse.co.uk/images/5.webp</image:loc>
+            <image:title>Quarterly Product Updates for Partner Clinics</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://dentaverse.co.uk/pages/blog-article.html?id=6</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://dentaverse.co.uk/images/6.webp</image:loc>
+            <image:title>Measuring Chair-Time Efficiency with Immersive Workflows</image:title>
+        </image:image>
+    </url>
+
+    <!-- Legal Documents -->
+    <url>
+        <loc>https://dentaverse.co.uk/documents/Dentaverse_Privacy_Policy.pdf</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://dentaverse.co.uk/documents/Dentaverse_Terms_of_Service.pdf</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://dentaverse.co.uk/documents/Dentaverse_Cookie_Policy.pdf</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
 </urlset>
