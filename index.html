@@ -303,10 +303,12 @@
     <link rel="preload" href="css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/design-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="css/theme.css">
         <link rel="stylesheet" href="css/design-system.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/animations.css">
     </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2517,20 +2519,36 @@
         <!-- ======================= HERO ======================= -->
         <section class="hero" id="home">
             <canvas id="hero-canvas"></canvas>
-            <div class="orb-1 hero-orb"></div>
-            <div class="orb-2 hero-orb"></div>
-            <div class="orb-3 hero-orb"></div>
+            <div class="orb-1 hero-orb anim-orb anim-orb-1" style="top:-10%;right:-5%;"></div>
+            <div class="orb-2 hero-orb anim-orb anim-orb-2" style="bottom:5%;left:-8%;"></div>
+            <div class="orb-3 hero-orb anim-orb anim-orb-3" style="top:40%;left:30%;"></div>
+
+            <!-- Floating particle field -->
+            <div class="particle-field" aria-hidden="true">
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+                <span class="particle-dot"></span>
+            </div>
 
             <div class="container hero-container" style="position:relative;z-index:2;width:100%;">
                 <div class="hero-content reveal">
-                    <div class="hero-badge">VR Distraction Therapy · UK</div>
-                    <h1>Dental Anxiety?<br><em>Not Anymore.</em></h1>
+                    <div class="hero-badge float-badge">VR Distraction Therapy · UK</div>
+                    <h1>Dental Anxiety?<br><em class="text-gradient-anim">Not Anymore.</em></h1>
                     <p class="hero-desc">Dentaverse puts patients inside a calming VR world — oceans, forests,
                         galaxies — so they feel nothing but peace while treatment happens. Simple, proven,
                         life-changing.
                     </p>
                     <div class="hero-actions reveal" style="transition-delay: 0.1s;">
-                        <a href="pages/contact.html" class="btn btn-primary">Book Demo <svg viewBox="0 0 24 24">
+                        <a href="pages/contact.html" class="btn btn-primary btn-magnetic">Book Demo <svg viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg></a>
                         <a href="pages/products.html" class="btn btn-outline">Explore Products</a>
@@ -2538,6 +2556,12 @@
                 </div>
 
                 <div class="hero-vr-visual">
+                    <!-- Glow rings behind VR headset -->
+                    <div aria-hidden="true">
+                        <div class="hero-glow-ring"></div>
+                        <div class="hero-glow-ring"></div>
+                        <div class="hero-glow-ring"></div>
+                    </div>
                     <picture>
                         <source srcset="images/VR.webp" type="image/webp">
                         <img src="images/VR.webp" alt="Premium VR Headset for Dental Clinics" class="vr-headset-image"
@@ -2941,9 +2965,9 @@
                 </style>
 
                 <div class="wwa-section">
-                    <div class="wwa-top">
+                    <div class="wwa-top" data-stagger>
                         <!-- Card 1: Who We Are — dark navy -->
-                        <div class="wc wc-navy reveal">
+                        <div class="wc wc-navy reveal card-3d feature-card-anim"><div class="card-3d-inner" style="height:100%;border-radius:inherit;">
                             <div class="wc-icon"><svg viewBox="0 0 24 24">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                     <circle cx="9" cy="7" r="4" />
@@ -2961,9 +2985,9 @@
                                     viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                 </svg></a>
-                        </div>
+                        </div></div>
                         <!-- Card 2: What We Do — medium blue -->
-                        <div class="wc wc-blue reveal" style="transition-delay:.08s">
+                        <div class="wc wc-blue reveal card-3d feature-card-anim" style="transition-delay:.08s"><div class="card-3d-inner" style="height:100%;border-radius:inherit;">
                             <div class="wc-icon"><svg viewBox="0 0 24 24">
                                     <rect x="2" y="7" width="20" height="13" rx="2" />
                                     <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
@@ -2980,9 +3004,9 @@
                                 <li>Clinic dashboard for session and patient controls</li>
                             </ul>
                             <a href="pages/products.html" class="wc-btn">See Products</a>
-                        </div>
+                        </div></div>
                         <!-- Card 3: Who It's For — white -->
-                        <div class="wc wc-white reveal" style="transition-delay:.16s">
+                        <div class="wc wc-white reveal card-3d feature-card-anim" style="transition-delay:.16s"><div class="card-3d-inner" style="height:100%;border-radius:inherit;">
                             <div class="wc-icon"><svg viewBox="0 0 24 24">
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                                     <polyline points="9 22 9 12 15 12 15 22" />
@@ -2997,10 +3021,10 @@
                             </ul>
                             <a href="pages/contact.html" class="wc-btn"
                                 style="border-color:#bfdbfe;color:#1d4ed8;background:transparent;">View Options</a>
-                        </div>
+                        </div></div>
                     </div>
                     <!-- Bottom strip: Why Us -->
-                    <div class="wwa-strip reveal" style="transition-delay:.24s">
+                    <div class="wwa-strip reveal-zoom" style="transition-delay:.24s">
                         <div class="wwa-strip-icon"><svg viewBox="0 0 24 24">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg></div>
@@ -3030,9 +3054,9 @@
                         experience platform that integrates seamlessly into your workflow.</p>
                 </div>
                 <!-- Beautiful 3-column grid with enhanced styling -->
-                <div class="grid-3-col" style="max-width: 1200px; margin: 0 auto; gap: 2rem; --mobile-cols: 2;">
+                <div class="grid-3-col" data-stagger style="max-width: 1200px; margin: 0 auto; gap: 2rem; --mobile-cols: 2;">
 
-                    <div class="card reveal"
+                    <div class="card reveal feature-card-anim"
                         style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;">
                         <div
                             style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
@@ -3054,7 +3078,7 @@
                             environments create a calming sanctuary during dental procedures.</p>
                     </div>
 
-                    <div class="card reveal"
+                    <div class="card reveal feature-card-anim"
                         style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.08s">
                         <div
                             style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
@@ -3077,7 +3101,7 @@
                             adventures to forest walks, choose the perfect environment for every patient.</p>
                     </div>
 
-                    <div class="card reveal"
+                    <div class="card reveal feature-card-anim"
                         style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.16s">
                         <div
                             style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
@@ -3099,7 +3123,7 @@
                             experiences actively distract from the dental procedure.</p>
                     </div>
 
-                    <div class="card reveal"
+                    <div class="card reveal feature-card-anim"
                         style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.04s">
                         <div
                             style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
@@ -3120,7 +3144,7 @@
                             patient comfort levels and adjust settings in real-time for optimal care.</p>
                     </div>
 
-                    <div class="card reveal"
+                    <div class="card reveal feature-card-anim"
                         style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.12s">
                         <div
                             style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%); border-radius: 50%;">
@@ -3141,7 +3165,7 @@
                             updated content library designed by psychologists and relaxation specialists.</p>
                     </div>
 
-                    <div class="card reveal"
+                    <div class="card reveal feature-card-anim"
                         style="background: white; border: 2px solid #e0eaf8; border-radius: 24px; padding: 2.5rem 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; transition-delay:.20s">
                         <div
                             style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,204,255,0.08) 0%, transparent 70%); border-radius: 50%;">
@@ -3243,7 +3267,7 @@
                 <!-- PATIENT REVIEWS panel -->
                 <div class="testi-panel active" id="panel-patients" role="tabpanel" aria-labelledby="tab-patients">
 
-                    <div class="testi-card reveal">
+                    <div class="testi-card reveal feature-card-anim">
                         <span class="testi-badge patient">Patient</span>
                         <div class="testi-stars" aria-label="5 stars">★★★★★</div>
                         <blockquote>"The VR headset transported me to a peaceful beach. I completely forgot I was in a
@@ -3257,7 +3281,7 @@
                         </div>
                     </div>
 
-                    <div class="testi-card reveal" style="transition-delay:.1s">
+                    <div class="testi-card reveal feature-card-anim" style="transition-delay:.1s">
                         <span class="testi-badge patient">Patient</span>
                         <div class="testi-stars" aria-label="5 stars">★★★★★</div>
                         <blockquote>"My son has autism and dental visits were a nightmare. With Dentaverse he was calm
@@ -3272,7 +3296,7 @@
                         </div>
                     </div>
 
-                    <div class="testi-card reveal" style="transition-delay:.2s">
+                    <div class="testi-card reveal feature-card-anim" style="transition-delay:.2s">
                         <span class="testi-badge patient">Patient</span>
                         <div class="testi-stars" aria-label="5 stars">★★★★★</div>
                         <blockquote>"The VR world kept me so calm I barely noticed the procedure was finished."
